@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dispositivos Edge AI</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #fff;
+      color: #171717;
+      font: 14px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 12px;
+    }
+    button {
+      border: 1px solid #171717;
+      border-radius: 6px;
+      padding: 9px 14px;
+      background: #171717;
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+    button:disabled {
+      border-color: #d4d4d4;
+      background: #e5e5e5;
+      color: #737373;
+      cursor: not-allowed;
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+    }
+    .group + .group { margin-top: 28px; }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 650;
+    }
+    table {
+      width: 100%;
+      min-width: 1380px;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid #e5e5e5;
+      border-right: 1px solid #f0f0f0;
+      text-align: left;
+      vertical-align: middle;
+    }
+    th:last-child, td:last-child { border-right: 0; }
+    tbody tr:last-child td { border-bottom: 0; }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #fafafa;
+      font-size: 12px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+    tbody tr:hover { background: #fafafa; }
+    .name { min-width: 230px; font-weight: 600; }
+    .price, .country, .m2, .select { white-space: nowrap; }
+    .description, .comment { min-width: 220px; }
+    .photo-cell { width: 96px; }
+    .photo {
+      display: block;
+      width: 76px;
+      height: 58px;
+      border: 1px solid #e5e5e5;
+      border-radius: 5px;
+      object-fit: contain;
+      background: #fff;
+    }
+    .photo-fallback {
+      display: none;
+      width: 76px;
+      height: 58px;
+      place-items: center;
+      border: 1px solid #e5e5e5;
+      border-radius: 5px;
+      color: #737373;
+      font-size: 11px;
+      text-align: center;
+    }
+    a { color: #171717; text-underline-offset: 3px; }
+    .select { text-align: center; }
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #171717;
+      cursor: pointer;
+    }
+    @media (max-width: 720px) {
+      body { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button id="exportButton" type="button" disabled>Exportar JSON (0)</button>
+  </div>
+
+  <div class="group">
+    <h2>Placas y equipos</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre del producto</th>
+            <th>Foto</th>
+            <th>Precio promedio</th>
+            <th>País de origen</th>
+            <th>Link de compra</th>
+            <th>Descripción</th>
+            <th>Comentario</th>
+            <th>Espacio para M.2</th>
+            <th>Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody id="boardRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2>Aceleradores M.2</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre del producto</th>
+            <th>Foto</th>
+            <th>Precio promedio</th>
+            <th>País de origen</th>
+            <th>Link de compra</th>
+            <th>Descripción</th>
+            <th>Comentario</th>
+            <th>Espacio para M.2</th>
+            <th>Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody id="acceleratorRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+  {
+    "id": "nvidia-jetson-orin-nano-super",
+    "name": "NVIDIA Jetson Orin Nano Super Developer Kit",
+    "imageUrl": "https://i.ebayimg.com/images/g/jJ4AAOSwnD9oAiLH/s-l1200.jpg",
+    "averagePrice": "US$399",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.sparkfun.com/nvidia-jetson-orin-nano-developer-kit.html",
+    "description": "Equipo completo para ejecutar IA local.",
+    "comment": "Tiene dos ranuras M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "intel-minisforum-m1-pro-125h",
+    "name": "MINISFORUM / Intel M1 Pro-125H",
+    "imageUrl": "https://www.minisforum.uk/cdn/shop/files/MINISFORUMM1PRO.png?v=1770882201&width=3183",
+    "averagePrice": "US$367",
+    "originCountry": "China (MINISFORUM)",
+    "purchaseUrl": "https://store.minisforum.com/products/minisforum-m1-pro-125h-mini-pc",
+    "description": "Mini PC compacto con capacidad de IA.",
+    "comment": "Tiene dos ranuras M.2; una puede venir ocupada.",
+    "supportsM2": true
+  },
+  {
+    "id": "amd-minisforum-um880-plus",
+    "name": "MINISFORUM / AMD UM880 Plus",
+    "imageUrl": "https://store.minisforum.com/cdn/shop/files/MINISFORUM_UM760_PLUS.png?v=1783865382&width=1946",
+    "averagePrice": "US$351",
+    "originCountry": "China (MINISFORUM)",
+    "purchaseUrl": "https://store.minisforum.com/products/minisforum-um880-plus-mini-pc",
+    "description": "Mini PC compacto con capacidad de IA.",
+    "comment": "Tiene dos ranuras M.2; una puede venir ocupada.",
+    "supportsM2": true
+  },
+  {
+    "id": "amd-kria-kv260",
+    "name": "AMD Kria KV260 Vision AI Starter Kit",
+    "imageUrl": "https://www.amd.com/en/blogs/2025/kria-kv260-vision-ai-starter-kit-refresh/_jcr_content/_cq_featuredimage.coreimg.90.1200.jpeg/1750692636462/3524363-kv260-box-bg.jpeg",
+    "averagePrice": "US$283,86",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/amd/SK-KV260-G/13985269",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "qualcomm-rb3-gen2-core",
+    "name": "Qualcomm RB3 Gen 2 Core Kit",
+    "imageUrl": "https://www.cnx-software.com/wp-content/uploads/2024/04/Qualcomm-RB3-Gen-2-Platform-Vision-Kit.jpg",
+    "averagePrice": "US$439",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.thundercomm.com/product/qualcomm-rb3-gen-2/",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "Tiene ranura M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "radxa-dragon-q6a",
+    "name": "Radxa Dragon Q6A",
+    "imageUrl": "https://www.tinytronics.nl/image/cache/catalog/products_2025/radxa-dragon-q6a-qcs6490-8gb-main-1500x1500.png",
+    "averagePrice": "US$95–169",
+    "originCountry": "China",
+    "purchaseUrl": "https://shop.allnetchina.cn/collections/frontpage/products/radxa-dragon-q6a",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene M.2 corto; revisa el tamaño del módulo.",
+    "supportsM2": true
+  },
+  {
+    "id": "synaptics-astra-sl1680",
+    "name": "Synaptics Astra Machina SL1680",
+    "imageUrl": "https://media.rs-online.com/R0200007-01.jpg",
+    "averagePrice": "US$241,39",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/synaptics/720-000275-01/27785007",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "Tiene M.2 E-Key, normalmente usado para Wi-Fi.",
+    "supportsM2": true
+  },
+  {
+    "id": "synaptics-astra-sl2619",
+    "name": "Synaptics Astra Machina SL2619",
+    "imageUrl": "https://cdn.bfldr.com/ZU41R0OK/at/vpn3fqh99mc5hr8pr6n5wgjk/SL261x-dev-kit-Box-transparent.png?crop=2708%2C1826%2Cx670%2Cy307&format=png",
+    "averagePrice": "US$220",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/synaptics/720-KDVSL2619-02/28960268",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "Tiene M.2 para expansión, normalmente usado para Wi-Fi.",
+    "supportsM2": true
+  },
+  {
+    "id": "beagleboard-beagley-ai",
+    "name": "BeagleBoard BeagleY-AI",
+    "imageUrl": "https://edge-ai.beagleboard.io/docs/latest/_images/beagley-ai.webp",
+    "averagePrice": "US$70",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.seeedstudio.com/BeagleYr-AI-beagleboard-orgr-4-TOPS-AI-Acceleration-powered-by-TI-AM67A.html",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Necesita un adaptador para usar M.2.",
+    "supportsM2": false
+  },
+  {
+    "id": "radxa-rock-5b",
+    "name": "Radxa ROCK 5B",
+    "imageUrl": "https://thinkrobotics.com/cdn/shop/files/spec_rock5b_02_400x%402x.webp?v=1749792038",
+    "averagePrice": "desde US$89,90",
+    "originCountry": "China",
+    "purchaseUrl": "https://arace.tech/products/radxa-rock-5b",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene ranura M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "radxa-x4",
+    "name": "Radxa / Intel X4",
+    "imageUrl": "https://hubtronics.in/image/cache/catalog/sagar/RADXA-X4-2-1000x1000w.jpg",
+    "averagePrice": "desde US$65,99",
+    "originCountry": "China (Radxa)",
+    "purchaseUrl": "https://arace.tech/products/radxa-x4",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene ranura M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "orange-pi-aipro-8t",
+    "name": "Orange Pi AIPro 8T",
+    "imageUrl": "https://www.tinytronics.nl/image/cache/catalog/products_2025/orange-pi-ai-pro-8-gb-1500x1500w.jpg",
+    "averagePrice": "≈€160",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-AIpro%288-12t%29.html",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene ranura M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "khadas-vim4",
+    "name": "Khadas VIM4",
+    "imageUrl": "https://www.cnx-software.com/wp-content/uploads/2021/10/Khadas-VIM4.jpg",
+    "averagePrice": "US$329",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.khadas.com/product-page/vim4",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene ranura M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "nxp-frdm-imx93",
+    "name": "NXP FRDM-i.MX93",
+    "imageUrl": "https://nz.element14.com/productimages/large/en_GB/4626785-40.jpg",
+    "averagePrice": "US$121,10",
+    "originCountry": "Países Bajos",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/nxp-usa-inc/FRDM-IMX93/25675806",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "El conector M.2 no viene instalado.",
+    "supportsM2": false
+  },
+  {
+    "id": "sipeed-licheepi-4a",
+    "name": "Sipeed LicheePi 4A",
+    "imageUrl": "https://ueeshop.ly200-cdn.com/u_file/UPAX/UPAX407/2406/06/products/31441f0660.jpg?x-oss-process=image%2Fformat%2Cwebp%2Fquality%2Cq_100%2Fresize%2Cm_lfit%2Ch_1000%2Cw_1000",
+    "averagePrice": "≈US$218,98",
+    "originCountry": "China",
+    "purchaseUrl": "https://wiki.sipeed.com/hardware/en/lichee/th1520/lp4a.html",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "canaan-canmv-k230",
+    "name": "Canaan / CanMV K230 Development Board",
+    "imageUrl": "https://ueeshop.ly200-cdn.com/u_file/UPAX/UPAX407/2406/06/products/f7d1c9d0eb.jpg",
+    "averagePrice": "≈US$88",
+    "originCountry": "Singapur (Canaan)",
+    "purchaseUrl": "https://www.hiwonder.com/products/canmv-k230",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "sipeed-maixcam",
+    "name": "Sipeed MaixCAM",
+    "imageUrl": "https://imgaz1.staticbg.com/thumb/large/oaupload/banggood/images/62/05/c2a82987-c36e-4c54-a034-c75dbef51783.jpg.webp",
+    "averagePrice": "US$49,90",
+    "originCountry": "China",
+    "purchaseUrl": "https://wiki.sipeed.com/hardware/en/maixcam/maixcam.html",
+    "description": "Cámara con procesamiento de IA incorporado.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "milk-v-duo-s",
+    "name": "Milk-V Duo S",
+    "imageUrl": "https://www.electronics-lab.com/wp-content/uploads/2024/02/duos-x1.0.webp",
+    "averagePrice": "US$9,90",
+    "originCountry": "China",
+    "purchaseUrl": "https://arace.tech/products/milk-v-duo-s",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "deepx-dx-m1",
+    "name": "DEEPX DX-M1",
+    "imageUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/6/003/238/674/MFG_DX-M1BNM5604_web%28640x640%29.jpg?hidebanner=true",
+    "averagePrice": "US$139",
+    "originCountry": "Corea del Sur",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/deepx/DX-M1BNM5604/26858313",
+    "description": "Módulo de aceleración para instalar en otro equipo.",
+    "comment": "Es un acelerador M.2; necesita un equipo anfitrión.",
+    "supportsM2": false
+  },
+  {
+    "id": "hailo-ai-hat-plus",
+    "name": "Hailo AI HAT+",
+    "imageUrl": "https://productimages.microcenter.com/687348_772574_02_package_comping.jpg",
+    "averagePrice": "US$70 / US$110",
+    "originCountry": "Reino Unido (Raspberry Pi)",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/raspberry-pi/SC1791/25807414",
+    "description": "Accesorio de aceleración para Raspberry Pi 5.",
+    "comment": "Se instala como HAT en Raspberry Pi 5.",
+    "supportsM2": false
+  },
+  {
+    "id": "hailo-8-m2",
+    "name": "Hailo Hailo-8 M.2",
+    "imageUrl": "https://www.tekwind.co.jp/og_image.php?dir=products&id=s668",
+    "averagePrice": "≈US$179,99",
+    "originCountry": "Israel",
+    "purchaseUrl": "https://www.mouser.com/manufacturer/hailo/",
+    "description": "Módulo de aceleración para instalar en otro equipo.",
+    "comment": "Es un acelerador M.2; necesita un equipo anfitrión.",
+    "supportsM2": false
+  },
+  {
+    "id": "axelera-embedded-110m",
+    "name": "Axelera AI Embedded 110m",
+    "imageUrl": "https://buyzero.de/cdn/shop/files/Axelera-M2_2280_Top.png?v=1737897007&width=3840",
+    "averagePrice": "€264,95",
+    "originCountry": "Países Bajos",
+    "purchaseUrl": "https://store.axelera.ai/products/axelera-embedded-110m",
+    "description": "Módulo de aceleración para instalar en otro equipo.",
+    "comment": "Es un acelerador M.2; necesita un equipo anfitrión.",
+    "supportsM2": false
+  },
+  {
+    "id": "memryx-mx3",
+    "name": "MemryX MX3 M.2 4-chip",
+    "imageUrl": "https://hackster.imgix.net/uploads/attachments/1774556/image_2y16IpEHVt.png?auto=compress%2Cformat&w=1200",
+    "averagePrice": "US$201,56",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.mouser.com/en/ProductDetail/MemryX/MX3-2280-M-4-I?qs=%252BXxaIXUDbq01zKer0%2FhpPg%3D%3D",
+    "description": "Módulo de aceleración para instalar en otro equipo.",
+    "comment": "Es un acelerador M.2; necesita un equipo anfitrión.",
+    "supportsM2": false
+  },
+  {
+    "id": "google-coral-usb",
+    "name": "Google Coral USB Accelerator",
+    "imageUrl": "https://static.cytron.io/image/catalog/products/GG-CORAL-UA/GG-CORAL-UA-main.jpg",
+    "averagePrice": "≈US$111",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.mouser.com/c/?m=Coral",
+    "description": "Acelerador externo que se conecta por USB.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "kneron-kl720-usb",
+    "name": "Kneron KL720 USB Dongle",
+    "imageUrl": "https://www.mouser.tw/images/marketingid/2021/img/118693939.png?v=031122.1131",
+    "averagePrice": "US$124,19",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.mouser.com/new/kneron/kneron-kl720-usb-dongle/",
+    "description": "Acelerador externo que se conecta por USB.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "luxonis-oak-d-lite",
+    "name": "Luxonis OAK-D Lite",
+    "imageUrl": "https://cdn1.botland.store/109554-large_default/oak-d-lite.jpg",
+    "averagePrice": "US$269",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.mouser.cl/ProductDetail/Luxonis/OAK-D-Lite-AF?qs=Znm5pLBrcAKOqyMVx9BJ9A%3D%3D",
+    "description": "Cámara con procesamiento de IA incorporado.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "raspberry-pi-ai-camera",
+    "name": "Raspberry Pi / Sony AI Camera",
+    "imageUrl": "https://category.yahboom.net/cdn/shop/files/RaspberryPi_AI_Camera_01.jpg?v=1736302328",
+    "averagePrice": "US$70",
+    "originCountry": "Reino Unido (Raspberry Pi)",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/raspberry-pi/SC1174/24627137",
+    "description": "Cámara con procesamiento de IA incorporado.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "d-robotics-rdk-x5",
+    "name": "D-Robotics RDK X5",
+    "imageUrl": "https://www.welectron.com/mediafiles/productimg/waveshare/devkit/RDK-X5/RDK-X5-details-pack.jpg",
+    "averagePrice": "US$130",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.dfrobot.com/product-2945.html",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "ti-tda4vm-j721e",
+    "name": "Texas Instruments TDA4VM Starter Kit J721EXSKG01EVM",
+    "imageUrl": "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/6/003/213/223/J721EXSKG01EVM_web%28640x640%29.jpg?hidebanner=true",
+    "averagePrice": "US$326,81",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/texas-instruments/J721EXSKG01EVM/18111344",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "Tiene ranuras M.2 M y E.",
+    "supportsM2": true
+  },
+  {
+    "id": "renesas-rz-v2l-evk",
+    "name": "Renesas RZ/V2L Evaluation Kit",
+    "imageUrl": "https://www.mouser.co.uk/images/renesas/lrg/ITP_968-RTK9754L23S010BE_t.JPG",
+    "averagePrice": "€279,38",
+    "originCountry": "Japón",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/renesas-electronics-corporation/RTK9754L23S01000BE/16187521",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "brainchip-akd1000-pcie",
+    "name": "BrainChip AKD1000 PCIe Development Board",
+    "imageUrl": "https://brainchip.com/wp-content/uploads/2025/04/4.-PCIe-Board.png",
+    "averagePrice": "US$289",
+    "originCountry": "Australia / EE. UU.",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/brainchip/BD-PCIE-AKD10/27563215",
+    "description": "Tarjeta de aceleración para un equipo compatible.",
+    "comment": "Usa PCIe, no M.2.",
+    "supportsM2": false
+  },
+  {
+    "id": "edgecortix-sakura-ii",
+    "name": "EdgeCortix SAKURA-II M.2 8 GB",
+    "imageUrl": "https://d27aquackk44od.cloudfront.net/wp-content/uploads/2024/05/28035152/SAKURA-II-Edge-AI-Accelerator-1024x777.png",
+    "averagePrice": "desde US$249",
+    "originCountry": "Japón",
+    "purchaseUrl": "https://www.edgecortix.com/en/hardware",
+    "description": "Módulo de aceleración para instalar en otro equipo.",
+    "comment": "Es un acelerador M.2; necesita un equipo anfitrión.",
+    "supportsM2": false
+  },
+  {
+    "id": "geniatech-aim-m2",
+    "name": "Geniatech AIM-M2",
+    "imageUrl": "https://www.geniatech.com/wp-content/uploads/2025/01/AIM-M2-900x620_004-768x529.png",
+    "averagePrice": "desde US$218",
+    "originCountry": "China",
+    "purchaseUrl": "https://shop.geniatech.com/product/m2-ai-inference-acceleration-module/",
+    "description": "Módulo de aceleración para instalar en otro equipo.",
+    "comment": "Es un acelerador M.2; necesita un equipo anfitrión.",
+    "supportsM2": false
+  },
+  {
+    "id": "friendlyelec-nanopc-t6-lts",
+    "name": "FriendlyELEC NanoPC-T6-LTS",
+    "imageUrl": "https://wiki.friendlyelec.com/wiki/images/6/60/NanoPC-T6LTS-A01.jpg",
+    "averagePrice": "US$193",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.friendlyelec.com/index.php?route=product/product&product_id=292",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene ranuras M.2 M y E.",
+    "supportsM2": true
+  },
+  {
+    "id": "firefly-roc-rk3588s-pc",
+    "name": "Firefly ROC-RK3588S-PC",
+    "imageUrl": "https://www.firefly.store/cdn/shop/files/55dc9226550fc863bd4d6e6833d15f38.jpg?v=1748501699&width=1000",
+    "averagePrice": "US$319",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.firefly.store/products/roc-rk3588s-pc-8-core-8k-ai-mainboard",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene ranura M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "armsom-sige7",
+    "name": "ArmSoM Sige7",
+    "imageUrl": "https://www.electronics-lab.com/wp-content/uploads/2024/04/20240430_100054-e1714806478863.jpg",
+    "averagePrice": "US$255",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.armsom.org/product-page/sige7",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "Tiene ranura M.2.",
+    "supportsM2": true
+  },
+  {
+    "id": "asus-tinker-edge-r",
+    "name": "ASUS Tinker Edge R",
+    "imageUrl": "https://images.morele.net/i1064/8392480_3_i1064.jpg",
+    "averagePrice": "€219",
+    "originCountry": "Taiwán",
+    "purchaseUrl": "https://www.welectron.com/ASUS-Tinker-Edge-R-Board_1",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "El M.2 está destinado al Wi-Fi.",
+    "supportsM2": false
+  },
+  {
+    "id": "aaeon-up-ai-core-xm2280",
+    "name": "AAEON / UP AI Core XM 2280",
+    "imageUrl": "https://up-shop.org/media/catalog/product/cache/a695dfd7b4a86b10c3de6479f9e6a737/a/i/ai-core-xm-2280-02.png",
+    "averagePrice": "US$159",
+    "originCountry": "Taiwán",
+    "purchaseUrl": "https://up-shop.org/default/up-ai-core-xm-2280-myriad-x-2.html",
+    "description": "Módulo de aceleración para instalar en otro equipo.",
+    "comment": "Es un acelerador M.2; necesita un equipo anfitrión.",
+    "supportsM2": false
+  },
+  {
+    "id": "st-stm32n6570-dk",
+    "name": "STMicroelectronics STM32N6570-DK",
+    "imageUrl": "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/12/printscreen-youtube-STMicroelectronics.jpg",
+    "averagePrice": "US$223,67",
+    "originCountry": "Suiza",
+    "purchaseUrl": "https://www.digikey.com/en/products/detail/stmicroelectronics/STM32N6570-DK/25724059",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "openmv-n6",
+    "name": "OpenMV N6",
+    "imageUrl": "https://openmv.io/cdn/shop/files/n6-hero-v6_1024x1024.jpg?v=1767841451",
+    "averagePrice": "US$195",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://openmv.io/products/openmv-n6",
+    "description": "Cámara con procesamiento de IA incorporado.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "openmv-ae3",
+    "name": "OpenMV AE3",
+    "imageUrl": "https://openmv.io/cdn/shop/files/ae3-front_1000x.jpg?v=1744322936",
+    "averagePrice": "US$120",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://openmv.io/products/openmv-ae3",
+    "description": "Cámara con procesamiento de IA incorporado.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "seeed-grove-vision-ai-v2",
+    "name": "Seeed Studio Grove Vision AI Module V2",
+    "imageUrl": "https://thepihut.com/cdn/shop/files/grove-vision-ai-module-v2-seeed-106046-43011273392323_1000x.jpg?v=1724975039",
+    "averagePrice": "US$23,89",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.seeedstudio.com/Grove-Vision-AI-V2-Kit-p-5852.html",
+    "description": "Módulo pequeño para tareas simples de visión.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "luckfox-pico-ultra",
+    "name": "Luckfox Pico Ultra",
+    "imageUrl": "https://liliputing.com/wp-content/uploads/2024/06/luckfox-pico-ultra_05.jpg",
+    "averagePrice": "US$40,99–85,99",
+    "originCountry": "China",
+    "purchaseUrl": "https://www.luckfox.com/EN-Luckfox-Pico-Ultra",
+    "description": "Computador de placa única para proyectos Edge AI.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "infineon-psoc-edge-e84",
+    "name": "Infineon PSoC Edge E84 AI Evaluation Kit",
+    "imageUrl": "https://uk.farnell.com/productimages/large/en_GB/4755309-40.jpg",
+    "averagePrice": "US$63,72",
+    "originCountry": "Alemania",
+    "purchaseUrl": "https://www.mouser.com/ProductDetail/Infineon-Technologies/KITPSE84AITOBO1?qs=4dK74SdgGtw5H%252BZO02uuEQ%3D%3D",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "alif-dk-e8",
+    "name": "Alif Semiconductor Ensemble E8 Development Kit",
+    "imageUrl": "https://www.cnx-software.com/wp-content/uploads/2025/08/Alif-Ensemble-E8-DK-720x517.webp",
+    "averagePrice": "US$249",
+    "originCountry": "EE. UU.",
+    "purchaseUrl": "https://www.mouser.com/ProductDetail/Alif-Semiconductor/DK-E8",
+    "description": "Placa para probar soluciones de IA.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  },
+  {
+    "id": "m5stack-unitv2",
+    "name": "M5Stack UnitV2 AI Camera",
+    "imageUrl": "https://thepihut.com/cdn/shop/products/m5stack-unitv2-m12-version-with-cameras-m5stack-u078-m12-40216781979843_700x.jpg?v=1677585202",
+    "averagePrice": "US$75",
+    "originCountry": "China",
+    "purchaseUrl": "https://shop.m5stack.com/products/unitv2-ai-camera-gc2145",
+    "description": "Cámara con procesamiento de IA incorporado.",
+    "comment": "No ofrece una ranura M.2 utilizable.",
+    "supportsM2": false
+  }
+];
+    const boardRows = document.getElementById("boardRows");
+    const acceleratorRows = document.getElementById("acceleratorRows");
+    const exportButton = document.getElementById("exportButton");
+    const selectedIds = new Set();
+    const m2AcceleratorIds = new Set([
+      "deepx-dx-m1",
+      "hailo-8-m2",
+      "axelera-embedded-110m",
+      "memryx-mx3",
+      "edgecortix-sakura-ii",
+      "geniatech-aim-m2",
+      "aaeon-up-ai-core-xm2280"
+    ]);
+
+    function addCell(row, text, className) {
+      const cell = document.createElement("td");
+      cell.textContent = text;
+      if (className) cell.className = className;
+      row.appendChild(cell);
+      return cell;
+    }
+
+    products.forEach(function (product) {
+      const row = document.createElement("tr");
+      addCell(row, product.name, "name");
+
+      const photoCell = document.createElement("td");
+      photoCell.className = "photo-cell";
+      const image = document.createElement("img");
+      image.className = "photo";
+      image.src = product.imageUrl;
+      image.alt = product.name;
+      image.loading = "lazy";
+      image.referrerPolicy = "no-referrer";
+      const fallback = document.createElement("span");
+      fallback.className = "photo-fallback";
+      fallback.textContent = "Sin foto";
+      image.addEventListener("error", function () {
+        image.style.display = "none";
+        fallback.style.display = "grid";
+      });
+      photoCell.append(image, fallback);
+      row.appendChild(photoCell);
+
+      addCell(row, product.averagePrice, "price");
+      addCell(row, product.originCountry, "country");
+
+      const linkCell = document.createElement("td");
+      const link = document.createElement("a");
+      link.href = product.purchaseUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "Comprar";
+      linkCell.appendChild(link);
+      row.appendChild(linkCell);
+
+      addCell(row, product.description, "description");
+      addCell(row, product.comment, "comment");
+      addCell(row, product.supportsM2 ? "Sí" : "No", "m2");
+
+      const selectCell = document.createElement("td");
+      selectCell.className = "select";
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.setAttribute("aria-label", "Seleccionar " + product.name);
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) selectedIds.add(product.id);
+        else selectedIds.delete(product.id);
+        exportButton.disabled = selectedIds.size === 0;
+        exportButton.textContent = "Exportar JSON (" + selectedIds.size + ")";
+      });
+      selectCell.appendChild(checkbox);
+      row.appendChild(selectCell);
+      const destination = m2AcceleratorIds.has(product.id) ? acceleratorRows : boardRows;
+      destination.appendChild(row);
+    });
+
+    exportButton.addEventListener("click", function () {
+      const selectedProducts = products
+        .filter(function (product) { return selectedIds.has(product.id); })
+        .map(function (product) {
+          return {
+            id: product.id,
+            nombre: product.name,
+            foto: product.imageUrl,
+            precioPromedio: product.averagePrice,
+            paisDeOrigen: product.originCountry,
+            linkDeCompra: product.purchaseUrl,
+            descripcion: product.description,
+            comentario: product.comment,
+            tipo: m2AcceleratorIds.has(product.id) ? "Acelerador M.2" : "Placa o equipo",
+            espacioParaM2: product.supportsM2
+          };
+        });
+
+      const exportData = {
+        fechaDeExportacion: new Date().toISOString(),
+        cantidad: selectedProducts.length,
+        productos: selectedProducts
+      };
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const download = document.createElement("a");
+      download.href = url;
+      download.download = "dispositivos-edge-ai-seleccion-" + new Date().toISOString().slice(0, 10) + ".json";
+      document.body.appendChild(download);
+      download.click();
+      download.remove();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

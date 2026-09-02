@@ -1,0 +1,105 @@
+{
+ "batches": [
+  {
+   "q": "raspberry-pi5-carcasas-industriales",
+   "index": 0,
+   "items": [
+    {
+     "verdict": "delete",
+     "verdict_reason": "Pedido explícito del usuario: los SunFounder Pironman son cajas de escritorio con ventilador y luces, no carcasas industriales.",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": "usuario",
+     "removal_holds": true,
+     "id": "raspberry-pi5-carcasas-hailo-9ed775e184f2",
+     "name": "SunFounder Pironman 5"
+    },
+    {
+     "verdict": "delete",
+     "verdict_reason": "Pedido explícito del usuario: los SunFounder Pironman son cajas de escritorio con ventilador y luces, no carcasas industriales.",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": "usuario",
+     "removal_holds": true,
+     "id": "raspberry-pi5-carcasas-hailo-90e5d165b917",
+     "name": "SunFounder Pironman 5-Mini"
+    },
+    {
+     "verdict": "delete",
+     "verdict_reason": "Pedido explícito del usuario: los SunFounder Pironman son cajas de escritorio con ventilador y luces, no carcasas industriales.",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": "usuario",
+     "removal_holds": true,
+     "id": "raspberry-pi5-carcasas-hailo-3adc354cc516",
+     "name": "SunFounder Pironman 5-MAX"
+    },
+    {
+     "verdict": "delete",
+     "verdict_reason": "Pedido explícito del usuario: los SunFounder Pironman son cajas de escritorio con ventilador y luces, no carcasas industriales.",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": "usuario",
+     "removal_holds": true,
+     "id": "raspberry-pi5-carcasas-hailo-254481b27a55",
+     "name": "SunFounder Pironman 5 Pro MAX"
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "origen": "pedido del usuario (2026-09-02): eliminar los Pironman"
+ }
+}

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PC industriales con M.2 para acelerador AI</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #111;
+    }
+    .wrap { overflow-x: auto; }
+    button {
+      margin-bottom: 14px;
+      padding: 9px 14px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1250px;
+      font-size: 13px;
+    }
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      font-weight: 600;
+      background: #fafafa;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    img {
+      width: 110px;
+      height: 75px;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+    }
+    a { color: #111; }
+    .yes { font-weight: 600; }
+    .check { text-align: center; }
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .price { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <button id="exportBtn">Exportar seleccionados a JSON</button>
+
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre del producto</th>
+          <th>Foto</th>
+          <th>Precio promedio</th>
+          <th>País de origen</th>
+          <th>Link de compra</th>
+          <th>Descripción</th>
+          <th>Comentario</th>
+          <th>Aguanta espacio para M.2</th>
+          <th>Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody id="productsBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const products = [
+      {
+        nombre_producto: "Qotom Q10722C",
+        foto: "https://www.qotom.net/minipcimg/q10700c-s08/qotom-minipc-q10700c-s08-1.jpg",
+        precio_promedio: "≈ $112.000 CLP",
+        pais_origen: "China",
+        link_compra: "https://www.qotomipc.com/products/qotom-regular-mini-pc-q10700c-series-cpu-n5105-dual-lan",
+        descripcion: "PC fanless industrial económico.",
+        comentario: "Opción de entrada; procesador más antiguo.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "JIERUICC GT1100",
+        foto: "https://www.jieruicc.com/wp-content/uploads/2023/10/GT1100-N100%E4%B8%BB%E5%9B%BE%E7%99%BD%E5%BA%95%E5%9B%BE-01-6.jpg",
+        precio_promedio: "≈ $125.000 CLP",
+        pais_origen: "China",
+        link_compra: "https://www.goldsupplier.com/sale-ai-digit.html",
+        descripcion: "PC industrial fanless compacto con Intel N100.",
+        comentario: "Muy buena relación precio/expansión.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "HYSTOU H3-J5005-2L",
+        foto: "https://image.made-in-china.com/2f0j00ILOBnCkFGScp/Hystou-Fanless-Mini-PC-Box-Embedded-N100-DDR4-Portable-Desktop-Computer.jpg",
+        precio_promedio: "≈ $177.000 CLP",
+        pais_origen: "China",
+        link_compra: "https://hystouminipc.en.made-in-china.com/product/NaLRotvTnOVX/China-Hystou-Office-Education-Silent-Mini-PC-Embedded-Intel-J5005-Portable-Desktop-PC.html",
+        descripcion: "Mini PC fanless con varias opciones de almacenamiento.",
+        comentario: "Muy económico; CPU de generación anterior.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "Qotom Q10922G4",
+        foto: "https://www.qotom.net/minipcimg/q10900g4-s04/qotom-minipc-q10900g4-s04-1.jpg",
+        precio_promedio: "≈ $190.000 CLP",
+        pais_origen: "China",
+        link_compra: "https://www.qotomipc.com/products/qotom-q10922g4-mini-pc-barebone-4-realtek-2-5-gigabit-lan-soft-route-n100-cpu-nas-server-firewall-mini-pc",
+        descripcion: "PC fanless N100 con cuatro puertos de red.",
+        comentario: "Atractivo para nodos con varias cámaras.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "Qotom Q10922X",
+        foto: "https://www.qotom.net/minipcimg/q10900x-s04/qotom-minipc-q10900x-s04-1.jpg",
+        precio_promedio: "≈ $223.000 CLP",
+        pais_origen: "China",
+        link_compra: "https://www.qotomipc.com/products/qotom-multi-com-mini-pc-q10900x-n100-i3-computer",
+        descripcion: "PC industrial fanless N100 con disco separado.",
+        comentario: "Muy equilibrado para acelerador AI económico.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "Jetway BFDADN1-N97-IT",
+        foto: "https://mitxpc.com/cdn/shop/files/BFDADN1_3_1024x1024.jpg?v=1709340401",
+        precio_promedio: "≈ $326.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://mitxpc.com/products/bfdadn1-n97-it",
+        descripcion: "PC industrial fanless con Intel N97.",
+        comentario: "Buen salto de calidad sin subir demasiado el precio.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "AAEON BOXER-6711-ADN N200",
+        foto: "https://d2wy86wx0v2j5o.cloudfront.net/product-media/2GK/1000/1000/hero-boxer-6711.webp",
+        precio_promedio: "≈ $618.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://catalogue.texim-europe.com/product/Embedded-Computing-Solutions/Box-PC/x86-Box-PC/detail/BOXER-6711-ADN-A1-1010-AAE",
+        descripcion: "PC industrial DIN rail con Intel N200.",
+        comentario: "M.2 PCIe y bahía 2,5'' separados; muy buena opción industrial.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "Advantech UNO-2372V3",
+        foto: "https://shop.elkome.com/pub/media/catalog/product/u/n/uno-2372-v3_single-layer_front-left20260102183424.png",
+        precio_promedio: "≈ $651.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://www.newark.com/advantech/uno-2372v3-n2n1a/n250-w-2xlan-2xcom-3xm-2-1x-sodimm/dp/09AN8111",
+        descripcion: "PC industrial fanless con Intel N250.",
+        comentario: "Marca industrial reconocida y varias ranuras M.2.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "AAEON BOXER-6751-ADP i3",
+        foto: "https://eshop.aaeon.com/media/catalog/product/cache/abe065268ae9b239c217f48c1ab46b7e/b/o/boxer-6751-adp_3dfront_03.jpg",
+        precio_promedio: "≈ $919.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://catalogue.texim-europe.com/embedded-computing-solutions/box-pc/search/aaeon",
+        descripcion: "PC industrial fanless Core i3-1215UE.",
+        comentario: "Más CPU y M.2 PCIe x4 libre usando SSD SATA 2,5''.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "AAEON BOXER-6646-ADP i3",
+        foto: "https://image.thum.io/get/width/500/crop/350/https://pr.mono.ipros.com/en/vnet/product/detail/2000770208/",
+        precio_promedio: "≈ $1.071.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://catalogue.texim-europe.com/embedded-computing-solutions/box-pc/search/singleboard%20computer",
+        descripcion: "PC fanless Core i3-1220PE con bahía 2,5''.",
+        comentario: "El fabricante contempla Hailo-8 M.2 como opción.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "Advantech MIC-770 V3",
+        foto: "https://shop.elkome.com/pub/media/catalog/product/m/i/mic-770-v2_02--20221207100410_1.jpg",
+        precio_promedio: "≈ $1.212.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://www.mouser.pr/en/ProductDetail/Advantech/MIC-770V3W-E0A1",
+        descripcion: "IPC modular fanless de gama industrial.",
+        comentario: "Precio barebone; permite SATA, mSATA y M.2 NVMe separados.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "AAEON BOXER-6751-ADP i5",
+        foto: "https://eshop.aaeon.com/media/catalog/product/cache/abe065268ae9b239c217f48c1ab46b7e/b/o/boxer-6751-adp_3dfront_03.jpg",
+        precio_promedio: "≈ $1.215.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://catalogue.texim-europe.com/embedded-computing-solutions/box-pc/search/singleboard%20computer",
+        descripcion: "PC industrial fanless Core i5-1245UE.",
+        comentario: "Potente sin llegar aún al tramo más caro.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "Neousys POC-764VR",
+        foto: "https://image.thum.io/get/width/500/crop/350/https://omtec.de/en/POC-764VR",
+        precio_promedio: "≈ $1.207.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://coastipc.com/poc-764vr-intel-core-i3-n305-fanless-surveillance-system-with-4-x-poe-and-2-x-2-5-ssd-supporting-raid-0-1-jbod",
+        descripcion: "PC fanless i3-N305 orientado a video y vigilancia.",
+        comentario: "4 PoE, dos SSD 2,5'' y M.2 separado; muy atractivo para cámaras.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "AAEON BOXER-6646-ADP i5",
+        foto: "https://image.thum.io/get/width/500/crop/350/https://pr.mono.ipros.com/en/vnet/product/detail/2000770208/",
+        precio_promedio: "≈ $1.337.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://catalogue.texim-europe.com/embedded-computing-solutions/box-pc/search/singleboard%20computer",
+        descripcion: "PC fanless Core i5-1250PE con bahía 2,5''.",
+        comentario: "Buen nivel de CPU y soporte explícito para Hailo-8.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "AAEON BOXER-6751-ADP i7",
+        foto: "https://eshop.aaeon.com/media/catalog/product/cache/abe065268ae9b239c217f48c1ab46b7e/b/o/boxer-6751-adp_3dfront_03.jpg",
+        precio_promedio: "≈ $1.493.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://catalogue.texim-europe.com/embedded-computing-solutions/box-pc/search/singleboard%20computer",
+        descripcion: "PC industrial fanless Core i7-1265UE.",
+        comentario: "Gama alta compacta con M.2 PCIe x4 libre usando SATA.",
+        espacio_m2: "Sí"
+      },
+      {
+        nombre_producto: "AAEON BOXER-6646-ADP i7",
+        foto: "https://image.thum.io/get/width/500/crop/350/https://pr.mono.ipros.com/en/vnet/product/detail/2000770208/",
+        precio_promedio: "≈ $1.583.000 CLP",
+        pais_origen: "Taiwán",
+        link_compra: "https://catalogue.texim-europe.com/embedded-computing-solutions/box-pc/search/aaeon",
+        descripcion: "PC fanless Core i7-1270PE de alto rendimiento.",
+        comentario: "La opción más potente de la tabla manteniéndose bajo $2M.",
+        espacio_m2: "Sí"
+      }
+    ];
+
+    const tbody = document.getElementById("productsBody");
+
+    products.forEach((product, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${product.nombre_producto}</td>
+        <td><img src="${product.foto}" alt="${product.nombre_producto}" loading="lazy" referrerpolicy="no-referrer"></td>
+        <td class="price">${product.precio_promedio}</td>
+        <td>${product.pais_origen}</td>
+        <td><a href="${product.link_compra}" target="_blank" rel="noopener noreferrer">Comprar</a></td>
+        <td>${product.descripcion}</td>
+        <td>${product.comentario}</td>
+        <td class="yes">${product.espacio_m2}</td>
+        <td class="check"><input type="checkbox" class="product-check" data-index="${index}" aria-label="Seleccionar ${product.nombre_producto}"></td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    document.getElementById("exportBtn").addEventListener("click", () => {
+      const selected = [...document.querySelectorAll(".product-check:checked")]
+        .map(cb => products[Number(cb.dataset.index)]);
+
+      const blob = new Blob([JSON.stringify(selected, null, 2)], {
+        type: "application/json;charset=utf-8"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "pcs_industriales_seleccionados.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

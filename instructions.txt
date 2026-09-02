@@ -1,0 +1,89 @@
+COTIZADOR EDGE AI — INSTRUCCIONES DE LA TAREA
+=============================================
+
+Objetivo del proyecto
+---------------------
+Construir un dispositivo de borde que:
+  1. Se conecte a un router local y reciba el video de VARIAS cámaras IP (RTSP/ONVIF, H.264/H.265, 1080p).
+  2. Corra YOLO (v5/v8/v11) sobre esos flujos en el mismo equipo.
+  3. Envíe sólo las detecciones (metadatos) a la nube.
+
+Ideal: un solo equipo encapsulado en aluminio (o con carcasa de aluminio disponible), menos de US$500 el
+nodo completo, comprable desde Chile con disponibilidad alta (stock real, vendedor confiable, envío a Chile
+o venta local) y fácil de programar (Linux, SDK maduro, ejemplo YOLO oficial, Python/C++). US$1 ≈ CLP $950.
+
+La aplicación (FastAPI + SQLite) sirve para comparar candidatos por familia y tomar esa decisión.
+Ver README.md para levantarla (`uv sync` y `uv run uvicorn app.main:app --reload`).
+
+Tarea encargada (2026-09-02)
+----------------------------
+Evaluar y mejorar la información de la base para decidir bien:
+  1. Corroborar toda la información cargada (especificaciones, nombres, links).
+  2. Mejorar descripciones y comentarios: factuales, orientados a ESTE proyecto, sin marketing.
+  3. Revisar que cada ítem sirva para el proyecto; eliminar lo que no aplica (duplicados, inexistentes,
+     fuera de categoría) y descartar (desmarcar «Incluir») lo que existe pero no encaja.
+  4. Corroborar precios (con moneda, fuente y fecha) y disponibilidad comprando desde Chile.
+  5. Agregar las columnas necesarias. Ya existen: «Disponibilidad en Chile», «Facilidad de programación (1-5)»,
+     «Procesador» y «Memoria RAM» (PC industriales), «Rendimiento (TOPS)» (plataformas host) y
+     «M.2 para acelerador» (PC industriales y pares PC + NPU).
+  6. En los PC industriales, verificar que la ranura M.2 admita un acelerador (M-key o B+M con PCIe, largo
+     2242/2280, libre porque el SO puede ir a SATA/mSATA/eMMC); si no, descartar.
+  7. Eliminar los SunFounder Pironman (cajas de escritorio con ventilador, no industriales).
+  8. Incorporar productos con disponibilidad en Chile o envío a Chile por menos de US$500, sólo si aportan,
+     máximo 3 por cotización, sin crear cotizaciones nuevas.
+Además: importar y corroborar las cuatro cotizaciones que trajo el usuario (6 pares PC fanless + NPU,
+proveedores Chile y exterior de retrofit fanless, Hailo + validaciones).
+
+Criterios de veredicto
+----------------------
+  keep    = sirve para el nodo o es el acelerador/carcasa/servicio que el nodo necesita.
+  discard = existe pero no encaja (caro, sin stock, ecosistema muerto, no corre YOLO, M.2 inservible).
+  delete  = error del catálogo: inexistente, duplicado, fuera de categoría, o pedido explícito del usuario.
+Una baja propuesta por un agente sólo se aplica si la revisa una persona (o al menos dos jueces).
+
+Estado (2026-09-02, 12:00)
+--------------------------
+HECHO
+  - Cuatro cotizaciones del usuario importadas (22 ítems) con `scripts/import_quotations.py`.
+  - Aceleradores M.2 auditados y corregidos (precios DigiKey/Mouser sep. 2026, textos nuevos).
+  - Bajas aplicadas con evidencia: Hailo-8 USB (no existe), Kneron KL720 y Coral duplicados, BrainChip
+    (PCIe, no M.2), 4 Pironman; descartados Bitmain Sophon, SAKURA-II, Geniatech AIM-M-K, UP AI Core XM.
+  - Ranura M.2 verificada en los 16 PC industriales y en los 6 pares (columna «M.2 para acelerador»);
+    correcciones: Topton es PCIe x1 (no x2), JIERUICC usa DDR4 (no DDR5), UNO-2372V3 sólo admite 2242.
+  - 7 productos agregados y verificados: sticks USB Hailo-10H (AAEON US$239, ASUS US$299,99); Raspberry Pi
+    AI HAT+ 13 TOPS ($112.990 CLP en MCI Electronics, stock local), 26 TOPS y HAT+ 2; MeLE Quieter 4C y
+    caja N100 4×2,5G CWWK/Topton (ambos con stock en MercadoLibre Chile).
+  - Columnas nuevas creadas en todas las tablas.
+PENDIENTE
+  - Auditar los 101 ítems restantes: aceleradores USB (primer lote), plataformas host, cámaras AI,
+    carcasas, y las cuatro tablas del usuario. Los lotes ya están preparados (ver «Cómo continuar»).
+  - Candidatos nuevos para plataformas host, carcasas y las tablas del usuario (máximo 3 por tabla).
+
+Cómo continuar
+--------------
+Los flujos de agentes están en scripts/auditoria/workflows/ y se ejecutan con el comando Workflow de
+Claude Code. Cuidado: cada agente con búsqueda web cuesta mucho; el flujo pesado agotó el límite de sesión
+de la cuenta dos veces. Usar la versión ligera:
+  1. Armar lotes de 4 ítems: `uv run python -m scripts.prepare_audit_batches <carpeta> --skip edge-ai-aceleradores-m2`
+     (escribe `lotes/*.json` y `lean-args.json`; cada lote trae id, nombre, precio, textos y claves de columnas
+     extra). Omitir con --skip las cotizaciones ya auditadas.
+  2. Lanzar `auditar-lean.js` con args {brief: <texto corto del brief>, batches: [{q, file, names}]}.
+  3. Guardar el resultado en scripts/auditoria/AAAA-MM-DD-auditoria-lean.json.
+  4. Revisar a mano cada baja (verdict discard/delete): si la evidencia es sólida, marcar el ítem con
+     "votes": "revisado"; si no, dejarlo (se mantiene).
+  5. Aplicar: `uv run python -m scripts.apply_audit <archivo.json> --dry-run` y luego sin --dry-run.
+     Es idempotente: se puede volver a correr.
+Alternativa más barata: verificar a mano ítem por ítem (WebSearch/WebFetch), escribir el resultado en el
+mismo formato JSON (ver 2026-09-02-m2-en-linea.json como ejemplo mínimo) y aplicarlo igual.
+
+Para agregar candidatos: escribir un JSON con {"quotations": [{"quotation_id", "picks": [...]}]} en el
+formato de 2026-09-02-candidatos-revisados.json y aplicarlo con el mismo script.
+
+Archivos clave
+--------------
+  data/cotizador.db                 base curada (versionada). Respaldos: data/*.backup-*.db (ignorados).
+  scripts/auditoria/*.json          resultados aplicados, con fuentes por ítem.
+  scripts/auditoria/workflows/      flujos de agentes (auditar-lean.js, candidatos-chile.js).
+  scripts/apply_audit.py            aplica resultados (columnas, textos, precios, bajas, altas).
+  scripts/import_quotations.py      crea cotizaciones nuevas desde un HTML/JSON exportado.
+  scripts/enrich_catalog.py         descripciones de las tablas y rellenos de la carga inicial.

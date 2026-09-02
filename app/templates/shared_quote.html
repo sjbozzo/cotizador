@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{ title }}</title>
+  <style>{{ app_css|safe }}</style>
+  <style>
+    /* La planilla: mismo aspecto que la tabla de la aplicación, sin la librería. */
+    #items-table{overflow:auto}
+    .sheet{width:100%;border-collapse:separate;border-spacing:0;background:#fff;font-size:12.5px}
+    .sheet th{position:sticky;top:0;z-index:2;padding:5px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line-strong);background:var(--soft);color:var(--ink);font-size:11px;font-weight:700;text-align:left;white-space:nowrap;cursor:pointer;user-select:none}
+    .sheet th.fixed{cursor:default}
+    .sheet th:last-child,.sheet td:last-child{border-right:0}
+    .sheet th:not(.fixed):hover{background:#e8f1f3}
+    .sheet th[aria-sort="ascending"],.sheet th[aria-sort="descending"]{background:#e4f0d5;box-shadow:inset 0 -2px 0 var(--accent-strong)}
+    .sheet th .arrow{margin-left:5px;color:var(--muted-2);font-size:9px}
+    .sheet th[aria-sort="ascending"] .arrow,.sheet th[aria-sort="descending"] .arrow{color:var(--accent-strong)}
+    .sheet td{padding:5px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap}
+    .sheet tbody tr:hover{background:var(--soft-2)}
+    .sheet tr.excluded{opacity:.5}
+    .sheet tr.excluded .cell-name{text-decoration:line-through;text-decoration-color:var(--muted-2)}
+    .cell-include{padding:2px 2px 2px 8px}
+    .cell-include input{width:15px;height:15px;margin:0;accent-color:var(--accent-strong);cursor:pointer}
+    .cell-photo{cursor:pointer}
+    .cell-name{font-weight:700}
+    .cell-text{color:#3d6270}
+    .cell-number{text-align:right}
+    .cell-center{text-align:center}
+    .clip{display:block;max-width:330px;overflow:hidden;text-overflow:ellipsis}
+    .cell-name .clip{max-width:280px}
+    .name-open{padding:0;border:0;background:transparent;color:inherit;font:inherit;font-weight:700;text-align:left;cursor:pointer}
+    .name-open:hover{text-decoration:underline;text-underline-offset:3px}
+    .sheet-empty{padding:40px;text-align:center;color:var(--muted);font-size:13px}
+    .footer-filter select{height:27px;padding:3px 7px;border-radius:var(--radius);border:1px solid var(--line-strong);font-size:11.5px;background:#fff}
+    .export-meta{color:var(--muted);font-size:11px;white-space:nowrap}
+    /* Sólo lectura: se ve igual que en la aplicación, pero no se edita. */
+    .field input[readonly],.field textarea[readonly],.extra-input input[readonly]{background:var(--soft-2);color:var(--ink-soft);cursor:default}
+    .field input[readonly]:focus,.field textarea[readonly]:focus,.extra-input input[readonly]:focus{border-color:var(--line-strong);box-shadow:none}
+    .extra-input input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent-strong)}
+    @media(max-width:900px){.export-meta{display:none}.clip{max-width:200px}}
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">C</span>
+      <strong>Cotizador</strong>
+      <span class="brand-sep" aria-hidden="true"></span>
+      <span class="active-name" id="activeName"></span>
+    </div>
+    <div class="header-actions">
+      <span class="export-meta" id="exportMeta"></span>
+      <button class="button" id="saveExcel" type="button">Excel</button>
+      <button class="button button-primary" id="saveHtml" type="button">Guardar</button>
+    </div>
+  </header>
+
+  <nav class="tabs-shell" aria-label="Cotizaciones">
+    <div class="tabs" id="tabs"></div>
+    <label class="tab-search">
+      <span class="sr-only">Buscar en todos los campos</span>
+      <input id="search" type="search" placeholder="Buscar…">
+    </label>
+  </nav>
+
+  <main class="workspace">
+    <section id="quotation-view">
+      <section class="quote-intro" id="intro" aria-label="Descripción de la cotización" hidden>
+        <p class="eyebrow">Sobre esta cotización</p>
+        <div class="quote-intro-text" id="introText"></div>
+      </section>
+      <section class="catalog-card" aria-label="Elementos cotizados">
+        <div id="items-table">
+          <table class="sheet"><thead><tr id="header"></tr></thead><tbody id="body"></tbody></table>
+          <p class="sheet-empty" id="empty" hidden>No hay elementos para estos filtros.</p>
+        </div>
+        <footer class="table-footer">
+          <span id="count"></span>
+          <div class="table-footer-actions">
+            <label class="footer-filter"><span class="sr-only">Filtrar por país</span>
+              <select id="country"><option value="">Todos los países</option></select>
+            </label>
+            <label class="footer-filter"><span class="sr-only">Filtrar por inclusión</span>
+              <select id="status">
+                <option value="">Incluidos y descartados</option>
+                <option value="included">Sólo incluidos</option>
+                <option value="excluded">Sólo descartados</option>
+              </select>
+            </label>
+            <button class="button button-quiet" id="clearFilters" type="button" hidden>Limpiar filtros</button>
+          </div>
+        </footer>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="modal item-modal" id="itemModal" aria-label="Ficha del ítem">
+    <div class="modal-shell">
+      <header class="modal-head">
+        <div><p class="eyebrow" id="modalKicker">Ítem</p><h2 id="modalTitle">Ficha del ítem</h2></div>
+        <button class="icon-button" type="button" data-close aria-label="Cerrar">×</button>
+      </header>
+      <div class="modal-body">
+        <div class="photo-editor">
+          <div class="photo-preview" id="modalPhoto"><span>Sin foto</span></div>
+          <div class="photo-controls">
+            <label class="check-field"><input id="modalIncluded" type="checkbox"><span>Incluir este ítem en la cotización</span></label>
+            <a class="button" id="modalLink" target="_blank" rel="noopener noreferrer" hidden>Abrir la página del producto</a>
+            <small>Los datos se ven como en el Cotizador; en este archivo no se editan. Lo único que se puede cambiar es la casilla de incluir.</small>
+          </div>
+        </div>
+        <div class="form-grid" id="modalFields"></div>
+      </div>
+      <footer class="modal-foot">
+        <span class="modal-status" id="modalStatus"></span>
+        <div><button class="button" type="button" data-close>Cerrar</button></div>
+      </footer>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script id="quotation-data" type="text/plain">{{ payload_b64 }}</script>
+  <script>
+    (() => {
+      const decode = value => JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(value.trim()), c => c.charCodeAt(0))));
+      const encode = value => { const bytes = new TextEncoder().encode(JSON.stringify(value)); let binary=''; bytes.forEach(b => binary += String.fromCharCode(b)); return btoa(binary); };
+      const payloadNode = document.getElementById('quotation-data');
+      const payload = decode(payloadNode.textContent);
+      // Copia del esqueleto ANTES de dibujar nada: guardar nunca acumula filas,
+      // pestañas ni opciones generadas, sólo cambia el bloque de datos.
+      const pristine = document.documentElement.cloneNode(true);
+
+      const $ = id => document.getElementById(id);
+      const text = value => value === null || value === undefined ? '' : String(value);
+      const normalize = value => text(value).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+
+      const quotations = (payload.quotations && payload.quotations.length ? payload.quotations : [payload.quotation]).filter(Boolean);
+      const state = {activeId: quotations[0].id, search:'', country:'', status:'', sort:{key:null, dir:null}};
+
+      const itemsOf = id => payload.items.filter(item => (item.quotation_id || quotations[0].id) === id);
+      const active = () => quotations.find(entry => entry.id === state.activeId) || quotations[0];
+
+      // --- Orden: los mismos criterios que la aplicación -----------------------
+      const CLP_PER_USD = 950;
+
+      function parseNumber(raw) {
+        const token = String(raw).match(/\d[\d.,]*/);
+        if (!token) return null;
+        let value = token[0].replace(/[.,]$/, '');
+        if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(value)) value = value.replace(/\./g, '').replace(',', '.');
+        else if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(value)) value = value.replace(/,/g, '');
+        else if (value.includes(',') && !value.includes('.')) value = value.replace(',', '.');
+        else value = value.replace(/,/g, '');
+        const number = Number.parseFloat(value);
+        return Number.isFinite(number) ? number : null;
+      }
+
+      function priceValue(raw) {
+        const value = String(raw ?? '');
+        if (!value.trim()) return null;
+        const tagged = value.replace(/US\s?\$/gi, 'USD ');
+        if (/CLP/i.test(tagged)) {
+          const clp = tagged.match(/\$\s?([\d.,]+)/);
+          if (clp) { const number = parseNumber(clp[1]); if (number !== null) return number; }
+        }
+        const usd = tagged.match(/USD\s?([\d.,]+)/i);
+        if (usd) { const number = parseNumber(usd[1]); if (number !== null) return number * CLP_PER_USD; }
+        const plain = tagged.match(/\$\s?([\d.,]+)/);
+        if (plain) return parseNumber(plain[1]);
+        return parseNumber(tagged);
+      }
+
+      function smartSorter(a, b) {
+        const left = parseNumber(a), right = parseNumber(b);
+        const leftEmpty = a === null || a === undefined || a === '';
+        const rightEmpty = b === null || b === undefined || b === '';
+        if (leftEmpty && rightEmpty) return 0;
+        if (leftEmpty) return 1;
+        if (rightEmpty) return -1;
+        if (left !== null && right !== null && left !== right) return left - right;
+        if (left !== null && right === null) return -1;
+        if (left === null && right !== null) return 1;
+        return String(a).localeCompare(String(b), 'es', {numeric:true, sensitivity:'base'});
+      }
+
+      function priceSorter(a, b) {
+        const left = priceValue(a), right = priceValue(b);
+        if (left === null && right === null) return String(a || '').localeCompare(String(b || ''), 'es');
+        if (left === null) return 1;
+        if (right === null) return -1;
+        return left - right;
+      }
+
+      const booleanSorter = (a, b) => (a === b ? 0 : a === true ? -1 : b === true ? 1 : a ? -1 : 1);
+
+      // --- Columnas: mismo orden y mismos títulos que la aplicación ------------
+      function columns() {
+        const quotation = active();
+        return [
+          {key:'included', title:'Incluir', kind:'include', sorter:booleanSorter},
+          {key:'photo', title:'Foto', kind:'photo', fixed:true},
+          {key:'name', title:'Nombre', kind:'name', sorter:smartSorter},
+          {key:'price', title:'Precio', kind:'plain', sorter:priceSorter},
+          {key:'description', title:'Descripción', kind:'text', sorter:smartSorter},
+          {key:'comment', title:'Comentario', kind:'text', sorter:smartSorter},
+          {key:'country', title:'País de origen', kind:'plain', sorter:smartSorter},
+          ...(quotation.extra_fields || []).map(field => ({
+            key:`extra:${field.key}`, title:field.label, kind:'extra', field,
+            sorter: field.type === 'boolean' ? booleanSorter
+              : field.type === 'date' ? (a, b) => String(a || '').localeCompare(String(b || ''))
+              : smartSorter,
+          })),
+          {key:'purchase_link', title:'Link', kind:'link', fixed:true},
+        ];
+      }
+
+      function rawValue(item, column) {
+        if (column.kind === 'extra') return (item.extra_data || {})[column.field.key];
+        return item[column.key];
+      }
+
+      function shownValue(item, column) {
+        const value = rawValue(item, column);
+        if (column.kind === 'extra' && column.field.type === 'boolean') return value === true ? 'Sí' : value === false ? 'No' : '';
+        return text(value);
+      }
+
+      // --- Filtros -------------------------------------------------------------
+      function visibleItems() {
+        const query = state.search;
+        return itemsOf(state.activeId).filter(item => {
+          if (query) {
+            const haystack = normalize([item.name, item.country, item.price, item.description, item.comment,
+              ...Object.values(item.extra_data || {})].join(' '));
+            if (!haystack.includes(query)) return false;
+          }
+          if (state.country && item.country !== state.country) return false;
+          if (state.status === 'included' && !item.included) return false;
+          if (state.status === 'excluded' && item.included) return false;
+          return true;
+        });
+      }
+
+      function sortItems(items) {
+        const {key, dir} = state.sort;
+        if (!key || !dir) return items;
+        const column = columns().find(entry => entry.key === key);
+        if (!column || !column.sorter) return items;
+        const sorted = items.slice().sort((a, b) => column.sorter(rawValue(a, column), rawValue(b, column)));
+        return dir === 'desc' ? sorted.reverse() : sorted;
+      }
+
+      // --- Dibujo --------------------------------------------------------------
+      function renderTabs() {
+        const container = $('tabs');
+        container.replaceChildren();
+        quotations.forEach(quotation => {
+          const tab = document.createElement('button');
+          tab.type = 'button';
+          tab.className = 'tab' + (quotation.id === state.activeId ? ' active' : '');
+          const name = document.createElement('span');
+          name.className = 'tab-name';
+          name.textContent = quotation.name;
+          const count = document.createElement('span');
+          count.className = 'tab-count';
+          const items = itemsOf(quotation.id);
+          count.textContent = String(items.filter(item => item.included).length);
+          count.title = `${items.filter(item => item.included).length} incluidos de ${items.length}`;
+          tab.append(name, count);
+          tab.addEventListener('click', () => {
+            if (quotation.id === state.activeId) return;
+            state.activeId = quotation.id;
+            state.search = ''; state.country = ''; state.status = ''; state.sort = {key:null, dir:null};
+            $('search').value = ''; $('status').value = '';
+            renderAll();
+          });
+          container.append(tab);
+        });
+      }
+
+      function renderHead() {
+        const head = $('header');
+        head.replaceChildren();
+        columns().forEach(column => {
+          const cell = document.createElement('th');
+          if (column.fixed) cell.className = 'fixed';
+          if (column.kind === 'include') {
+            const wrap = document.createElement('span');
+            wrap.className = 'include-head';
+            const box = document.createElement('input');
+            box.type = 'checkbox';
+            box.className = 'include-box';
+            box.title = 'Incluir todo lo visible';
+            box.setAttribute('aria-label', 'Incluir todo lo visible');
+            const shown = visibleItems();
+            const marked = shown.filter(item => item.included).length;
+            box.checked = shown.length > 0 && marked === shown.length;
+            box.indeterminate = marked > 0 && marked < shown.length;
+            box.addEventListener('click', event => event.stopPropagation());
+            box.addEventListener('change', () => {
+              shown.forEach(item => { item.included = box.checked; });
+              renderAll();
+            });
+            const label = document.createElement('span');
+            label.textContent = column.title;
+            wrap.append(box, label);
+            cell.append(wrap);
+          } else {
+            cell.append(document.createTextNode(column.title));
+          }
+          if (!column.fixed) {
+            const arrow = document.createElement('span');
+            arrow.className = 'arrow';
+            const sorted = state.sort.key === column.key ? state.sort.dir : null;
+            arrow.textContent = sorted === 'asc' ? '▲' : sorted === 'desc' ? '▼' : '▾';
+            if (sorted) cell.setAttribute('aria-sort', sorted === 'asc' ? 'ascending' : 'descending');
+            cell.title = `Ordenar por ${column.title}`;
+            cell.append(arrow);
+            // Tres estados, como en la aplicación: ascendente, descendente y sin orden.
+            cell.addEventListener('click', () => {
+              const current = state.sort.key === column.key ? state.sort.dir : null;
+              const next = current === 'asc' ? 'desc' : current === 'desc' ? null : 'asc';
+              state.sort = next ? {key:column.key, dir:next} : {key:null, dir:null};
+              renderHead();
+              renderRows();
+            });
+          }
+          head.append(cell);
+        });
+      }
+
+      function photoNode(item) {
+        if (!item.photo) {
+          const fallback = document.createElement('span');
+          fallback.className = 'photo-fallback';
+          fallback.textContent = 'Sin foto';
+          return fallback;
+        }
+        const image = document.createElement('img');
+        image.className = 'item-photo';
+        image.src = item.photo;
+        image.alt = '';
+        image.loading = 'lazy';
+        image.referrerPolicy = 'no-referrer';
+        image.addEventListener('error', () => {
+          const fallback = document.createElement('span');
+          fallback.className = 'photo-fallback';
+          fallback.textContent = 'Sin foto';
+          image.replaceWith(fallback);
+        });
+        return image;
+      }
+
+      function renderRows() {
+        const body = $('body');
+        body.replaceChildren();
+        const shown = sortItems(visibleItems());
+        const list = columns();
+        shown.forEach(item => {
+          const row = document.createElement('tr');
+          if (!item.included) row.classList.add('excluded');
+          row.addEventListener('dblclick', () => openItem(item));
+          list.forEach(column => {
+            const cell = document.createElement('td');
+            if (column.kind === 'include') {
+              cell.className = 'cell-include';
+              const box = document.createElement('input');
+              box.type = 'checkbox';
+              box.checked = !!item.included;
+              box.setAttribute('aria-label', `Incluir ${item.name}`);
+              box.addEventListener('change', () => { item.included = box.checked; renderAll(); });
+              cell.append(box);
+            } else if (column.kind === 'photo') {
+              cell.className = 'cell-photo';
+              cell.title = 'Ver la ficha';
+              cell.addEventListener('click', () => openItem(item));
+              cell.append(photoNode(item));
+            } else if (column.kind === 'name') {
+              cell.className = 'cell-name';
+              const button = document.createElement('button');
+              button.type = 'button';
+              button.className = 'name-open';
+              button.title = `Ver la ficha de ${item.name}`;
+              const clip = document.createElement('span');
+              clip.className = 'clip';
+              clip.textContent = item.name;
+              button.append(clip);
+              button.addEventListener('click', () => openItem(item));
+              cell.append(button);
+            } else if (column.kind === 'link') {
+              cell.className = 'cell-center';
+              if (item.purchase_link) {
+                const link = document.createElement('a');
+                link.className = 'table-link';
+                link.href = item.purchase_link;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = 'Abrir';
+                cell.append(link);
+              }
+            } else {
+              const value = shownValue(item, column);
+              cell.title = value;
+              if (column.kind === 'text') {
+                cell.className = 'cell-text';
+                const clip = document.createElement('span');
+                clip.className = 'clip';
+                clip.textContent = value;
+                cell.append(clip);
+              } else {
+                if (column.kind === 'extra' && column.field.type === 'boolean') cell.className = 'cell-center';
+                else if (column.kind === 'extra' && column.field.type === 'number') cell.className = 'cell-number';
+                cell.textContent = value;
+              }
+            }
+            row.append(cell);
+          });
+          body.append(row);
+        });
+        const all = itemsOf(state.activeId);
+        const included = all.filter(item => item.included).length;
+        $('count').textContent = `${shown.length} de ${all.length} elementos visibles · ${included} incluidos`;
+        $('empty').hidden = shown.length !== 0;
+        $('clearFilters').hidden = !(state.search || state.country || state.status);
+      }
+
+      function renderCountries() {
+        const select = $('country');
+        const current = state.country;
+        select.replaceChildren(select.querySelector('option'));
+        [...new Set(itemsOf(state.activeId).map(item => item.country).filter(Boolean))]
+          .sort((a, b) => a.localeCompare(b, 'es'))
+          .forEach(country => select.add(new Option(country, country)));
+        select.value = [...select.options].some(option => option.value === current) ? current : '';
+        state.country = select.value;
+      }
+
+      function renderIntro() {
+        const quotation = active();
+        const section = $('intro');
+        const body = $('introText');
+        const description = (quotation.description || '').trim();
+        body.replaceChildren();
+        section.hidden = !description;
+        if (!description) return;
+        description.split(/\n\s*\n/).forEach(block => {
+          const paragraph = document.createElement('p');
+          paragraph.textContent = block.replace(/\s*\n\s*/g, ' ').trim();
+          if (paragraph.textContent) body.append(paragraph);
+        });
+      }
+
+      function renderAll() {
+        const quotation = active();
+        $('activeName').textContent = quotation.name;
+        $('activeName').title = `${quotation.name} · ${quotation.quote_date || 'sin fecha'} · revisión ${quotation.revision || 1}`;
+        renderTabs();
+        renderIntro();
+        renderCountries();
+        renderHead();
+        renderRows();
+      }
+
+      // --- Ficha del ítem: los mismos campos, sin poder editarlos --------------
+      function fieldBlock(label, value, {wide = false, multiline = false} = {}) {
+        const wrap = document.createElement('label');
+        wrap.className = 'field' + (wide ? ' field-wide' : '');
+        const caption = document.createElement('span');
+        caption.textContent = label;
+        const control = document.createElement(multiline ? 'textarea' : 'input');
+        if (multiline) control.rows = Math.min(8, Math.max(3, Math.ceil(text(value).length / 90)));
+        control.value = text(value);
+        control.readOnly = true;
+        control.placeholder = '—';
+        wrap.append(caption, control);
+        return wrap;
+      }
+
+      function openItem(item) {
+        const quotation = active();
+        $('modalKicker').textContent = quotation.name;
+        $('modalTitle').textContent = item.name;
+
+        const preview = $('modalPhoto');
+        preview.replaceChildren();
+        if (item.photo) {
+          const image = document.createElement('img');
+          image.src = item.photo;
+          image.alt = '';
+          image.referrerPolicy = 'no-referrer';
+          image.addEventListener('error', () => { preview.replaceChildren(Object.assign(document.createElement('span'), {textContent:'Sin foto'})); });
+          preview.append(image);
+        } else {
+          preview.append(Object.assign(document.createElement('span'), {textContent:'Sin foto'}));
+        }
+
+        const box = $('modalIncluded');
+        box.checked = !!item.included;
+        box.onchange = () => { item.included = box.checked; renderAll(); };
+
+        const link = $('modalLink');
+        link.hidden = !item.purchase_link;
+        if (item.purchase_link) link.href = item.purchase_link;
+
+        const fields = $('modalFields');
+        fields.replaceChildren();
+        fields.append(
+          fieldBlock('Nombre', item.name, {wide:true}),
+          fieldBlock('Precio', item.price),
+          fieldBlock('País de origen', item.country),
+          fieldBlock('Link de compra o referencia', item.purchase_link, {wide:true}),
+          fieldBlock('Descripción', item.description, {wide:true, multiline:true}),
+          fieldBlock('Comentario', item.comment, {wide:true, multiline:true}),
+        );
+
+        const extras = quotation.extra_fields || [];
+        if (extras.length) {
+          const container = document.createElement('div');
+          container.className = 'extra-form field-wide';
+          const title = document.createElement('p');
+          title.className = 'extra-form-title';
+          title.textContent = 'Campos específicos de esta cotización';
+          container.append(title);
+          extras.forEach(field => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'extra-input';
+            const label = document.createElement('label');
+            label.textContent = field.label;
+            const value = (item.extra_data || {})[field.key];
+            const input = document.createElement('input');
+            if (field.type === 'boolean') {
+              input.type = 'checkbox';
+              input.checked = value === true;
+              input.disabled = true;
+            } else {
+              input.type = 'text';
+              input.value = value === null || value === undefined ? '' : String(value);
+              input.readOnly = true;
+              input.placeholder = '—';
+            }
+            wrapper.append(label, input);
+            container.append(wrapper);
+          });
+          fields.append(container);
+        }
+
+        $('modalStatus').textContent = `${quotation.quote_date || 'Sin fecha'} · revisión ${quotation.revision || 1}`;
+        $('itemModal').showModal();
+      }
+
+      // --- Exportar a Excel: un .xlsx es un ZIP con XML, se arma acá mismo -----
+      const CRC_TABLE = (() => {
+        const table = new Uint32Array(256);
+        for (let index = 0; index < 256; index++) {
+          let value = index;
+          for (let bit = 0; bit < 8; bit++) value = value & 1 ? 0xEDB88320 ^ (value >>> 1) : value >>> 1;
+          table[index] = value >>> 0;
+        }
+        return table;
+      })();
+
+      function crc32(bytes) {
+        let crc = 0xFFFFFFFF;
+        for (let index = 0; index < bytes.length; index++) crc = CRC_TABLE[(crc ^ bytes[index]) & 0xFF] ^ (crc >>> 8);
+        return (crc ^ 0xFFFFFFFF) >>> 0;
+      }
+
+      /** ZIP sin compresión: alcanza para un libro de Excel y evita dependencias. */
+      function zipBlob(files) {
+        const encoder = new TextEncoder();
+        const u16 = value => [value & 0xFF, (value >>> 8) & 0xFF];
+        const u32 = value => [value & 0xFF, (value >>> 8) & 0xFF, (value >>> 16) & 0xFF, (value >>> 24) & 0xFF];
+        const parts = [];
+        const directory = [];
+        let offset = 0;
+        files.forEach(([name, content]) => {
+          const nameBytes = encoder.encode(name);
+          const data = encoder.encode(content);
+          const crc = crc32(data);
+          const header = [...u32(0x04034b50), ...u16(20), ...u16(0x0800), ...u16(0), ...u16(0), ...u16(0),
+            ...u32(crc), ...u32(data.length), ...u32(data.length), ...u16(nameBytes.length), ...u16(0)];
+          parts.push(new Uint8Array(header), nameBytes, data);
+          directory.push(...u32(0x02014b50), ...u16(20), ...u16(20), ...u16(0x0800), ...u16(0), ...u16(0), ...u16(0),
+            ...u32(crc), ...u32(data.length), ...u32(data.length), ...u16(nameBytes.length), ...u16(0), ...u16(0),
+            ...u16(0), ...u16(0), ...u32(0), ...u32(offset), ...nameBytes);
+          offset += header.length + nameBytes.length + data.length;
+        });
+        const end = [...u32(0x06054b50), ...u16(0), ...u16(0), ...u16(files.length), ...u16(files.length),
+          ...u32(directory.length), ...u32(offset), ...u16(0)];
+        return new Blob([...parts, new Uint8Array(directory), new Uint8Array(end)],
+          {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+      }
+
+      const escapeXml = value => String(value)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '');
+
+      function columnLetter(index) {
+        let letters = '';
+        for (let value = index; value >= 0; value = Math.floor(value / 26) - 1) {
+          letters = String.fromCharCode(65 + (value % 26)) + letters;
+        }
+        return letters;
+      }
+
+      function sheetXml(rows, widths) {
+        const body = rows.map((row, line) => {
+          const cells = row.map((value, column) => {
+            const reference = `${columnLetter(column)}${line + 1}`;
+            const style = line === 0 ? ' s="1"' : '';
+            if (typeof value === 'number' && Number.isFinite(value)) return `<c r="${reference}"${style}><v>${value}</v></c>`;
+            const content = value === null || value === undefined ? '' : String(value);
+            if (!content) return `<c r="${reference}"${style}/>`;
+            return `<c r="${reference}"${style} t="inlineStr"><is><t xml:space="preserve">${escapeXml(content)}</t></is></c>`;
+          }).join('');
+          return `<row r="${line + 1}">${cells}</row>`;
+        }).join('');
+        const columns = widths.map((width, index) =>
+          `<col min="${index + 1}" max="${index + 1}" width="${width}" customWidth="1"/>`).join('');
+        return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+          + '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+          + '<sheetViews><sheetView workbookViewId="0">'
+          + '<pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/>'
+          + '</sheetView></sheetViews>'
+          + `<cols>${columns}</cols><sheetData>${body}</sheetData></worksheet>`;
+      }
+
+      function sheetName(name, used) {
+        const clean = (String(name).replace(/[[\]:*?/\\']/g, ' ').trim() || 'Cotización').slice(0, 31);
+        let candidate = clean;
+        let index = 2;
+        while (used.has(candidate.toLowerCase())) {
+          const suffix = ` (${index++})`;
+          candidate = clean.slice(0, 31 - suffix.length) + suffix;
+        }
+        used.add(candidate.toLowerCase());
+        return candidate;
+      }
+
+      function excelBlob() {
+        const used = new Set();
+        const sheets = quotations.map(quotation => {
+          const extra = quotation.extra_fields || [];
+          const header = ['Incluir', 'Nombre', 'Precio', 'Descripción', 'Comentario', 'País de origen',
+            ...extra.map(field => field.label), 'Link'];
+          const widths = [8, 40, 22, 46, 46, 16, ...extra.map(() => 18), 34];
+          const rows = [header];
+          itemsOf(quotation.id).forEach(item => {
+            rows.push([
+              item.included ? 'Sí' : 'No', item.name, item.price, item.description, item.comment, item.country,
+              ...extra.map(field => {
+                const value = (item.extra_data || {})[field.key];
+                if (field.type === 'boolean') return value === true ? 'Sí' : value === false ? 'No' : '';
+                return value === null || value === undefined ? '' : value;
+              }),
+              item.purchase_link,
+            ]);
+          });
+          return {name: sheetName(quotation.name, used), xml: sheetXml(rows, widths)};
+        });
+
+        const definitions = sheets.map((sheet, index) =>
+          `<sheet name="${escapeXml(sheet.name)}" sheetId="${index + 1}" r:id="rId${index + 1}"/>`).join('');
+        const relations = sheets.map((_sheet, index) =>
+          `<Relationship Id="rId${index + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${index + 1}.xml"/>`).join('');
+        const overrides = sheets.map((_sheet, index) =>
+          `<Override PartName="/xl/worksheets/sheet${index + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('');
+        const styles = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+          + '<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+          + '<fonts count="2"><font><sz val="11"/><name val="Calibri"/></font>'
+          + '<font><b/><sz val="11"/><name val="Calibri"/></font></fonts>'
+          + '<fills count="2"><fill><patternFill patternType="none"/></fill>'
+          + '<fill><patternFill patternType="gray125"/></fill></fills>'
+          + '<borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>'
+          + '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>'
+          + '<cellXfs count="2"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'
+          + '<xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/></cellXfs></styleSheet>';
+
+        return zipBlob([
+          ['[Content_Types].xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            + '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+            + '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+            + '<Default Extension="xml" ContentType="application/xml"/>'
+            + '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'
+            + '<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>'
+            + `${overrides}</Types>`],
+          ['_rels/.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            + '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            + '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'],
+          ['xl/workbook.xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            + '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
+            + 'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+            + `<sheets>${definitions}</sheets></workbook>`],
+          ['xl/_rels/workbook.xml.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            + '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            + `${relations}<Relationship Id="rId${sheets.length + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`],
+          ['xl/styles.xml', styles],
+          ...sheets.map((sheet, index) => [`xl/worksheets/sheet${index + 1}.xml`, sheet.xml]),
+        ]);
+      }
+
+      // --- Guardar el archivo con lo marcado ----------------------------------
+      const toastNode = $('toast');
+      let toastTimer = 0;
+      function toast(message){toastNode.textContent=message;toastNode.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastNode.classList.remove('show'),5000)}
+
+      function download(blob, name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+
+      function snapshot(){
+        pristine.querySelector('#quotation-data').textContent = encode(payload);
+        return new Blob(['<!doctype html>\n' + pristine.outerHTML], {type:'text/html;charset=utf-8'});
+      }
+
+      const saveButton = $('saveHtml');
+      const fallbackName = `{{ download_name }}`;
+      const currentName = (() => { try { const name = decodeURIComponent(location.pathname.split('/').pop() || ''); return /\.html?$/i.test(name) ? name : ''; } catch (error) { return ''; } })();
+      const suggestedName = currentName || fallbackName;
+      const canPick = typeof window.showSaveFilePicker === 'function';
+      let handle = null;
+
+      async function allowed(target){
+        if(!target.queryPermission) return true;
+        if(await target.queryPermission({mode:'readwrite'}) === 'granted') return true;
+        return await target.requestPermission({mode:'readwrite'}) === 'granted';
+      }
+
+      async function save(){
+        const blob = snapshot();
+        const included = payload.items.filter(item=>item.included).length;
+        if(!canPick){
+          download(blob, suggestedName);
+          toast(`Tu navegador no puede sobrescribir archivos: se descargó una copia (${suggestedName}). Reemplazá el original a mano.`);
+          return;
+        }
+        try{
+          if(handle && !(await allowed(handle))) handle = null;
+          if(!handle) handle = await window.showSaveFilePicker({suggestedName, types:[{description:'Cotización HTML', accept:{'text/html':['.html','.htm']}}]});
+          const writable = await handle.createWritable();
+          await writable.write(blob);
+          await writable.close();
+          toast(`Guardado en ${handle.name} · ${included} incluidos`);
+        }catch(error){
+          if(error && error.name === 'AbortError'){ toast('Guardado cancelado'); return; }
+          handle = null;
+          download(blob, suggestedName);
+          toast(`No se pudo sobrescribir el archivo: se descargó una copia (${suggestedName}).`);
+        }
+      }
+
+      saveButton.addEventListener('click', () => { saveButton.disabled = true; save().finally(() => { saveButton.disabled = false; }); });
+      $('saveExcel').addEventListener('click', () => {
+        const name = suggestedName.replace(/-compartir\.html?$/i, '').replace(/\.html?$/i, '') || 'cotizaciones';
+        download(excelBlob(), `${name}.xlsx`);
+        toast('Se descargó el Excel con lo marcado');
+      });
+      $('search').addEventListener('input', event => { state.search = normalize(event.target.value); renderRows(); renderHead(); });
+      $('country').addEventListener('change', event => { state.country = event.target.value; renderRows(); renderHead(); });
+      $('status').addEventListener('change', event => { state.status = event.target.value; renderRows(); renderHead(); });
+      $('clearFilters').addEventListener('click', () => {
+        state.search = ''; state.country = ''; state.status = '';
+        $('search').value = ''; $('country').value = ''; $('status').value = '';
+        renderRows(); renderHead();
+      });
+      document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => $('itemModal').close()));
+      $('itemModal').addEventListener('click', event => {
+        const rect = $('itemModal').getBoundingClientRect();
+        const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+        if (!inside) $('itemModal').close();
+      });
+
+      const stamp = (payload.exported_at || '').slice(0, 10);
+      $('exportMeta').textContent = quotations.length > 1
+        ? `${quotations.length} cotizaciones · exportado ${stamp}`
+        : `Exportado ${stamp}`;
+      renderAll();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+{
+ "quotations": [
+  {
+   "quotation_id": "aceleradores-usb-yolo",
+   "picks": [
+    {
+     "name": "AAEON / UP Hailo-10H USB AI Accelerator (8 GB)",
+     "price": "US$239 (UP Shop / AAEON, sep. 2026; 'Stock Available Now', sin envío ni impuestos)",
+     "country": "Taiwán (AAEON); chip Hailo (Israel)",
+     "purchase_link": "https://up-shop.org/default/hailo-10h-usb-ai-accelerator-8-gb-ram.html",
+     "photo_url": "https://up-shop.org/media/catalog/product/cache/ed364990f4192e7508707ac95bddde4d/w/6/w692.png",
+     "description": "Stick USB-C (USB 3.1 Gen2, 10 Gbps) con el Hailo-10H: 40 TOPS INT4 / 20 TOPS INT8, 8 GB LPDDR4 propios, 2,5 W típicos, 105×50×18 mm, operación 0–40 °C. Funciona en Linux, Windows y Android sobre anfitriones x86 o ARM con HailoRT.",
+     "comment": "El acelerador USB más potente que hoy se puede comprar de verdad: convierte un mini PC N100 o una Raspberry Pi 5 en un nodo para 4–8 cámaras 1080p con YOLO (usuarios reportan ~78 FPS en YOLOv8m por USB 10 Gbps; ~40 FPS si el puerto es de 5 Gbps, así que el anfitrión necesita USB 3.1 Gen2). Riesgos: 0–40 °C (no es industrial), el anfitrión sigue decodificando el video por CPU, y el Hailo-10H es más nuevo que el Hailo-8. Nodo aproximado: US$390–450 antes de envío e impuestos.",
+     "extra_data": {
+      "acelerador": "Hailo-10H (8 GB LPDDR4 a bordo)",
+      "rendimiento_aproximado": "40 TOPS INT4 / 20 TOPS INT8",
+      "compatibilidad_yolo": "Sí: YOLOv5–v11 en Hailo Model Zoo (hailo10h), exportación Ultralytics",
+      "referencia": "UP Shop / AAEON",
+      "ranking_recomendado": 1
+     },
+     "availability_chile": "Importar: UP Shop (tienda de AAEON, Países Bajos) con stock y envío internacional; confirmar Chile en el checkout. Sin venta en MercadoLibre Chile ni tiendas locales (sep. 2026).",
+     "programming_score": 4,
+     "programming_note": "Linux + Python/C++ con HailoRT 5.x; YOLOv5–v11 precompilados en el Hailo Model Zoo para hailo10h y exportación Ultralytics; modelos propios requieren Dataflow Compiler en Linux x86_64. Menos historial que el Hailo-8, mismo flujo.",
+     "why": "La tabla listaba un 'Hailo-8 USB' que no existe; este es el acelerador USB de clase Hailo real, con stock y precio publicado.",
+     "sources": [
+      "https://up-shop.org/default/hailo-10h-usb-ai-accelerator-8-gb-ram.html",
+      "https://www.aaeon.com/en/product/detail/ai-modules-hailo-10h-usb",
+      "https://community.hailo.ai/t/yolov8m-fps-lower-than-model-zoo-on-ugen300-hailo-10h/19320"
+     ],
+     "verify": {
+      "reviewed": "Claude en línea, 2026-09-02"
+     }
+    },
+    {
+     "name": "ASUS UGen300 USB AI Accelerator 8 GB (Hailo-10H)",
+     "price": "US$299,99 (Newegg / ASUS eShop EE. UU., sep. 2026)",
+     "country": "Taiwán (ASUS); chip Hailo (Israel)",
+     "purchase_link": "https://www.newegg.com/asus-s-ugen300-8gld4-tc-ai-accelerator/p/N82E16800949001",
+     "photo_url": "https://dlcdnwebimgs.asus.com/gain/061269db-4d6d-4adc-99a2-90ee195a5cef/w692",
+     "description": "Versión de marca ASUS del mismo acelerador USB-C con Hailo-10H: 40 TOPS INT4 / 20 TOPS INT8, 8 GB LPDDR4, USB 3.1 Gen2 (10 Gbps), 2,5 W típicos, formato de SSD externo. Linux, Windows y Android; más de 150 modelos en el Model Zoo.",
+     "comment": "Misma electrónica que el stick de AAEON pero con garantía de 1 año y canal retail (Newegg, ASUS eShop, eBay), lo que facilita reposición. US$60 más caro; sin distribuidor en Chile (ASUS eShop sólo EE. UU.; Newegg Global o forwarder). Nodo aproximado: US$300 + anfitrión N100 US$150–200 = justo en el límite de US$500.",
+     "extra_data": {
+      "acelerador": "Hailo-10H (8 GB LPDDR4 a bordo)",
+      "rendimiento_aproximado": "40 TOPS INT4 / 20 TOPS INT8",
+      "compatibilidad_yolo": "Sí: YOLOv5–v11 en Hailo Model Zoo (hailo10h), exportación Ultralytics",
+      "referencia": "Newegg / ASUS eShop",
+      "ranking_recomendado": 2
+     },
+     "availability_chile": "Importar: Newegg (en stock; Newegg Global despacha a Chile vía vendedores) o eBay; ASUS eShop sólo EE. UU.; sin listados en MercadoLibre Chile (sep. 2026).",
+     "programming_score": 4,
+     "programming_note": "Linux + Python/C++ con HailoRT 5.x; YOLOv5–v11 precompilados en el Hailo Model Zoo para hailo10h y exportación Ultralytics; modelos propios requieren Dataflow Compiler en Linux x86_64. Menos historial que el Hailo-8, mismo flujo. ASUS agrega la utilidad UGen, orientada a Windows.",
+     "why": "Alternativa con marca y garantía al stick de AAEON.",
+     "sources": [
+      "https://www.asus.com/motherboards-components/ai-accelerator/ugen/ugen300-usb-8g/",
+      "https://www.newegg.com/asus-s-ugen300-8gld4-tc-ai-accelerator/p/N82E16800949001",
+      "https://www.cnx-software.com/2026/08/03/299-99-asus-ugen300-usb-ai-accelerator-hailo-10h-8gb-lpddr4/"
+     ],
+     "verify": {
+      "reviewed": "Claude en línea, 2026-09-02"
+     }
+    }
+   ]
+  },
+  {
+   "quotation_id": "edge-ai-aceleradores-m2",
+   "picks": [
+    {
+     "name": "Raspberry Pi AI HAT+ 13 TOPS (Hailo-8L)",
+     "price": "$112.990 CLP con IVA (MCI Electronics, sep. 2026; oficial US$70)",
+     "country": "Reino Unido (Raspberry Pi); chip Hailo (Israel)",
+     "purchase_link": "https://mcielectronics.cl/shop/product/81752/",
+     "photo_url": "",
+     "description": "HAT+ oficial para Raspberry Pi 5 con el Hailo-8L (13 TOPS INT8) conectado por PCIe; incluye header de 16 mm, separadores y tornillos; operación 0–50 °C; producción garantizada hasta enero de 2030.",
+     "comment": "Es la vía más simple y barata a un nodo con YOLO que se compra en Chile hoy: Raspberry Pi 5 + este HAT + carcasa de aluminio de la tabla de carcasas queda bajo US$250 en total. 13 TOPS alcanzan para 2–4 cámaras 1080p a 10–15 fps con YOLOv8n/s; la Pi 5 decodifica H.265 por hardware pero H.264 por CPU, lo que limita el número de cámaras. Ocupa el conector PCIe de la Pi 5 (no queda para SSD NVMe: usar microSD o USB).",
+     "extra_data": {
+      "requiere_host": true
+     },
+     "availability_chile": "Venta local: MCI Electronics, disponible online y en tienda (Providencia); también raspberrypi.cl. Sin importación necesaria.",
+     "programming_score": 5,
+     "programming_note": "Raspberry Pi OS con el paquete hailo-all: rpicam-apps y picamera2 traen ejemplos de YOLO listos; HailoRT en Python/C++ y hailo-rpi5-examples oficiales; comunidad enorme.",
+     "why": "Único acelerador de la familia con stock local en Chile; la tabla no tenía ninguna opción comprable sin importar.",
+     "sources": [
+      "https://mcielectronics.cl/shop/product/81752/",
+      "https://www.raspberrypi.com/documentation/accessories/ai-hat-plus.html"
+     ],
+     "verify": {
+      "reviewed": "Claude en línea, 2026-09-02"
+     }
+    },
+    {
+     "name": "Raspberry Pi AI HAT+ 26 TOPS (Hailo-8)",
+     "price": "US$110 oficial (raspberrypi.com); ≈US$120 en PiShop.us, sep. 2026",
+     "country": "Reino Unido (Raspberry Pi); chip Hailo (Israel)",
+     "purchase_link": "https://www.pishop.us/product/raspberry-pi-ai-hat-26-tops/",
+     "photo_url": "",
+     "description": "HAT+ oficial para Raspberry Pi 5 con el Hailo-8 completo (26 TOPS INT8) por PCIe; mismo formato, header y software que la versión de 13 TOPS; operación 0–50 °C.",
+     "comment": "El doble de cómputo que el HAT de 13 TOPS por unos US$40 más: permite más cámaras o modelos más grandes (YOLOv8m) en el mismo nodo Pi 5. La limitación pasa a ser la decodificación de video de la Pi 5, no la NPU. Hay que importar (PiShop, Pimoroni, Amazon); en MercadoLibre Chile aparecen listados de importación cerca de $210.000 CLP.",
+     "extra_data": {
+      "requiere_host": true
+     },
+     "availability_chile": "Importar: PiShop.us, Pimoroni y Amazon despachan a Chile; MercadoLibre Chile tiene listados de importación (~$210.000 CLP). Sin stock local confirmado (sep. 2026).",
+     "programming_score": 5,
+     "programming_note": "Raspberry Pi OS con el paquete hailo-all: rpicam-apps y picamera2 traen ejemplos de YOLO listos; HailoRT en Python/C++ y hailo-rpi5-examples oficiales; comunidad enorme.",
+     "why": "Versión de 26 TOPS del HAT oficial; la tabla no tenía el Hailo-8 en formato HAT.",
+     "sources": [
+      "https://www.raspberrypi.com/news/raspberry-pi-ai-hat/",
+      "https://www.pishop.us/product/raspberry-pi-ai-hat-26-tops/"
+     ],
+     "verify": {
+      "reviewed": "Claude en línea, 2026-09-02"
+     }
+    },
+    {
+     "name": "Raspberry Pi AI HAT+ 2 (Hailo-10H, 40 TOPS)",
+     "price": "US$200 (PiShop.us, en stock, sep. 2026; lanzado a US$130)",
+     "country": "Reino Unido (Raspberry Pi); chip Hailo (Israel)",
+     "purchase_link": "https://www.pishop.us/product/raspberry-pi-ai-hat-2/",
+     "photo_url": "",
+     "description": "HAT+ oficial para Raspberry Pi 5 con el Hailo-10H: 40 TOPS INT4 (≈26 TOPS equivalentes en visión), 8 GB de RAM propia, disipador opcional y compatible con el Active Cooler; PCIe a la Pi 5.",
+     "comment": "Pensado para IA generativa en la Pi 5; para YOLO rinde parecido al HAT de 26 TOPS y cuesta casi el doble, así que sólo conviene si también se quieren modelos de lenguaje o de visión-lenguaje en el mismo nodo. PiShop despacha en 2–3 días por alta demanda.",
+     "extra_data": {
+      "requiere_host": true
+     },
+     "availability_chile": "Importar: PiShop.us (en stock), Adafruit (US$225), Amazon; sin venta local en Chile (sep. 2026).",
+     "programming_score": 4,
+     "programming_note": "Raspberry Pi OS con el paquete hailo-all: rpicam-apps y picamera2 traen ejemplos de YOLO listos; HailoRT en Python/C++ y hailo-rpi5-examples oficiales; comunidad enorme. El Hailo-10H requiere HailoRT 5.x.",
+     "why": "Completa la familia de HAT oficiales; útil si se quiere IA generativa además de YOLO.",
+     "sources": [
+      "https://www.pishop.us/product/raspberry-pi-ai-hat-2/",
+      "https://www.raspberrypi.com/products/ai-hat-plus-2/",
+      "https://www.jeffgeerling.com/blog/2026/raspberry-pi-ai-hat-2/"
+     ],
+     "verify": {
+      "reviewed": "Claude en línea, 2026-09-02"
+     }
+    }
+   ]
+  },
+  {
+   "quotation_id": "pcs-industriales-m2-ai",
+   "picks": [
+    {
+     "name": "MeLE Quieter 4C (Intel N100, eMMC + M.2 libre)",
+     "price": "≈$275.000 CLP (MercadoLibre Chile, sep. 2026; en Amazon US$140–180)",
+     "country": "China",
+     "purchase_link": "https://www.mercadolibre.cl/mini-pc-mele-quieter-4c-12-generacion-n100-8-gb-128-gb/p/MLC2004162840",
+     "photo_url": "",
+     "description": "Mini PC fanless ultradelgado (131×81×18 mm) con Intel N100, 8/16 GB LPDDR4X soldados, 128/256 GB eMMC y una ranura M.2 2280 libre (SATA III o PCIe Gen3 x4); 1× GbE, Wi-Fi 5, chasis de metal y plástico que hace de disipador.",
+     "comment": "Opción barata y con stock en Chile para un nodo x86: el sistema arranca desde la eMMC y la M.2 PCIe x4 queda libre para un Hailo-8 / DX-M1 / Axelera (el acelerador iría sin disipador propio: hay que verificar la temperatura dentro de la caja). Contras: sólo 1× GbE (las cámaras van por switch), carcasa parcialmente plástica (no es el aluminio industrial buscado) y RAM soldada. Nodo aproximado: $275.000 CLP + acelerador US$169–180.",
+     "extra_data": {
+      "espacio_m2": true,
+      "procesador": "Intel N100 (4 núcleos)",
+      "ram": "LPDDR4X soldada, 8 o 16 GB según variante"
+     },
+     "availability_chile": "Venta local: MercadoLibre Chile, varios vendedores con stock visible (sep. 2026); también Amazon con envío a Chile.",
+     "programming_score": 5,
+     "programming_note": "x86 con Ubuntu: cualquier SDK de acelerador (HailoRT, DX-RT, Voyager) y Ultralytics funcionan sin adaptaciones.",
+     "why": "Único PC de la tabla con stock local en Chile y con la M.2 libre de fábrica gracias a la eMMC.",
+     "sources": [
+      "https://www.cnx-software.com/2023/12/05/mele-quieter4c-ultrathin-fanless-intel-n100-mini-pc-supports-up-to-three-displays/",
+      "https://liliputing.com/mele-quieter-4c-review/",
+      "https://www.mercadolibre.cl/mini-pc-mele-quieter-4c-12-generacion-n100-8-gb-128-gb/p/MLC2004162840"
+     ],
+     "verify": {
+      "reviewed": "Claude en línea, 2026-09-02"
+     }
+    },
+    {
+     "name": "Mini PC firewall N100 4× i226-V 2,5G fanless (CWWK / Topton)",
+     "price": "≈$335.000 CLP (MercadoLibre Chile, vendedor internacional, sep. 2026); US$150–200 en Amazon/AliExpress",
+     "country": "China",
+     "purchase_link": "https://www.mercadolibre.cl/firewall-micro-n1004x-i226-v-25g-mini-pc-sin-ventilador-4/p/MLC201748921",
+     "photo_url": "",
+     "description": "Caja fanless de aluminio tipo firewall con Intel N100, 1× SO-DIMM DDR5-4800, M.2 2280 NVMe/PCIe 3.0 x1 (o SATA) más bahía SATA 2,5 pulgadas, 4× 2,5GbE Intel i226-V, HDMI 2.1 + DP 1.4, consumo ~15 W. Se vende con marcas CWWK, Topton, Kingnovy y genéricas.",
+     "comment": "Cuatro puertos 2,5G permiten colgar las cámaras directo (o un switch PoE) y la bahía SATA deja la M.2 libre para el acelerador, todo en aluminio pasivo. La M.2 es PCIe x1, suficiente para un Hailo-8 aunque limita el ancho de banda. Riesgos: marca genérica sin soporte formal, precio en Chile con recargo de importación; los listados varían en RAM/SSD, confirmar la variante exacta. Nodo aproximado: $335.000 CLP + acelerador US$169–180.",
+     "extra_data": {
+      "espacio_m2": true,
+      "procesador": "Intel N100 (4 núcleos)",
+      "ram": "1× DDR5-4800 SO-DIMM"
+     },
+     "availability_chile": "MercadoLibre Chile, vendedor internacional con envío a Chile y garantía de Mercado Libre; también Amazon y AliExpress (CWWK/Topton) con envío a Chile.",
+     "programming_score": 5,
+     "programming_note": "x86 con Ubuntu / Proxmox: cualquier SDK de acelerador y Ultralytics funcionan sin adaptaciones.",
+     "why": "Aluminio, 4× 2,5GbE y bahía SATA a menos de US$400 puesto en Chile: cubre el hueco entre los Qotom (importación directa) y los AAEON (más de US$600).",
+     "sources": [
+      "https://www.amazon.com/CWWK-PC-N100-Fanless-Barebone/dp/B0C1TVXQ93",
+      "https://www.toptonpc.com/product/topton-firewall-mini-pc-intel-n150-n100-top-version-4x-2-5g-i226-v-fanless-soft-router-micro-appliance-pfsense-proxmox-aes-ni/",
+      "https://www.mercadolibre.cl/firewall-micro-n1004x-i226-v-25g-mini-pc-sin-ventilador-4/p/MLC201748921"
+     ],
+     "verify": {
+      "reviewed": "Claude en línea, 2026-09-02"
+     }
+    }
+   ]
+  }
+ ],
+ "total": 7,
+ "nota": "Candidatos del primer flujo, verificados en línea por Claude (2026-09-02). El MeLE Quieter DL se dejó fuera: en las variantes con SSD la M.2 no queda libre."
+}

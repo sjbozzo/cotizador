@@ -1,0 +1,706 @@
+{
+ "batches": [
+  {
+   "q": "pcs-industriales-m2-ai",
+   "index": 0,
+   "items": [
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-54d7a15184d3",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía SATA 2,5\"; x1 limita el ancho de banda"
+     },
+     "sources": [
+      "https://www.amazon.com/Qotom-Q10722C-Celeron-Processor-Fanless/dp/B0DQP6M841"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {
+      "ram": "1× DDR4 SO-DIMM 2133–3200 (máximo no publicado)"
+     },
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-be64c4e25ae2",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x2 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en mSATA o bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.jieruicc.com/product/industrial-embedded-pc-n100-quad-core-3-4ghz-2hdmi-1dp-triple-display-for-digital-signage/"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-e0cb90b44003",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "NVMe (lanes no publicados; plataforma Gemini Lake, PCIe 2.0)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en mSATA o bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://hystou.com/product/hystou-h3-intel-j5005-fanless-industrial-mini-pc/"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-e4c5045b0202",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía SATA 2,5\" (confirmar que la variante G4 la conserva); x1 limita el ancho de banda"
+     },
+     "sources": [
+      "https://www.amazon.com/Qotom-Q10922C-Processor-Fanless-X86-16GB/dp/B0DQTMPJH4"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-46b932e4b21c",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía SATA 2,5\"; x1 limita el ancho de banda"
+     },
+     "sources": [
+      "https://www.amazon.com/Qotom-Fanless-Industrial-Processor-COM-16GB/dp/B0DQTNKFF3"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-cb6566fc7717",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x2 (NVMe)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "Sin bahía 2,5\": el SO va en la eMMC de 64 GB; además E-key 2230 y B-key 3042/3052"
+     },
+     "sources": [
+      "https://jetwayipc.com/plg/BFDADN1-N97-N.pdf"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-486d2af1d71e",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x2",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.aaeon.com/en/product/detail/din-rail-fanless-box-pc-boxer-6711-adn/specification"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-126afd1b979a",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2242 (no 2280)",
+      "pcie": "PCIe x2 (NVMe)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "Sólo cabe el Hailo-8 2242 (HM218B1C2XAE); DX-M1, Axelera y MemryX son 2280 y no entran. SO en el M.2 B-key 3052 (SATA/PCIe x1)"
+     },
+     "sources": [
+      "https://www.advantech.com/en-us/products/1-2mlj9a/uno-2372-v3/mod_8756b078-b1ea-4a26-9406-7d4818fa4bd5"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-a508fdf239a6",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x4",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.aaeon.com/en/product/detail/din-rail-fanless-box-pc-boxer-6751-adp/specification"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-017ffe051d31",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x4",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía 2,5\"; AAEON ofrece el Hailo-8 M.2 como opción de fábrica"
+     },
+     "sources": [
+      "https://www.aaeon.com/en/product/detail/compact-fanless-box-pc-solutions-boxer-6646-adp/specification"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-caf156f7ad98",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x4 (NVMe)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en mSATA o SATA 2,5\", ranuras separadas"
+     },
+     "sources": [
+      "https://www.advantech.com/emt/products/6c53bcc8-1490-4e1e-a8d2-a56dc9a7f254/mic-770-v3/mod_2801e5b6-eec6-43a0-81f7-73efef338b54"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-53290b1d9b7a",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x4",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.aaeon.com/en/product/detail/din-rail-fanless-box-pc-boxer-6751-adp/specification"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-636b8b386e17",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en cualquiera de las 2 bahías SATA 2,5\"; x1 limita el ancho de banda"
+     },
+     "sources": [
+      "https://www.neousys-tech.com/en/product/product-lines/surveillance/poc-764vr"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-0f2e682ad21e",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x4",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía 2,5\"; AAEON ofrece el Hailo-8 M.2 como opción de fábrica"
+     },
+     "sources": [
+      "https://www.aaeon.com/en/product/detail/compact-fanless-box-pc-solutions-boxer-6646-adp/specification"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-4a47ce42d979",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x4",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.aaeon.com/en/product/detail/din-rail-fanless-box-pc-boxer-6751-adp/specification"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "pcs-industriales-m2-ai-9dd3d987f2d7",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe x4",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en la bahía 2,5\"; AAEON ofrece el Hailo-8 M.2 como opción de fábrica"
+     },
+     "sources": [
+      "https://www.aaeon.com/en/product/detail/compact-fanless-box-pc-solutions-boxer-6646-adp/specification"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "pares-pc-fanless-npu",
+   "index": 1,
+   "items": [
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "item-c5633af8305f4fac90f211c6c18fdc7d",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "Confirmado x1; SO en la bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.amazon.com/Qotom-Fanless-Industrial-Processor-COM-16GB/dp/B0DQTNKFF3"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {
+      "m2_npu": "M.2 2280/2242 M-key PCIe 3.0 x1 / SATA (Topton publica x1, no x2)",
+      "integration_risk": "Medio: enlace PCIe x1 (igual que Qotom); QA/soporte a validar"
+     },
+     "votes": null,
+     "removal_holds": false,
+     "id": "item-02d49234f2b146a0b994d03a9eedc21e",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280/2242",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "CORRECCIÓN: la ficha de Topton dice PCIe 3.0 x1, no x2; SO en la bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.toptonpc.com/product/topton-intel-n150-n100-4x2-5g-lan-fanless-mini-pc-i226-v-2com-ddr4-nvme-efficient-cooling-solid-firewall-pc-industrial-computer/"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "item-93c1693d1f9945579fb5517e2b9ca270",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "Confirmado x1; SO en la bahía SATA 2,5\"; DDR4 máx. 16 GB; 0–60 °C con SSD industrial"
+     },
+     "sources": [
+      "https://www.inctelpc.com/product/fanless-n100-mini-pc-2/"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "item-d9ac1ca439f84788b9b0b8a88a545caa",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "E-key (Hailo-8L A+E) / M-key",
+      "length": "2230 / 2280",
+      "pcie": "E-key PCIe 3.0 x1; M-key PCIe 3.0 x2",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "Confirmado: Hailo-8L A+E en el E-key x1 deja el M-key x2 para el SSD"
+     },
+     "sources": [
+      "https://kb.protectli.com/kb/vp2430-hardware-overview/"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "item-9cecf99c9bc44fdbac36c3269238bf60",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "NVMe (lanes no publicados)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "SO en mSATA o bahía SATA 2,5\"; DDR4 hasta 32 GB; -10–60 °C"
+     },
+     "sources": [
+      "https://kingdel.com.cn/PC/pc-ht690-5.html"
+     ]
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Verificación en línea de la ranura M.2 (Claude, 2026-09-02)",
+     "price": "",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "votes": null,
+     "removal_holds": false,
+     "id": "item-ee4de2cb0e514eac853b49eb60d8418b",
+     "name": "",
+     "m2": {
+      "applies": true,
+      "key": "M-key",
+      "length": "2280",
+      "pcie": "PCIe 3.0 x1 (NVMe/SATA)",
+      "free": true,
+      "ok_for_accelerator": true,
+      "note": "Confirmado x1; SO en la bahía SATA 2,5\""
+     },
+     "sources": [
+      "https://www.newegg.com/global/au-en/hunsn-barebone-systems-mini-pc-nbx11-n100-321/p/2SW-0014-00259?item=9SIAK3UKAS9800"
+     ]
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "origen": "verificación en línea de ranuras M.2 y RAM (Claude, 2026-09-02)"
+ }
+}

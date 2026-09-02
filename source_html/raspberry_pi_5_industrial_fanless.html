@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raspberry Pi 5 Industrial Fanless</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #171717;
+  }
+  .wrap {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+  }
+  button {
+    border: 1px solid #171717;
+    background: #171717;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  button:hover { opacity: .85; }
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1280px;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 12px;
+    border-bottom: 1px solid #e9e9e9;
+    text-align: left;
+    vertical-align: middle;
+  }
+  th {
+    background: #f7f7f7;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: 0; }
+  img {
+    width: 92px;
+    height: 72px;
+    object-fit: contain;
+    display: block;
+    background: #fafafa;
+    border-radius: 5px;
+  }
+  a {
+    color: #171717;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .name { font-weight: 600; min-width: 170px; }
+  .price, .country, .m2, .select { white-space: nowrap; }
+  .desc { min-width: 210px; }
+  .comment { min-width: 190px; }
+  .select { text-align: center; }
+  input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="actions">
+    <button id="exportBtn">Exportar JSON</button>
+  </div>
+
+  <div class="table-wrap">
+    <table id="productsTable">
+      <thead>
+        <tr>
+          <th>Nombre del producto</th>
+          <th>Foto</th>
+          <th>Precio promedio</th>
+          <th>País de origen</th>
+          <th>Link de compra</th>
+          <th>Descripción</th>
+          <th>Comentario</th>
+          <th>Aguanta espacio para M.2</th>
+          <th>Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr
+          data-name="Takachi RPHD-5-H-S"
+          data-image="https://cdn-reichelt.de/resize/600%2F-/web/xxl_ws/A300%2FCDMHSRP-5DR_NAT_01.png?resize=600%252F-&type=ProductXxl"
+          data-price="≈ €36,50"
+          data-country="Japón"
+          data-link="https://www.reichelt.at/at/de/shop/produkt/heatsink-gehaeuse_fuer_raspberry_pi_5_din_rail_alu_silber-412580"
+          data-description="Carcasa de aluminio fanless para Raspberry Pi 5 con montaje en riel DIN."
+          data-comment="La opción más directa para un montaje industrial fanless."
+          data-m2="No">
+          <td class="name">Takachi RPHD-5-H-S</td>
+          <td><img src="https://cdn-reichelt.de/resize/600%2F-/web/xxl_ws/A300%2FCDMHSRP-5DR_NAT_01.png?resize=600%252F-&type=ProductXxl" alt="Takachi RPHD-5-H-S"></td>
+          <td class="price">≈ €36,50</td>
+          <td class="country">Japón</td>
+          <td><a href="https://www.reichelt.at/at/de/shop/produkt/heatsink-gehaeuse_fuer_raspberry_pi_5_din_rail_alu_silber-412580" target="_blank">Comprar</a></td>
+          <td class="desc">Carcasa de aluminio fanless para Raspberry Pi 5 con montaje en riel DIN.</td>
+          <td class="comment">La opción más directa para un montaje industrial fanless.</td>
+          <td class="m2">No</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="Akasa Pi-5 Pro A-RA13-M2B"
+          data-image="https://cdn11.bigcommerce.com/s-3fd3md1ghs/images/stencil/1280x1280/products/39386/29502/PRT-30976.1__07118.1777267900.jpg?c=2"
+          data-price="≈ US$29,95"
+          data-country="Taiwán / Reino Unido"
+          data-link="https://www.sparkfun.com/akasa-pi-5-pro-aluminum-raspberry-pi-5-enclosure.html"
+          data-description="Carcasa de aluminio cerrada con refrigeración completamente pasiva."
+          data-comment="Muy limpia y compacta; buena si no necesitas M.2 interno."
+          data-m2="No">
+          <td class="name">Akasa Pi-5 Pro A-RA13-M2B</td>
+          <td><img src="https://cdn11.bigcommerce.com/s-3fd3md1ghs/images/stencil/1280x1280/products/39386/29502/PRT-30976.1__07118.1777267900.jpg?c=2" alt="Akasa Pi-5 Pro"></td>
+          <td class="price">≈ US$29,95</td>
+          <td class="country">Taiwán / Reino Unido</td>
+          <td><a href="https://www.sparkfun.com/akasa-pi-5-pro-aluminum-raspberry-pi-5-enclosure.html" target="_blank">Comprar</a></td>
+          <td class="desc">Carcasa de aluminio cerrada con refrigeración completamente pasiva.</td>
+          <td class="comment">Muy limpia y compacta; buena si no necesitas M.2 interno.</td>
+          <td class="m2">No</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="KKSB Raspberry Pi 5 Passive Cooling Case"
+          data-image="https://kksb-cases.com/cdn/shop/files/DSC02973_1_1_1112x700.jpg?v=1737303430"
+          data-price="≈ €25,90"
+          data-country="Suecia"
+          data-link="https://kksb-cases.com/products/kksb-raspberry-pi-5-case-with-aluminium-heatsink-for-silent-passive-cooling"
+          data-description="Carcasa con gran disipador de aluminio integrado y funcionamiento fanless."
+          data-comment="Buena combinación de acabado, silencio y montaje fijo."
+          data-m2="No">
+          <td class="name">KKSB Raspberry Pi 5 Passive Cooling Case</td>
+          <td><img src="https://kksb-cases.com/cdn/shop/files/DSC02973_1_1_1112x700.jpg?v=1737303430" alt="KKSB Passive Cooling Case"></td>
+          <td class="price">≈ €25,90</td>
+          <td class="country">Suecia</td>
+          <td><a href="https://kksb-cases.com/products/kksb-raspberry-pi-5-case-with-aluminium-heatsink-for-silent-passive-cooling" target="_blank">Comprar</a></td>
+          <td class="desc">Carcasa con gran disipador de aluminio integrado y funcionamiento fanless.</td>
+          <td class="comment">Buena combinación de acabado, silencio y montaje fijo.</td>
+          <td class="m2">No</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="KKSB Raspberry Pi 5 M.2 Industrial Case"
+          data-image="https://kksb-cases.com/cdn/shop/files/DSC03450_1050x700.jpg?v=1770996176"
+          data-price="≈ €15,50"
+          data-country="Suecia"
+          data-link="https://kksb-cases.com/products/kksb-raspberry-pi-5-m-2-industrial-case"
+          data-description="Gabinete de acero industrial preparado para HATs M.2, AI y montaje DIN."
+          data-comment="De los más interesantes si quieres agregar SSD o acelerador M.2."
+          data-m2="Sí">
+          <td class="name">KKSB Raspberry Pi 5 M.2 Industrial Case</td>
+          <td><img src="https://kksb-cases.com/cdn/shop/files/DSC03450_1050x700.jpg?v=1770996176" alt="KKSB Raspberry Pi 5 M.2 Industrial Case"></td>
+          <td class="price">≈ €15,50</td>
+          <td class="country">Suecia</td>
+          <td><a href="https://kksb-cases.com/products/kksb-raspberry-pi-5-m-2-industrial-case" target="_blank">Comprar</a></td>
+          <td class="desc">Gabinete de acero industrial preparado para HATs M.2, AI y montaje DIN.</td>
+          <td class="comment">De los más interesantes si quieres agregar SSD o acelerador M.2.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="BerryBase BBG-RPI-HAT"
+          data-image="https://b2b.berrybase.de/onlineshop_bilder/BBG-RPI-HAT_BerryBase-Gehaeuse-fuer-Raspberry-Pi-5-fuer-NVMe-HATs-eloxiertes-Aluminium-sandgestrahlt-schwarz_384161_.jpg"
+          data-price="≈ €20,90"
+          data-country="Alemania"
+          data-link="https://www.berrybase.de/berrybase-gehaeuse-fuer-raspberry-pi-5-fuer-nvme-hats-eloxiertes-aluminium-sandgestrahlt-schwarz"
+          data-description="Gabinete metálico pensado para Raspberry Pi 5 con HATs NVMe."
+          data-comment="Muy conveniente si el M.2 es prioridad."
+          data-m2="Sí">
+          <td class="name">BerryBase BBG-RPI-HAT</td>
+          <td><img src="https://b2b.berrybase.de/onlineshop_bilder/BBG-RPI-HAT_BerryBase-Gehaeuse-fuer-Raspberry-Pi-5-fuer-NVMe-HATs-eloxiertes-Aluminium-sandgestrahlt-schwarz_384161_.jpg" alt="BerryBase Raspberry Pi 5 NVMe"></td>
+          <td class="price">≈ €20,90</td>
+          <td class="country">Alemania</td>
+          <td><a href="https://www.berrybase.de/berrybase-gehaeuse-fuer-raspberry-pi-5-fuer-nvme-hats-eloxiertes-aluminium-sandgestrahlt-schwarz" target="_blank">Comprar</a></td>
+          <td class="desc">Gabinete metálico pensado para Raspberry Pi 5 con HATs NVMe.</td>
+          <td class="comment">Muy conveniente si el M.2 es prioridad.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="Waveshare PI5-CASE-D"
+          data-image="https://cdn11.bigcommerce.com/s-am5zt8xfow/images/stencil/500x659/products/3874/12593/pi5-case-d-1__72952.1742510305.jpg?c=2"
+          data-price="≈ US$10,97"
+          data-country="China"
+          data-link="https://www.waveshare.com/product/raspberry-pi/accessories/pi5-case-d.htm"
+          data-description="Gabinete metálico industrial con montaje en pared o riel DIN y espacio para HATs."
+          data-comment="Barato y espacioso; para fanless conviene agregar disipación pasiva."
+          data-m2="Sí">
+          <td class="name">Waveshare PI5-CASE-D</td>
+          <td><img src="https://cdn11.bigcommerce.com/s-am5zt8xfow/images/stencil/500x659/products/3874/12593/pi5-case-d-1__72952.1742510305.jpg?c=2" alt="Waveshare PI5-CASE-D"></td>
+          <td class="price">≈ US$10,97</td>
+          <td class="country">China</td>
+          <td><a href="https://www.waveshare.com/product/raspberry-pi/accessories/pi5-case-d.htm" target="_blank">Comprar</a></td>
+          <td class="desc">Gabinete metálico industrial con montaje en pared o riel DIN y espacio para HATs.</td>
+          <td class="comment">Barato y espacioso; para fanless conviene agregar disipación pasiva.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="Cyntech RPI5C04 Industrial Aluminium Case"
+          data-image="https://cpc.farnell.com/productimages/large/en_GB/SC20301-40.jpg"
+          data-price="≈ £8,69"
+          data-country="Reino Unido"
+          data-link="https://cpc.farnell.com/cyntech/rpi5c04/industry-aluminium-case-pi-5/dp/SC20301"
+          data-description="Carcasa industrial de aluminio con refrigeración pasiva y sin ventilador."
+          data-comment="Muy barata y fanless, aunque menos preparada para expansiones internas."
+          data-m2="No">
+          <td class="name">Cyntech RPI5C04 Industrial Aluminium Case</td>
+          <td><img src="https://cpc.farnell.com/productimages/large/en_GB/SC20301-40.jpg" alt="Cyntech RPI5C04"></td>
+          <td class="price">≈ £8,69</td>
+          <td class="country">Reino Unido</td>
+          <td><a href="https://cpc.farnell.com/cyntech/rpi5c04/industry-aluminium-case-pi-5/dp/SC20301" target="_blank">Comprar</a></td>
+          <td class="desc">Carcasa industrial de aluminio con refrigeración pasiva y sin ventilador.</td>
+          <td class="comment">Muy barata y fanless, aunque menos preparada para expansiones internas.</td>
+          <td class="m2">No</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+
+        <!-- HAILO_IP_ROWS_START -->
+
+        <tr
+          data-name="Takachi AWNS IP68 a medida para Pi 5 + AI HAT+"
+          data-image="https://www.takachi-enclosure.com/assets/attachments/images/awn_01.jpg"
+          data-price="A cotizar"
+          data-country="Japón"
+          data-link="https://www.takachi-enclosure.com/products/AWNS"
+          data-description="Carcasa de aluminio IP68, fanless y disipadora, configurable al tamaño de una Raspberry Pi 5 con AI HAT+."
+          data-comment="La más cercana a lo pedido: sellada y disipadora. Requiere mecanizado, prensaestopas y contacto térmico."
+          data-m2="Sí">
+          <td class="name">Takachi AWNS IP68 a medida para Pi 5 + AI HAT+</td>
+          <td><img src="https://www.takachi-enclosure.com/assets/attachments/images/awn_01.jpg" alt="Takachi AWNS IP68"></td>
+          <td class="price">A cotizar</td>
+          <td class="country">Japón</td>
+          <td><a href="https://www.takachi-enclosure.com/products/AWNS" target="_blank">Comprar</a></td>
+          <td class="desc">Carcasa de aluminio IP68, fanless y disipadora, configurable al tamaño de una Raspberry Pi 5 con AI HAT+.</td>
+          <td class="comment">La más cercana a lo pedido: sellada y disipadora. Requiere mecanizado, prensaestopas y contacto térmico.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="Takachi AWN16-9-14N"
+          data-image="https://www.takachi-enclosure.com/assets/attachments/images/awn_01.jpg"
+          data-price="≈ ¥6.420"
+          data-country="Japón"
+          data-link="https://www.takachi-enclosure.com/products/AWN"
+          data-description="Carcasa IP68 de aluminio con aletas, fanless y con espacio para adaptar Pi 5 + AI HAT+."
+          data-comment="Muy buena base sellada. Hay que fabricar el soporte interno y unir térmicamente el Hailo a la carcasa."
+          data-m2="Sí">
+          <td class="name">Takachi AWN16-9-14N</td>
+          <td><img src="https://www.takachi-enclosure.com/assets/attachments/images/awn_01.jpg" alt="Takachi AWN16-9-14N"></td>
+          <td class="price">≈ ¥6.420</td>
+          <td class="country">Japón</td>
+          <td><a href="https://www.takachi-enclosure.com/products/AWN" target="_blank">Comprar</a></td>
+          <td class="desc">Carcasa IP68 de aluminio con aletas, fanless y con espacio para adaptar Pi 5 + AI HAT+.</td>
+          <td class="comment">Muy buena base sellada. Hay que fabricar el soporte interno y unir térmicamente el Hailo a la carcasa.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="Hammond 1590Z119BK"
+          data-image="https://cdn.automationdirect.com/static/images/products/large/l_1590z119bk.jpg?format=auto"
+          data-price="≈ US$61"
+          data-country="Canadá"
+          data-link="https://www.automationdirect.com/adc/shopping/catalog/enclosures_-a-_racks/miniature_cases/1590z119bk"
+          data-description="Caja IP68 de aluminio fundido, completamente cerrada y sin ventilador."
+          data-comment="Buen volumen para Pi 5 + AI HAT+. Requiere montaje interno, prensaestopas y puente térmico a la tapa."
+          data-m2="Sí">
+          <td class="name">Hammond 1590Z119BK</td>
+          <td><img src="https://cdn.automationdirect.com/static/images/products/large/l_1590z119bk.jpg?format=auto" alt="Hammond 1590Z119BK"></td>
+          <td class="price">≈ US$61</td>
+          <td class="country">Canadá</td>
+          <td><a href="https://www.automationdirect.com/adc/shopping/catalog/enclosures_-a-_racks/miniature_cases/1590z119bk" target="_blank">Comprar</a></td>
+          <td class="desc">Caja IP68 de aluminio fundido, completamente cerrada y sin ventilador.</td>
+          <td class="comment">Buen volumen para Pi 5 + AI HAT+. Requiere montaje interno, prensaestopas y puente térmico a la tapa.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="Fibox ALN 081306 (7811150)"
+          data-image="https://www.fibox.com/hs-fs/hubfs/assets/7811150_ALN081306%20360_ANIMA_SMALL.gif?length=800&name=7811150_ALN081306+360_ANIMA_SMALL.gif"
+          data-price="≈ €54"
+          data-country="Finlandia"
+          data-link="https://www.conrad.com/en/p/fibox-aln-081306-7811150-universal-enclosure-127-x-81-x-56-5-aluminium-1-pc-s-521266.html"
+          data-description="Caja de aluminio IP66/IP67/IP68, compacta, sellada y fanless."
+          data-comment="Protección excelente; validar altura del AI HAT+ y usar contacto térmico con la tapa."
+          data-m2="No">
+          <td class="name">Fibox ALN 081306 (7811150)</td>
+          <td><img src="https://www.fibox.com/hs-fs/hubfs/assets/7811150_ALN081306%20360_ANIMA_SMALL.gif?length=800&name=7811150_ALN081306+360_ANIMA_SMALL.gif" alt="Fibox ALN 081306"></td>
+          <td class="price">≈ €54</td>
+          <td class="country">Finlandia</td>
+          <td><a href="https://www.conrad.com/en/p/fibox-aln-081306-7811150-universal-enclosure-127-x-81-x-56-5-aluminium-1-pc-s-521266.html" target="_blank">Comprar</a></td>
+          <td class="desc">Caja de aluminio IP66/IP67/IP68, compacta, sellada y fanless.</td>
+          <td class="comment">Protección excelente; validar altura del AI HAT+ y usar contacto térmico con la tapa.</td>
+          <td class="m2">No</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <!-- HAILO_IP_ROWS_END -->
+
+
+        <!-- HAILO_SPECIFIC_ROWS_START -->
+
+        <tr
+          data-name="Akasa A-RA19-M1B – Pi 5 + AI HAT+"
+          data-image="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22320%22%20height%3D%22220%22%3E%0A%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f4f4f4%22/%3E%0A%20%20%20%20%3Crect%20x%3D%2225%22%20y%3D%2240%22%20width%3D%22270%22%20height%3D%22140%22%20rx%3D%2212%22%20fill%3D%22%23ddd%22/%3E%0A%20%20%20%20%3Ctext%20x%3D%22160%22%20y%3D%22100%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2215%22%20fill%3D%22%23333%22%3ERaspberry%20Pi%205%3C/text%3E%0A%20%20%20%20%3Ctext%20x%3D%22160%22%20y%3D%22126%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2214%22%20fill%3D%22%23333%22%3EAkasa%20A-RA19-M1B%3C/text%3E%0A%20%20%20%20%3C/svg%3E"
+          data-price="Aún sin precio"
+          data-country="Reino Unido / Taiwán"
+          data-link="https://www.akasa.co.uk/download/flyer/A-RA19-M1B_ef_20260529.pdf"
+          data-description="Carcasa hecha específicamente para Raspberry Pi 5 + AI HAT+."
+          data-comment="EXACTA. Aluminio, fanless, la carcasa disipa el calor y tiene anclaje a pared/panel. Próximamente."
+          data-m2="No">
+          <td class="name">Akasa A-RA19-M1B – Pi 5 + AI HAT+</td>
+          <td><img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22320%22%20height%3D%22220%22%3E%0A%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f4f4f4%22/%3E%0A%20%20%20%20%3Crect%20x%3D%2225%22%20y%3D%2240%22%20width%3D%22270%22%20height%3D%22140%22%20rx%3D%2212%22%20fill%3D%22%23ddd%22/%3E%0A%20%20%20%20%3Ctext%20x%3D%22160%22%20y%3D%22100%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2215%22%20fill%3D%22%23333%22%3ERaspberry%20Pi%205%3C/text%3E%0A%20%20%20%20%3Ctext%20x%3D%22160%22%20y%3D%22126%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2214%22%20fill%3D%22%23333%22%3EAkasa%20A-RA19-M1B%3C/text%3E%0A%20%20%20%20%3C/svg%3E" alt="Akasa A-RA19-M1B – Pi 5 + AI HAT+" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">Aún sin precio</td>
+          <td class="country">Reino Unido / Taiwán</td>
+          <td><a href="https://www.akasa.co.uk/download/flyer/A-RA19-M1B_ef_20260529.pdf" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Carcasa hecha específicamente para Raspberry Pi 5 + AI HAT+.</td>
+          <td class="comment">EXACTA. Aluminio, fanless, la carcasa disipa el calor y tiene anclaje a pared/panel. Próximamente.</td>
+          <td class="m2">No</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="KKSB Raspberry Pi 5 M.2 HAT Case – 7350001162126"
+          data-image="https://kksb-cases.com/cdn/shop/files/DSC03342_1050x700.jpg?v=1758155505"
+          data-price="≈ €16,50"
+          data-country="Suecia"
+          data-link="https://kksb-cases.com/collections/kksb-quality-cases/products/kksb-raspberry-pi-5-m-2-hat-case"
+          data-description="Carcasa de aluminio para Pi 5 compatible oficialmente con Raspberry Pi AI HAT y AI Kit."
+          data-comment="MUY BUENA. Aluminio y agujeros para pared. Es ventilada; admite el cooler oficial, por lo que no es una solución fanless sellada."
+          data-m2="Sí">
+          <td class="name">KKSB Raspberry Pi 5 M.2 HAT Case – 7350001162126</td>
+          <td><img src="https://kksb-cases.com/cdn/shop/files/DSC03342_1050x700.jpg?v=1758155505" alt="KKSB Raspberry Pi 5 M.2 HAT Case – 7350001162126" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ €16,50</td>
+          <td class="country">Suecia</td>
+          <td><a href="https://kksb-cases.com/collections/kksb-quality-cases/products/kksb-raspberry-pi-5-m-2-hat-case" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Carcasa de aluminio para Pi 5 compatible oficialmente con Raspberry Pi AI HAT y AI Kit.</td>
+          <td class="comment">MUY BUENA. Aluminio y agujeros para pared. Es ventilada; admite el cooler oficial, por lo que no es una solución fanless sellada.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="KKSB Tall Aluminum Dual-HAT – 7350001162249"
+          data-image="https://kksb-cases.com/cdn/shop/files/mainpi5case_1050x700.jpg?v=1776819114"
+          data-price="≈ €26,20"
+          data-country="Suecia"
+          data-link="https://kksb-cases.com/products/kksb-case-for-raspberry-pi-5-tall-aluminum-enclosure-for-dual-hats-nvme-hats"
+          data-description="Carcasa alta de aluminio para Pi 5 con espacio para dos HAT y proyectos AI/NVMe."
+          data-comment="Muy buen espacio para AI HAT/Hailo. Tiene keyholes para pared. Compatibilidad Hailo específica no está certificada por KKSB."
+          data-m2="Sí">
+          <td class="name">KKSB Tall Aluminum Dual-HAT – 7350001162249</td>
+          <td><img src="https://kksb-cases.com/cdn/shop/files/mainpi5case_1050x700.jpg?v=1776819114" alt="KKSB Tall Aluminum Dual-HAT – 7350001162249" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ €26,20</td>
+          <td class="country">Suecia</td>
+          <td><a href="https://kksb-cases.com/products/kksb-case-for-raspberry-pi-5-tall-aluminum-enclosure-for-dual-hats-nvme-hats" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Carcasa alta de aluminio para Pi 5 con espacio para dos HAT y proyectos AI/NVMe.</td>
+          <td class="comment">Muy buen espacio para AI HAT/Hailo. Tiene keyholes para pared. Compatibilidad Hailo específica no está certificada por KKSB.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="KKSB Pi 5 HAT / Add-on Case – 7350001161778"
+          data-image="https://kksb-cases.com/cdn/shop/files/DSC03092_1051x700.jpg?v=1712488335"
+          data-price="≈ €16,90"
+          data-country="Suecia"
+          data-link="https://kksb-cases.com/products/kksb-raspberry-pi-5-case-with-space-for-hats-addon-boards-and-cooler"
+          data-description="Carcasa de aluminio para Pi 5 con espacio para HATs, NVMe y cooler."
+          data-comment="Buena para montar AI HAT. Tiene dos keyholes para pared. No está certificada específicamente para Hailo."
+          data-m2="Sí">
+          <td class="name">KKSB Pi 5 HAT / Add-on Case – 7350001161778</td>
+          <td><img src="https://kksb-cases.com/cdn/shop/files/DSC03092_1051x700.jpg?v=1712488335" alt="KKSB Pi 5 HAT / Add-on Case – 7350001161778" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ €16,90</td>
+          <td class="country">Suecia</td>
+          <td><a href="https://kksb-cases.com/products/kksb-raspberry-pi-5-case-with-space-for-hats-addon-boards-and-cooler" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Carcasa de aluminio para Pi 5 con espacio para HATs, NVMe y cooler.</td>
+          <td class="comment">Buena para montar AI HAT. Tiene dos keyholes para pared. No está certificada específicamente para Hailo.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="KKSB Pi 5 + Official M.2 HAT+ – 7350001162089"
+          data-image="https://kksb-cases.com/cdn/shop/files/DSC03300_1051x700.jpg?v=1737696138"
+          data-price="≈ €16,99"
+          data-country="Suecia"
+          data-link="https://kksb-cases.com/products/kksb-case-for-raspberry-pi-5-and-m2-nvme-hat"
+          data-description="Carcasa de aluminio diseñada para Pi 5 + M.2 HAT+ oficial."
+          data-comment="IDEAL PARA HAILO M.2 / AI KIT anterior. Tiene montaje a pared y opción DIN/VESA. No es el AI HAT+ integrado."
+          data-m2="Sí">
+          <td class="name">KKSB Pi 5 + Official M.2 HAT+ – 7350001162089</td>
+          <td><img src="https://kksb-cases.com/cdn/shop/files/DSC03300_1051x700.jpg?v=1737696138" alt="KKSB Pi 5 + Official M.2 HAT+ – 7350001162089" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ €16,99</td>
+          <td class="country">Suecia</td>
+          <td><a href="https://kksb-cases.com/products/kksb-case-for-raspberry-pi-5-and-m2-nvme-hat" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Carcasa de aluminio diseñada para Pi 5 + M.2 HAT+ oficial.</td>
+          <td class="comment">IDEAL PARA HAILO M.2 / AI KIT anterior. Tiene montaje a pared y opción DIN/VESA. No es el AI HAT+ integrado.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="52Pi KZ-0062 – Pi 5 + M.2 HAT+"
+          data-image="https://52pi.com/cdn/shop/files/KZ-0062-01_1000x.jpg?v=1718084282"
+          data-price="≈ US$42,49"
+          data-country="China"
+          data-link="https://52pi.com/products/metal-case-for-raspberry-pi-5-with-m-2-hat-and-raspberry-pi-active-cooler-for-raspberry-pi-5"
+          data-description="Carcasa de aleación de aluminio diseñada para Pi 5 + M.2 HAT+ oficial."
+          data-comment="Muy apta para Hailo-8/8L M.2 mediante AI Kit. Usa cooler activo y no declara montaje a pared."
+          data-m2="Sí">
+          <td class="name">52Pi KZ-0062 – Pi 5 + M.2 HAT+</td>
+          <td><img src="https://52pi.com/cdn/shop/files/KZ-0062-01_1000x.jpg?v=1718084282" alt="52Pi KZ-0062 – Pi 5 + M.2 HAT+" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ US$42,49</td>
+          <td class="country">China</td>
+          <td><a href="https://52pi.com/products/metal-case-for-raspberry-pi-5-with-m-2-hat-and-raspberry-pi-active-cooler-for-raspberry-pi-5" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Carcasa de aleación de aluminio diseñada para Pi 5 + M.2 HAT+ oficial.</td>
+          <td class="comment">Muy apta para Hailo-8/8L M.2 mediante AI Kit. Usa cooler activo y no declara montaje a pared.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="SunFounder Pironman 5"
+          data-image="https://media.ldlc.com/bo/images/fiches/Raspberry/Bo%C3%AEtier/SunFounder/Pironman_5.jpg"
+          data-price="≈ US$79,99"
+          data-country="China"
+          data-link="https://www.sunfounder.com/products/pironman-5-nvme-m-2-ssd-pcie-mini-pc-case-for-raspberry-pi-5"
+          data-description="Chasis de aluminio para Pi 5 con soporte explícito para Hailo-8L M.2."
+          data-comment="HAILO EXPLÍCITO. Muy específico para AI Kit/Hailo M.2, pero usa ventiladores y no está pensado para pared."
+          data-m2="Sí">
+          <td class="name">SunFounder Pironman 5</td>
+          <td><img src="https://media.ldlc.com/bo/images/fiches/Raspberry/Bo%C3%AEtier/SunFounder/Pironman_5.jpg" alt="SunFounder Pironman 5" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ US$79,99</td>
+          <td class="country">China</td>
+          <td><a href="https://www.sunfounder.com/products/pironman-5-nvme-m-2-ssd-pcie-mini-pc-case-for-raspberry-pi-5" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Chasis de aluminio para Pi 5 con soporte explícito para Hailo-8L M.2.</td>
+          <td class="comment">HAILO EXPLÍCITO. Muy específico para AI Kit/Hailo M.2, pero usa ventiladores y no está pensado para pared.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="SunFounder Pironman 5-Mini"
+          data-image="https://media.ldlc.com/r705/ld/products/00/06/35/42/LD0006354294.jpg"
+          data-price="≈ US$45,99"
+          data-country="China"
+          data-link="https://www.sunfounder.com/products/pironman-5-mini-case"
+          data-description="Mini PC case de aluminio para Pi 5 con soporte para Hailo-8L M.2."
+          data-comment="HAILO EXPLÍCITO. Compacto y de aluminio, pero su refrigeración es activa y no trae montaje a pared."
+          data-m2="Sí">
+          <td class="name">SunFounder Pironman 5-Mini</td>
+          <td><img src="https://media.ldlc.com/r705/ld/products/00/06/35/42/LD0006354294.jpg" alt="SunFounder Pironman 5-Mini" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ US$45,99</td>
+          <td class="country">China</td>
+          <td><a href="https://www.sunfounder.com/products/pironman-5-mini-case" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Mini PC case de aluminio para Pi 5 con soporte para Hailo-8L M.2.</td>
+          <td class="comment">HAILO EXPLÍCITO. Compacto y de aluminio, pero su refrigeración es activa y no trae montaje a pared.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="SunFounder Pironman 5-MAX"
+          data-image="https://media.ldlc.com/r705/ld/products/00/06/35/43/LD0006354330.jpg"
+          data-price="≈ US$94,99"
+          data-country="China"
+          data-link="https://www.sunfounder.com/products/pironman-5-max"
+          data-description="Chasis de aluminio para Pi 5 con doble M.2 y soporte explícito Hailo-8/8L."
+          data-comment="HAILO EXPLÍCITO. Mucho espacio y doble M.2, pero utiliza ventiladores y no está orientado a montaje mural."
+          data-m2="Sí">
+          <td class="name">SunFounder Pironman 5-MAX</td>
+          <td><img src="https://media.ldlc.com/r705/ld/products/00/06/35/43/LD0006354330.jpg" alt="SunFounder Pironman 5-MAX" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ US$94,99</td>
+          <td class="country">China</td>
+          <td><a href="https://www.sunfounder.com/products/pironman-5-max" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Chasis de aluminio para Pi 5 con doble M.2 y soporte explícito Hailo-8/8L.</td>
+          <td class="comment">HAILO EXPLÍCITO. Mucho espacio y doble M.2, pero utiliza ventiladores y no está orientado a montaje mural.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="SunFounder Pironman 5 Pro MAX"
+          data-image="https://media.ldlc.com/r705/ld/products/00/06/35/43/LD0006354340.jpg"
+          data-price="≈ US$145,99"
+          data-country="China"
+          data-link="https://www.sunfounder.com/products/pironman-5-pro-max"
+          data-description="Chasis de aluminio de alta capacidad para Pi 5, AI y almacenamiento M.2."
+          data-comment="HAILO EXPLÍCITO en la familia Pro MAX. Excelente expansión, pero es grande, activo y no mural."
+          data-m2="Sí">
+          <td class="name">SunFounder Pironman 5 Pro MAX</td>
+          <td><img src="https://media.ldlc.com/r705/ld/products/00/06/35/43/LD0006354340.jpg" alt="SunFounder Pironman 5 Pro MAX" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ US$145,99</td>
+          <td class="country">China</td>
+          <td><a href="https://www.sunfounder.com/products/pironman-5-pro-max" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Chasis de aluminio de alta capacidad para Pi 5, AI y almacenamiento M.2.</td>
+          <td class="comment">HAILO EXPLÍCITO en la familia Pro MAX. Excelente expansión, pero es grande, activo y no mural.</td>
+          <td class="m2">Sí</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+
+        <tr
+          data-name="GeeekPi AI HAT+ Hailo 13 TOPS + Metal Case"
+          data-image="https://m.media-amazon.com/images/I/410Nn7zP99L._AC_.jpg"
+          data-price="≈ CLP $176.185"
+          data-country="China"
+          data-link="https://www.ubuy.cl/sp/product/MRCGGUURK-geeekpi-ai-hat-build-in-hailo-ai-accelerator-with-metal-case-active-cooler-for-raspberry-pi-5-13-tops"
+          data-description="Kit vendido directamente como Pi 5 + AI HAT+ Hailo + carcasa metálica."
+          data-comment="MUY ESPECÍFICO PARA HAILO. Incluye el AI HAT+, pero usa cooler activo y el vendedor no confirma que toda la carcasa sea aluminio."
+          data-m2="No">
+          <td class="name">GeeekPi AI HAT+ Hailo 13 TOPS + Metal Case</td>
+          <td><img src="https://m.media-amazon.com/images/I/410Nn7zP99L._AC_.jpg" alt="GeeekPi AI HAT+ Hailo 13 TOPS + Metal Case" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:11px;color:#777">Foto no disponible</span></td>
+          <td class="price">≈ CLP $176.185</td>
+          <td class="country">China</td>
+          <td><a href="https://www.ubuy.cl/sp/product/MRCGGUURK-geeekpi-ai-hat-build-in-hailo-ai-accelerator-with-metal-case-active-cooler-for-raspberry-pi-5-13-tops" target="_blank" rel="noopener">Comprar / ver</a></td>
+          <td class="desc">Kit vendido directamente como Pi 5 + AI HAT+ Hailo + carcasa metálica.</td>
+          <td class="comment">MUY ESPECÍFICO PARA HAILO. Incluye el AI HAT+, pero usa cooler activo y el vendedor no confirma que toda la carcasa sea aluminio.</td>
+          <td class="m2">No</td>
+          <td class="select"><input type="checkbox"></td>
+        </tr>
+        <!-- HAILO_SPECIFIC_ROWS_END -->
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const rows = [...document.querySelectorAll('#productsTable tbody tr')];
+
+  const selected = rows
+    .filter(row => row.querySelector('input[type="checkbox"]').checked)
+    .map(row => ({
+      nombre_producto: row.dataset.name,
+      foto: row.dataset.image,
+      precio_promedio: row.dataset.price,
+      pais_origen: row.dataset.country,
+      link_compra: row.dataset.link,
+      descripcion: row.dataset.description,
+      comentario: row.dataset.comment,
+      espacio_m2: row.dataset.m2
+    }));
+
+  const blob = new Blob(
+    [JSON.stringify(selected, null, 2)],
+    { type: 'application/json;charset=utf-8' }
+  );
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'raspberry_pi_5_industrial_fanless.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>

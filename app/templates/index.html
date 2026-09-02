@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Cotizaciones técnicas editables para proyectos Edge AI.">
+  <title>{{ app_name }}</title>
+  <link rel="stylesheet" href="/static/vendor/tabulator.min.css?v={{ asset_version }}">
+  <link rel="stylesheet" href="/static/styles.css?v={{ asset_version }}">
+  <script src="/static/vendor/tabulator.min.js?v={{ asset_version }}" defer></script>
+  <script src="/static/app.js?v={{ asset_version }}" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">C</span>
+      <strong>Cotizador</strong>
+      <span class="brand-sep" id="brand-sep" aria-hidden="true" hidden></span>
+      <span class="active-name" id="active-quotation-name"></span>
+      <button class="icon-button gear-button" id="edit-quotation" type="button" title="Ajustes de la cotización" aria-label="Ajustes de la cotización" hidden>
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="header-actions" id="header-actions" hidden>
+      <button class="button" id="import-data" type="button">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M4 21h16"></path>
+        </svg>
+        <span>Importar</span>
+      </button>
+      <div class="menu-wrap">
+        <button class="button" id="export-menu-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="export-menu">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 15V3"></path><path d="m7 8 5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path>
+          </svg>
+          <span>Exportar</span>
+        </button>
+        <div class="menu" id="export-menu" role="menu" aria-labelledby="export-menu-button" hidden>
+          <button class="menu-item" id="export-json" type="button" role="menuitem">
+            <strong>JSON</strong><span>Se puede reimportar en esta o en otra cotización</span>
+          </button>
+          <button class="menu-item" id="export-pdf" type="button" role="menuitem">
+            <strong>PDF</strong><span>Sólo los ítems incluidos</span>
+          </button>
+          <button class="menu-item" id="export-html" type="button" role="menuitem">
+            <strong>HTML</strong><span>Elige cotizaciones y alcance; se ve como esta pantalla</span>
+          </button>
+          <button class="menu-item" id="export-excel" type="button" role="menuitem">
+            <strong>Excel</strong><span>Una hoja por cotización, con los mismos campos</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs-shell" aria-label="Cotizaciones">
+    <div class="tabs" id="quotation-tabs"></div>
+    <label class="tab-search">
+      <span class="sr-only">Buscar en todos los campos</span>
+      <input id="filter-search" type="search" placeholder="Buscar…">
+    </label>
+    <button class="tab-add" id="new-quotation" type="button" title="Nueva cotización" aria-label="Nueva cotización">+</button>
+  </nav>
+
+  <main class="workspace" id="workspace">
+    <section class="loading-state" id="loading-state" aria-live="polite">
+      <div class="loading-line wide"></div><div class="loading-line"></div>
+    </section>
+
+    <section id="quotation-view" hidden>
+      <section class="quote-intro" id="quotation-intro" aria-label="Descripción de la cotización" hidden>
+        <p class="eyebrow">Sobre esta cotización</p>
+        <div class="quote-intro-text" id="quotation-intro-text"></div>
+      </section>
+      <section class="catalog-card" aria-label="Elementos cotizados">
+        <div id="items-table"></div>
+        <footer class="table-footer">
+          <span id="visible-count"></span>
+          <div class="table-footer-actions">
+            <div class="selection-actions" role="group" aria-label="Acciones sobre lo marcado">
+              <button class="button" id="selection-move" type="button" disabled>Mover a otra cotización…</button>
+              <button class="button" id="selection-include" type="button" disabled>Incluir</button>
+              <button class="button" id="selection-exclude" type="button" disabled>Descartar</button>
+              <button class="button button-danger" id="selection-delete" type="button" disabled>Eliminar</button>
+            </div>
+            <button class="button button-quiet" id="clear-filters" type="button" hidden>Limpiar filtros</button>
+            <button class="button button-primary" id="new-item" type="button">Agregar ítem</button>
+          </div>
+        </footer>
+      </section>
+    </section>
+
+    <section class="blank-state" id="blank-state" hidden>
+      <p class="eyebrow">Sin cotizaciones</p>
+      <h1>Crea tu primera cotización</h1>
+      <p>Define sus campos y agrega productos para comenzar.</p>
+      <button class="button button-primary" type="button" data-action="new-quotation">Nueva cotización</button>
+    </section>
+  </main>
+
+  <dialog class="modal item-modal" id="item-modal">
+    <form method="dialog" class="modal-shell" id="item-form">
+      <header class="modal-head">
+        <div><p class="eyebrow" id="item-modal-kicker">Ítem</p><h2 id="item-modal-title">Editar ítem</h2></div>
+        <button class="icon-button" type="button" data-close="item-modal" aria-label="Cerrar">×</button>
+      </header>
+      <div class="modal-body">
+        <div class="photo-editor">
+          <div class="photo-preview" id="item-photo-preview"><span>Sin foto</span></div>
+          <div class="photo-controls">
+            <label class="field"><span>URL de foto</span><input id="item-photo" name="photo" type="url" placeholder="https://..."></label>
+            <label class="file-button">Subir foto<input id="item-photo-file" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label>
+            <small>Las fotos subidas se reducen y guardan como WebP (calidad 80).</small>
+          </div>
+        </div>
+        <div class="form-grid">
+          <label class="field field-wide"><span>Nombre</span><input id="item-name" name="name" required maxlength="240"></label>
+          <label class="field"><span>Precio</span><input id="item-price" name="price" maxlength="300" placeholder="Ej. $120.000 CLP"></label>
+          <label class="field"><span>País de origen</span><input id="item-country" name="country" maxlength="160"></label>
+          <label class="field field-wide"><span>Link de compra o referencia</span><input id="item-link" name="purchase_link" type="url" placeholder="https://..."></label>
+          <label class="field field-wide"><span>Descripción</span><textarea id="item-description" name="description" rows="3" maxlength="8000"></textarea></label>
+          <label class="field field-wide"><span>Comentario</span><textarea id="item-comment" name="comment" rows="3" maxlength="8000"></textarea></label>
+          <div class="extra-form field-wide" id="item-extra-fields"></div>
+          <label class="check-field field-wide"><input id="item-included" name="included" type="checkbox"><span>Incluir este ítem en la cotización y sus exportaciones</span></label>
+        </div>
+      </div>
+      <footer class="modal-foot">
+        <div>
+          <button class="button button-danger" id="delete-item" type="button">Eliminar ítem</button>
+          <button class="button" id="export-item" type="button">Exportar sólo este ítem</button>
+          <label class="move-field" id="move-item-field" hidden>
+            <span class="sr-only">Mover a otra cotización</span>
+            <select id="move-item-target"></select>
+          </label>
+          <button class="button" id="move-item" type="button" hidden>Mover</button>
+        </div>
+        <div><button class="button" type="button" data-close="item-modal">Cancelar</button><button class="button button-primary" id="save-item" type="submit">Guardar cambios</button></div>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="quotation-modal">
+    <form method="dialog" class="modal-shell compact" id="quotation-form">
+      <header class="modal-head">
+        <div><p class="eyebrow">Cotización</p><h2 id="quotation-modal-title">Editar cotización</h2></div>
+        <button class="icon-button" type="button" data-close="quotation-modal" aria-label="Cerrar">×</button>
+      </header>
+      <div class="modal-body form-grid">
+        <label class="field field-wide"><span>Nombre</span><input id="quote-name" required maxlength="180"></label>
+        <label class="field"><span>Fecha</span><input id="quote-date" type="date" required></label>
+        <label class="field"><span>Link general de compra o referencia</span><input id="quote-link" type="url" placeholder="https://..."></label>
+        <label class="field field-wide"><span>Descripción</span><textarea id="quote-description" rows="3" maxlength="4000"></textarea></label>
+        <label class="field field-wide">
+          <span>Campos extra — uno por línea</span>
+          <textarea id="quote-extra-fields" rows="6" placeholder="incluye_ventilador:boolean | Incluye ventilador&#10;rendimiento:number | Rendimiento"></textarea>
+          <small>Tipos: text, boolean, number, url o date. La clave usa minúsculas y guion bajo.</small>
+        </label>
+      </div>
+      <footer class="modal-foot">
+        <button class="button button-danger" id="delete-quotation" type="button">Eliminar cotización</button>
+        <div><button class="button" type="button" data-close="quotation-modal">Cancelar</button><button class="button button-primary" type="submit">Guardar</button></div>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="import-modal">
+    <form method="dialog" class="modal-shell compact" id="import-form">
+      <header class="modal-head">
+        <div><p class="eyebrow">Importar y confirmar</p><h2>Pegar datos de la AI</h2></div>
+        <button class="icon-button" type="button" data-close="import-modal" aria-label="Cerrar">×</button>
+      </header>
+      <div class="modal-body">
+        <div class="import-hint">
+          <span>¿Aún no tienes el JSON? Copia el prompt, pásalo a la AI junto a tu fuente y pega aquí lo que devuelva.</span>
+          <button class="button" id="import-copy-prompt" type="button">Copiar prompt</button>
+        </div>
+        <label class="drop-zone" id="import-drop">
+          <strong>Selecciona o arrastra un HTML / JSON</strong>
+          <span>También puedes pegar el contenido debajo. Nunca se ejecutan scripts del archivo.</span>
+          <input id="import-file" type="file" accept=".html,.htm,.json,text/html,application/json" hidden>
+        </label>
+        <label class="field"><span>Contenido a importar</span><textarea id="import-content" rows="8" placeholder="Pega aquí el JSON generado por la AI o el HTML devuelto..."></textarea></label>
+        <label class="check-field" id="adopt-extra-fields-field" hidden>
+          <input id="adopt-extra-fields" type="checkbox" checked>
+          <span>Agregar a esta cotización los campos extra que trae el archivo: <strong id="adopt-extra-fields-labels"></strong>. Si lo destildas los valores se copian igual, pero quedan ocultos hasta que definas el campo.</span>
+        </label>
+        <div class="import-preview" id="import-preview" hidden>
+          <div class="preview-summary" id="preview-summary"></div>
+          <div class="preview-warnings" id="preview-warnings"></div>
+          <div class="preview-list" id="preview-list"></div>
+        </div>
+      </div>
+      <footer class="modal-foot">
+        <span class="modal-status" id="import-status"></span>
+        <div><button class="button" type="button" data-close="import-modal">Cancelar</button><button class="button" id="preview-import" type="button">Vista previa</button><button class="button button-primary" id="confirm-import" type="button" disabled>Confirmar cambios</button></div>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="export-html-modal">
+    <form method="dialog" class="modal-shell compact" id="export-html-form">
+      <header class="modal-head">
+        <div><p class="eyebrow">Exportar</p><h2 id="export-modal-title">Archivo HTML autónomo</h2></div>
+        <button class="icon-button" type="button" data-close="export-html-modal" aria-label="Cerrar">×</button>
+      </header>
+      <div class="modal-body">
+        <p class="export-lead" id="export-modal-lead">Se ve igual que esta pantalla, funciona sin internet y se puede volver a importar con lo que marquen.</p>
+        <fieldset class="export-group">
+          <legend>Cotizaciones a incluir</legend>
+          <label class="check-field"><input id="export-select-all" type="checkbox"><span>Todas las cotizaciones</span></label>
+          <div class="export-list" id="export-quotation-list"></div>
+        </fieldset>
+        <fieldset class="export-group">
+          <legend>Elementos</legend>
+          <label class="check-field"><input type="radio" name="export-scope" value="all" checked><span><strong>Todos los elementos</strong> — los descartados viajan marcados como tales y se pueden reincorporar</span></label>
+          <label class="check-field"><input type="radio" name="export-scope" value="included"><span><strong>Sólo los incluidos</strong> — los que tienen marcada la casilla Incluir</span></label>
+        </fieldset>
+      </div>
+      <footer class="modal-foot">
+        <span class="modal-status" id="export-html-status"></span>
+        <div><button class="button" type="button" data-close="export-html-modal">Cancelar</button><button class="button button-primary" id="confirm-export-html" type="submit">Exportar</button></div>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="menu row-menu" id="row-menu" role="menu" aria-label="Acciones del ítem" hidden></div>
+  <div class="column-menu" id="column-menu" role="dialog" aria-label="Ordenar y filtrar columna" hidden></div>
+  <div class="menu move-menu" id="move-menu" role="menu" aria-label="Mover a otra cotización" hidden></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

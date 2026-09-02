@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+# La base curada (data/cotizador.db) sí se versiona; sólo se ignoran respaldos y archivos auxiliares de SQLite.
+data/*.backup-*.db
+data/*.db-*
+tmp/
+output/
+.claude/

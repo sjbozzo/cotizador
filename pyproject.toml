@@ -1,0 +1,25 @@
+[project]
+name = "cotizador-edge-ai"
+version = "1.0.0"
+description = "Cotizaciones técnicas editables con FastAPI y SQLite"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi==0.116.1",
+  "uvicorn[standard]==0.35.0",
+  "jinja2==3.1.6",
+  "reportlab==4.4.3",
+  "Pillow==11.3.0",
+  "pydantic==2.11.7",
+]
+
+[dependency-groups]
+dev = [
+  "httpx==0.28.1",
+  "pytest==8.4.1",
+  "pypdf==6.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+

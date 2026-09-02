@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aceleradores USB para YOLO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 24px;
+      background: #ffffff;
+      color: #222;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    p {
+      margin-top: 0;
+      color: #555;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    a {
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Aceleradores USB para correr YOLO por menos de $100.000 CLP</h1>
+<p>Lista de dispositivos tipo pendrive o dongle USB capaces de acelerar redes de visión artificial.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Dispositivo</th>
+      <th>Acelerador</th>
+      <th>Rendimiento aprox.</th>
+      <th>Compatibilidad YOLO</th>
+      <th>Precio aprox.</th>
+      <th>Comentario</th>
+      <th>Referencia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Google Coral USB Accelerator</td>
+      <td>Google Edge TPU</td>
+      <td>4 TOPS</td>
+      <td>Sí, mediante TensorFlow Lite INT8</td>
+      <td>US$59.99 (~$56.000 CLP), sin envío</td>
+      <td>Muy buena opción para Raspberry Pi. Requiere convertir el modelo al formato Edge TPU.</td>
+      <td><a href="https://www.coral.ai/products/accelerator/" target="_blank">Coral</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Intel Neural Compute Stick 2</td>
+      <td>Intel Movidius Myriad X</td>
+      <td>~4 TOPS</td>
+      <td>Sí, mediante OpenVINO</td>
+      <td>Usado aprox. $31.000–$84.000 CLP</td>
+      <td>Buena compatibilidad con YOLO y OpenVINO, pero está discontinuado.</td>
+      <td><a href="https://www.intel.com/content/www/us/en/products/sku/140109/intel-neural-compute-stick-2/specifications.html" target="_blank">Intel</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Intel Movidius Neural Compute Stick</td>
+      <td>Intel Myriad 2</td>
+      <td>&lt;1 TOPS útil</td>
+      <td>Sí, principalmente modelos YOLO antiguos</td>
+      <td>Aprox. $20.000–$75.000 CLP usado</td>
+      <td>Muy antiguo. Útil sólo para pruebas o proyectos legacy.</td>
+      <td>Mercado usado / eBay</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Orange Pi AI Stick Lite</td>
+      <td>Gyrfalcon SPR2801S</td>
+      <td>2.8 TOPS</td>
+      <td>Posible, requiere conversión</td>
+      <td>Históricamente ~US$20</td>
+      <td>Muy barato y de bajo consumo, pero con ecosistema bastante limitado.</td>
+      <td>Orange Pi / mercado usado</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>RK1808 AI Compute Stick</td>
+      <td>Rockchip RK1808</td>
+      <td>~3 TOPS</td>
+      <td>Sí, mediante RKNN</td>
+      <td>~US$86 (~$80.000 CLP)</td>
+      <td>Interesante alternativa al Coral. Usa el toolkit RKNN de Rockchip.</td>
+      <td><a href="https://www.seeedstudio.com/" target="_blank">Seeed Studio</a></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Kneron KNEO AI Dongle KL520</td>
+      <td>Kneron KL520</td>
+      <td>~0.35 TOPS</td>
+      <td>Sí, YOLO / Tiny YOLO</td>
+      <td>Variable, generalmente bajo US$100</td>
+      <td>Rendimiento modesto, pero Kneron mantiene SDK y documentación.</td>
+      <td><a href="https://www.kneron.com/" target="_blank">Kneron</a></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Kneron KNEO STEM KL720</td>
+      <td>Kneron KL720</td>
+      <td>~1.4 TOPS</td>
+      <td>Sí</td>
+      <td>Cerca de US$100 según versión</td>
+      <td>Más interesante que KL520. Tiene soporte documentado para modelos YOLO.</td>
+      <td><a href="https://doc.kneron.com/docs/toolchain/appendix/yolo_example/" target="_blank">Kneron Docs</a></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Gyrfalcon Plai Plug SPR2803S</td>
+      <td>Lightspeeur 2803S</td>
+      <td>16.8 TOPS pico</td>
+      <td>Posible, pero SDK poco común</td>
+      <td>Históricamente US$49–69</td>
+      <td>Buen rendimiento teórico, pero ecosistema y disponibilidad son débiles.</td>
+      <td>Gyrfalcon / mercado usado</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Firefly GTI USB Dongle</td>
+      <td>Gyrfalcon SPR2801S</td>
+      <td>2.8 TOPS</td>
+      <td>Limitado</td>
+      <td>Variable</td>
+      <td>Hardware antiguo y difícil de recomendar actualmente.</td>
+      <td>Firefly / mercado usado</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Bitmain Sophon Neural Network Stick</td>
+      <td>BM1880</td>
+      <td>~1 TOPS INT8</td>
+      <td>Sí, especialmente YOLOv2</td>
+      <td>Variable, principalmente usado</td>
+      <td>Soporta distintos frameworks, pero actualmente es un dispositivo legacy.</td>
+      <td><a href="https://sophon-edge.gitbook.io/project/overview/neural-network-stick" target="_blank">Sophon Docs</a></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Hailo-8 USB Stick / USB Accelerator</td>
+      <td>Hailo-8</td>
+      <td>26 TOPS</td>
+      <td>Sí, muy buena compatibilidad</td>
+      <td>Desde ~US$99 en algunos proveedores</td>
+      <td>El más potente de la lista. Hay que revisar cuidadosamente disponibilidad y precio real del modelo USB.</td>
+      <td><a href="https://hailo.ai/" target="_blank">Hailo</a></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>DeepVision DRAX REV A0 USB-C</td>
+      <td>DeepVision ARA-1</td>
+      <td>NPU dedicada</td>
+      <td>Posible</td>
+      <td>~US$99 usado</td>
+      <td>Interesante como curiosidad técnica, pero drivers y soporte son bastante limitados.</td>
+      <td><a href="https://www.keystoneenterprises.com/deepvision-drax-rev-a0-usb-type-c-ai-accelerator.html" target="_blank">Referencia</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Ranking recomendado</h2>
+<ol>
+  <li>Hailo-8 USB</li>
+  <li>Google Coral USB Accelerator</li>
+  <li>Kneron KL720</li>
+  <li>RK1808 AI Compute Stick</li>
+  <li>Intel Neural Compute Stick 2</li>
+  <li>Kneron KL520</li>
+  <li>Orange Pi AI Stick Lite</li>
+</ol>
+
+</body>
+</html>
