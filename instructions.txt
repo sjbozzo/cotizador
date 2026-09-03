@@ -41,6 +41,16 @@ Criterios de veredicto
   delete  = error del catálogo: inexistente, duplicado, fuera de categoría, o pedido explícito del usuario.
 Una baja propuesta por un agente sólo se aplica si la revisa una persona (o al menos dos jueces).
 
+Reorganización (2026-09-03)
+---------------------------
+El catálogo quedó en cinco categorías visibles con máximo 8 ítems: 1 Aceleradores USB, 2 Aceleradores M.2
+(PCIe 3.0), 3 PC industriales con ranura M.2, 4 PC con NPU (incluye Jetson Orin Nano), 5 Microcomputadores
+(incluye Raspberry Pi 5). Se conservan Raspberry Pi 5, Hailo-8, Qotom, Seeed reComputer y AMD Kria. Lo demás está
+en la cotización archivada «Reserva» (nada se borró). Para el nodo en mina: Topton X2B/X2F o KingnovyPC X2E
+(AliExpress, ~US$130) + Hailo-8 M.2 26 TOPS de Unistorm en Amazon (B0FBFTW5QJ, US$214,99, envía a Chile;
+el Waveshare B0D928WG5L NO envía a Chile). Columnas «Disponibilidad en Chile» verificadas en Mercado Libre,
+Amazon y AliExpress con el flujo disponibilidad-mercados (scripts/apply_availability.py).
+
 Estado (2026-09-02, 12:00)
 --------------------------
 HECHO

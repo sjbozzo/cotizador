@@ -51,6 +51,13 @@ uv run pytest
 - Un clic en el nombre abre la página del producto, cuando el ítem tiene enlace.
   En el HTML exportado ese clic abre la ficha del ítem, que no se edita.
 
+## Estructura del catálogo (septiembre 2026)
+
+Cinco categorías visibles, con un máximo de 8 ítems cada una: **1 · Aceleradores USB**, **2 · Aceleradores M.2
+(PCIe 3.0)**, **3 · PC industriales con ranura M.2**, **4 · PC con NPU** y **5 · Microcomputadores**. Todo lo que
+salió de esas categorías quedó en la cotización archivada «Reserva · fuera de las cinco categorías» (se ve con
+«Ver archivadas» y se puede volver a mover). `scripts/reorganizar_2026_09.py` es el script que hizo el reparto.
+
 ## Auditar el catálogo con agentes
 
 `scripts/auditoria/` guarda los flujos de agentes (`workflows/*.js`, para el comando Workflow de
@@ -67,6 +74,8 @@ uv run python -m scripts.apply_audit scripts/auditoria/2026-09-02-auditoria.json
 uv run python -m scripts.apply_audit scripts/auditoria/2026-09-02-auditoria.json
 ```
 
+`scripts/apply_availability.py` aplica el resultado del flujo «disponibilidad-mercados» (dónde comprar
+desde Chile: Mercado Libre, Amazon con envío a Chile o AliExpress).
 `scripts/import_quotations.py` crea cotizaciones nuevas a partir de un HTML o JSON exportado
 (la importación de la aplicación, en cambio, mete ítems en una cotización que ya existe).
 `scripts/prepare_audit_batches.py` arma los lotes pequeños que consume el flujo ligero

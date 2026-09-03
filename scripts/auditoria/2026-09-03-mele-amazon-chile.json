@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "origen": "Flujo pc-amazon-hailo (2026-09-03): MeLE Quieter 4C N150 con eMMC en Amazon con envío a Chile; Zotac y FANPEEC descartados"
+ },
+ "batches": [
+  {
+   "q": "pcs-industriales-m2-ai",
+   "index": 0,
+   "items": [
+    {
+     "id": "item-cb5debd12f98424ba72a705d1afca348",
+     "name_lookup": "MeLE Quieter 4C",
+     "verdict": "keep",
+     "verdict_reason": "Variante N150 con 128 GB eMMC: el M.2 2280 PCIe 3.0 x4 queda libre y Amazon la despacha a Chile.",
+     "price": "US$379,99 (Amazon, MeLE official shop, variante N150 8 GB + 128 GB eMMC, sep. 2026; ≈US$483 puesto en Chile con depósito de aduana). En MercadoLibre Chile la N100 8/128 ronda $275.000",
+     "price_source": "https://www.amazon.com/dp/B0FLJDVWVR",
+     "availability_chile": "Amazon.com (MeLE official shop, envío por Amazon): la ficha con destino Chile mostraba 'Import Charges & FREE Shipping to Chile' y stock (sep. 2026); ojo con la variante: sólo las de 128 GB eMMC dejan el M.2 libre (B0FLJDVWVR N150; B0DPM3GX7B N100). También MercadoLibre Chile (N100).",
+     "programming_score": 5,
+     "programming_note": "x86 con Ubuntu: HailoRT y Ultralytics sin adaptaciones.",
+     "description": "Mini PC fanless ultradelgado de MeLE (131×81×18 mm) con Intel N150 o N100, 8 GB soldados, 128 GB eMMC 5.1 para el sistema y una ranura M.2 2280 M-key PCIe 3.0 x4 vacía; 1× GbE, Wi-Fi 5, carcasa negra de plástico con base metálica y disipación pasiva (MeLE la anuncia '0 dB, no dust', sin grado IP).",
+     "comment": "La opción más barata con envío confirmado a Chile que deja libre un M.2 x4 para el Hailo-8: el sistema arranca desde la eMMC. Contras: 1 sola LAN de 1 GbE (las cámaras van por switch), RAM soldada, sin bahía SATA, carcasa plástica y temperaturas altas bajo carga sostenida en reseñas (CPU 82–90 °C): vigilar el Hailo. Elegir siempre la variante con eMMC; las de SSD ocupan el M.2.",
+     "country": "",
+     "purchase_link": "https://www.amazon.com/dp/B0FLJDVWVR",
+     "spec_corrections": "Se corrige el enlace (antes MercadoLibre N100) al listado de Amazon con envío a Chile; precio y variante actualizados.",
+     "extra_data": {
+      "procesador": "Intel N150 (o N100), 4 núcleos",
+      "ram": "8 GB LPDDR5 soldada (N150) / LPDDR4X (N100)",
+      "m2_acelerador": "Sí: M-key 2280 PCIe 3.0 x4, libre porque el SO va en la eMMC de 128 GB (sólo variantes con eMMC)"
+     },
+     "m2": {
+      "applies": false
+     },
+     "sources": [
+      "https://www.amazon.com/dp/B0FLJDVWVR",
+      "https://liliputing.com/mele-quieter-4c-review/"
+     ],
+     "votes": null,
+     "removal_holds": false,
+     "name": "MeLE Quieter 4C N150 (eMMC 128 GB + M.2 x4 libre, Amazon → Chile)"
+    }
+   ]
+  }
+ ]
+}

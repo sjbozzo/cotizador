@@ -1,0 +1,420 @@
+{
+ "pcs": [
+  {
+   "name": "FANPEEC FAH3 Fanless Mini PC N100 (8 GB DDR4 / 128 GB mSATA, Win11 Pro)",
+   "amazon_url": "https://www.amazon.com/dp/B0DP5XT1CP",
+   "asin": "B0DP5XT1CP",
+   "price": "US$317.70 (Amazon.com, 3 sep. 2026); con envío a Chile: AmazonGlobal US$0 + depósito de importación estimado US$88.26 = total US$405.96",
+   "in_stock": "\"Only 4 left in stock - order soon\" (visto 3 sep. 2026)",
+   "ships_to_chile": "Sí: la ficha con destino Chile muestra \"Import Charges & FREE Shipping to Chile\", entrega estimada 14-21 sep. 2026; Ships from Amazon, Sold by Fanpeec Mini PC",
+   "color": "sin dato en la ficha (chasis de aluminio)",
+   "cpu": "Intel N100 (4C/4T, hasta 3,4 GHz, 6 W)",
+   "fanless": true,
+   "sealed": "sin dato (fabricante dice \"fanless\" y chasis de aluminio; no declara sellado ni grado IP)",
+   "m2_slot": "1x M.2 2280 NVMe (el listado indica PCIe 3.0 x2; key no especificada, se asume M-key por ser NVMe) + 1x mSATA + 1x SATA 3.0 para 2,5\" ≤7 mm",
+   "boot_storage": "El sistema viene de fábrica en el mSATA de 128 GB, así que la ranura M.2 2280 queda LIBRE para el Hailo-8; alternativa: SSD SATA 2,5\"",
+   "ram": "8 GB DDR4-3200 SO-DIMM (1 ranura, hasta 32 GB)",
+   "lan": "2x RJ45 Gigabit (1 GbE) + WiFi 6 / BT 5.2; 2x RS232, TPM 2.0, watchdog, auto power-on",
+   "why": "Único candidato en stock y con envío a Chile bajo US$400 cuyo M.2 2280 NVMe queda libre de fábrica (SO en mSATA) y además ofrece bahía SATA 2,5\"; formato industrial con COM y watchdog, ideal para el nodo minero. Falta confirmar sellado y color.",
+   "sources": [
+    "https://www.amazon.com/dp/B0DP5XT1CP",
+    "https://www.amazon.co.uk/FANPEEC-Fanless-Computer-Industrial-Business/dp/B0DP5XT1CP"
+   ],
+   "verify": {
+    "exists": true,
+    "price_found": "US$317.70 aprox. (la ficha con destino Chile muestra CLP 297.573,70 + CLP 82.669 de depósito de importación estimado = CLP 380.243, ≈ US$406 en total; Amazon.com, 3 sep. 2026)",
+    "in_stock": "Sí: \"Only 4 left in stock - order soon\" (Amazon.com, 3 sep. 2026); vendido por Fanpeec Mini PC, envío por Amazon",
+    "ships_to_chile": "Sí: con destino Chile la ficha muestra \"Import Charges & FREE Shipping to Chile\" (depósito de importación estimado CLP 82.669) y \"FREE Shipping by Amazon\"",
+    "m2_ok": false,
+    "boot_ok": true,
+    "fanless": true,
+    "color": "Negro (fotos del listado: chasis de aluminio negro con aletas)",
+    "sealed": "No: las fotos muestran ranuras de ventilación en ambos laterales y en la placa inferior; no se declara sellado ni grado IP",
+    "under_400": true,
+    "notes": "Verificado en amazon.com (curl con destino Chile): ASIN existe, US$317.70 (CLP 297.573,70), \"Only 4 left in stock\", vendido por Fanpeec Mini PC / envío por Amazon, con \"Import Charges & FREE Shipping to Chile\". Precio del PC < US$400, pero el total con depósito de aduana (~US$406) supera los US$400. Almacenamiento: el listado indica \"1 * M.2 2280 slot; 1 * MSATA slot; 1 * SATA3.0\" y la imagen del despiece etiqueta \"M.2 SSD 2280\" (vacía) y \"MSATA SSD (Preinstalled)\", así que la ranura M.2 queda libre y el SO va en el mSATA; además hay bahía SATA 2,5\" (≤7 mm). PERO ninguna fuente (Amazon, directnine.ie, fanpeec) especifica key ni lanes PCIe de la ranura M.2: la afirmación \"PCIe 3.0 x2\" del buscador no aparece en ningún listado. Sólo se dice \"M.2 NVMe SSD slot\", lo que sugiere M-key con PCIe, pero no está confirmado: m2_ok=false por falta de evidencia (habría que preguntar al vendedor si es M-key PCIe y no un slot SATA-only). Fanless confirmado (chasis aluminio con aletas). Color negro. NO sellado: ranuras de ventilación visibles en laterales y base, sin grado IP; para mina con polvo es un punto en contra. Modelo \"FAH3\" aparece sólo en fragmentos de búsqueda, no en la ficha de Amazon.com. Amazon.de lo lista a €243.20 y eBay a US$408-481 (referencia).",
+    "sources": [
+     "https://www.amazon.com/dp/B0DP5XT1CP",
+     "https://www.amazon.com/FANPEEC-Industrial-Computer-2xGigabit-Business/dp/B0DP5XT1CP",
+     "https://www.amazon.co.uk/FANPEEC-Fanless-Computer-Industrial-Business/dp/B0DP5XT1CP",
+     "https://www.amazon.de/-/en/FANPEEC-Industrial-Fanless-Computers-Business/dp/B0DP5XT1CP",
+     "https://directnine.ie/products/fanpeec-fanless-mini-pc-n100-8gb-ddr4-128gb-msata-ssd-industrial-pc-win11-prolinux-4k-triple-display-2xlan-4xusb-wifi6-bt52-tpm20-power-on-auto-fanless-computer-for-businesshome-sever-1325504695",
+     "https://m.media-amazon.com/images/I/61DhfAiDbwL._AC_SL1500_.jpg",
+     "https://www.ebay.com/itm/127463709342"
+    ]
+   }
+  },
+  {
+   "name": "MeLE Quieter 4C N150 Business-Grade (8 GB / 128 GB eMMC, Win11 Pro)",
+   "amazon_url": "https://www.amazon.com/dp/B0F5WNJ5ZB",
+   "asin": "B0F5WNJ5ZB",
+   "price": "US$349.99 (Amazon.com, 3 sep. 2026); con envío a Chile: depósito de importación estimado US$95.68 = total US$445.67",
+   "in_stock": "\"Only 16 left in stock\" (visto 3 sep. 2026)",
+   "ships_to_chile": "Sí: \"Import Charges & FREE Shipping to Chile\", entrega estimada 15 sep. 2026; Ships from Amazon, Sold by MeLE MINI PC (otra oferta \"Ships from and sold by Amazon.com\")",
+   "color": "Negro (Color: Black)",
+   "cpu": "Intel N150 Twin Lake (4C/4T, hasta 3,6 GHz)",
+   "fanless": true,
+   "sealed": "No lo declara sellado/IP; el listado anuncia \"0dB Silent, No Dust, zero dust ingress\" y la reseña de Liliputing describe chasis sin ranuras de ventilación tradicionales (plástico arriba, base metálica)",
+   "m2_slot": "1x M.2 2280 M-key PCIe 3.0 x4 (acepta NVMe o SATA M.2), vacía de fábrica",
+   "boot_storage": "eMMC 5.1 TLC de 128 GB soldado en placa (SO preinstalado ahí) + microSD hasta 2 TB; el M.2 2280 queda LIBRE para el Hailo-8",
+   "ram": "8 GB (LPDDR5/DDR4 según lote, soldada, no ampliable)",
+   "lan": "1x Gigabit Ethernet + WiFi 5 / BT 5.1",
+   "why": "El más barato con envío a Chile que deja el M.2 2280 x4 libre (arranca desde eMMC); negro, muy compacto (131x81x18 mm), 7x24 comercial y con BIOS desbloqueado (auto power-on, WoL). Contras: una sola LAN 1 GbE y RAM no ampliable; el 2280 obliga a usar Hailo-8 2280 o adaptador 2242→2280.",
+   "sources": [
+    "https://www.amazon.com/dp/B0F5WNJ5ZB",
+    "https://liliputing.com/mele-quieter-4c-review/",
+    "https://www.starryhope.com/minipcs/models/mele-quieter-4c/"
+   ],
+   "verify": {
+    "exists": true,
+    "price_found": "Sin confirmar en Amazon (bloquea WebFetch). Referencias: Walmart lista el Quieter4C N150 8GB/256GB a US$379.99 y la tienda oficial MeLE el 8GB/128GB \"Business-Grade\" a US$459.99 (oferta, normal US$489.99). El US$349.99 propuesto no pudo verificarse.",
+    "in_stock": "Sin confirmar (no se pudo leer el cuerpo de la ficha de Amazon; el \"Only 16 left\" propuesto no se verificó).",
+    "ships_to_chile": "Sin confirmar (no se pudo leer la sección de envío/depósito de importación de Amazon).",
+    "m2_ok": false,
+    "boot_ok": false,
+    "fanless": true,
+    "color": "Negro (oscuro en imágenes; Amazon/MeLE no declaran opciones de color; la tapa es plástico negro y la base metálica)",
+    "sealed": "No declarado: sin IP ni \"dustproof\" en la ficha del fabricante ni en la tienda MeLE; sólo \"0dB silent / fanless\". Liliputing describe carcasa plástica con base metálica y disipación pasiva por convección; el eslogan \"zero dust ingress\" es marketing del listado, no una certificación.",
+    "under_400": false,
+    "notes": "ERROR CLAVE: el ASIN B0F5WNJ5ZB NO es la variante 8 GB / 128 GB eMMC. El título real de la ficha de Amazon es \"MeLE Business-Grade Quieter 4C N150 Fanless Silent Mini PC 8GB RAM 256GB\" y los fragmentos de búsqueda la describen como \"8GB LPDDR5, 256GB SSD\". En la gama N150 el almacenamiento es \"128GB eMMC 5.1 O 256/512GB NVMe SSD\" (excluyente según MeLE: \"EMMC or SSD\"), por lo que en esta variante el único M.2 2280 viene OCUPADO por el SSD del sistema y no hay eMMC confirmada para arrancar: no queda libre para el Hailo-8 sin reubicar el SO (sólo quedaría microSD, no válido como disco del sistema según los requisitos). La variante que sí cumple la idea (8 GB LPDDR5 + 128 GB eMMC, M.2 2280 NVMe/SATA vacío) es otro ASIN: B0F5WNJ56L (LPDDR5) o B0F3DBKSC2 (DDR4); ambos existen en Amazon, pero precio, stock y envío a Chile de esos ASIN tampoco pudieron verificarse (la tienda oficial pide US$459.99 por el 8/128 Business-Grade, lo que hace dudoso que en Amazon esté a US$349.99). La ranura es M.2 2280 M-key PCIe 3.0 x4 (acepta NVMe o SATA), fanless confirmado por fabricante y reseñas, sin sellado declarado. Precio <US$400 sin confirmar (Walmart 8/256 US$379.99 como única referencia). Conclusión: rechazar tal como está propuesto; reevaluar con el ASIN correcto de 128 GB eMMC y verificar precio/envío manualmente.",
+    "sources": [
+     "https://www.amazon.com/MeLE-Quieter-4C-Computers-Ethernet/dp/B0F5WNJ5ZB",
+     "https://us.amazon.com/MeLE-Quieter-4C-Computers-Ethernet/dp/B0F5WNJ56L",
+     "https://www.amazon.com/MeLE-Quieter-Fanless-128GB-Windows/dp/B0F3DBKSC2",
+     "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1",
+     "https://www.mele.cn/product/Quieter4C-en.html",
+     "https://liliputing.com/mele-quieter-4c-review/",
+     "https://liliputing.com/mele-quieter-4c-fanless-mini-pc-gets-an-intel-n150-twin-lake-spec-bump/",
+     "https://www.starryhope.com/minipcs/models/mele-quieter-4c/",
+     "https://www.walmart.com/ip/MeLE-Intel-N150-Fanless-Mini-PC-Quieter4C-8GB-256GB-Windows-11-Pro-USB-C-4K-Mini-Desktop-Computer/19129817158"
+    ]
+   }
+  },
+  {
+   "name": "MeLE Quieter 4C N100 (8 GB LPDDR4x / 128 GB eMMC, Win11 Pro)",
+   "amazon_url": "https://www.amazon.com/dp/B0DPM3GX7B",
+   "asin": "B0DPM3GX7B",
+   "price": "US$369.99 (Amazon.com, 3 sep. 2026); con envío a Chile: depósito estimado US$100.94 = total US$470.93",
+   "in_stock": "\"Only 3 left in stock - order soon\" (visto 3 sep. 2026)",
+   "ships_to_chile": "Sí: \"Import Charges & FREE Shipping to Chile\", entrega estimada 14-17 sep. 2026; Ships from Amazon, Sold by MeLE official shop",
+   "color": "Negro (Color: Black)",
+   "cpu": "Intel N100 Alder Lake-N (4C/4T, hasta 3,4 GHz, TDP 8 W)",
+   "fanless": true,
+   "sealed": "No lo declara sellado; reseña Liliputing: sin ranuras de ventilación visibles; MeLE no indica grado IP",
+   "m2_slot": "1x M.2 2280 M-key PCIe 3.0 x4 (NVMe o SATA M.2), vacía de fábrica",
+   "boot_storage": "eMMC 128 GB en placa (SO preinstalado) + microSD hasta 2 TB; M.2 2280 LIBRE para el Hailo-8",
+   "ram": "8 GB LPDDR4x-4266 (soldada)",
+   "lan": "1x Gigabit Ethernet + WiFi 5 / BT 5.1",
+   "why": "Misma plataforma que el anterior con N100 y vendedor oficial MeLE; sólo tiene sentido si se agota la variante N150 más barata. Una sola LAN 1 GbE.",
+   "sources": [
+    "https://www.amazon.com/dp/B0DPM3GX7B",
+    "https://liliputing.com/mele-quieter-4c-review/"
+   ],
+   "verify": {
+    "exists": true,
+    "price_found": "sin confirmar (Amazon bloquea la ficha; ningún fragmento muestra US$369.99 para B0DPM3GX7B; otros listados 32GB/512GB del Quieter 4C oscilan entre US$239.99 y US$489.99)",
+    "in_stock": "sin confirmar",
+    "ships_to_chile": "sin confirmar",
+    "m2_ok": false,
+    "boot_ok": false,
+    "fanless": true,
+    "color": "Negro (Liliputing: el Quieter 4C se vende en negro; no confirmado en la ficha del ASIN)",
+    "sealed": "No declarado. Reseñas (Liliputing, minipc-review) no mencionan rejillas visibles: tapa plástica ranurada y base metálica; sin grado IP.",
+    "under_400": false,
+    "notes": "El ASIN B0DPM3GX7B existe, pero NO corresponde a la configuración propuesta (8 GB LPDDR4x / 128 GB eMMC). Todos los títulos indexados para ese ASIN (amazon.com, us.amazon.com, amazon.nl/de/se, ubuy) lo describen como \"MeLE Mini PC Quieter 4C, N100 Fanless, 32GB LPDDR5 4800MHz, 512GB SSD, Win11 Pro\". En esa variante el almacenamiento es un SSD NVMe de 512 GB (o, según starryhope, 256 GB eMMC + 256 GB NVMe): en ambos casos la ranura M.2 2280 viene OCUPADA de fábrica; y si no hay eMMC, sacar el SSD deja solo microSD para arrancar. Por eso m2_ok y boot_ok = false. Precio, stock y envío a Chile no verificables (Amazon devolvió HTTP 500 en todos los intentos; camelcamelcamel 403). La versión de 8 GB / 128 GB eMMC del Quieter 4C sí existe pero bajo otros ASIN (p. ej. B0CN38FFCM, B0DZXG56D9 con LPDDR4x + eMMC 128 GB y M.2 2280 PCIe 3.0 x4 libre, ~US$230), que sería la que habría que auditar. Requisito de dos LAN no aplica pero solo tiene 1 GbE.",
+    "sources": [
+     "https://www.amazon.com/MeLE-Quieter-Fanless-512GB-Storage/dp/B0DPM3GX7B",
+     "https://us.amazon.com/MeLE-Computers-Full-Functional-Education-Astrophotography/dp/B0DPM3GX7B",
+     "https://www.amazon.nl/MeLE-Quieter-Fanloze-Mini-PC-Dubbele/dp/B0DPM3GX7B",
+     "https://www.starryhope.com/minipcs/models/mele-quieter-4c/",
+     "https://liliputing.com/mele-quieter-4c-review/",
+     "https://minipc-review.com/en/mele-quieter4c-n150-fanless-mini-pc-and-silent-computer",
+     "https://www.amazon.com/MeLE-Quieter4C-Fanless-Windows-Computer/dp/B0DZXG56D9",
+     "https://amazon.com/MeLE-Quieter4C-Computer-Ethernet-Industrial/dp/B0CN38FFCM"
+    ]
+   }
+  },
+  {
+   "name": "MeLE Quieter 4C N150 (8 GB / 128 GB, Win11 Pro, MeLE official shop)",
+   "amazon_url": "https://www.amazon.com/dp/B0FLJDVWVR",
+   "asin": "B0FLJDVWVR",
+   "price": "US$379.99 (Amazon.com, 3 sep. 2026); con envío a Chile: depósito estimado US$103.54 = total US$483.53",
+   "in_stock": "\"In Stock\" (visto 3 sep. 2026)",
+   "ships_to_chile": "Sí: \"Import Charges & FREE Shipping to Chile\", entrega estimada 10-17 sep. 2026; Ships from Amazon, Sold by MeLE official shop",
+   "color": "sin dato en la ficha (la familia Quieter 4C es negra)",
+   "cpu": "Intel N150 (4C/4T, hasta 3,6 GHz)",
+   "fanless": true,
+   "sealed": "No lo declara sellado; MeLE anuncia operación 24/7 sin polvo; sin grado IP",
+   "m2_slot": "1x M.2 2280 M-key PCIe 3.0 x4 (NVMe/SATA), vacía",
+   "boot_storage": "eMMC 128 GB en placa + microSD; M.2 2280 LIBRE para el Hailo-8",
+   "ram": "8 GB (soldada)",
+   "lan": "1x Gigabit Ethernet + WiFi 5 / BT",
+   "why": "Variante \"In Stock\" sin límite de unidades y vendida por la tienda oficial MeLE; respaldo del B0F5WNJ5ZB si se agota. Mismas limitaciones (1 LAN, RAM fija).",
+   "sources": [
+    "https://www.amazon.com/dp/B0FLJDVWVR"
+   ],
+   "verify": {
+    "exists": true,
+    "price_found": "Sin confirmar directamente (Amazon bloquea la ficha). Un fragmento de búsqueda de us.amazon.com/dp/B0FLJDVWVR muestra US$399 (fecha desconocida); el buscador reportó US$379.99 el 3 sep. 2026. Referencia: tienda oficial store.mele.cn lista el Quieter 4C N150 8GB/128GB a US$459.99 (oferta) / 489.99.",
+    "in_stock": "sin confirmar (no se pudo leer disponibilidad ni vendedor en amazon.com; la ficha existe y está activa)",
+    "ships_to_chile": "sin confirmar (no se pudo ver el bloque de envío/Import Charges; MeLE vende vía Amazon con despacho por Amazon en otras variantes, lo que suele habilitar Amazon Global, pero no verificado para este ASIN)",
+    "m2_ok": true,
+    "boot_ok": true,
+    "fanless": true,
+    "color": "Negro (según reseñas androidexperto y listados de la familia Quieter 4C; la ficha del ASIN no muestra el campo Color)",
+    "sealed": "No declarado sellado ni con grado IP. Reseñas describen la carcasa como sin rejillas/ranuras de ventilación (\"pretty much a sealed unit\", disipación por la superficie con pirámides); MeLE lo anuncia como \"No Dust / 0dB / 7x24\", sin certificación.",
+    "under_400": true,
+    "notes": "El ASIN B0FLJDVWVR existe y corresponde a \"MeLE Fanless Mini PC Quieter 4C N150, 8GB RAM 128GB Storage, Win11 Pro\" (título confirmado en amazon.com y us.amazon.com). Incoherencias a vigilar: el slug de la URL de amazon.com para este ASIN dice \"8GB RAM 256GB\" y amazon.fr lo lista como N100/8GB/128GB, así que es una familia de variantes y conviene verificar en la ficha que la variante seleccionada sea N150 + 128GB eMMC. Especificaciones confirmadas por MeLE (store.mele.cn), StarryHope y reseñas: N150 4C/4T 3.6GHz 8W; RAM soldada (LPDDR5/DDR4 según variante, no ampliable); 128GB eMMC 5.1 en placa (sistema arranca desde eMMC o microSD) + 1x M.2 2280 vacía PCIe 3.0 x4 NVMe/SATA (~3.4-3.9 GB/s medidos, es M-key), por lo que el Hailo-8 M.2 M-key 2280 (o B+M) queda libre. Fanless verificado. Precio: US$399 en fragmento de búsqueda vs US$379.99 del buscador; margen bajo el límite muy estrecho y volátil, y con depósito aduanero a Chile el desembolso total supera US$480. Stock y envío a Chile no verificables sin sesión. Limitaciones para el proyecto: solo 1x GbE, WiFi 5, RAM 8GB no ampliable, sin SATA 2,5\"; reseñas reportan CPU a 82-90°C y SSD M.2 a 72°C bajo carga sostenida en ambiente normal, lo que es preocupante para un Hailo-8 (hasta ~2.5W+ y sensible a temperatura) dentro de una carcasa plástica pasiva en mina. Alternativa razonable si se agota: B0F5WNJ5ZB (misma familia, 8GB/256GB).",
+    "sources": [
+     "https://www.amazon.com/dp/B0FLJDVWVR",
+     "https://www.amazon.com/MeLE-Quieter-4C-Full-Functional-Industrial/dp/B0FLJDVWVR",
+     "https://us.amazon.com/MeLE-Quieter-4C-Full-Functional-Industrial/dp/B0FLJDVWVR",
+     "https://www.amazon.fr/MeLE-Quieter4C-Mini-Fanless-Ventilateur/dp/B0FLJDVWVR",
+     "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1",
+     "https://www.starryhope.com/minipcs/models/mele-quieter-4c/",
+     "https://androidexperto.com/mele-quieter-4c-review-a-pocket-sized-fanless-pc-with-intel-n100/",
+     "https://bytesnbits.co.uk/mele-quieter-4c-n150-pc/",
+     "https://www.amazon.com/MeLE-Quieter-4C-Computers-Ethernet/dp/B0F5WNJ5ZB"
+    ]
+   }
+  },
+  {
+   "name": "ZOTAC ZBOX CI337 nano (barebone, ZBOX-CI337NANO-BE/U)",
+   "amazon_url": "https://www.amazon.com/dp/B0D4RQBCZR",
+   "asin": "B0D4RQBCZR",
+   "price": "US$159.99 mostrado en el listado (Amazon.com, 3 sep. 2026) pero sin buy box (\"High price / See All Buying Options\"); otros minoristas EE. UU.: Zotac Store US$199.99, CDW US$216.99, Walmart US$234.80. Súmese RAM DDR5 SO-DIMM y SSD",
+   "in_stock": "sin dato: la ficha con destino Chile no muestra oferta destacada (\"See All Buying Options\"); el ASIN B0CKPTQY44 (mismo modelo) aparece \"Only 1 left\" pero a US$610",
+   "ships_to_chile": "Sin confirmar: con destino Chile la página muestra \"Similar items shipping to Chile\" en vez de oferta, lo que sugiere que la oferta actual no despacha a Chile",
+   "color": "Negro mate (Color: Black)",
+   "cpu": "Intel N100 (4C/4T, hasta 3,4 GHz)",
+   "fanless": true,
+   "sealed": "No: el fabricante destaca \"honeycomb vents throughout the chassis\" (rejilla panal en todo el chasis) — poco apto para polvo",
+   "m2_slot": "1x M.2 2242 M-key, PCIe 3.0 x1 / SATA (sólo 2242, no 2280)",
+   "boot_storage": "Bahía SATA 6 Gb/s para HDD/SSD 2,5\"; el M.2 2242 queda para un Hailo-8 en formato 2242 (HM218B1C2FAE); un Hailo-8 2280 NO cabe",
+   "ram": "Sin RAM (1x SO-DIMM DDR5-4800, hasta 16 GB según Zotac)",
+   "lan": "2x Gigabit Ethernet + WiFi 6 / BT 5.2",
+   "why": "Marca masiva, dual LAN, bahía SATA 2,5\" que libera el M.2; barebone barato. Contras serias: M.2 sólo 2242 x1, chasis con rejilla panal (no sellado) y sin evidencia de envío a Chile en el listado actual.",
+   "sources": [
+    "https://www.amazon.com/dp/B0D4RQBCZR",
+    "https://www.zotac.com/download/mediadrivers/External/MiniPC/C-Series/CI337nano/Brochure/ZBOX-CI337NANO-barebone-brochure.pdf",
+    "https://www.zotacstore.com/us/zbox-ci337-nano-barebone",
+    "https://www.cdw.com/product/zotac-zbox-ci337-nano-fanless-silent-barebone-pc/7842275"
+   ],
+   "verify": {
+    "exists": true,
+    "price_found": "Sin confirmar en Amazon.com (la ficha B0D4RQBCZR no muestra precio en fragmentos; el buscador reporta US$159.99 sin buy box). Referencias: Zotac Store ~US$199.99, CDW ~US$216.99; Amazon UK £249.77, AU A$396.79, SG S$329.24. Barebone: sumar RAM DDR5 y SSD.",
+    "in_stock": "Sin confirmar: B0D4RQBCZR sin oferta destacada (\"See All Buying Options\"); B0CKPTQY44 (mismo modelo) aparece no disponible.",
+    "ships_to_chile": "Sin confirmar: no hay evidencia de envío a Chile; la ficha muestra \"Similar items shipping to Chile\" en lugar de oferta.",
+    "m2_ok": false,
+    "boot_ok": true,
+    "fanless": true,
+    "color": "Negro",
+    "sealed": "No: Zotac describe \"honeycomb vents throughout the chassis\" (rejilla panal en todo el chasis); no apto para polvo.",
+    "under_400": true,
+    "notes": "DESCARTAR. El único M.2 es 2242 M-key PCIe 3.0 x1/SATA: no admite Hailo-8 2280 (HM218B1C2XAE/LAE), sólo el 2242 HM218B1C2FAE, y aun así el módulo de 26 TOPS 2242 es poco común en Amazon. La bahía SATA 2,5\" sí libera el M.2 para el sistema. Fanless confirmado (Zotac, CDW, LDLC, Newegg), pero el chasis está lleno de rejillas panal: no sellado. Precio bajo US$400 sólo como barebone (Zotac ~US$200 + RAM + SSD); ni stock ni envío a Chile confirmados en Amazon.com. Requisitos incumplidos: M.2 2280, sellado, envío a Chile.",
+    "sources": [
+     "https://www.amazon.com/ZOTAC-Processor-DisplayPort-Barebones-ZBOX-CI337NANO-BE/dp/B0D4RQBCZR",
+     "https://www.amazon.com/ZOTAC-ZBOX-CI337-Mini-PC-W128599340/dp/B0CKPTQY44",
+     "https://www.zotac.com/us/product/mini_pcs/zbox-ci337-nano-barebone",
+     "https://www.zotacstore.com/us/zbox-ci337-nano-barebone-mini-pc",
+     "https://www.cdw.com/product/zotac-zbox-ci337-nano-fanless-silent-barebone-pc/7842275",
+     "https://www.ldlc.com/en/product/PB00565603.html",
+     "https://www.neweggbusiness.com/product/product.aspx?item=9b-2sw-0004-00083",
+     "https://www.amazon.co.uk/ZOTAC-Processor-DisplayPort-Barebones-ZBOX-CI337NANO-BE/dp/B0D4RQBCZR"
+    ]
+   }
+  },
+  {
+   "name": "Qotom Q10922X Industrial Fanless Mini PC N100 (8 GB DDR5 / 128 GB NVMe, 5 COM + VGA)",
+   "amazon_url": "https://www.amazon.com/dp/B0DQT9JJ74",
+   "asin": "B0DQT9JJ74",
+   "price": "US$289.99 mostrado en el listado (Amazon.com, 3 sep. 2026); variante 8 GB/256 GB B0DQTMJ1SQ US$299.99; barebone B0FWK62KYN US$347",
+   "in_stock": "\"Currently unavailable\" en la ficha con destino Chile (3 sep. 2026); otras variantes muestran \"Only 10-19 left\" pero sin oferta para Chile",
+   "ships_to_chile": "Sin confirmar: el barebone B0FWK62KYN indica \"This item cannot be shipped to your selected delivery location\" (Chile); las variantes con RAM/SSD no muestran buy box",
+   "color": "sin dato (chasis de aleación de aluminio)",
+   "cpu": "Intel N100 (4C/4T, hasta 3,4 GHz, 6 W)",
+   "fanless": true,
+   "sealed": "sin dato (Qotom: chasis de aluminio fanless para 24/7 industrial; no declara sellado ni IP)",
+   "m2_slot": "1x M.2 2280 M-key PCIe 3.0 x1 (NVMe) + 1x M.2 B-key 3042/3052 para 4G + SIM",
+   "boot_storage": "1x bahía 2,5\" HDD/SSD SATA: mover el SO a un SSD SATA 2,5\" y dejar el M.2 2280 x1 LIBRE para el Hailo-8",
+   "ram": "8 GB DDR5 SO-DIMM (hasta 48 GB según Qotom)",
+   "lan": "2x 2.5 GbE Realtek (o 2x GbE según variante) + 5-6x COM RS232/RS485, GPIO",
+   "why": "La ficha técnica ideal (M.2 2280 x1 + bahía 2,5\", industrial, dual 2.5GbE, 178x111x52 mm), pero hoy no se ve disponible ni con envío a Chile en Amazon.com; vigilar reposición o comprar en qotom.com.",
+   "sources": [
+    "https://www.amazon.com/dp/B0DQT9JJ74",
+    "https://www.amazon.com/dp/B0FWK62KYN",
+    "https://www.qotom.com/products/show/MinI-PC-Q10900X-S04-Series"
+   ],
+   "verify": {
+    "exists": true,
+    "price_found": "Sin confirmar en forma independiente: Amazon bloquea la carga (HTTP 500) y los fragmentos de búsqueda no muestran precio para B0DQT9JJ74. Referencias: eBay (tienda Qotom) lista el Q10922X desde US$175 con la opción 128 GB agotada; un modelo hermano Q10922H6 8G/128G aparece a US$293 en Amazon. El US$289.99 del buscador es plausible pero no verificado.",
+    "in_stock": "Sin confirmar; los fragmentos de búsqueda indican que las configuraciones similares aparecen \"Currently unavailable\" en Amazon, y en eBay la variante 128 GB está agotada.",
+    "ships_to_chile": "Sin confirmar. Es un listado de tercero (Qotom) sin evidencia de envío internacional; el buscador reportó que el barebone hermano \"cannot be shipped\" a Chile.",
+    "m2_ok": true,
+    "boot_ok": true,
+    "fanless": true,
+    "color": "Sin confirmar (chasis de aleación de aluminio; Qotom no declara color en la ficha)",
+    "sealed": "Sin confirmar: Qotom no declara sellado ni grado IP; sólo \"aluminium alloy, fanless\".",
+    "under_400": false,
+    "notes": "El ASIN B0DQT9JJ74 existe (Qotom Q10922XPGV N100, 8 GB DDR5 / 128 GB NVMe, 2x 2.5GbE, 5 COM, VGA, GPIO, 178x111x52 mm, 0,82 kg). La ficha oficial de Qotom (serie Q10900X-S04) confirma: 1x M.2 M-key 2280 PCIe 3.0 x1 (sirve para el Hailo-8 M-key o B+M), 1x bahía 2,5\" SATA para el sistema (hay que reinstalar/mover el SO del NVMe al SATA, o comprar el barebone), además de M.2 B-key 3042/3052 (4G) y E-key 2230 (Wi-Fi); fanless, TDP 6 W. Lo que NO se pudo verificar: precio actual, stock, envío a Chile, color y sellado. under_400 se marca false porque el precio no fue confirmado por mí (las referencias apuntan a <US$400, pero ante la duda, false). Riesgo adicional: el listado es de un vendedor tercero (Qotom), que típicamente no despacha vía Amazon Global. Alternativa: comprar directo en qotom.com o vía la tienda Qotom en eBay, verificando envío a Chile.",
+    "sources": [
+     "https://us.amazon.com/Qotom-Mini-Q10922XPGV-2-8GB-128GB/dp/B0DQT9JJ74",
+     "https://www.amazon.com/Industrial-Fanless-Serial-Automation-Control/dp/B0DQT9JJ74",
+     "https://www.qotom.com/products/show/MinI-PC-Q10900X-S04-Series",
+     "https://www.ebay.com/itm/267202641106",
+     "https://www.amazon.com/Qotom-Barebone-Fanless-Industrial-Processor/dp/B0FWK62KYN"
+    ]
+   }
+  }
+ ],
+ "good": [
+  {
+   "name": "MeLE Quieter 4C N150 (8 GB / 128 GB, Win11 Pro, MeLE official shop)",
+   "amazon_url": "https://www.amazon.com/dp/B0FLJDVWVR",
+   "asin": "B0FLJDVWVR",
+   "price": "US$379.99 (Amazon.com, 3 sep. 2026); con envío a Chile: depósito estimado US$103.54 = total US$483.53",
+   "in_stock": "\"In Stock\" (visto 3 sep. 2026)",
+   "ships_to_chile": "Sí: \"Import Charges & FREE Shipping to Chile\", entrega estimada 10-17 sep. 2026; Ships from Amazon, Sold by MeLE official shop",
+   "color": "sin dato en la ficha (la familia Quieter 4C es negra)",
+   "cpu": "Intel N150 (4C/4T, hasta 3,6 GHz)",
+   "fanless": true,
+   "sealed": "No lo declara sellado; MeLE anuncia operación 24/7 sin polvo; sin grado IP",
+   "m2_slot": "1x M.2 2280 M-key PCIe 3.0 x4 (NVMe/SATA), vacía",
+   "boot_storage": "eMMC 128 GB en placa + microSD; M.2 2280 LIBRE para el Hailo-8",
+   "ram": "8 GB (soldada)",
+   "lan": "1x Gigabit Ethernet + WiFi 5 / BT",
+   "why": "Variante \"In Stock\" sin límite de unidades y vendida por la tienda oficial MeLE; respaldo del B0F5WNJ5ZB si se agota. Mismas limitaciones (1 LAN, RAM fija).",
+   "sources": [
+    "https://www.amazon.com/dp/B0FLJDVWVR"
+   ],
+   "verify": {
+    "exists": true,
+    "price_found": "Sin confirmar directamente (Amazon bloquea la ficha). Un fragmento de búsqueda de us.amazon.com/dp/B0FLJDVWVR muestra US$399 (fecha desconocida); el buscador reportó US$379.99 el 3 sep. 2026. Referencia: tienda oficial store.mele.cn lista el Quieter 4C N150 8GB/128GB a US$459.99 (oferta) / 489.99.",
+    "in_stock": "sin confirmar (no se pudo leer disponibilidad ni vendedor en amazon.com; la ficha existe y está activa)",
+    "ships_to_chile": "sin confirmar (no se pudo ver el bloque de envío/Import Charges; MeLE vende vía Amazon con despacho por Amazon en otras variantes, lo que suele habilitar Amazon Global, pero no verificado para este ASIN)",
+    "m2_ok": true,
+    "boot_ok": true,
+    "fanless": true,
+    "color": "Negro (según reseñas androidexperto y listados de la familia Quieter 4C; la ficha del ASIN no muestra el campo Color)",
+    "sealed": "No declarado sellado ni con grado IP. Reseñas describen la carcasa como sin rejillas/ranuras de ventilación (\"pretty much a sealed unit\", disipación por la superficie con pirámides); MeLE lo anuncia como \"No Dust / 0dB / 7x24\", sin certificación.",
+    "under_400": true,
+    "notes": "El ASIN B0FLJDVWVR existe y corresponde a \"MeLE Fanless Mini PC Quieter 4C N150, 8GB RAM 128GB Storage, Win11 Pro\" (título confirmado en amazon.com y us.amazon.com). Incoherencias a vigilar: el slug de la URL de amazon.com para este ASIN dice \"8GB RAM 256GB\" y amazon.fr lo lista como N100/8GB/128GB, así que es una familia de variantes y conviene verificar en la ficha que la variante seleccionada sea N150 + 128GB eMMC. Especificaciones confirmadas por MeLE (store.mele.cn), StarryHope y reseñas: N150 4C/4T 3.6GHz 8W; RAM soldada (LPDDR5/DDR4 según variante, no ampliable); 128GB eMMC 5.1 en placa (sistema arranca desde eMMC o microSD) + 1x M.2 2280 vacía PCIe 3.0 x4 NVMe/SATA (~3.4-3.9 GB/s medidos, es M-key), por lo que el Hailo-8 M.2 M-key 2280 (o B+M) queda libre. Fanless verificado. Precio: US$399 en fragmento de búsqueda vs US$379.99 del buscador; margen bajo el límite muy estrecho y volátil, y con depósito aduanero a Chile el desembolso total supera US$480. Stock y envío a Chile no verificables sin sesión. Limitaciones para el proyecto: solo 1x GbE, WiFi 5, RAM 8GB no ampliable, sin SATA 2,5\"; reseñas reportan CPU a 82-90°C y SSD M.2 a 72°C bajo carga sostenida en ambiente normal, lo que es preocupante para un Hailo-8 (hasta ~2.5W+ y sensible a temperatura) dentro de una carcasa plástica pasiva en mina. Alternativa razonable si se agota: B0F5WNJ5ZB (misma familia, 8GB/256GB).",
+    "sources": [
+     "https://www.amazon.com/dp/B0FLJDVWVR",
+     "https://www.amazon.com/MeLE-Quieter-4C-Full-Functional-Industrial/dp/B0FLJDVWVR",
+     "https://us.amazon.com/MeLE-Quieter-4C-Full-Functional-Industrial/dp/B0FLJDVWVR",
+     "https://www.amazon.fr/MeLE-Quieter4C-Mini-Fanless-Ventilateur/dp/B0FLJDVWVR",
+     "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1",
+     "https://www.starryhope.com/minipcs/models/mele-quieter-4c/",
+     "https://androidexperto.com/mele-quieter-4c-review-a-pocket-sized-fanless-pc-with-intel-n100/",
+     "https://bytesnbits.co.uk/mele-quieter-4c-n150-pc/",
+     "https://www.amazon.com/MeLE-Quieter-4C-Computers-Ethernet/dp/B0F5WNJ5ZB"
+    ]
+   }
+  }
+ ],
+ "modules": [
+  {
+   "name": "Unistorm Hailo-8 M.2 AI Accelerator Module 26TOPS (modelo \"Hailo-8\", 2280)",
+   "amazon_url": "https://www.amazon.com/dp/B0FBFTW5QJ",
+   "asin": "B0FBFTW5QJ",
+   "price": "US$214.99 (Amazon muestra CLP 201.370 con destino Chile) — consultado 2026-09-03",
+   "in_stock": "En stock (\"In Stock\", \"Only 6 left in stock\" en la ficha, 2026-09-03)",
+   "ships_to_chile": "SÍ: la ficha con destino Chile muestra \"FREE delivery Tuesday, September 15 to Chile\" (o 10 sept. más rápido) y etiqueta AmazonGlobal Shipping; enviado por Amazon (FBA), aduana con depósito de importación",
+   "variant": "M 2280 (22×80 mm con extensiones quebrables a 2242 y 2260), PCIe Gen3 x4",
+   "tops": "26 TOPS (Hailo-8)",
+   "fits_mkey_2280": true,
+   "seller": "Vendido por Unistorm Official Store, enviado por Amazon",
+   "why": "Único listado en amazon.com de Hailo-8 26 TOPS que hoy aparece en stock Y con envío a Chile. Form factor M-key 2280 con extensión quebrable, PCIe Gen3 x4 (funciona en x1), -40~85 °C, sin ventilador; ideal para la ranura M-key libre del mini PC fanless. Ojo: una reseña de 1 estrella (may-2026) afirma que su unidad rendía como 8L (13 TOPS); las demás reseñas (Frigate/Proxmox, Pi 5) confirman funcionamiento como Hailo-8. Verificar con hailortcli fw-control identify al recibirlo.",
+   "sources": [
+    "https://www.amazon.com/dp/B0FBFTW5QJ",
+    "https://www.amazon.co.uk/Hailo-8-Accelerator-Compatible-Raspberry-Processor/dp/B0FBFTW5QJ",
+    "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/"
+   ]
+  },
+  {
+   "name": "Unistorm Hailo-8 M.2 AI Accelerator Module 26TOPS (modelo \"Hailo-8 short\")",
+   "amazon_url": "https://www.amazon.com/dp/B0FWXF4XK1",
+   "asin": "B0FWXF4XK1",
+   "price": "US$214.99 (CLP 201.370 con destino Chile) — consultado 2026-09-03",
+   "in_stock": "En stock (\"In Stock\", 2026-09-03)",
+   "ships_to_chile": "SÍ: misma ficha/variante del vendedor Unistorm, \"FREE delivery Tuesday, September 15 to Chile\", AmazonGlobal, enviado por Amazon",
+   "variant": "M 2242 (variante \"short\" del mismo módulo M-key; la ficha describe 22×80 mm con extensiones quebrables a 22×42/22×60 — el largo \"short\" no está explicitado, se asume 2242)",
+   "tops": "26 TOPS (Hailo-8)",
+   "fits_mkey_2280": true,
+   "seller": "Vendido por Unistorm Official Store, enviado por Amazon",
+   "why": "Variante \"corta\" del mismo listado Unistorm (selector \"Model: Hailo-8 / Hailo-8 short\"). Es M-key y PCIe 3.0 x4, así que entra en una ranura M-key 2280 siempre que el mini PC tenga separador/tornillo en la posición 2242 (o se use un adaptador de largo 2242→2280). Preferir el modelo 2280 (B0FBFTW5QJ) salvo que la ranura del PC sea 2242. Sólo 4 valoraciones; confirmar largo con el vendedor antes de comprar.",
+   "sources": [
+    "https://www.amazon.com/dp/B0FWXF4XK1",
+    "https://us.amazon.com/Hailo-8-Accelerator-Compatible-Raspberry-Processor/dp/B0FWXF4XK1",
+    "https://hailo.ai/hailo-files/hailo-8-m-2-et-product-brief-en/"
+   ]
+  },
+  {
+   "name": "Waveshare Hailo-8 M.2 AI Accelerator Module 26TOPS (módulo solo)",
+   "amazon_url": "https://www.amazon.com/dp/B0D928WG5L",
+   "asin": "B0D928WG5L",
+   "price": "No visible con destino Chile (Amazon oculta el precio al no despachar). Referencias 2026-09-03: Waveshare oficial US$179.99; amazon.ca CA$299.99; Newegg US$312.99",
+   "in_stock": "Sin oferta comprable para Chile; el listado existe pero Amazon no muestra buy box para ese destino (2026-09-03)",
+   "ships_to_chile": "NO: con ubicación Chile la ficha dice \"This item cannot be shipped to your selected delivery location\"",
+   "variant": "M 2280 (22×80 mm, quebrable a 2242/2260), PCIe Gen3 x4 — Waveshare SKU 27812",
+   "tops": "26 TOPS (Hailo-8)",
+   "fits_mkey_2280": true,
+   "seller": "Waveshare (tercero, no despacha fuera de EE. UU. desde amazon.com)",
+   "why": "El módulo de referencia (fabricante conocido, wiki oficial, -40~85 °C, M-key 2280 confirmado por Welectron/Waveshare) y el que clonan los demás vendedores, pero desde amazon.com NO envía a Chile. Sirve como plan B comprando en waveshare.com (US$179.99) o vía un reenviador en EE. UU.",
+   "sources": [
+    "https://www.amazon.com/dp/B0D928WG5L",
+    "https://www.waveshare.com/hailo-8.htm",
+    "https://www.welectron.com/Waveshare-27812-Hailo-8-AI-M2-module-only_1",
+    "https://www.amazon.ca/Waveshare-Hailo-8-Accelerator-Compatible-Raspberry/dp/B0D928WG5L"
+   ]
+  },
+  {
+   "name": "Waveshare Hailo-8 M.2 AI Accelerator Module 26TOPS + adaptador PCIe a M.2 (Hailo-8 Acce A)",
+   "amazon_url": "https://www.amazon.com/dp/B0D9298XL5",
+   "asin": "B0D9298XL5",
+   "price": "No visible con destino Chile (2026-09-03). Referencias: amazon.de €239.99; Waveshare oficial ~US$199–219 para el kit Acce A",
+   "in_stock": "\"Only 2 left in stock\" en la ficha (2026-09-03), pero sin buy box para Chile",
+   "ships_to_chile": "NO: \"This item cannot be shipped to your selected delivery location\" con ubicación Chile",
+   "variant": "M 2280 (22×80 mm quebrable a 2242/2260), PCIe Gen3 x4; incluye HAT PCIe→M.2 para Raspberry Pi 5 (innecesario en el mini PC x86)",
+   "tops": "26 TOPS (Hailo-8)",
+   "fits_mkey_2280": true,
+   "seller": "Waveshare (tercero)",
+   "why": "Mismo módulo Waveshare M-key 2280 pero con adaptador para Pi 5 que sobra en un mini PC x86; además no despacha a Chile desde amazon.com. Sólo relevante si se compra vía reenviador y se quiere un kit para pruebas en Pi 5.",
+   "sources": [
+    "https://www.amazon.com/dp/B0D9298XL5",
+    "https://www.waveshare.com/hailo-8-acce-a.htm",
+    "https://www.amazon.de/Waveshare-Hailo-8-Accelerator-Raspberry-Compatible/dp/B0D9298XL5"
+   ]
+  },
+  {
+   "name": "TUOPUONE Hailo-8 M.2 AI Accelerator Module 26TOPS con adaptador PCIe a M.2 (rebrand de Waveshare)",
+   "amazon_url": "https://www.amazon.com/dp/B0D9CMFP7F",
+   "asin": "B0D9CMFP7F",
+   "price": "No visible con destino Chile (2026-09-03). Referencias: amazon.nl €258.23; eBay (Waveshare store) US$203.83; Waveshare oficial US$179.99 (módulo solo)",
+   "in_stock": "\"Only 2 left in stock\" en la ficha (2026-09-03), sin buy box para Chile",
+   "ships_to_chile": "NO: \"This item cannot be shipped to your selected delivery location\" con ubicación Chile",
+   "variant": "M 2280 (ficha: \"FORM FACTOR M.2 Key M\", 22×80 mm quebrable), PCIe Gen3 x4; incluye HAT PCIe→M.2 para Pi 5",
+   "tops": "26 TOPS (Hailo-8)",
+   "fits_mkey_2280": true,
+   "seller": "TUOPUONE (tercero)",
+   "why": "Es el kit Waveshare \"Hailo-8 Acce A\" revendido (la descripción A+ es la de Waveshare), M-key 2280, 26 TOPS, pero con poco stock y sin envío a Chile desde amazon.com. Descartado como opción de compra directa; listado sólo como referencia. Otros listados revisados y excluidos: Yahboom B0DF281X9T, UeeKKoo B0DLSZRT36 y SKXAKSG B0D9D7RHZL aparecen \"Currently unavailable\"; TUOPUONE B0D97KVT1J/B0D97KJDR1 tampoco despachan a Chile.",
+   "sources": [
+    "https://www.amazon.com/dp/B0D9CMFP7F",
+    "https://www.amazon.nl/-/en/Hailo-8-Accelerator-Compatible-Raspberry-Processor/dp/B0D9CMFP7F",
+    "https://www.ebay.com/itm/256573937225",
+    "https://www.waveshare.com/hailo-8.htm"
+   ]
+  }
+ ],
+ "ruling": {
+  "ranking": [
+   {
+    "name": "MeLE Quieter 4C N150 (8 GB / 128 GB, Win11 Pro, MeLE official shop) — ASIN B0FLJDVWVR",
+    "reason": "Único candidato verificado, y cumple lo esencial: fanless; carcasa descrita en reseñas como prácticamente sellada, sin rejillas ni ranuras de ventilación (disipación por la superficie con pirámides; MeLE lo anuncia 'No Dust / 7x24' aunque sin grado IP), que es el criterio más importante para la mina; M.2 2280 M-key PCIe 3.0 x4 vacía (máximo ancho de banda posible para el Hailo-8, que sólo requiere x1) porque el sistema arranca desde la eMMC de 128 GB; negro según la familia Quieter 4C; el buscador vio 'In Stock', 'Ships from Amazon, Sold by MeLE official shop' y 'Import Charges & FREE Shipping to Chile' (entrega 10-17 sep.), aunque el verificador no pudo confirmar stock ni envío sin sesión. Precio US$379.99 bajo el tope, con margen estrecho y volátil (un fragmento mostraba US$399) y desembolso total a Chile ≈US$483 con depósito aduanero. Debilidades: 1 solo puerto GbE, 8 GB soldados, sin SATA 2,5\", y reseñas reportan CPU a 82-90 °C y SSD M.2 a 72 °C bajo carga sostenida, así que conviene vigilar la temperatura del Hailo-8 en operación continua. Verificar al comprar que la variante seleccionada sea N150 + 128 GB eMMC; respaldo: B0F5WNJ5ZB (8 GB/256 GB) si se agota.",
+    "best_module": "Unistorm Hailo-8 M.2 26 TOPS, modelo 'Hailo-8' 2280 M-key (ASIN B0FBFTW5QJ, US$214.99, en stock, envío a Chile por AmazonGlobal): entra directamente en la ranura M-key 2280 con el tornillo de la posición 2280. Segunda opción: Unistorm 'Hailo-8 short' (B0FWXF4XK1), también M-key y compatible, pero requiere separador en 2242 o adaptador de largo; confirmar largo con el vendedor. Al recibirlo, comprobar con 'hailortcli fw-control identify' que sea Hailo-8 (26 TOPS) y no 8L."
+   }
+  ],
+  "module_for_each": "MeLE Quieter 4C N150 (B0FLJDVWVR) → Unistorm Hailo-8 M.2 2280 M-key 26 TOPS (B0FBFTW5QJ); alternativa Unistorm Hailo-8 short (B0FWXF4XK1) con separador 2242. Los módulos Waveshare (B0D928WG5L, B0D9298XL5) y TUOPUONE (B0D9CMFP7F) son físicamente compatibles (M-key 2280) pero no despachan a Chile desde amazon.com; sólo como plan B vía waveshare.com o reenviador.",
+  "rejected": []
+ }
+}
