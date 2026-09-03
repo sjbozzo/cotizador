@@ -31,15 +31,24 @@ def _normal(value: str) -> str:
 
 
 def _tokens(value: str) -> set[str]:
-    return {token for token in _normal(value).split() if len(token) > 2}
+    # Se conservan los tokens con dígitos aunque sean cortos ("5", "x4", "2"): distinguen modelos.
+    return {token for token in _normal(value).split() if len(token) > 2 or any(char.isdigit() for char in token)}
 
 
 def find_item(name: str, items: list[dict]) -> dict | None:
-    """El flujo escribe nombres largos («Raspberry Pi 5 (8 GB)»): se elige el ítem con más palabras en común."""
+    """El flujo escribe nombres largos («Raspberry Pi 5 (8 GB)»). La primera palabra (la marca)
+    tiene que estar en el nombre del ítem; entre los que la tienen gana el de más tokens en común."""
+    words = _normal(name).split()
+    if not words:
+        return None
+    brand = words[0]
     wanted = _tokens(name)
     best, score = None, 0
     for item in items:
-        common = len(wanted & _tokens(item["name"]))
+        item_tokens = _tokens(item["name"])
+        if brand not in _normal(item["name"]).split():
+            continue
+        common = len(wanted & item_tokens)
         if common > score:
             best, score = item, common
     return best if score >= 2 else None
@@ -89,7 +98,7 @@ def main() -> int:
             diff = {key: value for key, value in validated.items() if value != item.get(key)}
             if not diff:
                 continue
-            print(f"  actualizar · {item['name'][:60]} · {', '.join(sorted(diff))}")
+            print(f"  actualizar · {found['name'][:34]:34} -> {item['name'][:44]:44} · {', '.join(sorted(diff))}")
             changes += 1
             if not args.dry_run:
                 db.update_item(item["id"], diff)

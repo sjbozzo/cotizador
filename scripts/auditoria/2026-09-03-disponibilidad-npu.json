@@ -1,0 +1,35 @@
+{
+ "nota": "Lote del flujo disponibilidad-mercados que cayó por límite de sesión; verificado en línea por Claude (2026-09-03).",
+ "batches": [
+  {"category": "PC con NPU", "items": [
+   {"name": "NVIDIA Jetson Orin Nano Super Developer Kit",
+    "mercadolibre": "no aparece un listado verificable en mercadolibre.cl",
+    "amazon": "B0BZJTQ5YP 'Currently unavailable' (sep. 2026); precio histórico mínimo US$245 (feb. 2026)",
+    "aliexpress": "no verificado",
+    "best_link": "https://www.mechatronicstore.cl/nvidia-jetson-orin-nano-super-developer-kit/",
+    "best_price": "$749.990 CLP (Mechatronicstore.cl, envío gratis a todo Chile, sep. 2026); MCI Electronics $799.990 sin stock",
+    "summary": "Venta local: Mechatronicstore.cl a $749.990 con envío gratis (MCI lo lista a $799.990 pero sin stock); Amazon.com sin stock (sep. 2026)."},
+   {"name": "AMD Kria KV260 Vision AI Starter Kit",
+    "mercadolibre": "no aparece",
+    "amazon": "sin listado verificable",
+    "aliexpress": "no aparece",
+    "best_link": "https://www.digikey.com/en/products/detail/amd/SK-KV260-G/13985269",
+    "best_price": "US$283,86 (DigiKey, 412 en stock, sep. 2026); Newark US$274,40; Mouser también lo lista",
+    "summary": "Importar: DigiKey (SK-KV260-G, US$283,86, 412 en stock) y Mouser despachan a Chile; no está en Mercado Libre, Amazon ni AliExpress."},
+   {"name": "Orange Pi AIPro 8T",
+    "mercadolibre": "no aparece",
+    "amazon": "B0F5FJGYY8 (con carcasa), precio y stock sin confirmar",
+    "aliexpress": "Tienda oficial Orange Pi: US$120–150 según RAM (16 GB US$143,99), sep. 2026",
+    "best_link": "https://www.aliexpress.com/store/1100062898",
+    "best_price": "US$120–150 según RAM (AliExpress, tienda oficial Orange Pi, sep. 2026)",
+    "summary": "Importar: tienda oficial de Orange Pi en AliExpress (US$120–150, envío a Chile); Amazon tiene un listado con carcasa sin precio confirmado; no está en Mercado Libre Chile."},
+   {"name": "D-Robotics RDK X5",
+    "mercadolibre": "no aparece",
+    "amazon": "sin listado verificable",
+    "aliexpress": "sin confirmar",
+    "best_link": "https://www.dfrobot.com/product-2944.html",
+    "best_price": "US$190 (DFRobot, 8 GB, envío internacional, sep. 2026); Waveshare desde US$138,99; eBay US$190",
+    "summary": "Importar: DFRobot (US$190, envío internacional) o Waveshare (desde US$139); sin listados en Mercado Libre, Amazon ni AliExpress verificables (sep. 2026)."}
+  ]}
+ ]
+}

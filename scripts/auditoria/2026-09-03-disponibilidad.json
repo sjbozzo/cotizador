@@ -1,0 +1,177 @@
+{
+ "batches": [
+  {
+   "category": "aceleradores USB",
+   "items": [
+    {
+     "name": "Google Coral USB Accelerator (Edge TPU)",
+     "mercadolibre": "no aparece (la búsqueda solo arroja avisos de Mercado Libre Argentina, ej. MLA-1514736676 a ARS 469.000; mercadolibre.cl bloqueó la consulta directa, sin listado .cl verificable)",
+     "amazon": "US$ ~112.90–123.99 según fragmentos de búsqueda; URL https://www.amazon.com/dp/B07S214S5Y (vendedores Seeed Studio Official / NaiwutechDirect). Con dirección en Chile la página muestra 'This item cannot be shipped to your selected delivery location' → NO envía a Chile directamente (se requeriría casillero/forwarder). Alternativa Seeed: https://www.amazon.com/dp/B0CDGT75SH",
+     "aliexpress": "Sí aparece: ~US$59–69 (según página de AliExpress; precios varían por vendedor); URL https://www.aliexpress.com/w/wholesale-google-coral-usb-accelerator.html ; ítem ejemplo https://www.aliexpress.com/i/2251832848306502.html — no se identificó tienda oficial de Google/Coral, verificar vendedor",
+     "best_link": "https://www.aliexpress.com/w/wholesale-google-coral-usb-accelerator.html",
+     "best_price": "~US$59–69 (AliExpress, verificado 2026-09-03; Amazon US$112–124 pero no envía a Chile)",
+     "summary": "Desde Chile la vía práctica es AliExpress (~US$60–70, envío internacional) o Amazon vía forwarder; Amazon no envía directo a Chile y no hay aviso en Mercado Libre Chile."
+    },
+    {
+     "name": "Intel Neural Compute Stick 2 (NCS2, Myriad X)",
+     "mercadolibre": "no aparece (sin resultados de mercadolibre.cl en búsqueda; consulta directa bloqueada). Producto descontinuado por Intel (EOL 30-jun-2022)",
+     "amazon": "Sí aparece: https://www.amazon.com/dp/B07KT6361R 'In Stock', vendedor GEEKOM US Store, fulfilled by Amazon; precio mostrado con dirección Chile ≈ CLP 121.755 (~US$125–130). También https://www.amazon.com/dp/B0BLBKG47B (VALERION, In Stock, ≈ CLP 110.515) pero marcado 'cannot be shipped to your selected delivery location' para Chile. Hay evidencia de 'Deliver to Chile' en la página del ASIN B07KT6361R (no se confirmó AmazonGlobal explícito)",
+     "aliexpress": "Sí aparece: ~US$83.70 (NCSM2485.DK); URL https://www.aliexpress.com/i/32959190854.html ; listado general https://nl.aliexpress.com/w/wholesale-intel-neural-compute-stick-2.html — no es tienda oficial Intel (stock remanente/terceros)",
+     "best_link": "https://www.amazon.com/dp/B07KT6361R",
+     "best_price": "≈ CLP 121.755 (~US$127) en Amazon.com, In Stock, vendedor GEEKOM US Store / FBA, consultado 2026-09-03",
+     "summary": "Descontinuado por Intel pero aún se consigue: Amazon B07KT6361R con stock y precio en CLP para Chile es la opción más confiable; AliExpress ~US$84 como alternativa; no hay aviso en Mercado Libre Chile."
+    },
+    {
+     "name": "RK1808 AI Compute Stick (Rockchip, Toybrick)",
+     "mercadolibre": "no aparece (sin resultados para mercadolibre.cl; consulta directa bloqueada)",
+     "amazon": "Aparece pero sin stock: https://www.amazon.com/dp/B0C8HNJT1F 'Currently unavailable' (TB-RK1808S0), consultado 2026-09-03",
+     "aliexpress": "Sí aparece, varios vendedores: US$84.16 https://www.aliexpress.com/item/4000550423145.html ; US$90.44 (AiSpark) https://www.aliexpress.com/item/4000778114049.html ; US$105 https://www.aliexpress.com/item/4000211737031.html — envío internacional; no hay tienda oficial Toybrick identificada. Alternativa oficial fuera de los 3 canales: youyeetoo.com (distribuidor Toybrick)",
+     "best_link": "https://www.aliexpress.com/item/4000778114049.html",
+     "best_price": "US$84–105 (AliExpress, fragmentos de búsqueda 2026-09-03; confirmar precio y stock en el aviso)",
+     "summary": "Solo se consigue desde Chile por AliExpress (~US$85–105, terceros) o por el distribuidor youyeetoo; Amazon sin stock y no está en Mercado Libre Chile."
+    },
+    {
+     "name": "Kneron KNEO AI Dongle KL520",
+     "mercadolibre": "no aparece (sin resultados para 'kneron' en mercadolibre.cl; consulta directa bloqueada)",
+     "amazon": "Aparece pero sin stock: https://www.amazon.com/dp/B087QTWVGT (KNEO Stem KL520 AI SoC USB Stick) 'Currently unavailable', consultado 2026-09-03; Amazon.ca también sin stock",
+     "aliexpress": "no aparece (la búsqueda en aliexpress.com no devuelve ningún listado Kneron KL520)",
+     "best_link": "https://www.mouser.com/ProductDetail/Kneron/KP52B130A-D1001",
+     "best_price": "Sin precio verificado en los 3 canales; referencia: Mouser (distribuidor autorizado, envía a Chile) P/N KP52B130A-D1001; el aviso de Amazon está 'Currently unavailable' (2026-09-03)",
+     "summary": "Prácticamente sin disponibilidad desde Chile: Amazon sin stock, no está en AliExpress ni Mercado Libre; la única vía es un distribuidor autorizado como Mouser (P/N KP52B130A-D1001) o tiendas taiwanesas (icshop.com.tw), verificando stock antes de comprar."
+    },
+    {
+     "name": "Kneron KNEO STEM KL720 USB",
+     "mercadolibre": "no aparece (sin resultados en mercadolibre.cl; consulta directa bloqueada)",
+     "amazon": "no aparece (la búsqueda site:amazon.com no devuelve ningún listado del KL720 USB Dongle)",
+     "aliexpress": "no aparece (sin listados en aliexpress.com)",
+     "best_link": "https://www.mouser.com/new/kneron/kneron-kl720-usb-dongle/",
+     "best_price": "Tienda oficial KNEO: TWD 3.300 (~US$100–105) https://kneo.kneron.com/kl720-kneo-stem, pero la página muestra 'sin opciones de envío' fuera de Taiwán (2026-09-03); Mouser (P/N KP72B340A-D1003) es el distribuidor autorizado que envía a Chile, precio no verificado",
+     "summary": "No está en Mercado Libre, Amazon ni AliExpress; desde Chile la opción realista es Mouser (P/N KP72B340A-D1003, distribuidor autorizado con envío a Chile) o Electromaker, ya que la tienda oficial KNEO (TWD 3.300) no ofrece envío fuera de Taiwán."
+    }
+   ]
+  },
+  {
+   "category": "PC con NPU",
+   "items": [
+    {
+     "name": "Seeed Studio reComputer Industrial R2135-12 (CM5 + Hailo-8, fanless)",
+     "mercadolibre": "no aparece (búsqueda site:mercadolibre.cl sin resultados)",
+     "amazon": "no aparece (solo salen otros reComputer, p. ej. Jetson Orin NX B0CWL3L5R3; el R2135-12 no tiene ASIN encontrado)",
+     "aliexpress": "no aparece (la reseña de CNX-Software ene-2026 indica que la tienda AliExpress de Seeed aún no lo listaba)",
+     "best_link": "https://www.seeedstudio.com/reComputer-AI-Industrial-R2135-12-p-6432.html",
+     "best_price": "US$433.00 (US$429 desde 10 u.) en seeedstudio.com, SKU 114993595, en stock, 2026-09-03; nota: reseñas de ene-2026 lo citaban a US$279 (8GB/32GB), verificar variante al cotizar",
+     "summary": "Solo se compra directo a Seeed Studio (bodegas China/EE.UU./Alemania, envío internacional a Chile en checkout), en stock a US$433; no hay listados en Mercado Libre, Amazon ni AliExpress."
+    },
+    {
+     "name": "MINISFORUM UM880 Plus (Ryzen 7 8845HS)",
+     "mercadolibre": "no aparece (búsqueda site:mercadolibre.cl sin resultados)",
+     "amazon": "US$799.99 (32GB+1TB) https://www.amazon.com/dp/B0DLWVDJMS (vendedor MINISFORUM US, disponibilidad no mostrada); US$639.00 (16GB+512GB) https://www.amazon.com/dp/B0GR5F5S4T In Stock (MINISFORUM Store); Barebone US$329.00 https://www.amazon.com/dp/B0G1BPVHFR In Stock (MINISFORUM US Official). Las páginas muestran 'delivery-destination=Chile', 'Import Charges & FREE Shipping to Chile' (AmazonGlobal), 2026-09-03",
+     "aliexpress": "no aparece tienda oficial ni listado del UM880 Plus en la búsqueda (solo la tienda oficial store.minisforum.com: barebone US$351, 32GB+1TB US$863)",
+     "best_link": "https://www.amazon.com/dp/B0GR5F5S4T",
+     "best_price": "US$639.00 (16GB DDR5 + 512GB SSD) en Amazon.com, In Stock, vendido por MINISFORUM Store, con envío AmazonGlobal a Chile, 2026-09-03 (barebone US$329 en B0G1BPVHFR)",
+     "summary": "Comprar en Amazon.com a la tienda oficial de MINISFORUM (16GB/512GB US$639 o barebone US$329, ambos en stock) con envío directo a Chile vía AmazonGlobal; no hay listados en Mercado Libre ni AliExpress."
+    },
+    {
+     "name": "Radxa ROCK 5B (RK3588, 8 GB)",
+     "mercadolibre": "no aparece (búsqueda site:mercadolibre.cl sin resultados)",
+     "amazon": "https://www.amazon.com/dp/B0D1TZHFQF (Radxa Rock 5B 8GB): 'Currently unavailable' 2026-09-03; variante 16GB B0DX6VBDQR también sin stock; el ROCK 5B+ 8GB B0DDTN8WNP figuraba no disponible. La página muestra 'Deliver to Chile' pero sin oferta activa",
+     "aliexpress": "ROCK 5B original 8GB no localizado como listado propio; ROCK 5B+ (RK3588, sucesor) desde US$125.50 https://www.aliexpress.com/item/1005009441744277.html (>800 vendidos, 4.9★) y https://www.aliexpress.com/item/1005007516698339.html; tienda oficial 'RADXA Computer (Shenzhen) Co., Ltd Store' presente en AliExpress",
+     "best_link": "https://www.aliexpress.com/item/1005009441744277.html",
+     "best_price": "desde US$125.50 (ROCK 5B+ 8GB, sucesor directo del 5B) en AliExpress, según fragmento de búsqueda 2026-09-03; el ROCK 5B clásico 8GB no tiene stock en Amazon",
+     "summary": "El ROCK 5B 8GB clásico está sin stock en Amazon y ausente de Mercado Libre; la opción viable desde Chile es AliExpress (idealmente tienda oficial Radxa), donde el ROCK 5B+ 8GB se vende desde ~US$125."
+    },
+    {
+     "name": "Radxa Dragon Q6A (QCS6490)",
+     "mercadolibre": "no aparece (búsqueda site:mercadolibre.cl sin resultados)",
+     "amazon": "8GB https://www.amazon.com/dp/B0FY6QM11J figura 'currently unavailable' (redirige a la variante 12GB); 12GB https://www.amazon.com/dp/B0FY6NCRW8 US$219.99, 'Only 9 left in stock', vendedor Radxa Computer (Shenzhen) Co., Ltd, con 'Import Charges & FREE Shipping to Chile' (AmazonGlobal), 2026-09-03; 6GB https://www.amazon.com/dp/B0FY6LMZ2G también listado",
+     "aliexpress": "https://www.aliexpress.us/item/3256810104349651.html y https://www.aliexpress.us/item/3256810117007491.html: 4GB US$62.07 (agotado), 6GB US$71.97, 8GB US$83.28, 12GB US$103.08 (agotado), 16GB US$124.29 (agotado), antes de envío/impuestos; precios según fragmento de búsqueda 2026-09-03 (la ficha bloquea WebFetch, tienda no verificada)",
+     "best_link": "https://www.aliexpress.us/item/3256810104349651.html",
+     "best_price": "US$83.28 (8GB) en AliExpress, 2026-09-03, antes de envío; alternativa Amazon 12GB US$219.99 con envío a Chile (9 unidades)",
+     "summary": "Desde Chile la mejor relación es AliExpress (8GB a ~US$83, 6GB ~US$72, con stock); en Amazon solo queda la 12GB a US$219.99 vendida por Radxa con envío AmazonGlobal a Chile; no está en Mercado Libre."
+    }
+   ]
+  },
+  {
+   "category": "microcomputador",
+   "items": [
+    {
+     "name": "Raspberry Pi 5 (8 GB)",
+     "mercadolibre": "Sí aparece. Página de catálogo Raspberry Pi 5 (8 GB): https://www.mercadolibre.cl/raspberry-pi-5-8-gb/p/MLC32625223 con ofertas desde ~CLP 139.990 (también CLP 141.990 con +100 vendidos, 144.990 y 189.800); kits con accesorios entre CLP 168.990 y 195.990. Stock activo, envío gratis dentro de Chile y cuotas sin interés (búsqueda sept 2026).",
+     "amazon": "Sí aparece. Placa oficial SC1112: https://www.amazon.com/dp/B0CK2FCG1K (precio no visible en el fragmento de búsqueda). Kits: RasTech https://www.amazon.com/dp/B0CPLN2ZM7, Vemico https://www.amazon.com/dp/B0DFMNHL62, WayPonDEV https://www.amazon.com/dp/B0CY5BS5P9. No se vio evidencia explícita de envío a Chile en los fragmentos.",
+     "aliexpress": "Solo aparecen artículos wiki de AliExpress (https://www.aliexpress.com/s/wiki-ssr/article/raspberry-pi-5-8gb-aliexpress); no se encontró un listado concreto ni tienda oficial en la búsqueda. Precio no verificado.",
+     "best_link": "https://www.mercadolibre.cl/raspberry-pi-5-8-gb/p/MLC32625223",
+     "best_price": "desde ~CLP 139.990 (Mercado Libre Chile, ofertas del catálogo MLC32625223, sept 2026)",
+     "summary": "Comprar en Mercado Libre Chile: hay varios vendedores con stock, envío gratis local y cuotas; la placa oficial existe en Amazon (B0CK2FCG1K) pero sin ventaja clara frente al precio local con importación."
+    },
+    {
+     "name": "Radxa X4 (Intel N100 SBC)",
+     "mercadolibre": "no aparece",
+     "amazon": "Aparece pero sin stock: Radxa X4 oficial 8GB https://www.amazon.com/dp/B0DDTN3PK7 (\"currently unavailable\"), MiiElAOD X4 8GB/64GB eMMC https://www.amazon.com/dp/B0DM5ZHJK2 (no disponible), MiiElAOD X4 4GB https://www.amazon.com/dp/B0DM65FJTK (no disponible). Precios no visibles; sin evidencia de envío a Chile.",
+     "aliexpress": "Sí aparece. Listados: https://www.aliexpress.com/item/1005008329751614.html y https://www.aliexpress.com/item/1005009250156058.html; precios vistos entre ~US$51,82 (variante básica, posible sin RAM/eMMC alta) y US$182,09 (25% dcto., configuraciones mayores), hasta US$294,95. Muchos con envío gratis mundial. No se confirmó tienda oficial Radxa en los resultados.",
+     "best_link": "https://www.aliexpress.com/item/1005008329751614.html",
+     "best_price": "~US$51,82 a US$182,09 según configuración (AliExpress, sept 2026)",
+     "summary": "Solo viable vía AliExpress con envío a Chile (Amazon sin stock y sin listado en Mercado Libre Chile); verificar variante de RAM/eMMC antes de comprar."
+    },
+    {
+     "name": "Khadas VIM4 (Amlogic A311D2)",
+     "mercadolibre": "no aparece (en listado.mercadolibre.cl/khadas solo hay VIM3L HTPC kit a CLP 138.576 y accesorios; no VIM4)",
+     "amazon": "Sí aparece. Khadas VIM4 A311D2 8GB/32GB: https://www.amazon.com/dp/B09ZTFMXDX (con reseñas), bareboard https://www.amazon.com/dp/B0C7QDCF8Y, variantes https://www.amazon.com/dp/B09ZTLLZLZ y https://www.amazon.com/dp/B0C7QDDZXH; tienda Khadas en Amazon. Precio y stock no visibles en los fragmentos; sin evidencia de envío a Chile.",
+     "aliexpress": "Sí aparece, tienda oficial Khadas: https://khadas.aliexpress.com/store/group/VIM4/4381108_40000001438207.html — VIM4 8GB RAM / 32GB eMMC a US$219,90.",
+     "best_link": "https://khadas.aliexpress.com/store/group/VIM4/4381108_40000001438207.html",
+     "best_price": "US$219,90 (Khadas Official Store en AliExpress, sept 2026)",
+     "summary": "Comprar en la tienda oficial de Khadas en AliExpress (US$219,90, envío a Chile); Amazon tiene listados oficiales (B09ZTFMXDX) pero sin precio/stock confirmado y no está en Mercado Libre Chile."
+    },
+    {
+     "name": "ArmSoM Sige7 (RK3588)",
+     "mercadolibre": "no aparece",
+     "amazon": "no aparece (solo otras placas RK3588: youyeetoo, Firefly, RUPA; ningún listado ArmSoM Sige7)",
+     "aliexpress": "No aparece un listado directo del Sige7 en la búsqueda; solo referencia a la Banana Pi BPI-M7 (misma placa RK3588 fabricada por ArmSoM) en el listado de placas Rockchip https://www.aliexpress.com/w/wholesale-rockchip-board.html. Precio no verificado.",
+     "best_link": "https://www.aliexpress.com/w/wholesale-rockchip-board.html",
+     "best_price": "no verificado (sin listado directo encontrado; buscar 'Banana Pi BPI-M7' en AliExpress o la tienda oficial armsom.org)",
+     "summary": "No se encontró stock verificable desde Chile en Mercado Libre, Amazon ni AliExpress; la alternativa práctica es comprar la Banana Pi BPI-M7 (equivalente) en AliExpress o directamente en la tienda de ArmSoM."
+    }
+   ]
+  },
+  {
+   "category": "microcomputador",
+   "items": [
+    {
+     "name": "FriendlyELEC NanoPC-T6 LTS (RK3588)",
+     "mercadolibre": "no aparece (búsqueda 'NanoPC-T6 LTS mercadolibre.cl' no devolvió ningún listado en mercadolibre.cl)",
+     "amazon": "Sí aparece: 'NanoPC-T6 LTS Mini Computer WiFi Router' https://www.amazon.com/dp/B0D1VKM11T y 'youyeetoo FriendlyElec NanoPC-T6 LTS SBC' https://www.amazon.com/dp/B0CYSSV48M (variantes 4+32GB, 8+64GB, 16+64GB). Precio y stock no visibles en los fragmentos de búsqueda; sin evidencia de envío a Chile.",
+     "aliexpress": "Sí aparece: listado NanoPC T6 RK3588 (vendedor SmartFly Tech, no tienda oficial FriendlyELEC) https://www.aliexpress.com/item/1005005548593886.html; precio no visible en el fragmento. Tienda oficial: friendlyelec.com, US$119 (4GB/32GB) – US$129 (8GB/64GB), en stock.",
+     "best_link": "https://www.friendlyelec.com/index.php?route=product%2Fproduct&product_id=292",
+     "best_price": "US$119 (4GB/32GB) – US$129 (8GB/64GB), tienda oficial friendlyelec.com, sep-2026 (según resultados de búsqueda)",
+     "summary": "Desde Chile lo más confiable es la tienda oficial FriendlyELEC (en stock, envío internacional) o Amazon.com (ASIN B0D1VKM11T); no hay listado en Mercado Libre Chile."
+    },
+    {
+     "name": "Firefly ROC-RK3588S-PC",
+     "mercadolibre": "no aparece (búsqueda no devolvió listados en mercadolibre.cl)",
+     "amazon": "Sí aparece: 'WayPonDEV Firefly ROC-RK3588S-PC 4GB/32GB' https://www.amazon.com/dp/B0B2P5GN7M, '16GB/128GB' https://www.amazon.com/dp/B0B2PBVY3R y 'youyeetoo ROC-RK3588S-PC' https://www.amazon.com/dp/B0B27ZZGQJ. Precio y stock no visibles en los fragmentos; sin evidencia de envío a Chile.",
+     "aliexpress": "Sí aparece: 'ROC-RK3588S-PC 8-core 8K AI Mainboard Firefly' https://www.aliexpress.com/item/1005004180710545.html, US$245.13 (fragmento de búsqueda; no confirmado como tienda oficial). Tienda oficial firefly.store desde US$219 (4GB/32GB).",
+     "best_link": "https://www.firefly.store/products/roc-rk3588s-pc-8-core-8k-ai-mainboard",
+     "best_price": "desde US$219 (4GB/32GB), tienda oficial firefly.store, sep-2026 (según resultados de búsqueda; AliExpress US$245.13)",
+     "summary": "Desde Chile conviene la tienda oficial Firefly (firefly.store) o Amazon.com vía WayPonDEV/youyeetoo; no hay listado en Mercado Libre Chile."
+    },
+    {
+     "name": "Sipeed LicheePi 4A (TH1520, 16 GB)",
+     "mercadolibre": "no aparece (búsqueda no devolvió listados en mercadolibre.cl)",
+     "amazon": "Sí aparece: 'LicheePi 4A 64bit LPDDR4X 16GB RISC-V' https://www.amazon.com/dp/B0CBPYYXQJ, 'LicheePi 4A RISC-V Linux 16GB' https://www.amazon.com/dp/B0CBQ7NTVQ, https://www.amazon.com/dp/B0CCRMC6V6 y 'Sipeed LicheePi 4A' https://www.amazon.com/dp/B0C5MV6991 (vendedores MiiElAOD/WayPonDEV). Precio y stock no visibles en los fragmentos; sin evidencia de envío a Chile.",
+     "aliexpress": "Sí aparece, tienda oficial Sipeed: https://www.aliexpress.us/item/3256807808582599.html (variantes incl. 16GB/128GB; precio de referencia US$179 para 16GB/128GB según anuncio de Sipeed, precio actual no visible en el fragmento).",
+     "best_link": "https://www.aliexpress.us/item/3256807808582599.html",
+     "best_price": "US$179 aprox. (16GB/128GB), tienda oficial Sipeed en AliExpress, referencia sep-2026 (precio de lanzamiento, verificar en la página)",
+     "summary": "Desde Chile la mejor vía es la tienda oficial de Sipeed en AliExpress (canal oficial de venta, envía a Chile), con Amazon.com como alternativa; no hay listado en Mercado Libre Chile."
+    },
+    {
+     "name": "BeagleBoard BeagleY-AI (AM67A)",
+     "mercadolibre": "no aparece (búsqueda no devolvió listados en mercadolibre.cl)",
+     "amazon": "no aparece (la búsqueda site:amazon.com solo devolvió el BeagleBone AI antiguo, ASIN B07YR1RV64, y un ebook no relacionado)",
+     "aliexpress": "no aparece (sin listados en AliExpress; se vende vía distribuidores oficiales: Seeed Studio https://www.seeedstudio.com/BeagleYr-AI-beagleboard-orgr-4-TOPS-AI-Acceleration-powered-by-TI-AM67A.html, RS Online, DigiKey, ~US$70)",
+     "best_link": "https://www.seeedstudio.com/BeagleYr-AI-beagleboard-orgr-4-TOPS-AI-Acceleration-powered-by-TI-AM67A.html",
+     "best_price": "US$70, Seeed Studio (distribuidor oficial BeagleBoard.org), sep-2026 (según resultados de búsqueda)",
+     "summary": "Desde Chile hay que comprarlo a un distribuidor oficial (Seeed Studio ~US$70, o DigiKey/RS con envío internacional); no aparece en Mercado Libre Chile, Amazon.com ni AliExpress."
+    }
+   ]
+  }
+ ]
+}
