@@ -1,0 +1,36 @@
+{
+ "nota": "PC fanless sellados para el nodo en ambiente con polvo, con enlace a su tienda de Amazon (pedido del usuario, 2026-09-03).",
+ "total": 2,
+ "quotations": [
+  {"quotation_id": "pcs-industriales-m2-ai", "picks": [
+   {"name": "Partaker / Inctel C11 (Intel N100, carcasa sellada)",
+    "price": "≈US$180–200 barebone (Amazon, Partaker C11, sep. 2026); US$158 en AliExpress tienda Inctel",
+    "country": "China",
+    "purchase_link": "https://www.amazon.com/PARTAKER-Fanless-Desktop-Computer-Barebone/dp/B0D8PLD54S",
+    "photo_url": "",
+    "description": "PC fanless N100 de Inctel (marca Partaker en Amazon) con carcasa de aluminio anodizado SELLADA, declarada por el fabricante como apta para impedir la entrada de polvo industrial; 150×126,5×45 mm, 2× Intel i226-V 2,5GbE, TPM 2.0, watchdog, 1× DDR4 SO-DIMM hasta 16 GB, M.2 2280 M-key (SATA o PCIe 3.0 x1 NVMe), M.2 E-key 2230 (PCIe x1) para Wi-Fi, mini PCIe y bahía SATA 2,5 pulgadas; 0–40 °C comercial, -20–60 °C con SSD industrial.",
+    "comment": "El PC que cumple lo pedido para la mina: sellado, sin ventilador, N100, M.2 libre para el Hailo (el SO va al SSD SATA 2,5\") y menos de $200.000 CLP. Armado más limpio: Hailo-8L A+E (US$85) en la ranura E-key del Wi-Fi y un SSD NVMe en el M.2 2280. Riesgos: PCIe x1, 0–40 °C sin SSD industrial, sin soporte local. Comprar barebone y verificar en la ficha que sea el chasis sin ranuras; agregar RAM DDR4 y disco.",
+    "extra_data": {"espacio_m2": true, "procesador": "Intel N100 (4 núcleos)", "ram": "1× DDR4-3200 SO-DIMM, hasta 16 GB", "m2_acelerador": "Sí: M-key 2280 PCIe 3.0 x1 (o SATA), libre con el SO en la bahía SATA 2,5\"; además E-key 2230 PCIe x1 para un Hailo-8L A+E"},
+    "availability_chile": "Importar: Amazon (Partaker) despacha a Chile con depósito de aduana; también AliExpress (tienda oficial Inctel). Sin venta local (sep. 2026).",
+    "programming_score": 5,
+    "programming_note": "x86 con Ubuntu: HailoRT y Ultralytics sin adaptaciones.",
+    "why": "Único PC con carcasa sellada declarada y precio bajo; el Qotom que gustaba está sin stock.",
+    "sources": ["https://www.inctelpc.com/product/fanless-n100-mini-pc-2/", "https://www.amazon.com/PARTAKER-Fanless-Desktop-Computer-Barebone/dp/B0D8PLD54S", "https://www.cnx-software.com/2024/03/30/inctel-n100-fanless-mini-pc-and-micro-firewall-appliance-comes-with-four-2-5gbe-ports-using-intel-i226v-controllers/"],
+    "verify": {"reviewed": "Claude en línea, 2026-09-03"}},
+   {"name": "Kingdel NC690 / HT690-5 (Intel N100, sin polvo)",
+    "price": "US$299–339 configurado con 8–16 GB y SSD (Amazon, sep. 2026)",
+    "country": "China",
+    "purchase_link": "https://www.amazon.com/KINGDEL-Fanless-Intel-Cores-3-4GHz/dp/B0CNW6ZD98",
+    "photo_url": "",
+    "description": "PC fanless de aluminio con Intel N100, 135×127×38,7 mm, que Kingdel vende como 'sin ventilador, sin ruido, sin polvo'; 1× DDR4-3200 SO-DIMM hasta 32 GB, M.2 2280 NVMe (lanes no publicados), mSATA (mini PCIe de altura completa) y bahía SATA 2,5 pulgadas, 2× LAN Gigabit, -10–60 °C.",
+    "comment": "Plan B sellado: el M.2 queda libre para el Hailo porque el SO puede ir en mSATA o SATA. Contras: en Amazon sólo aparece configurado (US$299–339, sobre el presupuesto de $300.000 CLP para el PC), lanes PCIe del M.2 no publicados (probablemente x1) y LAN de 1 GbE. Nodo ≈US$400 con Hailo-8L.",
+    "extra_data": {"espacio_m2": true, "procesador": "Intel N100 (4 núcleos)", "ram": "1× DDR4-3200 SO-DIMM, hasta 32 GB", "m2_acelerador": "Sí: M-key 2280 NVMe (lanes no publicados), libre con el SO en mSATA o SATA 2,5\""},
+    "availability_chile": "Importar: Amazon (varios listados Kingdel N100) despacha a Chile; sin venta local ni barebone público (sep. 2026).",
+    "programming_score": 5,
+    "programming_note": "x86 con Ubuntu: HailoRT y Ultralytics sin adaptaciones.",
+    "why": "Segunda opción sellada si el Inctel C11 no está disponible.",
+    "sources": ["https://kingdel.com.cn/PC/pc-ht690-5.html", "https://www.amazon.com/KINGDEL-Fanless-Intel-Cores-3-4GHz/dp/B0CNW6ZD98"],
+    "verify": {"reviewed": "Claude en línea, 2026-09-03"}}
+  ]}
+ ]
+}

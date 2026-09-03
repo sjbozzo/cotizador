@@ -1,0 +1,17 @@
+{
+ "summary": {"origen": "Qotom Q10922X de la tabla PC industriales: enlace al barebone en Amazon y nota de stock (2026-09-03)"},
+ "batches": [
+  {"q": "pcs-industriales-m2-ai", "index": 0, "items": [
+   {"id": "pcs-industriales-m2-ai-46b932e4b21c", "name": "", "verdict": "keep",
+    "verdict_reason": "Se mantiene; enlace a Amazon y aviso de stock.",
+    "price": "", "price_source": "",
+    "availability_chile": "Stock incierto (sep. 2026): la tienda Qotom no muestra precio ni stock; Amazon lista barebone (B0FWK62KYN) y configurado, verificar disponibilidad antes de contar con él. Amazon despacha a Chile.",
+    "programming_score": 5, "programming_note": "x86 con Ubuntu: HailoRT y Ultralytics sin adaptaciones.",
+    "description": "", "comment": "",
+    "country": "", "purchase_link": "https://www.amazon.com/Qotom-Barebone-Fanless-Industrial-Processor/dp/B0FWK62KYN",
+    "spec_corrections": "Qotom no declara carcasa sellada (sólo aleación de aluminio, 0–50 °C).",
+    "extra_data": {}, "m2": {"applies": false}, "sources": ["https://www.qotom.com/products/show/MinI-PC-Q10900X-S04-Series", "https://www.amazon.com/Qotom-Barebone-Fanless-Industrial-Processor/dp/B0FWK62KYN"],
+    "votes": null, "removal_holds": false}
+  ]}
+ ]
+}
