@@ -1,0 +1,151 @@
+{
+ "batches": [
+  {
+   "q": "pares-pc-fanless-npu",
+   "index": 0,
+   "items": [
+    {
+     "verdict": "keep",
+     "verdict_reason": "Precio unificado en USD (PC + Hailo-8L), pedido del usuario 2026-09-02",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": null,
+     "removal_holds": false,
+     "name": "",
+     "id": "item-c5633af8305f4fac90f211c6c18fdc7d",
+     "price": "≈US$319 (PC US$239 tienda Qotom + Hailo-8L B+M ≈US$80 / €73,10 Mouser; sep. 2026)"
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Precio unificado en USD (PC + Hailo-8L), pedido del usuario 2026-09-02",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": null,
+     "removal_holds": false,
+     "name": "",
+     "id": "item-02d49234f2b146a0b994d03a9eedc21e",
+     "price": "≈US$215 barebone, ≈US$371 con RAM y SSD (PC US$135–291 Topton + Hailo-8L B+M ≈US$80; sep. 2026)"
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Precio unificado en USD (PC + Hailo-8L), pedido del usuario 2026-09-02",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": null,
+     "removal_holds": false,
+     "name": "",
+     "id": "item-93c1693d1f9945579fb5517e2b9ca270",
+     "price": "≈US$250 estimado (PC ≈US$170 estimado, Inctel no publica precio + Hailo-8L B+M ≈US$80; sep. 2026)"
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Precio unificado en USD (PC + Hailo-8L), pedido del usuario 2026-09-02",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": null,
+     "removal_holds": false,
+     "name": "",
+     "id": "item-d9ac1ca439f84788b9b0b8a88a545caa",
+     "price": "≈US$504 (host US$419 Protectli + Hailo-8L A+E US$85 Mouser; sep. 2026)"
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Precio unificado en USD (PC + Hailo-8L), pedido del usuario 2026-09-02",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": null,
+     "removal_holds": false,
+     "name": "",
+     "id": "item-9cecf99c9bc44fdbac36c3269238bf60",
+     "price": "≈US$310 estimado (PC ≈US$230 estimado según listados Amazon de Kingdel N100 + Hailo-8L B+M ≈US$80; sep. 2026)"
+    },
+    {
+     "verdict": "keep",
+     "verdict_reason": "Precio unificado en USD (PC + Hailo-8L), pedido del usuario 2026-09-02",
+     "price_source": "",
+     "availability_chile": "",
+     "programming_score": 0,
+     "programming_note": "",
+     "description": "",
+     "comment": "",
+     "country": "",
+     "purchase_link": "",
+     "spec_corrections": "",
+     "extra_data": {},
+     "m2": {
+      "applies": false
+     },
+     "sources": [],
+     "votes": null,
+     "removal_holds": false,
+     "name": "",
+     "id": "item-ee4de2cb0e514eac853b49eb60d8418b",
+     "price": "≈US$472 (PC US$392 Newegg + Hailo-8L B+M ≈US$80; sep. 2026)"
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "origen": "precio unificado en USD por par, Claude 2026-09-02 (Hailo-8L B+M €73,10 ≈ US$80; A+E US$85)"
+ }
+}

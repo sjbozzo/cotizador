@@ -70,16 +70,28 @@ button,input,select,textarea{font:inherit;color:inherit}
 .move-field select{height:31px;padding-top:5px;padding-bottom:5px}
 
 /* Descripción de la cotización, arriba de la tabla */
-#quotation-view{display:flex;flex-direction:column;gap:10px;height:calc(100vh - 116px)}
+/* La tabla crece con sus filas y es la página la que se desplaza; las pestañas
+   y el encabezado de la tabla quedan pegados arriba. */
+#quotation-view{display:flex;flex-direction:column;gap:10px}
 .quote-intro{flex:0 0 auto;padding:9px 13px 10px;border:1px solid var(--line);border-radius:10px;background:var(--soft-2)}
+.quote-intro-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .quote-intro .eyebrow{margin-bottom:4px}
+.quote-intro-toggle{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border:1px solid var(--line-strong);border-radius:var(--radius);background:#fff;color:var(--muted);font-size:11px;cursor:pointer}
+.quote-intro-toggle:hover{color:var(--ink);border-color:var(--muted-2)}
+.quote-intro-toggle .chevron{display:inline-block;font-size:11px;transition:transform .15s}
+.quote-intro.collapsed{padding:5px 13px}
+.quote-intro.collapsed .eyebrow{margin-bottom:0}
+.quote-intro.collapsed .quote-intro-toggle .chevron{transform:rotate(-90deg)}
+.quote-intro.collapsed .quote-intro-text{display:none}
 .quote-intro-text{color:var(--ink-soft);font-size:12.5px;line-height:1.5}
 .quote-intro-text p{margin:0 0 6px}
 .quote-intro-text p:last-child{margin-bottom:0}
 
 /* Tarjeta del catálogo */
-.catalog-card{display:flex;flex-direction:column;flex:1 1 auto;min-height:0;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}
-#items-table{flex:1 1 auto;min-height:0}
+.catalog-card{display:flex;flex-direction:column;flex:none;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:visible}
+#items-table{flex:none}
+.tabulator{overflow:visible}
+.tabulator .tabulator-header{position:sticky;top:var(--tabs-height,42px);z-index:6}
 .table-footer{flex:0 0 auto}
 input,select,textarea{width:100%;border:1px solid var(--line-strong);border-radius:var(--radius);background:#fff;padding:7px 9px;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--accent-strong);box-shadow:0 0 0 2px rgba(154,224,0,.28)}
@@ -94,13 +106,14 @@ textarea{resize:vertical}
 .selection-actions{display:flex;align-items:center;gap:6px;padding-right:8px;margin-right:2px;border-right:1px solid var(--line)}
 
 /* Tabulator: tema propio sobre el de la librería */
-.tabulator{border:0;background:#fff;font-size:12.5px}
+.tabulator{border:0;background:#fff;font-size:12px}
 .tabulator .tabulator-header{border-bottom:1px solid var(--line-strong);background:var(--soft);color:var(--ink);font-weight:700}
 .tabulator .tabulator-header .tabulator-col{border-right:1px solid var(--line);background:transparent}
 .tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover{background:#e8f1f3}
 .tabulator .tabulator-header .tabulator-col .tabulator-col-content{padding:5px 7px}
-.tabulator .tabulator-header .tabulator-col .tabulator-col-title{font-size:11px;font-weight:700;letter-spacing:.01em;color:var(--ink)}
-.tabulator .tabulator-header .tabulator-col .tabulator-col-title.tabulator-col-title-wrap{overflow-wrap:break-word;hyphens:auto;line-height:1.25}
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title{font-size:10.5px;font-weight:700;letter-spacing:.01em;color:var(--ink)}
+/* El título baja de línea sólo en los espacios: nunca "espa-cio". */
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title.tabulator-col-title-wrap{overflow-wrap:normal;word-break:normal;hyphens:manual;line-height:1.25}
 /* La flecha de orden y el disparador del menú viven arriba a la derecha: el
    título les cede ese hueco en la primera línea y usa el ancho completo en las
    siguientes, en vez de reservar 45px en todas y quedarse sin dónde escribir. */
@@ -125,9 +138,9 @@ textarea{resize:vertical}
 .tabulator .tabulator-row{border-bottom:1px solid var(--line);background:#fff;min-height:0}
 .tabulator .tabulator-row.tabulator-row-even{background:#fff}
 .tabulator .tabulator-row:hover{background:var(--soft-2)}
-.tabulator .tabulator-row.excluded{opacity:.5}
-.tabulator .tabulator-row.excluded .tabulator-cell.item-name-cell{text-decoration:line-through;text-decoration-color:var(--muted-2)}
-.tabulator .tabulator-row .tabulator-cell{padding:5px 7px;border-right:1px solid var(--line);vertical-align:middle;overflow:hidden;white-space:normal;overflow-wrap:break-word;line-height:1.35}
+.tabulator .tabulator-row .tabulator-cell{padding:5px 7px;border-right:1px solid var(--line);vertical-align:middle;overflow:hidden;white-space:normal;overflow-wrap:normal;word-break:normal;line-height:1.35}
+.tabulator .tabulator-row .tabulator-cell.popup-cell{cursor:pointer}
+.tabulator .tabulator-row .tabulator-cell.popup-cell:hover{background:#eef5f7}
 .tabulator .tabulator-row .tabulator-cell.text-cell{color:#3d6270}
 .tabulator .tabulator-row .tabulator-cell.item-name-cell{font-weight:700}
 .tabulator .tabulator-row .tabulator-cell.move-cell{padding:2px}
@@ -175,7 +188,15 @@ textarea{resize:vertical}
 .check-field input{width:16px;height:16px;margin:1px 0 0;accent-color:var(--accent-strong)}
 .photo-editor{display:grid;grid-template-columns:160px 1fr;gap:15px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .photo-preview{display:grid;place-items:center;width:160px;height:115px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft-2);overflow:hidden;color:var(--muted)}
-.photo-preview img{width:100%;height:100%;object-fit:contain}
+.photo-preview img{width:100%;height:100%;object-fit:contain;cursor:zoom-in}
+
+/* Contenido de una celda y foto ampliada */
+.cell-modal-text{white-space:pre-wrap;font-size:13px;line-height:1.55;color:var(--ink)}
+.cell-modal-text em{color:var(--muted)}
+.photo-modal{max-width:96vw;max-height:96vh;padding:0;border:0;background:transparent;overflow:visible}
+.photo-modal::backdrop{background:rgba(0,20,26,.72)}
+.photo-modal img{display:block;max-width:94vw;max-height:90vh;border-radius:10px;background:#fff;box-shadow:var(--shadow);cursor:zoom-out}
+.photo-modal-close{position:fixed;top:12px;right:16px;width:36px;height:36px;border:0;border-radius:18px;background:rgba(255,255,255,.92);color:var(--ink);font-size:24px;line-height:1;cursor:pointer}
 .photo-controls{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
 .photo-controls .field{width:100%}
 .file-button{display:inline-flex;padding:6px 10px;border:1px solid var(--line-strong);border-radius:var(--radius);cursor:pointer}

@@ -8,19 +8,23 @@
   <style>{{ app_css|safe }}</style>
   <style>
     /* La planilla: mismo aspecto que la tabla de la aplicación, sin la librería. */
-    #items-table{overflow:auto}
-    .sheet{width:100%;border-collapse:separate;border-spacing:0;background:#fff;font-size:12.5px}
-    .sheet th{position:sticky;top:0;z-index:2;padding:5px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line-strong);background:var(--soft);color:var(--ink);font-size:11px;font-weight:700;text-align:left;line-height:1.25;overflow-wrap:anywhere;cursor:pointer;user-select:none}
+    /* La página es la que se desplaza; pestañas y encabezado quedan pegados arriba. */
+    #quotation-view{height:auto}
+    .catalog-card{overflow:visible}
+    #items-table{overflow:visible}
+    .sheet{width:100%;border-collapse:separate;border-spacing:0;background:#fff;font-size:12px}
+    .sheet th{position:sticky;top:var(--tabs-height,42px);z-index:2;min-width:110px;padding:5px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line-strong);background:var(--soft);color:var(--ink);font-size:10.5px;font-weight:700;text-align:left;line-height:1.25;overflow-wrap:normal;word-break:normal;hyphens:manual;cursor:pointer;user-select:none}
+    .sheet th.narrow{min-width:0}
     .sheet th.fixed{cursor:default}
     .sheet th:last-child,.sheet td:last-child{border-right:0}
     .sheet th:not(.fixed):hover{background:#e8f1f3}
     .sheet th[aria-sort="ascending"],.sheet th[aria-sort="descending"]{background:#e4f0d5;box-shadow:inset 0 -2px 0 var(--accent-strong)}
     .sheet th .arrow{margin-left:5px;color:var(--muted-2);font-size:9px}
     .sheet th[aria-sort="ascending"] .arrow,.sheet th[aria-sort="descending"] .arrow{color:var(--accent-strong)}
-    .sheet td{padding:5px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top;line-height:1.35;overflow-wrap:anywhere}
+    .sheet td{padding:5px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top;line-height:1.35;overflow-wrap:normal;word-break:normal}
     .sheet tbody tr:hover{background:var(--soft-2)}
-    .sheet tr.excluded{opacity:.5}
-    .sheet tr.excluded .cell-name{text-decoration:line-through;text-decoration-color:var(--muted-2)}
+    .sheet td.popup-cell{cursor:pointer}
+    .sheet td.popup-cell:hover{background:#eef5f7}
     .cell-include{padding:2px 2px 2px 8px}
     .cell-include input{width:15px;height:15px;margin:0;accent-color:var(--accent-strong);cursor:pointer}
     .cell-photo{cursor:pointer}
@@ -31,9 +35,11 @@
     .clip{display:block}
     /* Reparto del ancho: el nombre y los textos largos no se dejan aplastar y
        lo corto ("Abrir", Sí/No, números) nunca se parte en varias líneas. */
-    .sheet td.cell-name{min-width:140px}
-    .sheet td.cell-text{min-width:120px}
-    .sheet td.cell-plain{min-width:88px}
+    .sheet td.cell-name{min-width:170px}
+    .sheet td.cell-text{min-width:200px}
+    .sheet td.cell-plain{min-width:140px}
+    .sheet td.cell-extra{min-width:130px}
+    .sheet td.cell-link{min-width:90px;text-align:center}
     .sheet td.cell-center,.sheet td.cell-number{white-space:nowrap}
     .name-open{padding:0;border:0;background:transparent;color:inherit;font:inherit;font-weight:700;text-align:left;cursor:pointer}
     .name-open:hover{text-decoration:underline;text-underline-offset:3px}
@@ -44,6 +50,23 @@
     .field input[readonly],.field textarea[readonly],.extra-input input[readonly]{background:var(--soft-2);color:var(--ink-soft);cursor:default}
     .field input[readonly]:focus,.field textarea[readonly]:focus,.extra-input input[readonly]:focus{border-color:var(--line-strong);box-shadow:none}
     .extra-input input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent-strong)}
+    .quote-intro-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .quote-intro-toggle{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border:1px solid var(--line-strong);border-radius:var(--radius);background:#fff;color:var(--muted);font-size:11px;cursor:pointer}
+    .quote-intro-toggle:hover{color:var(--ink);border-color:var(--muted-2)}
+    .quote-intro-toggle .chevron{display:inline-block;transition:transform .15s}
+    .quote-intro.collapsed{padding:5px 13px}
+    .quote-intro.collapsed .eyebrow{margin-bottom:0}
+    .quote-intro.collapsed .quote-intro-toggle .chevron{transform:rotate(-90deg)}
+    .quote-intro.collapsed .quote-intro-text{display:none}
+    .readonly-text{min-height:38px;padding:7px 9px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--soft-2);color:var(--ink-soft);white-space:pre-wrap;line-height:1.5}
+    .readonly-text a,.cell-modal-text a{color:var(--ink);text-underline-offset:3px}
+    .cell-modal-text{white-space:pre-wrap;font-size:13px;line-height:1.55;color:var(--ink)}
+    .cell-modal-text em{color:var(--muted)}
+    .photo-preview img{cursor:zoom-in}
+    .photo-modal{max-width:96vw;max-height:96vh;padding:0;border:0;background:transparent;overflow:visible}
+    .photo-modal::backdrop{background:rgba(0,20,26,.72)}
+    .photo-modal img{display:block;max-width:94vw;max-height:90vh;border-radius:10px;background:#fff;box-shadow:var(--shadow);cursor:zoom-out}
+    .photo-modal-close{position:fixed;top:12px;right:16px;width:36px;height:36px;border:0;border-radius:18px;background:rgba(255,255,255,.92);color:var(--ink);font-size:24px;line-height:1;cursor:pointer}
     @media(max-width:900px){.export-meta{display:none}}
   </style>
 </head>
@@ -73,7 +96,12 @@
   <main class="workspace">
     <section id="quotation-view">
       <section class="quote-intro" id="intro" aria-label="Descripción de la cotización" hidden>
-        <p class="eyebrow">Sobre esta cotización</p>
+        <div class="quote-intro-head">
+          <p class="eyebrow">Sobre esta cotización</p>
+          <button class="quote-intro-toggle" id="introToggle" type="button" aria-expanded="true" aria-controls="introText">
+            <span class="chevron" aria-hidden="true">▾</span><span class="toggle-label">Ocultar</span>
+          </button>
+        </div>
         <div class="quote-intro-text" id="introText"></div>
       </section>
       <section class="catalog-card" aria-label="Elementos cotizados">
@@ -123,6 +151,22 @@
         <div><button class="button" type="button" data-close>Cerrar</button></div>
       </footer>
     </div>
+  </dialog>
+
+  <dialog class="modal cell-modal" id="cellModal" aria-label="Contenido de la celda">
+    <div class="modal-shell compact">
+      <header class="modal-head">
+        <div><p class="eyebrow" id="cellKicker"></p><h2 id="cellTitle"></h2></div>
+        <button class="icon-button" type="button" data-close-cell aria-label="Cerrar">×</button>
+      </header>
+      <div class="modal-body"><div class="cell-modal-text" id="cellText"></div></div>
+      <footer class="modal-foot"><span class="modal-status" id="cellStatus"></span><div><button class="button" type="button" data-close-cell>Cerrar</button></div></footer>
+    </div>
+  </dialog>
+
+  <dialog class="photo-modal" id="photoModal" aria-label="Foto ampliada">
+    <button class="photo-modal-close" type="button" data-close-photo aria-label="Cerrar">×</button>
+    <img id="photoModalImage" alt="Foto ampliada">
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -199,6 +243,69 @@
       }
 
       const booleanSorter = (a, b) => (a === b ? 0 : a === true ? -1 : b === true ? 1 : a ? -1 : 1);
+
+      // --- Enlaces dentro del texto: se muestran con el nombre del sitio ---------
+      const URL_RE = /https?:\/\/[^\s<>"')\]]+/g;
+      const VENDORS = [
+        [/mercadolibre\./, 'Mercado Libre'], [/mouser\./, 'Mouser'], [/digikey\./, 'DigiKey'], [/amazon\./, 'Amazon'],
+        [/aliexpress\./, 'AliExpress'], [/newegg\./, 'Newegg'], [/up-shop\./, 'UP Shop'], [/aaeon\./, 'AAEON'],
+        [/pishop\./, 'PiShop'], [/pimoroni\./, 'Pimoroni'], [/raspberrypi\./, 'Raspberry Pi'], [/mcielectronics\./, 'MCI Electronics'],
+        [/altronics\./, 'Altronics'], [/seeedstudio\./, 'Seeed'], [/waveshare\./, 'Waveshare'], [/hailo\.ai/, 'Hailo'],
+        [/github\.com/, 'GitHub'], [/ebay\./, 'eBay'], [/walmart\./, 'Walmart'], [/advantech\./, 'Advantech'],
+        [/neousys/, 'Neousys'], [/qotom/, 'Qotom'], [/protectli/, 'Protectli'], [/topton/, 'Topton'], [/inctelpc/, 'Inctel'],
+        [/kingdel/, 'Kingdel'], [/jieruicc/, 'JIERUICC'], [/hystou/, 'HYSTOU'], [/jetway/, 'Jetway'], [/asus\./, 'ASUS'],
+        [/deepx\./, 'DEEPX'], [/axelera/, 'Axelera'], [/memryx/, 'MemryX'], [/kneron/, 'Kneron'], [/coral\.ai/, 'Coral'],
+        [/intel\./, 'Intel'], [/nvidia\./, 'NVIDIA'], [/mele\./, 'MeLE'], [/cwwk/, 'CWWK'], [/radxa/, 'Radxa'],
+        [/orangepi/, 'Orange Pi'], [/khadas/, 'Khadas'], [/luxonis/, 'Luxonis'], [/openmv/, 'OpenMV'], [/m5stack/, 'M5Stack'],
+        [/kksb/, 'KKSB'], [/akasa/, 'Akasa'], [/takachi/, 'Takachi'], [/hammond/, 'Hammond'], [/fibox/, 'Fibox'],
+      ];
+      function linkLabel(href) {
+        let host = '';
+        try { host = new URL(href).hostname.replace(/^www\./, ''); } catch (_) { return href; }
+        for (const [pattern, label] of VENDORS) if (pattern.test(host)) return label;
+        const stem = host.split('.')[0];
+        return stem.charAt(0).toUpperCase() + stem.slice(1);
+      }
+      function linkify(value) {
+        const fragment = document.createDocumentFragment();
+        const source = text(value);
+        let last = 0;
+        source.replace(URL_RE, (match, offset) => {
+          fragment.append(document.createTextNode(source.slice(last, offset)));
+          const clean = match.replace(/[.,;:]+$/, '');
+          const link = document.createElement('a');
+          link.className = 'table-link';
+          link.href = clean;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = linkLabel(clean);
+          link.title = clean;
+          link.addEventListener('click', event => event.stopPropagation());
+          fragment.append(link);
+          if (clean.length < match.length) fragment.append(document.createTextNode(match.slice(clean.length)));
+          last = offset + match.length;
+          return match;
+        });
+        fragment.append(document.createTextNode(source.slice(last)));
+        return fragment;
+      }
+
+      // --- Ventana con el contenido de una celda y foto ampliada ---------------
+      function openCell(item, column, value) {
+        $('cellKicker').textContent = item.name;
+        $('cellTitle').textContent = column.title;
+        const body = $('cellText');
+        body.replaceChildren(value ? linkify(value) : Object.assign(document.createElement('em'), {textContent:'Sin contenido'}));
+        $('cellStatus').textContent = value ? `${value.length} caracteres` : '';
+        $('cellModal').showModal();
+      }
+      function openPhoto(source, alt) {
+        if (!source) return;
+        const image = $('photoModalImage');
+        image.src = source;
+        image.alt = alt || 'Foto ampliada';
+        $('photoModal').showModal();
+      }
 
       // --- Columnas: mismo orden y mismos títulos que la aplicación ------------
       function columns() {
@@ -291,6 +398,7 @@
         columns().forEach(column => {
           const cell = document.createElement('th');
           if (column.fixed) cell.className = 'fixed';
+          if (column.kind === 'include' || column.kind === 'photo' || column.kind === 'link') cell.classList.add('narrow');
           if (column.kind === 'include') {
             const wrap = document.createElement('span');
             wrap.className = 'include-head';
@@ -308,9 +416,7 @@
               shown.forEach(item => { item.included = box.checked; });
               renderAll();
             });
-            const label = document.createElement('span');
-            label.textContent = column.title;
-            wrap.append(box, label);
+            wrap.append(box);
             cell.append(wrap);
           } else {
             cell.append(document.createTextNode(column.title));
@@ -365,7 +471,6 @@
         const list = columns();
         shown.forEach(item => {
           const row = document.createElement('tr');
-          if (!item.included) row.classList.add('excluded');
           row.addEventListener('dblclick', () => openItem(item));
           list.forEach(column => {
             const cell = document.createElement('td');
@@ -395,30 +500,36 @@
               button.addEventListener('click', () => openItem(item));
               cell.append(button);
             } else if (column.kind === 'link') {
-              cell.className = 'cell-center';
+              cell.className = 'cell-link';
               if (item.purchase_link) {
                 const link = document.createElement('a');
                 link.className = 'table-link';
                 link.href = item.purchase_link;
                 link.target = '_blank';
                 link.rel = 'noopener noreferrer';
-                link.textContent = 'Abrir';
+                link.textContent = linkLabel(item.purchase_link);
+                link.title = item.purchase_link;
                 cell.append(link);
               }
             } else {
               const value = shownValue(item, column);
               cell.title = value;
-              if (column.kind === 'text') {
-                cell.className = 'cell-text';
-                const clip = document.createElement('span');
-                clip.className = 'clip';
-                clip.textContent = value;
-                cell.append(clip);
-              } else {
-                if (column.kind === 'plain') cell.className = 'cell-plain';
-                else if (column.kind === 'extra' && column.field.type === 'boolean') cell.className = 'cell-center';
-                else if (column.kind === 'extra' && column.field.type === 'number') cell.className = 'cell-number';
+              const isBoolean = column.kind === 'extra' && column.field.type === 'boolean';
+              const isNumber = column.kind === 'extra' && column.field.type === 'number';
+              if (column.kind === 'text') cell.className = 'cell-text';
+              else if (column.kind === 'plain') cell.className = 'cell-plain';
+              else if (isBoolean) cell.className = 'cell-center';
+              else if (isNumber) cell.className = 'cell-number';
+              else cell.className = 'cell-extra';
+              if (isBoolean || isNumber) {
                 cell.textContent = value;
+              } else {
+                cell.classList.add('popup-cell');
+                cell.append(linkify(value));
+                cell.addEventListener('click', event => {
+                  if (event.target.closest('a')) return;
+                  openCell(item, column, value);
+                });
               }
             }
             row.append(cell);
@@ -456,6 +567,18 @@
           paragraph.textContent = block.replace(/\s*\n\s*/g, ' ').trim();
           if (paragraph.textContent) body.append(paragraph);
         });
+        let collapsed = false;
+        try { collapsed = localStorage.getItem('cotizador.introCollapsed') === '1'; } catch (error) { collapsed = false; }
+        setIntroCollapsed(collapsed);
+      }
+
+      function setIntroCollapsed(collapsed) {
+        const section = $('intro');
+        const toggle = $('introToggle');
+        section.classList.toggle('collapsed', collapsed);
+        toggle.setAttribute('aria-expanded', String(!collapsed));
+        toggle.querySelector('.toggle-label').textContent = collapsed ? 'Mostrar' : 'Ocultar';
+        try { localStorage.setItem('cotizador.introCollapsed', collapsed ? '1' : '0'); } catch (error) { /* sin almacenamiento */ }
       }
 
       function renderAll() {
@@ -467,14 +590,23 @@
         renderCountries();
         renderHead();
         renderRows();
+        document.documentElement.style.setProperty('--tabs-height', `${document.querySelector('.tabs-shell').offsetHeight}px`);
       }
 
       // --- Ficha del ítem: los mismos campos, sin poder editarlos --------------
-      function fieldBlock(label, value, {wide = false, multiline = false} = {}) {
-        const wrap = document.createElement('label');
+      function fieldBlock(label, value, {wide = false, multiline = false, rich = false} = {}) {
+        const wrap = document.createElement(rich ? 'div' : 'label');
         wrap.className = 'field' + (wide ? ' field-wide' : '');
         const caption = document.createElement('span');
         caption.textContent = label;
+        if (rich) {
+          // Texto con enlaces clicables, en una caja que se ve como el campo del formulario.
+          const box = document.createElement('div');
+          box.className = 'readonly-text';
+          box.append(text(value) ? linkify(value) : document.createTextNode('—'));
+          wrap.append(caption, box);
+          return wrap;
+        }
         const control = document.createElement(multiline ? 'textarea' : 'input');
         if (multiline) control.rows = Math.min(8, Math.max(3, Math.ceil(text(value).length / 90)));
         control.value = text(value);
@@ -495,8 +627,10 @@
           const image = document.createElement('img');
           image.src = item.photo;
           image.alt = '';
+          image.title = 'Ver la foto más grande';
           image.referrerPolicy = 'no-referrer';
           image.addEventListener('error', () => { preview.replaceChildren(Object.assign(document.createElement('span'), {textContent:'Sin foto'})); });
+          image.addEventListener('click', () => openPhoto(item.photo, item.name));
           preview.append(image);
         } else {
           preview.append(Object.assign(document.createElement('span'), {textContent:'Sin foto'}));
@@ -514,11 +648,11 @@
         fields.replaceChildren();
         fields.append(
           fieldBlock('Nombre', item.name, {wide:true}),
-          fieldBlock('Precio', item.price),
+          fieldBlock('Precio', item.price, {rich:true}),
           fieldBlock('País de origen', item.country),
-          fieldBlock('Link de compra o referencia', item.purchase_link, {wide:true}),
-          fieldBlock('Descripción', item.description, {wide:true, multiline:true}),
-          fieldBlock('Comentario', item.comment, {wide:true, multiline:true}),
+          fieldBlock('Link de compra o referencia', item.purchase_link, {wide:true, rich:true}),
+          fieldBlock('Descripción', item.description, {wide:true, rich:true}),
+          fieldBlock('Comentario', item.comment, {wide:true, rich:true}),
         );
 
         const extras = quotation.extra_fields || [];
@@ -540,6 +674,14 @@
               input.type = 'checkbox';
               input.checked = value === true;
               input.disabled = true;
+            } else if (URL_RE.test(String(value ?? ''))) {
+              URL_RE.lastIndex = 0;
+              const box = document.createElement('div');
+              box.className = 'readonly-text';
+              box.append(linkify(value));
+              wrapper.append(label, box);
+              container.append(wrapper);
+              return;
             } else {
               input.type = 'text';
               input.value = value === null || value === undefined ? '' : String(value);
@@ -770,6 +912,15 @@
         renderRows(); renderHead();
       });
       document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => $('itemModal').close()));
+      document.querySelectorAll('[data-close-cell]').forEach(button => button.addEventListener('click', () => $('cellModal').close()));
+      document.querySelectorAll('[data-close-photo]').forEach(button => button.addEventListener('click', () => $('photoModal').close()));
+      $('photoModalImage').addEventListener('click', () => $('photoModal').close());
+      $('introToggle').addEventListener('click', () => setIntroCollapsed(!$('intro').classList.contains('collapsed')));
+      [$('cellModal'), $('photoModal')].forEach(dialog => dialog.addEventListener('click', event => {
+        const rect = dialog.getBoundingClientRect();
+        const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+        if (!inside) dialog.close();
+      }));
       $('itemModal').addEventListener('click', event => {
         const rect = $('itemModal').getBoundingClientRect();
         const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;

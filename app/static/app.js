@@ -228,7 +228,8 @@
     renderTable(quotation);
   }
 
-  /** Descripción de la cotización, arriba de la tabla. */
+  /** Descripción de la cotización, arriba de la tabla; se puede plegar para
+   *  darle más espacio a la tabla y el navegador recuerda la elección. */
   function renderIntro(quotation) {
     const section = $('quotation-intro');
     const body = $('quotation-intro-text');
@@ -241,6 +242,72 @@
       paragraph.textContent = block.replace(/\s*\n\s*/g, ' ').trim();
       if (paragraph.textContent) body.append(paragraph);
     });
+    setIntroCollapsed(localStorage.getItem('cotizador.introCollapsed') === '1');
+  }
+
+  function setIntroCollapsed(collapsed) {
+    const section = $('quotation-intro');
+    const toggle = $('quotation-intro-toggle');
+    section.classList.toggle('collapsed', collapsed);
+    toggle.setAttribute('aria-expanded', String(!collapsed));
+    toggle.querySelector('.toggle-label').textContent = collapsed ? 'Mostrar' : 'Ocultar';
+    toggle.title = collapsed ? 'Mostrar la descripción' : 'Ocultar la descripción y dar más espacio a la tabla';
+    localStorage.setItem('cotizador.introCollapsed', collapsed ? '1' : '0');
+  }
+
+  function toggleIntro() {
+    setIntroCollapsed(!$('quotation-intro').classList.contains('collapsed'));
+  }
+
+  // --- Enlaces dentro del texto: se muestran con el nombre del sitio ----------
+
+  const URL_RE = /https?:\/\/[^\s<>"')\]]+/g;
+  const VENDORS = [
+    [/mercadolibre\./, 'Mercado Libre'], [/mouser\./, 'Mouser'], [/digikey\./, 'DigiKey'], [/amazon\./, 'Amazon'],
+    [/aliexpress\./, 'AliExpress'], [/newegg\./, 'Newegg'], [/up-shop\./, 'UP Shop'], [/aaeon\./, 'AAEON'],
+    [/pishop\./, 'PiShop'], [/pimoroni\./, 'Pimoroni'], [/raspberrypi\./, 'Raspberry Pi'], [/mcielectronics\./, 'MCI Electronics'],
+    [/altronics\./, 'Altronics'], [/seeedstudio\./, 'Seeed'], [/waveshare\./, 'Waveshare'], [/hailo\.ai/, 'Hailo'],
+    [/github\.com/, 'GitHub'], [/ebay\./, 'eBay'], [/walmart\./, 'Walmart'], [/advantech\./, 'Advantech'],
+    [/neousys/, 'Neousys'], [/qotom/, 'Qotom'], [/protectli/, 'Protectli'], [/topton/, 'Topton'], [/inctelpc/, 'Inctel'],
+    [/kingdel/, 'Kingdel'], [/jieruicc/, 'JIERUICC'], [/hystou/, 'HYSTOU'], [/jetway/, 'Jetway'], [/asus\./, 'ASUS'],
+    [/deepx\./, 'DEEPX'], [/axelera/, 'Axelera'], [/memryx/, 'MemryX'], [/kneron/, 'Kneron'], [/coral\.ai/, 'Coral'],
+    [/intel\./, 'Intel'], [/nvidia\./, 'NVIDIA'], [/mele\./, 'MeLE'], [/cwwk/, 'CWWK'], [/radxa/, 'Radxa'],
+    [/orangepi/, 'Orange Pi'], [/khadas/, 'Khadas'], [/luxonis/, 'Luxonis'], [/openmv/, 'OpenMV'], [/m5stack/, 'M5Stack'],
+    [/kksb/, 'KKSB'], [/akasa/, 'Akasa'], [/takachi/, 'Takachi'], [/hammond/, 'Hammond'], [/fibox/, 'Fibox'],
+  ];
+
+  /** "Mercado Libre", "Mouser"… a partir del dominio; si no lo conoce, el dominio sin www. */
+  function linkLabel(href) {
+    let host = '';
+    try { host = new URL(href).hostname.replace(/^www\./, ''); } catch (_) { return href; }
+    for (const [pattern, label] of VENDORS) if (pattern.test(host)) return label;
+    const stem = host.split('.')[0];
+    return stem.charAt(0).toUpperCase() + stem.slice(1);
+  }
+
+  /** Devuelve un fragmento con el texto y sus URL convertidas en enlaces. */
+  function linkify(text) {
+    const fragment = document.createDocumentFragment();
+    const source = String(text ?? '');
+    let last = 0;
+    source.replace(URL_RE, (match, offset) => {
+      fragment.append(document.createTextNode(source.slice(last, offset)));
+      const clean = match.replace(/[.,;:]+$/, '');
+      const link = document.createElement('a');
+      link.className = 'table-link';
+      link.href = clean;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = linkLabel(clean);
+      link.title = clean;
+      link.addEventListener('click', event => event.stopPropagation());
+      fragment.append(link);
+      if (clean.length < match.length) fragment.append(document.createTextNode(match.slice(clean.length)));
+      last = offset + match.length;
+      return match;
+    });
+    fragment.append(document.createTextNode(source.slice(last)));
+    return fragment;
   }
 
   // ---------------------------------------------------------------------------
@@ -526,6 +593,9 @@
   function handleRowClick(event, row) {
     // La foto abre el ítem y los controles (casilla, enlace, ⋮) se manejan solos.
     if (event.target.closest?.('.photo-cell, .kebab-cell, input, a, button')) return;
+    // Un clic simple en una celda de texto abre su contenido (ver cellPopup);
+    // sólo con Ctrl/⌘/Shift el clic sigue marcando filas.
+    if (event.target.closest?.('.popup-cell') && !event.ctrlKey && !event.metaKey && !event.shiftKey) return;
     if (event.shiftKey) {
       selectRowRange(row);
       return;
@@ -583,9 +653,7 @@
       if (box.checked) state.table.selectRow(state.table.getRows('active'));
       else state.table.deselectRow();
     });
-    const label = document.createElement('span');
-    label.textContent = 'Incluir';
-    head.append(box, label);
+    head.append(box);
     state.selectAllBox = box;
     return head;
   }
@@ -656,9 +724,47 @@
     link.href = href;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    link.textContent = 'Abrir';
+    link.textContent = linkLabel(href);
+    link.title = href;
     link.addEventListener('click', event => event.stopPropagation());
     return link;
+  }
+
+  /** Celdas de texto: las URL se ven como enlaces y la celda abre su contenido al clic. */
+  function textFormatter(cell) {
+    cell.getElement().classList.add('popup-cell');
+    const span = document.createElement('span');
+    span.append(linkify(cell.getValue()));
+    return span;
+  }
+
+  // --- Ventana con el contenido de una celda, para leer textos largos ---------
+
+  function cellPopup(event, cell) {
+    if (event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.target.closest?.('a')) return;
+    const column = cell.getColumn().getDefinition();
+    const item = cell.getRow().getData();
+    const field = column.field.startsWith('extra_data.')
+      ? activeQuotation()?.extra_fields.find(entry => `extra_data.${entry.key}` === column.field)
+      : null;
+    const value = displayValue(item, column.field, field?.type);
+    $('cell-modal-kicker').textContent = item.name;
+    $('cell-modal-title').textContent = column.title;
+    const body = $('cell-modal-text');
+    body.replaceChildren(value ? linkify(value) : Object.assign(document.createElement('em'), {textContent: 'Sin contenido'}));
+    $('cell-modal-status').textContent = value ? `${value.length} caracteres` : '';
+    $('cell-modal').showModal();
+  }
+
+  // --- Foto ampliada -----------------------------------------------------------
+
+  function openPhotoModal(source, alt) {
+    if (!source) return;
+    const image = $('photo-modal-image');
+    image.src = source;
+    image.alt = alt || 'Foto ampliada';
+    $('photo-modal').showModal();
   }
 
   function kebabFormatter(cell) {
@@ -751,50 +857,43 @@
 
   // --- Columnas ---
 
-  function extraColumn(field, minWidth) {
+  // Anchos mínimos: cada columna se lee bien aunque haya que desplazar un poco
+  // en horizontal. Sólo Incluir se queda con el ancho de la casilla.
+  const MIN_WIDTHS = {
+    included: 58, photo: 72, name: 170, price: 150,
+    description: 200, comment: 200, country: 120, link: 96, actions: 36,
+    extra: {text: 140, url: 120, number: 96, boolean: 90, date: 110},
+  };
+
+  function extraColumn(field) {
     const numeric = field.type === 'number';
+    const textual = field.type === 'text' || field.type === 'url';
     return {
       title: field.label,
       field: `extra_data.${field.key}`,
-      minWidth,
-      widthGrow: field.type === 'text' ? 2 : 1,
+      minWidth: MIN_WIDTHS.extra[field.type] || MIN_WIDTHS.extra.text,
+      widthGrow: textual ? 2 : 1,
       variableHeight: true,
       hozAlign: field.type === 'boolean' ? 'center' : numeric ? 'right' : 'left',
       sorter: field.type === 'boolean' ? 'boolean' : field.type === 'date' ? 'date' : smartSorter,
+      cellClick: cellPopup,
       formatter: field.type === 'boolean'
         ? cell => (cell.getValue() === true ? 'Sí' : cell.getValue() === false ? 'No' : '')
-        : undefined,
+        : textFormatter,
     };
   }
 
-  // Mínimos de las columnas de siempre: lo justo para que el encabezado se lea.
-  const BASE_WIDTHS = {
-    included: 100, photo: 72, name: 120, price: 88,
-    description: 116, comment: 116, country: 88, link: 48, actions: 36,
-  };
-  const BASE_TOTAL = Object.values(BASE_WIDTHS).reduce((total, width) => total + width, 0);
-
-  /** Ancho mínimo de cada campo extra: lo que sobre del ancho de la pantalla.
-   *  Con pocos campos son cómodos; con muchos se angostan hasta 40px antes que
-   *  empujar la tabla fuera de la pantalla, que es lo que se quiere evitar. */
-  function extraMinWidth(count) {
-    if (!count) return BASE_WIDTHS.country;
-    const available = $('items-table').clientWidth || document.documentElement.clientWidth;
-    return Math.max(40, Math.min(84, Math.floor((available - BASE_TOTAL) / count)));
-  }
-
-  /** Los anchos se reparten sobre el ancho disponible: ninguna columna se sale
-   *  de la pantalla y el texto largo baja de línea en vez de empujar un scroll. */
+  /** Las columnas se reparten el ancho disponible sin bajar de su mínimo; si no
+   *  caben, la tabla se desplaza en horizontal en vez de aplastar el texto. */
   function buildColumns(quotation) {
-    const extraMin = extraMinWidth(quotation.extra_fields.length);
     return [
       {
         title: 'Incluir',
         field: 'included',
         formatter: rowSelectFormatter,
         titleFormatter: selectAllFormatter,
-        width: BASE_WIDTHS.included,
-        minWidth: BASE_WIDTHS.included,
+        width: MIN_WIDTHS.included,
+        minWidth: MIN_WIDTHS.included,
         hozAlign: 'left',
         headerHozAlign: 'left',
         sorter: 'boolean',
@@ -803,22 +902,22 @@
       {
         title: 'Foto',
         field: 'photo',
-        width: BASE_WIDTHS.photo,
-        minWidth: BASE_WIDTHS.photo,
+        width: MIN_WIDTHS.photo,
+        minWidth: MIN_WIDTHS.photo,
         headerSort: false,
         formatter: photoFormatter,
         cssClass: 'photo-cell',
         // La foto es el atajo para abrir el ítem, igual que el doble clic.
         cellClick: (event, cell) => openItemModal(cell.getRow().getData()),
       },
-      {title: 'Nombre', field: 'name', minWidth: BASE_WIDTHS.name, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: nameFormatter, cssClass: 'item-name-cell'},
-      {title: 'Precio', field: 'price', minWidth: BASE_WIDTHS.price, widthGrow: 1, variableHeight: true, sorter: priceSorter},
-      {title: 'Descripción', field: 'description', minWidth: BASE_WIDTHS.description, widthGrow: 3, variableHeight: true, sorter: smartSorter, cssClass: 'text-cell'},
-      {title: 'Comentario', field: 'comment', minWidth: BASE_WIDTHS.comment, widthGrow: 3, variableHeight: true, sorter: smartSorter, cssClass: 'text-cell'},
-      {title: 'País de origen', field: 'country', minWidth: BASE_WIDTHS.country, widthGrow: 1, variableHeight: true, sorter: smartSorter},
-      ...quotation.extra_fields.map(field => extraColumn(field, extraMin)),
-      {title: 'Link', field: 'purchase_link', width: BASE_WIDTHS.link, minWidth: BASE_WIDTHS.link, headerSort: false, hozAlign: 'center', formatter: linkFormatter},
-      {title: '', field: '_actions', width: BASE_WIDTHS.actions, minWidth: BASE_WIDTHS.actions, headerSort: false, hozAlign: 'center', cssClass: 'kebab-cell', formatter: kebabFormatter},
+      {title: 'Nombre', field: 'name', minWidth: MIN_WIDTHS.name, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: nameFormatter, cssClass: 'item-name-cell'},
+      {title: 'Precio', field: 'price', minWidth: MIN_WIDTHS.price, widthGrow: 1, variableHeight: true, sorter: priceSorter, formatter: textFormatter, cellClick: cellPopup},
+      {title: 'Descripción', field: 'description', minWidth: MIN_WIDTHS.description, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: textFormatter, cellClick: cellPopup, cssClass: 'text-cell'},
+      {title: 'Comentario', field: 'comment', minWidth: MIN_WIDTHS.comment, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: textFormatter, cellClick: cellPopup, cssClass: 'text-cell'},
+      {title: 'País de origen', field: 'country', minWidth: MIN_WIDTHS.country, widthGrow: 1, variableHeight: true, sorter: smartSorter, formatter: textFormatter, cellClick: cellPopup},
+      ...quotation.extra_fields.map(extraColumn),
+      {title: 'Link', field: 'purchase_link', minWidth: MIN_WIDTHS.link, widthGrow: 1, headerSort: false, hozAlign: 'center', formatter: linkFormatter},
+      {title: '', field: '_actions', width: MIN_WIDTHS.actions, minWidth: MIN_WIDTHS.actions, headerSort: false, hozAlign: 'center', cssClass: 'kebab-cell', formatter: kebabFormatter},
     ];
   }
 
@@ -902,18 +1001,17 @@
       columns: buildColumns(quotation),
       index: 'id',
       layout: 'fitColumns',
-      height: '100%',
+      // Sin alto fijo: se dibujan todas las filas y desplaza la página, no la tabla.
+      renderVertical: 'basic',
       placeholder: 'No hay elementos para estos filtros.',
       headerSortTristate: true,
       // 'highlight' mantiene la API de selección pero sin los listeners de clic
       // de Tabulator: el marcado lo decide handleRowClick / la casilla de la fila.
       selectableRows: 'highlight',
       columnDefaults: {resizable: 'header', tooltip: true, headerTooltip: true, headerWordWrap: true},
-      rowFormatter: row => {
-        row.getElement().classList.toggle('excluded', !row.getData().included);
-      },
     });
     state.lastSelectedId = null;
+    document.documentElement.style.setProperty('--tabs-height', `${document.querySelector('.tabs-shell').offsetHeight}px`);
     state.table.on('tableBuilt', () => {
       decorateHeaders();
       refreshFilters();
@@ -956,7 +1054,6 @@
         const stored = quotation?.items.find(current => current.id === item.id);
         if (stored) stored.included = included;
         row.update({included});
-        row.getElement().classList.toggle('excluded', !included);
         done += 1;
       } catch (error) {
         showToast(error.message, 'error');
@@ -1137,12 +1234,14 @@
     image.src = source;
     image.alt = 'Vista previa';
     image.referrerPolicy = 'no-referrer';
+    image.title = 'Ver la foto más grande';
     image.addEventListener('error', () => {
       preview.replaceChildren();
       const span = document.createElement('span');
       span.textContent = 'No se pudo cargar';
       preview.append(span);
     });
+    image.addEventListener('click', () => openPhotoModal(source, $('item-name').value || 'Foto'));
     preview.append(image);
   }
 
@@ -1577,6 +1676,8 @@
     $('new-quotation').addEventListener('click', () => openQuotationModal(true));
     document.querySelector('[data-action="new-quotation"]').addEventListener('click', () => openQuotationModal(true));
     $('edit-quotation').addEventListener('click', () => openQuotationModal(false));
+    $('quotation-intro-toggle').addEventListener('click', toggleIntro);
+    $('photo-modal-image').addEventListener('click', () => $('photo-modal').close());
     $('new-item').addEventListener('click', () => openItemModal());
     $('import-data').addEventListener('click', openImportModal);
     $('import-copy-prompt').addEventListener('click', copyFormattingPrompt);

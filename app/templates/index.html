@@ -73,7 +73,12 @@
 
     <section id="quotation-view" hidden>
       <section class="quote-intro" id="quotation-intro" aria-label="Descripción de la cotización" hidden>
-        <p class="eyebrow">Sobre esta cotización</p>
+        <div class="quote-intro-head">
+          <p class="eyebrow">Sobre esta cotización</p>
+          <button class="quote-intro-toggle" id="quotation-intro-toggle" type="button" aria-expanded="true" aria-controls="quotation-intro-text">
+            <span class="chevron" aria-hidden="true">▾</span><span class="toggle-label">Ocultar</span>
+          </button>
+        </div>
         <div class="quote-intro-text" id="quotation-intro-text"></div>
       </section>
       <section class="catalog-card" aria-label="Elementos cotizados">
@@ -243,6 +248,22 @@
         <div><button class="button" type="button" data-close="export-html-modal">Cancelar</button><button class="button button-primary" id="confirm-export-html" type="submit">Exportar</button></div>
       </footer>
     </form>
+  </dialog>
+
+  <dialog class="modal cell-modal" id="cell-modal" aria-label="Contenido de la celda">
+    <div class="modal-shell compact">
+      <header class="modal-head">
+        <div><p class="eyebrow" id="cell-modal-kicker"></p><h2 id="cell-modal-title"></h2></div>
+        <button class="icon-button" type="button" data-close="cell-modal" aria-label="Cerrar">×</button>
+      </header>
+      <div class="modal-body"><div class="cell-modal-text" id="cell-modal-text"></div></div>
+      <footer class="modal-foot"><span class="modal-status" id="cell-modal-status"></span><div><button class="button" type="button" data-close="cell-modal">Cerrar</button></div></footer>
+    </div>
+  </dialog>
+
+  <dialog class="photo-modal" id="photo-modal" aria-label="Foto ampliada">
+    <button class="photo-modal-close" type="button" data-close="photo-modal" aria-label="Cerrar">×</button>
+    <img id="photo-modal-image" alt="Foto ampliada">
   </dialog>
 
   <div class="menu row-menu" id="row-menu" role="menu" aria-label="Acciones del ítem" hidden></div>
