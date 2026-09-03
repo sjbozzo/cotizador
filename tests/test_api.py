@@ -10,11 +10,44 @@ from xml.etree import ElementTree
 from PIL import Image
 from pypdf import PdfReader
 
+from app.services.excel import quotation_sheet
+
 
 def _embedded_payload(html: str) -> dict:
     match = re.search(r'<script id="quotation-data" type="text/plain">([^<]+)</script>', html)
     assert match, "el HTML exportado no trae el bloque quotation-data"
     return json.loads(base64.b64decode(match.group(1).strip()))
+
+
+def test_tops_dynamic_field_is_exported_immediately_after_price():
+    quotation = {
+        "name": "Aceleradores M.2",
+        "extra_fields": [
+            {"key": "formato", "label": "Formato M.2", "type": "text"},
+            {"key": "tops", "label": "TOPS", "type": "text"},
+            {"key": "pagina_fabricante", "label": "Página del fabricante", "type": "url"},
+        ],
+    }
+    item = {
+        "included": True,
+        "name": "Módulo",
+        "price": "US$100",
+        "description": "Descripción",
+        "comment": "Comentario",
+        "country": "Chile",
+        "purchase_link": "https://example.com/comprar",
+        "extra_data": {
+            "formato": "M.2 2280",
+            "tops": "10 TOPS INT8",
+            "pagina_fabricante": "https://example.com/fabricante",
+        },
+    }
+
+    _name, rows, widths = quotation_sheet(quotation, [item])
+
+    assert rows[0][:4] == ["Incluir", "Nombre", "Precio", "TOPS"]
+    assert rows[1][:4] == ["Sí", "Módulo", "US$100", "10 TOPS INT8"]
+    assert len(rows[0]) == len(rows[1]) == len(widths)
 
 
 def test_initial_api_loads_all_curated_data(client):

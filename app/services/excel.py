@@ -181,10 +181,14 @@ def _extra_value(item: dict[str, Any], field: dict[str, str]) -> Any:
 
 def quotation_sheet(quotation: dict[str, Any], items: list[dict[str, Any]]) -> tuple[str, list[list[Any]], list[int]]:
     extra_fields = quotation.get("extra_fields", [])
-    header = ["Incluir", "Nombre", "Precio", "Descripción", "Comentario", "País de origen"]
-    header += [field["label"] for field in extra_fields]
+    after_price = [field for field in extra_fields if field["key"] == "tops"]
+    remaining = [field for field in extra_fields if field["key"] != "tops"]
+    header = ["Incluir", "Nombre", "Precio"]
+    header += [field["label"] for field in after_price]
+    header += ["Descripción", "Comentario", "País de origen"]
+    header += [field["label"] for field in remaining]
     header += ["Link"]
-    widths = [8, 40, 22, 46, 46, 16] + [18] * len(extra_fields) + [34]
+    widths = [8, 40, 22] + [18] * len(after_price) + [46, 46, 16] + [18] * len(remaining) + [34]
     rows: list[list[Any]] = [header]
     for item in items:
         rows.append(
@@ -192,10 +196,11 @@ def quotation_sheet(quotation: dict[str, Any], items: list[dict[str, Any]]) -> t
                 "Sí" if item.get("included") else "No",
                 item.get("name", ""),
                 item.get("price", ""),
+                *[_extra_value(item, field) for field in after_price],
                 item.get("description", ""),
                 item.get("comment", ""),
                 item.get("country", ""),
-                *[_extra_value(item, field) for field in extra_fields],
+                *[_extra_value(item, field) for field in remaining],
                 item.get("purchase_link", ""),
             ]
         )

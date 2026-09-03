@@ -883,9 +883,20 @@
     };
   }
 
+  /** TOPS es una magnitud de compra: se muestra junto al precio. El resto de
+   *  los campos configurables conserva el orden definido por la cotización. */
+  function orderedExtraColumns(quotation) {
+    const fields = quotation.extra_fields || [];
+    return {
+      afterPrice: fields.filter(field => field.key === 'tops').map(extraColumn),
+      remaining: fields.filter(field => field.key !== 'tops').map(extraColumn),
+    };
+  }
+
   /** Las columnas se reparten el ancho disponible sin bajar de su mínimo; si no
    *  caben, la tabla se desplaza en horizontal en vez de aplastar el texto. */
   function buildColumns(quotation) {
+    const extra = orderedExtraColumns(quotation);
     return [
       {
         title: 'Incluir',
@@ -912,10 +923,11 @@
       },
       {title: 'Nombre', field: 'name', minWidth: MIN_WIDTHS.name, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: nameFormatter, cssClass: 'item-name-cell'},
       {title: 'Precio', field: 'price', minWidth: MIN_WIDTHS.price, widthGrow: 1, variableHeight: true, sorter: priceSorter, formatter: textFormatter, cellClick: cellPopup},
+      ...extra.afterPrice,
       {title: 'Descripción', field: 'description', minWidth: MIN_WIDTHS.description, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: textFormatter, cellClick: cellPopup, cssClass: 'text-cell'},
       {title: 'Comentario', field: 'comment', minWidth: MIN_WIDTHS.comment, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: textFormatter, cellClick: cellPopup, cssClass: 'text-cell'},
       {title: 'País de origen', field: 'country', minWidth: MIN_WIDTHS.country, widthGrow: 1, variableHeight: true, sorter: smartSorter, formatter: textFormatter, cellClick: cellPopup},
-      ...quotation.extra_fields.map(extraColumn),
+      ...extra.remaining,
       {title: 'Link', field: 'purchase_link', minWidth: MIN_WIDTHS.link, widthGrow: 1, headerSort: false, hozAlign: 'center', formatter: linkFormatter},
       {title: '', field: '_actions', width: MIN_WIDTHS.actions, minWidth: MIN_WIDTHS.actions, headerSort: false, hozAlign: 'center', cssClass: 'kebab-cell', formatter: kebabFormatter},
     ];

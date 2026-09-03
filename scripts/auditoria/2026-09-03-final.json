@@ -1,0 +1,956 @@
+{
+  "audit_date": "2026-09-03",
+  "methodology": "Auditoría de identidad, especificación primaria, precio puntual, stock, despacho a Chile, fotografía raster y trazabilidad. País corresponde a la sede de la marca o fabricante, igual que en el catálogo previo. La nota combina robustez física y térmica (40 %), soporte y ciclo de vida (30 %), y madurez de suministro y software (30 %).",
+  "initial_active_item_ids": [
+    "aceleradores-usb-yolo-b99c645c140c",
+    "aceleradores-usb-yolo-89cba8631cbc",
+    "aceleradores-usb-yolo-eceb704c15df",
+    "aceleradores-usb-yolo-5fa822e8dbfa",
+    "aceleradores-usb-yolo-1a5feae23d24",
+    "aceleradores-usb-yolo-32596d173e89",
+    "item-3e37aa94bbaa4cfea57f41078f6c1b96",
+    "item-e44d1051fa94428f8996a86921e8319c",
+    "edge-ai-21814b0743c8",
+    "edge-ai-409f40df6767",
+    "edge-ai-099f5f145606",
+    "item-48177a9ab5054cba9ace6cd4279fc268",
+    "item-eb49b2f17e084e4c9f9b555b2e13dbe2",
+    "item-c2835597869944e0b3a81a1e4e78d02c",
+    "item-242bdc2eddab476fa206b083a715bb33",
+    "item-5d3fcfbe78294c3f90baa980ede274ab",
+    "pcs-industriales-m2-ai-46b932e4b21c",
+    "item-cb5debd12f98424ba72a705d1afca348",
+    "item-86d64a6a9197475da33f978bc573623f",
+    "item-0110337763f34fcf9a832a444ad87777",
+    "item-1641eed78aee4a91a889b9b85b0dd8e8",
+    "item-9d56642158a049cda027e3fecc9c145b",
+    "item-07ae9fdfdacd455683c3b8fe019f8ba9",
+    "item-b7bda072b7f945949f16be78ddb98de2",
+    "edge-ai-6de0ef4d579b",
+    "edge-ai-c234dfdebb24",
+    "edge-ai-2213db96b3a9",
+    "edge-ai-34d18a47cbc8",
+    "edge-ai-0e9df9290aa4",
+    "edge-ai-21a50c81549c",
+    "edge-ai-dbf93825e398",
+    "item-18a1d53499a84a6c88b444f108f58242",
+    "item-3326252c77244d778bfa4d80f6f274bb",
+    "edge-ai-f50c96264c80",
+    "edge-ai-05708b8a6ab8",
+    "edge-ai-9ad781da53f3",
+    "edge-ai-aeff99c095d6",
+    "edge-ai-e2e88e2d95e8",
+    "edge-ai-16b4ed7f75d1",
+    "edge-ai-767160c84ede"
+  ],
+  "quotations": [
+    {
+      "id": "aceleradores-usb-yolo",
+      "name": "1 · Aceleradores USB",
+      "description": "Aceleradores USB con TOPS publicados y compatibilidad YOLO documentada. Precio, stock y despacho a Chile verificados el 2026-09-03. País corresponde a la sede de la marca; cuando existe un origen de fabricación publicado se aclara en la ficha.",
+      "fields": [
+        {"key": "tops", "label": "TOPS", "type": "text"},
+        {"key": "marca", "label": "Marca", "type": "text"},
+        {"key": "acelerador", "label": "Acelerador", "type": "text"},
+        {"key": "compatibilidad_yolo", "label": "Compatibilidad YOLO", "type": "text"},
+        {"key": "disponibilidad_chile", "label": "Stock y despacho a Chile", "type": "text"},
+        {"key": "pagina_fabricante", "label": "Página del fabricante", "type": "url"},
+        {"key": "durabilidad_confiabilidad", "label": "Durabilidad + confiabilidad (1-10)", "type": "number"},
+        {"key": "facilidad_programacion", "label": "Facilidad de programación (1-5)", "type": "number"},
+        {"key": "verificado_el", "label": "Verificado el", "type": "date"}
+      ],
+      "items": [
+        {
+          "id": "aceleradores-usb-yolo-b99c645c140c",
+          "new": false,
+          "name": "Coral USB Accelerator",
+          "country": "Estados Unidos",
+          "photo_url": "https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_1.0,f_auto,q_auto,w_700/c_pad,w_700/F2017821-01",
+          "purchase_link": "https://cl.rsdelivers.com/product/coral/g950-06809-01/usb-accelerator-coral-g950-06809-01-para-raspberry/2017821",
+          "price": "$89.252 CLP con IVA ($75.002 sin IVA)",
+          "description": "Dongle USB 3.0 con Google Edge TPU. La publicación chilena identifica exactamente el P/N G950-06809-01 y RS declara China como origen de fabricación.",
+          "comment": "Nota 8/10: el fabricante documenta ensayos de temperatura/humedad, ESD, caída, vibración y 1.000 ciclos USB. Resta por el límite térmico recomendado a frecuencia máxima y el calentamiento normal de la carcasa.",
+          "extra_data": {
+            "tops": "4 TOPS INT8",
+            "marca": "Coral / Google",
+            "acelerador": "Google Edge TPU",
+            "compatibilidad_yolo": "Sí; exportación Ultralytics a Edge TPU/TFLite con cuantización INT8. Los operadores no admitidos se ejecutan en CPU.",
+            "disponibilidad_chile": "RS Chile muestra el P/N exacto disponible en múltiplos de 1 y permite agregarlo al carro en su sitio chileno.",
+            "pagina_fabricante": "https://www.coral.ai/products/accelerator/",
+            "durabilidad_confiabilidad": 8,
+            "facilidad_programacion": 4,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.mouser.com/datasheet/3/6072/1/Coral-USB-Accelerator-datasheet.pdf",
+            "https://docs.ultralytics.com/integrations/edge-tpu/",
+            "https://cl.rsdelivers.com/product/coral/g950-06809-01/usb-accelerator-coral-g950-06809-01-para-raspberry/2017821"
+          ]
+        },
+        {
+          "id": "aceleradores-usb-yolo-32596d173e89",
+          "new": false,
+          "name": "Kneron KNEO STEM KL720 (KP72B340A-D1003)",
+          "country": "Estados Unidos",
+          "photo_url": "https://kneo.kneron.com/images/thumbs/0000014_kneo-stem-kl720-ai-dongle_550.png",
+          "purchase_link": "https://www.mouser.com/ProductDetail/Kneron/KP72B340A-D1003?qs=A6eO%252BMLsxmQa9AU190fVDw%3D%3D",
+          "price": "US$124.25 por unidad",
+          "description": "Dongle USB 3.0 con NPU Kneron KL720, P/N exacto KP72B340A-D1003. Fabricado en Taiwán según el distribuidor.",
+          "comment": "Nota 6/10: tiene certificaciones CE/FCC y stock autorizado; resta por rango de operación 0–40 °C, SDK propietario y un ecosistema bastante menor que Coral o Hailo.",
+          "extra_data": {
+            "tops": "1,4 TOPS INT8 físicos",
+            "marca": "Kneron",
+            "acelerador": "Kneron KL720",
+            "compatibilidad_yolo": "Sí; Kneron documenta YOLOv5s mediante Kneron PLUS y compilación a NEF.",
+            "disponibilidad_chile": "Mouser muestra 63 unidades con despacho inmediato y opera despacho a Chile por UPS, FedEx o DHL; flete e impuestos se calculan para el destino.",
+            "pagina_fabricante": "https://kneo.kneron.com/kl720-kneo-stem",
+            "durabilidad_confiabilidad": 6,
+            "facilidad_programacion": 3,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://kneo.kneron.com/kl720-kneo-stem",
+            "https://doc.kneron.com/docs/toolchain/appendix/yolo_example/",
+            "https://www.mouser.com/ProductDetail/Kneron/KP72B340A-D1003?qs=A6eO%252BMLsxmQa9AU190fVDw%3D%3D"
+          ]
+        },
+        {
+          "id": "item-e44d1051fa94428f8996a86921e8319c",
+          "new": false,
+          "name": "ASUS UGen300 USB AI Accelerator 8 GB",
+          "country": "Taiwán",
+          "photo_url": "https://dlcdnwebimgs.asus.com/gain/061269db-4d6d-4adc-99a2-90ee195a5cef/w692",
+          "purchase_link": "https://www.ebay.nl/itm/168578866708",
+          "price": "US$504.78 por unidad",
+          "description": "Acelerador USB-C 3.1 Gen 2, modelo S-UGEN300-8GLD4-TC y P/N 90YT00A0-M0AA00, con Hailo-10H y 8 GB LPDDR4 propios.",
+          "comment": "Nota 7/10: plataforma ASUS/Hailo, 2,5 W típicos y memoria dedicada. Resta por rango de operación 0–40 °C y por ser una plataforma USB recién lanzada en 2026.",
+          "extra_data": {
+            "tops": "40 TOPS INT4 / 20 TOPS INT8",
+            "marca": "ASUS",
+            "acelerador": "Hailo-10H con 8 GB LPDDR4",
+            "compatibilidad_yolo": "Sí; Hailo Model Zoo y Hailo Apps incluyen detección YOLO, y ASUS documenta detección en tiempo real.",
+            "disponibilidad_chile": "eBay muestra 40 unidades nuevas; el vendedor declara despacho mundial, incluido Chile, mediante su programa internacional.",
+            "pagina_fabricante": "https://www.asus.com/motherboards-components/ai-accelerator/ugen/ugen300-usb-8g/",
+            "durabilidad_confiabilidad": 7,
+            "facilidad_programacion": 4,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.asus.com/motherboards-components/ai-accelerator/ugen/ugen300-usb-8g/",
+            "https://github.com/hailo-ai/hailo_model_zoo",
+            "https://www.ebay.nl/itm/168578866708"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "edge-ai-aceleradores-m2",
+      "name": "2 · Aceleradores M.2 (PCIe)",
+      "description": "Módulos M.2 PCIe con TOPS inmediatamente después del precio. La columna redundante ‘Requiere equipo host’ fue eliminada. Precio, stock y despacho a Chile verificados el 2026-09-03.",
+      "fields": [
+        {"key": "tops", "label": "TOPS", "type": "text"},
+        {"key": "marca", "label": "Marca", "type": "text"},
+        {"key": "formato", "label": "Formato", "type": "text"},
+        {"key": "interfaz", "label": "Interfaz", "type": "text"},
+        {"key": "compatibilidad_yolo", "label": "Compatibilidad YOLO", "type": "text"},
+        {"key": "disponibilidad_chile", "label": "Stock y despacho a Chile", "type": "text"},
+        {"key": "pagina_fabricante", "label": "Página del fabricante", "type": "url"},
+        {"key": "durabilidad_confiabilidad", "label": "Durabilidad + confiabilidad (1-10)", "type": "number"},
+        {"key": "facilidad_programacion", "label": "Facilidad de programación (1-5)", "type": "number"},
+        {"key": "verificado_el", "label": "Verificado el", "type": "date"}
+      ],
+      "items": [
+        {
+          "id": "edge-ai-21814b0743c8",
+          "new": false,
+          "name": "DEEPX DX-M1 M.2 AI Accelerator (DX-M1BNM5604)",
+          "country": "Corea del Sur",
+          "photo_url": "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/6/003/238/674/MFG_DX-M1BNM5604_web%28640x640%29.jpg?hidebanner=true",
+          "purchase_link": "https://www.digikey.com/en/products/detail/deepx/DX-M1BNM5604/26858313",
+          "price": "US$180.00 por unidad",
+          "description": "Acelerador DX-M1 de 25 TOPS INT8 con 4 GB LPDDR5, consumo de 2–5 W y soporte térmico de -25 a 85 °C con throttling.",
+          "comment": "Nota 9/10: amplio rango térmico, bajo consumo, gran inventario autorizado y P/N inequívoco. El SDK es más nuevo que los ecosistemas Hailo y Coral.",
+          "extra_data": {
+            "tops": "25 TOPS INT8",
+            "marca": "DEEPX",
+            "formato": "M.2 2280 Key M",
+            "interfaz": "PCIe Gen 3 x4; admite enlace x1, x2 o x4",
+            "compatibilidad_yolo": "Sí; DX-AllSuite declara Ultralytics, ONNX, TensorFlow, PyTorch y modelos YOLO.",
+            "disponibilidad_chile": "DigiKey muestra 1.341 unidades y despacho internacional a Chile; transporte e impuestos se calculan en checkout.",
+            "pagina_fabricante": "https://deepx.ai/products/dx-m1/",
+            "durabilidad_confiabilidad": 9,
+            "facilidad_programacion": 4,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://deepx.ai/products/dx-m1/",
+            "https://www.digikey.com/en/products/detail/deepx/DX-M1BNM5604/26858313"
+          ]
+        },
+        {
+          "id": "edge-ai-409f40df6767",
+          "new": false,
+          "name": "Hailo-8 M.2 Key M 2280 ET (HM218B1C2FAE)",
+          "country": "Israel",
+          "photo_url": "https://www.serverroom.net/tpu/images/hailo-module.webp",
+          "purchase_link": "https://www.mouser.com/en/ProductDetail/Hailo/HM218B1C2FAE?qs=KLj0QfLrw0FeXlyfEewJSA%3D%3D",
+          "price": "US$169.00 por unidad",
+          "description": "Módulo Hailo-8 ET de 26 TOPS INT8 y 2,5 W típicos. El datasheet del P/N confirma 22 × 80 mm; se priorizó sobre el largo erróneo de 60 mm mostrado por Mouser.",
+          "comment": "Nota 9/10: -40–85 °C, certificaciones CE/FCC, bajo consumo, software maduro y stock autorizado. Requiere disipación conforme al diseño térmico del fabricante.",
+          "extra_data": {
+            "tops": "26 TOPS INT8",
+            "marca": "Hailo",
+            "formato": "M.2 2280 Key M, 22 × 80 mm",
+            "interfaz": "PCIe Gen 3 x4",
+            "compatibilidad_yolo": "Sí; Hailo Model Zoo y Hailo Apps ofrecen modelos y pipelines YOLO.",
+            "disponibilidad_chile": "Mouser muestra 96 unidades con despacho inmediato y canal chileno; 200 adicionales esperadas el 2026-09-15 y 100 el 2026-09-16.",
+            "pagina_fabricante": "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/",
+            "durabilidad_confiabilidad": 9,
+            "facilidad_programacion": 4,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/",
+            "https://hailo.ai/hailo-files/hailo-8-m-2-key-m-et-datasheet-en/",
+            "https://www.mouser.com/en/ProductDetail/Hailo/HM218B1C2FAE?qs=KLj0QfLrw0FeXlyfEewJSA%3D%3D"
+          ]
+        },
+        {
+          "id": "edge-ai-099f5f145606",
+          "new": false,
+          "name": "Axelera Embedded 110m 1 GB sin refrigeración",
+          "country": "Países Bajos",
+          "photo_url": "https://store.axelera.ai/cdn/shop/files/axelera-metis-ai-accelerator-214tops-m2-2280-hero.webp?v=1775642983&width=1200",
+          "purchase_link": "https://www.mouser.com/en/ProductDetail/Axelera-AI/AXE-BME20M1AR01B02?qs=CoAU%2FpHVZXx3p4NbnTvW3w%3D%3D",
+          "price": "US$249.00 por unidad",
+          "description": "Módulo Metis AIPU P/N AXE-BME20M1AR01B02, 214 TOPS INT8 pico, 1 GB LPDDR, 3,5–9 W y operación de -20 a 70 °C.",
+          "comment": "Nota 8/10: secure boot/root of trust, rango térmico amplio y stock autorizado. Esta referencia se vende sin cooler: se debe diseñar o cotizar la solución térmica antes del despliegue.",
+          "extra_data": {
+            "tops": "214 TOPS pico INT8",
+            "marca": "Axelera AI",
+            "formato": "M.2 2280 Key M, sin refrigeración",
+            "interfaz": "PCIe Gen 3 x4",
+            "compatibilidad_yolo": "Sí; la documentación oficial incluye YOLOv8 y Ultralytics YOLO11.",
+            "disponibilidad_chile": "Mouser muestra 50 unidades con despacho inmediato por su canal chileno; la tienda Axelera también incluye Chile.",
+            "pagina_fabricante": "https://store.axelera.ai/products/axelera-embedded-110m",
+            "durabilidad_confiabilidad": 8,
+            "facilidad_programacion": 4,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://docs.axelera.ai/docs/hardware/embedded-110m/",
+            "https://docs.axelera.ai/sdk/reference/pipeline-builder/quickstart/",
+            "https://www.mouser.com/en/ProductDetail/Axelera-AI/AXE-BME20M1AR01B02?qs=CoAU%2FpHVZXx3p4NbnTvW3w%3D%3D"
+          ]
+        },
+        {
+          "id": "item-5d3fcfbe78294c3f90baa980ede274ab",
+          "new": false,
+          "name": "Hailo-8L M.2 A+E Key 2230 ET (HM21LB1C2KAE)",
+          "country": "Israel",
+          "photo_url": "https://up-shop.org/media/catalog/product/cache/a695dfd7b4a86b10c3de6479f9e6a737/h/a/hailo-8l-a_e_1200x1200.png",
+          "purchase_link": "https://www.mouser.com/en/ProductDetail/Hailo/HM21LB1C2KAE?qs=KLj0QfLrw0EsTaXEhu68Pw%3D%3D",
+          "price": "US$85.00 por unidad",
+          "description": "Módulo Hailo-8L ET de 13 TOPS INT8 y 1,5 W típicos. La variante A+E permite preservar un M-key para SSD cuando el socket A/E del host transporta PCIe.",
+          "comment": "Nota 9/10: -40–85 °C, CE/FCC, consumo muy bajo y software Hailo maduro. El inventario inmediato es bajo y la compatibilidad exige PCIe, no sólo USB, en el socket A/E.",
+          "extra_data": {
+            "tops": "13 TOPS INT8",
+            "marca": "Hailo",
+            "formato": "M.2 2230 Key A+E",
+            "interfaz": "PCIe Gen 3 x2; el socket A/E del host debe exponer PCIe",
+            "compatibilidad_yolo": "Sí; Hailo Model Zoo y Hailo Apps.",
+            "disponibilidad_chile": "Mouser muestra 2 unidades inmediatas y despacho a Chile; 100 adicionales esperadas el 2027-01-07.",
+            "pagina_fabricante": "https://hailo.ai/products/ai-accelerators/hailo-8l-m-2-ai-acceleration-module-for-ai-light-applications/",
+            "durabilidad_confiabilidad": 9,
+            "facilidad_programacion": 4,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://hailo.ai/products/ai-accelerators/hailo-8l-m-2-ai-acceleration-module-for-ai-light-applications/",
+            "https://hailo.ai/hailo-files/hailo-8l-m-2-et-product-brief-en/",
+            "https://www.mouser.com/en/ProductDetail/Hailo/HM21LB1C2KAE?qs=KLj0QfLrw0EsTaXEhu68Pw%3D%3D"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pcs-industriales-m2-ai",
+      "name": "3 · PC industriales con ranura M.2",
+      "description": "Sólo queda el equipo cuya compra y despacho a Chile, ranura M.2 PCIe para IA y almacenamiento independiente pudieron comprobarse sin ambigüedad. Es business-grade, no posee certificación industrial/IP y se identifica así expresamente.",
+      "fields": [
+        {"key": "marca", "label": "Marca", "type": "text"},
+        {"key": "procesador", "label": "Procesador", "type": "text"},
+        {"key": "ram", "label": "Memoria RAM", "type": "text"},
+        {"key": "m2_acelerador", "label": "M.2 para acelerador", "type": "text"},
+        {"key": "almacenamiento_separado", "label": "Almacenamiento separado", "type": "text"},
+        {"key": "disponibilidad_chile", "label": "Stock y despacho a Chile", "type": "text"},
+        {"key": "pagina_fabricante", "label": "Página del fabricante", "type": "url"},
+        {"key": "durabilidad_confiabilidad", "label": "Durabilidad + confiabilidad (1-10)", "type": "number"},
+        {"key": "verificado_el", "label": "Verificado el", "type": "date"}
+      ],
+      "items": [
+        {
+          "id": "item-cb5debd12f98424ba72a705d1afca348",
+          "new": false,
+          "name": "MeLE Quieter 4C Business-Grade N150 (8 GB / 128 GB eMMC)",
+          "country": "China",
+          "photo_url": "https://store.mele.cn/cdn/shop/files/10_1296a6bc-bafb-47d3-b77a-c2644e416f7b.jpg?v=1787299107&width=1600",
+          "purchase_link": "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1?variant=45240992268466",
+          "price": "US$410.55 equipo + US$120.00 DHL = US$530.55 antes de impuestos",
+          "description": "Mini PC fanless business-grade con Intel N150, 8 GB DDR4 y 128 GB eMMC. La variante eMMC deja libre la ranura M.2 2280 NVMe/SATA para el acelerador.",
+          "comment": "Nota 6/10: funcionamiento fanless 7×24, eMMC TLC e IEC 62368-1 declarada. Resta por no tener grado IP ni rango térmico industrial, garantía de 12 meses y retorno a China a cargo del comprador.",
+          "extra_data": {
+            "marca": "MeLE Technologies",
+            "procesador": "Intel Processor N150, 4 núcleos / 4 hilos, hasta 3,6 GHz",
+            "ram": "8 GB DDR4 incluidos",
+            "m2_acelerador": "Sí: 1× M.2 2280 NVMe/SATA libre. NVMe usa Socket 3/Key M, compatible física y protocolariamente con Hailo-8; MeLE no publica la cantidad de lanes.",
+            "almacenamiento_separado": "128 GB eMMC 5.1 TLC integrado para el sistema, más microSDXC; ambos quedan disponibles al ocupar M.2 con el acelerador.",
+            "disponibilidad_chile": "El carro oficial aceptó 1 unidad. El checkout a Santiago, Chile 8320000 ofreció DHL Express por US$120.00; precio del equipo US$482.99 menos 15 % automático = US$410.55.",
+            "pagina_fabricante": "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1",
+            "durabilidad_confiabilidad": 6,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1",
+            "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1?variant=45240992268466",
+            "https://store.mele.cn/pages/warranty",
+            "https://hailo.ai/hailo-files/hailo-8-m-2-key-m-et-datasheet-en/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "edge-ai-plataformas-host",
+      "name": "4 · PC con NPU",
+      "description": "Plataformas completas o kits de cómputo Edge AI. La columna Tipo distingue NPU, GPU, DPU FPGA y BPU. Se corrigió AMD Kria a 1,23 TOPS para la imagen DPU del KV260 y se incorporó un segundo mini-PC Ryzen AI; hay tres plataformas con silicio AMD.",
+      "fields": [
+        {"key": "tops", "label": "TOPS", "type": "text"},
+        {"key": "marca", "label": "Marca", "type": "text"},
+        {"key": "tipo_acelerador", "label": "Tipo de acelerador", "type": "text"},
+        {"key": "procesador", "label": "Procesador", "type": "text"},
+        {"key": "ram", "label": "Memoria RAM", "type": "text"},
+        {"key": "almacenamiento", "label": "Almacenamiento", "type": "text"},
+        {"key": "disponibilidad_chile", "label": "Stock y despacho a Chile", "type": "text"},
+        {"key": "pagina_fabricante", "label": "Página del fabricante", "type": "url"},
+        {"key": "durabilidad_confiabilidad", "label": "Durabilidad + confiabilidad (1-10)", "type": "number"},
+        {"key": "verificado_el", "label": "Verificado el", "type": "date"}
+      ],
+      "items": [
+        {
+          "id": "edge-ai-6de0ef4d579b",
+          "new": false,
+          "name": "NVIDIA Jetson Orin Nano Super Developer Kit",
+          "country": "Estados Unidos",
+          "photo_url": "https://www.nvidia.com/content/dam/en-zz/Solutions/autonomous-machines/embedded-systems/nano-super-developer-kit/jetson-orin-nano-super-developer-kit-og.jpg",
+          "purchase_link": "https://www.mechatronicstore.cl/nvidia-jetson-orin-nano-super-developer-kit/",
+          "price": "$999.990 CLP con IVA y envío nacional",
+          "description": "Kit Jetson Orin Nano Super con GPU NVIDIA Ampere de 1.024 núcleos y 32 Tensor Cores; es aceleración GPU/Tensor, no una NPU dedicada.",
+          "comment": "Nota 8/10: ecosistema CUDA/JetPack muy maduro, soporte sólido y stock local. Resta por placa abierta y ventilador, que requieren carcasa y mantenimiento.",
+          "extra_data": {
+            "tops": "67 TOPS INT8",
+            "marca": "NVIDIA",
+            "tipo_acelerador": "GPU Ampere + Tensor Cores; no NPU",
+            "procesador": "6× Arm Cortex-A78AE",
+            "ram": "8 GB LPDDR5 incluidos",
+            "almacenamiento": "No incluye medio; admite microSD y SSD NVMe M.2 externo/instalable según el kit.",
+            "disponibilidad_chile": "Mechatronicstore Chile muestra 5 unidades, precio con IVA y envío gratis dentro de Chile.",
+            "pagina_fabricante": "https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/",
+            "durabilidad_confiabilidad": 8,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/",
+            "https://www.mechatronicstore.cl/nvidia-jetson-orin-nano-super-developer-kit/"
+          ]
+        },
+        {
+          "id": "edge-ai-c234dfdebb24",
+          "new": false,
+          "name": "MINISFORUM UM880 Plus (16 GB / 512 GB)",
+          "country": "China",
+          "photo_url": "https://www.minisforum.uk/cdn/shop/files/minisforum-um880_um760-plus-mini-pc-1.png?v=1788146626",
+          "purchase_link": "https://www.amazon.com/dp/B0GR5F5S4T",
+          "price": "US$639.00 + US$179.30 envío/importación = US$818.30 a Chile",
+          "description": "Mini PC con AMD Ryzen 7 8845HS y Ryzen AI. Configuración exacta de Amazon con 16 GB DDR5 y SSD NVMe de 512 GB.",
+          "comment": "Nota 7/10: RAM y SSD reemplazables y garantía de dos años; resta por refrigeración activa y construcción consumer. La NPU Hawk Point está soportada en Windows; el soporte Ryzen AI Linux actual no incluye esta generación.",
+          "extra_data": {
+            "tops": "16 TOPS de NPU / 38 TOPS totales del SoC",
+            "marca": "MINISFORUM",
+            "tipo_acelerador": "AMD Ryzen AI NPU",
+            "procesador": "AMD Ryzen 7 8845HS, 8 núcleos / 16 hilos, 3,8–5,1 GHz",
+            "ram": "16 GB DDR5 incluidos; 2× SO-DIMM, hasta 96 GB",
+            "almacenamiento": "SSD NVMe 512 GB incluido; 2× M.2 2280 PCIe 4.0 en total.",
+            "disponibilidad_chile": "Amazon muestra In Stock, vendido por MINISFORUM Store y gestionado por Amazon; total a Chile US$818.30.",
+            "pagina_fabricante": "https://www.minisforum.uk/products/um880-plus-minipc",
+            "durabilidad_confiabilidad": 7,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.minisforum.uk/products/um880-plus-minipc",
+            "https://www.amd.com/en/products/processors/laptop/ryzen/8000-series/amd-ryzen-7-8845hs.html",
+            "https://ryzenai.docs.amd.com/en/latest/linux.html",
+            "https://www.amazon.com/dp/B0GR5F5S4T"
+          ]
+        },
+        {
+          "id": "edge-ai-2213db96b3a9",
+          "new": false,
+          "name": "AMD Kria KV260 Vision AI Starter Kit",
+          "country": "Estados Unidos",
+          "photo_url": "https://www.amd.com/content/dam/amd/en/images/products/som/2362834-kv260-product.jpg",
+          "purchase_link": "https://www.digikey.com/en/products/detail/amd/SK-KV260-G/13985269",
+          "price": "US$283.86 por kit",
+          "description": "Kit de evaluación AMD Kria K26. Su acelerador es una DPU implementada en FPGA, no una NPU fija; la cifra depende de la imagen y configuración cargadas.",
+          "comment": "Nota 7/10: plataforma AMD estable, secure boot y TPM. Resta por ser placa de evaluación abierta con ventilador y por requerir un flujo FPGA más complejo que una NPU integrada.",
+          "extra_data": {
+            "tops": "1,23 TOPS INT8 con imagen KV260/B4096 a 300 MHz",
+            "marca": "AMD",
+            "tipo_acelerador": "DPU reconfigurable en FPGA; no NPU",
+            "procesador": "Kria K26: 4× Cortex-A53 + 2× Cortex-R5F",
+            "ram": "4 GB DDR4 incluidos",
+            "almacenamiento": "QSPI + ranura SDHC; sin ranura M.2 utilizable.",
+            "disponibilidad_chile": "DigiKey muestra el SK-KV260-G activo, 247 unidades y despacho internacional a Chile; flete e impuestos se calculan en checkout.",
+            "pagina_fabricante": "https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html",
+            "durabilidad_confiabilidad": 7,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html",
+            "https://docs.amd.com/r/3.0-English/ug1354-xilinx-ai-sdk/KV260-Vision-AI-Starter-Kit",
+            "https://www.digikey.com/en/products/detail/amd/SK-KV260-G/13985269"
+          ]
+        },
+        {
+          "id": "item-audit-gmktec-k8-plus-20260903",
+          "new": true,
+          "name": "GMKtec NucBox K8 Plus barebone",
+          "country": "China",
+          "photo_url": "https://www.gmktec.com/cdn/shop/files/k8plus.jpg?v=1784801263",
+          "purchase_link": "https://www.gmktec.com/products/gmktec-nucbox-k8-plus-mini-pc-amd-ryzen%E2%84%A2-7-8845hs?variant=47050144317594",
+          "price": "US$399.99 con envío Economy a Santiago",
+          "description": "Mini PC barebone NucBox K8 Plus con Ryzen 7 8845HS. Variante exacta K8 Plus 0+0 US/JP: no incluye RAM, SSD ni sistema operativo.",
+          "comment": "Nota 7/10: componentes actualizables y dos M.2. Resta por rango publicado 0–40 °C, refrigeración activa, garantía de un año y por la misma limitación de soporte Linux NPU de Hawk Point que el UM880.",
+          "extra_data": {
+            "tops": "16 TOPS de NPU / 38 TOPS totales del SoC",
+            "marca": "GMKtec",
+            "tipo_acelerador": "AMD Ryzen AI NPU",
+            "procesador": "AMD Ryzen 7 8845HS, 8 núcleos / 16 hilos",
+            "ram": "No incluida; 2× SO-DIMM DDR5, hasta 96 GB",
+            "almacenamiento": "No incluido; 2× M.2 2280 PCIe 4.0 disponibles.",
+            "disponibilidad_chile": "La variante 0+0 US/JP figura InStock. Checkout real aceptó Santiago, Chile y ofreció Economy US$0; total US$399.99.",
+            "pagina_fabricante": "https://www.gmktec.com/products/gmktec-nucbox-k8-plus-mini-pc-amd-ryzen%E2%84%A2-7-8845hs",
+            "durabilidad_confiabilidad": 7,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.gmktec.com/products/gmktec-nucbox-k8-plus-mini-pc-amd-ryzen%E2%84%A2-7-8845hs?variant=47050144317594",
+            "https://www.amd.com/en/products/processors/laptop/ryzen/8000-series/amd-ryzen-7-8845hs.html",
+            "https://ryzenai.docs.amd.com/en/latest/linux.html"
+          ]
+        },
+        {
+          "id": "edge-ai-dbf93825e398",
+          "new": false,
+          "name": "D-Robotics RDK X5 (8 GB)",
+          "country": "China",
+          "photo_url": "https://dfimg.dfrobot.com/enshop/image/data/DFR1239/RDK-1560.jpg",
+          "purchase_link": "https://www.dfrobot.com/product-2944.html",
+          "price": "US$190.00 por unidad",
+          "description": "SBC RDK X5, SKU DFR1239, con BPU Sunrise 5 de 10 TOPS. Incluye interfaces PoE/CAN, pero no almacenamiento interno.",
+          "comment": "Nota 6/10: soporte oficial activo y buenas interfaces industriales. Resta por ser placa desnuda, depender de microSD y tener un ecosistema de software más pequeño.",
+          "extra_data": {
+            "tops": "10 TOPS BPU",
+            "marca": "D-Robotics",
+            "tipo_acelerador": "BPU Sunrise 5",
+            "procesador": "8× Arm Cortex-A55 a 1,5 GHz",
+            "ram": "8 GB LPDDR4 incluidos",
+            "almacenamiento": "Sin almacenamiento interno; usa microSD externa.",
+            "disponibilidad_chile": "DFRobot publica Schema InStock y precio válido hasta 2026-10-03. Su tabla DHL incluye Chile en zona 9.",
+            "pagina_fabricante": "https://developer.d-robotics.cc/en/rdkx5",
+            "durabilidad_confiabilidad": 6,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://developer.d-robotics.cc/en/rdkx5",
+            "https://www.dfrobot.com/product-2944.html",
+            "https://www.dfrobot.com/shipping"
+          ]
+        },
+        {
+          "id": "item-18a1d53499a84a6c88b444f108f58242",
+          "new": false,
+          "name": "Seeed reComputer AI Industrial R2135-12",
+          "country": "China",
+          "photo_url": "https://media-cdn.seeedstudio.com/media/catalog/product/cache/7f7f32ef807b8c2c2215b49801c56084/i/m/image-_r235.jpeg",
+          "purchase_link": "https://www.seeedstudio.com/reComputer-AI-Industrial-R2135-12-p-6432.html",
+          "price": "US$433.00 por unidad",
+          "description": "Equipo industrial basado en Raspberry Pi CM5 con Hailo-8, 8 GB RAM y 32 GB eMMC. El nombre anterior ‘sin AI’ y el descarte por superar US$500 eran incorrectos.",
+          "comment": "Nota 9/10: -20–65 °C, IP40, watchdog, 24/7, garantía de dos años y producción planificada hasta diciembre de 2036. El ventilador es el componente mantenible.",
+          "extra_data": {
+            "tops": "26 TOPS INT8",
+            "marca": "Seeed Studio",
+            "tipo_acelerador": "Hailo-8 NPU en M.2 2242",
+            "procesador": "Broadcom BCM2712, 4× Cortex-A76 a 2,4 GHz",
+            "ram": "8 GB incluidos",
+            "almacenamiento": "32 GB eMMC incluidos; M.2 2280 libre para SSD porque Hailo ocupa el M.2 2242.",
+            "disponibilidad_chile": "Seeed muestra In Stock y 82 unidades en bodega China; admite Chile y exige RUT para aduana.",
+            "pagina_fabricante": "https://wiki.seeedstudio.com/recomputer_ai_industrial_r2135_getting_start/",
+            "durabilidad_confiabilidad": 9,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://wiki.seeedstudio.com/recomputer_ai_industrial_r2135_getting_start/",
+            "https://www.seeedstudio.com/reComputer-AI-Industrial-R2135-12-p-6432.html",
+            "https://support.seeed.cc/portal/en/kb/articles/why-is-the-tax-id-personal-id-required"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "microcomputadores",
+      "name": "5 · Microcomputadores",
+      "description": "Microcomputadores con columnas completas de procesador, memoria RAM, almacenamiento y TOPS. Sólo permanecen configuraciones exactas con stock y una vía comprobada de compra desde Chile.",
+      "fields": [
+        {"key": "tops", "label": "TOPS", "type": "text"},
+        {"key": "marca", "label": "Marca", "type": "text"},
+        {"key": "procesador", "label": "Procesador", "type": "text"},
+        {"key": "ram", "label": "Memoria RAM", "type": "text"},
+        {"key": "almacenamiento", "label": "Almacenamiento", "type": "text"},
+        {"key": "disponibilidad_chile", "label": "Stock y despacho a Chile", "type": "text"},
+        {"key": "pagina_fabricante", "label": "Página del fabricante", "type": "url"},
+        {"key": "durabilidad_confiabilidad", "label": "Durabilidad + confiabilidad (1-10)", "type": "number"},
+        {"key": "verificado_el", "label": "Verificado el", "type": "date"}
+      ],
+      "items": [
+        {
+          "id": "item-3326252c77244d778bfa4d80f6f274bb",
+          "new": false,
+          "name": "Raspberry Pi 5 (8 GB)",
+          "country": "Reino Unido",
+          "photo_url": "https://assets.raspberrypi.com/static/c671804c05a51efc4e3c2a1bdcbafbcf/e58b5/raspberry-pi-5.png",
+          "purchase_link": "https://raspberrypi.cl/products/raspberry-pi-5-8gb-ram",
+          "price": "$254.990 CLP con IVA",
+          "description": "SBC Raspberry Pi 5 de 8 GB, SKU local MCI08610. No contiene NPU; su conector PCIe 2.0 x1 permite agregar AI HAT+ o un adaptador M.2.",
+          "comment": "Nota 8/10: enorme ecosistema, proveedor local y producción garantizada hasta enero de 2036. Resta por ser placa abierta y por la menor resistencia de microSD frente a eMMC/NVMe.",
+          "extra_data": {
+            "tops": "0 TOPS de NPU dedicada",
+            "marca": "Raspberry Pi",
+            "procesador": "Broadcom BCM2712, 4× Cortex-A76 a 2,4 GHz",
+            "ram": "8 GB LPDDR4X incluidos",
+            "almacenamiento": "microSD; PCIe 2.0 x1 mediante HAT para NVMe o acelerador.",
+            "disponibilidad_chile": "RaspberryPi Chile muestra InStock y disponibilidad para envío nacional.",
+            "pagina_fabricante": "https://www.raspberrypi.com/products/raspberry-pi-5/",
+            "durabilidad_confiabilidad": 8,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.raspberrypi.com/products/raspberry-pi-5/",
+            "https://raspberrypi.cl/products/raspberry-pi-5-8gb-ram"
+          ]
+        },
+        {
+          "id": "edge-ai-05708b8a6ab8",
+          "new": false,
+          "name": "FriendlyELEC NanoPC-T6-LTS (4 GB / 64 GB)",
+          "country": "China",
+          "photo_url": "https://www.friendlyelec.com/image/cache/catalog/details/T6_01-900x630.jpg",
+          "purchase_link": "https://www.friendlyelec.com/index.php?route=product%2Fproduct&product_id=292",
+          "price": "US$193.00, configuración 4 GB / 64 GB",
+          "description": "SBC NanoPC-T6-LTS con RK3588, placa de ocho capas, eMMC de 64 GB y M.2 M-key NVMe. La configuración quedó fijada para evitar el rango de precio anterior.",
+          "comment": "Nota 7/10: eMMC/NVMe, operación declarada 0–70 °C y diseño de ocho capas. Resta por ser placa sin gabinete y por el ecosistema de software menor que Raspberry Pi.",
+          "extra_data": {
+            "tops": "6 TOPS INT8",
+            "marca": "FriendlyELEC",
+            "procesador": "Rockchip RK3588: 4× Cortex-A76 hasta 2,4 GHz + 4× Cortex-A55 hasta 1,8 GHz",
+            "ram": "4 GB LPDDR4X incluidos",
+            "almacenamiento": "64 GB eMMC incluidos; microSD y M.2 M-key NVMe disponibles.",
+            "disponibilidad_chile": "Tienda oficial muestra In Stock y permite seleccionar Chile en checkout.",
+            "pagina_fabricante": "https://wiki.friendlyelec.com/wiki/index.php/NanoPC-T6",
+            "durabilidad_confiabilidad": 7,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://wiki.friendlyelec.com/wiki/index.php/NanoPC-T6",
+            "https://www.friendlyelec.com/index.php?route=product%2Fproduct&product_id=292"
+          ]
+        },
+        {
+          "id": "edge-ai-9ad781da53f3",
+          "new": false,
+          "name": "Khadas VIM4 with NPU (8 GB / 32 GB)",
+          "country": "China",
+          "photo_url": "https://static.wixstatic.com/media/e24822_53839a8e32d2495ea18b070ce8365dd8~mv2.jpg/v1/fit/w_1500,h_1500,q_90/file.jpg",
+          "purchase_link": "https://www.khadas.com/product-page/vim4",
+          "price": "US$329.00 + US$5.00 envío = US$334.00 a Chile",
+          "description": "Variante exacta VIM4 with NPU, SKU KVIM4-N-01, con Amlogic A311D2-N0D, 8 GB LPDDR4X y 32 GB eMMC.",
+          "comment": "Nota 7/10: eMMC, recuperación OOWOW y stock profundo. Resta por placa abierta, necesidad de refrigeración y garantía de un año.",
+          "extra_data": {
+            "tops": "3,2 TOPS INT8",
+            "marca": "Khadas",
+            "procesador": "Amlogic A311D2-N0D: 4× Cortex-A73 a 2,2 GHz + 4× Cortex-A53 a 2,0 GHz",
+            "ram": "8 GB LPDDR4X incluidos",
+            "almacenamiento": "32 GB eMMC incluidos; microSD y M.2 disponibles.",
+            "disponibilidad_chile": "Khadas muestra 395 unidades. Checkout real aceptó Chile/Región Metropolitana: envío US$5.00 y total US$334.00.",
+            "pagina_fabricante": "https://www.khadas.com/vim4",
+            "durabilidad_confiabilidad": 7,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.khadas.com/vim4",
+            "https://docs.khadas.com/products/sbc/vim4/configurations/identify-version",
+            "https://www.khadas.com/product-page/vim4"
+          ]
+        },
+        {
+          "id": "edge-ai-767160c84ede",
+          "new": false,
+          "name": "BeagleBoard BeagleY-AI",
+          "country": "Estados Unidos",
+          "photo_url": "https://media-cdn.seeedstudio.com/media/catalog/product/cache/7f7f32ef807b8c2c2215b49801c56084/1/-/1-102991834-beagleyr-ai-first_.jpg",
+          "purchase_link": "https://www.seeedstudio.com/BeagleYr-AI-beagleboard-orgr-4-TOPS-AI-Acceleration-powered-by-TI-AM67A.html",
+          "price": "US$70.00 por unidad",
+          "description": "SBC BeagleY-AI con Texas Instruments AM67A y aceleradores C7x/MMA. El PCIe Gen 3 x1 necesita un HAT/adaptador si se quiere instalar almacenamiento M.2.",
+          "comment": "Nota 7/10: diseño abierto, plataforma TI, documentación y software oficial actualizados. Resta por placa expuesta y dependencia de microSD/adaptador para almacenamiento robusto.",
+          "extra_data": {
+            "tops": "4 TOPS combinados",
+            "marca": "BeagleBoard.org",
+            "procesador": "Texas Instruments AM67A, 4× Cortex-A53 a 1,4 GHz",
+            "ram": "4 GB LPDDR4 incluidos",
+            "almacenamiento": "microSD; PCIe Gen 3 x1 mediante HAT/adaptador M.2.",
+            "disponibilidad_chile": "Seeed muestra SKU 102991834 In Stock y confirma despacho a Chile con RUT para aduana.",
+            "pagina_fabricante": "https://www.beagleboard.org/boards/beagley-ai",
+            "durabilidad_confiabilidad": 7,
+            "verificado_el": "2026-09-03"
+          },
+          "sources": [
+            "https://www.beagleboard.org/boards/beagley-ai",
+            "https://docs.beagleboard.org/boards/beagley/ai/01-introduction.html",
+            "https://www.seeedstudio.com/BeagleYr-AI-beagleboard-orgr-4-TOPS-AI-Acceleration-powered-by-TI-AM67A.html"
+          ]
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "aceleradores-usb-yolo-b99c645c140c",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "Google Coral USB Accelerator",
+      "verdict": "keep",
+      "reason": "Se reemplazó la búsqueda genérica y el rango de precio por RS Chile: P/N G950-06809-01 exacto, $89.252 con IVA, disponible en múltiplos de una unidad y agregable al carro; 4 TOPS INT8 y YOLO están respaldados por Coral y Ultralytics.",
+      "sources": ["https://www.mouser.com/datasheet/3/6072/1/Coral-USB-Accelerator-datasheet.pdf", "https://docs.ultralytics.com/integrations/edge-tpu/", "https://cl.rsdelivers.com/product/coral/g950-06809-01/usb-accelerator-coral-g950-06809-01-para-raspberry/2017821"]
+    },
+    {
+      "id": "aceleradores-usb-yolo-89cba8631cbc",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "Intel Neural Compute Stick 2",
+      "verdict": "discard",
+      "reason": "Intel lo llevó a fin de vida: el soporte terminó en 2023 y la garantía en 2024. La oferta secundaria no demostró despacho a Chile y la cifra agregada de más de 4 TOPS no equivale a 4 TOPS INT8 de la NCE.",
+      "sources": ["https://www.intel.com/content/www/us/en/support/articles/000090446/boards-and-kits/neural-compute-sticks.html", "https://cdrdv2-public.intel.com/842054/NCS2_Product-Brief-English.pdf", "https://www.ebay.com/itm/375502424370"]
+    },
+    {
+      "id": "aceleradores-usb-yolo-eceb704c15df",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "Intel Movidius Neural Compute Stick",
+      "verdict": "discard",
+      "reason": "Producto discontinuado desde 2019 y dependiente de SDK/OS obsoletos. Intel publica 100 GFLOPS, no un TOPS oficial comparable, y el despacho a Chile del mercado usado no quedó demostrado.",
+      "sources": ["https://www.intel.com/content/www/us/en/products/sku/125743/intel-movidius-neural-compute-stick/specifications.html", "https://www.ebay.com/itm/185004007170"]
+    },
+    {
+      "id": "aceleradores-usb-yolo-5fa822e8dbfa",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "RK1808 AI Compute Stick",
+      "verdict": "discard",
+      "reason": "El canal oficial está discontinuado; la oferta Newegg no entrega a Chile y no existe una compra exacta vigente por los canales priorizados.",
+      "sources": ["https://t.rock-chips.com/portal.php?catid=11&mod=list&product_id=34"]
+    },
+    {
+      "id": "aceleradores-usb-yolo-1a5feae23d24",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "Kneron KNEO AI Dongle KL520",
+      "verdict": "discard",
+      "reason": "Mouser no tiene unidades individuales: el P/N exacto está sin stock y exige MOQ 120. No se encontró una unidad nueva con entrega demostrada a Chile.",
+      "sources": ["https://doc.kneron.com/docs/model_training/object_detection_yolov5/", "https://www.mouser.com/en/ProductDetail/Kneron/KP52B130A-D1001?qs=eP2BKZSCXI7Wxhks9w7yng%3D%3D"]
+    },
+    {
+      "id": "aceleradores-usb-yolo-32596d173e89",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "Kneron KNEO STEM KL720",
+      "verdict": "keep",
+      "reason": "P/N KP72B340A-D1003 inequívoco, 1,4 TOPS INT8 físicos, soporte YOLOv5s, US$124.25 y 63 unidades en Mouser con despacho a Chile.",
+      "sources": ["https://kneo.kneron.com/kl720-kneo-stem", "https://doc.kneron.com/docs/toolchain/appendix/yolo_example/", "https://www.mouser.com/ProductDetail/Kneron/KP72B340A-D1003?qs=A6eO%252BMLsxmQa9AU190fVDw%3D%3D"]
+    },
+    {
+      "id": "item-3e37aa94bbaa4cfea57f41078f6c1b96",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "AAEON / UP Hailo-10H USB AI Accelerator (8 GB)",
+      "verdict": "discard",
+      "reason": "Aunque la tienda oficial indica stock a US$239, su lista de países de entrega omite Chile; no se mantuvo una opción que requiriera un forwarder no cotizado.",
+      "sources": ["https://up-shop.org/default/hailo-10h-usb-ai-accelerator-8-gb-ram.html", "https://up-shop.org/default/delivery-information"]
+    },
+    {
+      "id": "item-e44d1051fa94428f8996a86921e8319c",
+      "quotation_id": "aceleradores-usb-yolo",
+      "name": "ASUS UGen300 USB AI Accelerator 8 GB (Hailo-10H)",
+      "verdict": "keep",
+      "reason": "La ficha ASUS confirma 40 TOPS INT4/20 TOPS INT8 y la oferta eBay exacta muestra 40 unidades nuevas con envío mundial, incluida la vía internacional para Chile.",
+      "sources": ["https://www.asus.com/motherboards-components/ai-accelerator/ugen/ugen300-usb-8g/", "https://www.ebay.nl/itm/168578866708"]
+    },
+    {
+      "id": "edge-ai-21814b0743c8",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "DEEPX DX-M1 M.2 (DX-M1BNM5604)",
+      "verdict": "keep",
+      "reason": "Ficha primaria y P/N exacto: 25 TOPS INT8, M.2 2280 PCIe 3 x4, US$180.00 y 1.341 unidades en DigiKey con despacho mundial.",
+      "sources": ["https://deepx.ai/products/dx-m1/", "https://www.digikey.com/en/products/detail/deepx/DX-M1BNM5604/26858313"]
+    },
+    {
+      "id": "edge-ai-409f40df6767",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "Hailo-8 M.2 M-key 2280 (HM218B1C2FAE)",
+      "verdict": "keep",
+      "reason": "La ficha Hailo resuelve el largo 2280 y confirma 26 TOPS INT8; Mouser muestra 96 unidades inmediatas a US$169.00 y despacho a Chile.",
+      "sources": ["https://hailo.ai/hailo-files/hailo-8-m-2-key-m-et-datasheet-en/", "https://www.mouser.com/en/ProductDetail/Hailo/HM218B1C2FAE?qs=KLj0QfLrw0FeXlyfEewJSA%3D%3D"]
+    },
+    {
+      "id": "edge-ai-099f5f145606",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "Axelera Embedded 110m (Metis M.2, 1 GB)",
+      "verdict": "keep",
+      "reason": "P/N AXE-BME20M1AR01B02, 214 TOPS INT8 pico y soporte YOLO documentados; Mouser tiene 50 unidades a US$249.00 y entrega por su canal chileno. Se explicitó la obligación de solución térmica.",
+      "sources": ["https://docs.axelera.ai/docs/hardware/embedded-110m/", "https://www.mouser.com/en/ProductDetail/Axelera-AI/AXE-BME20M1AR01B02?qs=CoAU%2FpHVZXx3p4NbnTvW3w%3D%3D"]
+    },
+    {
+      "id": "item-48177a9ab5054cba9ace6cd4279fc268",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "Raspberry Pi AI HAT+ 13 TOPS (Hailo-8L)",
+      "verdict": "discard",
+      "reason": "Es una placa HAT+ terminada para Raspberry Pi 5, no una tarjeta M.2; se elimina por clasificación aunque tenga stock local.",
+      "sources": ["https://www.raspberrypi.com/products/ai-hat/?variant=ai-hat-plus-13", "https://mcielectronics.cl/shop/product/81752/"]
+    },
+    {
+      "id": "item-eb49b2f17e084e4c9f9b555b2e13dbe2",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "Raspberry Pi AI HAT+ 26 TOPS (Hailo-8)",
+      "verdict": "discard",
+      "reason": "Es HAT+ para Raspberry Pi 5 y no un módulo M.2, por lo que no pertenece a esta cotización pese a su compra internacional vigente.",
+      "sources": ["https://www.raspberrypi.com/products/ai-hat/?variant=ai-hat-plus-26", "https://www.waveshare.com/raspberry-pi-ai-hat-plus.htm?sku=29050"]
+    },
+    {
+      "id": "item-c2835597869944e0b3a81a1e4e78d02c",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "Hailo-8 M.2 26 TOPS (Unistorm, Amazon, envío a Chile)",
+      "verdict": "discard",
+      "reason": "Amazon sí entrega el listado a Chile, pero no existe P/N del módulo, fabricante de placa ni trazabilidad/certificación demostrable; no se conserva hardware genérico ambiguo.",
+      "sources": ["https://www.amazon.com/dp/B0FBFTW5QJ", "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/"]
+    },
+    {
+      "id": "item-242bdc2eddab476fa206b083a715bb33",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "Hailo-8L M.2 B+M 2280 · HM21LB1C2LAE",
+      "verdict": "discard",
+      "reason": "El módulo es válido y está disponible, pero se excluye del set final para no superar dos Hailo y porque la variante A+E preserva M-key para almacenamiento; ya se conserva Hailo-8 de 26 TOPS en M-key.",
+      "sources": ["https://hailo.ai/products/ai-accelerators/hailo-8l-m-2-ai-acceleration-module-for-ai-light-applications/", "https://www.mouser.com/en/ProductDetail/Hailo/HM21LB1C2LAE?qs=KLj0QfLrw0H2g%252B%2F7L26Uaw%3D%3D"]
+    },
+    {
+      "id": "item-5d3fcfbe78294c3f90baa980ede274ab",
+      "quotation_id": "edge-ai-aceleradores-m2",
+      "name": "Hailo-8L M.2 A+E 2230 · HM21LB1C2KAE",
+      "verdict": "keep",
+      "reason": "P/N exacto, 13 TOPS, -40–85 °C y 2 unidades inmediatas a US$85.00 en Mouser; se conserva porque permite dejar M-key para SSD cuando A/E expone PCIe.",
+      "sources": ["https://hailo.ai/hailo-files/hailo-8l-m-2-et-product-brief-en/", "https://www.mouser.com/en/ProductDetail/Hailo/HM21LB1C2KAE?qs=KLj0QfLrw0EsTaXEhu68Pw%3D%3D"]
+    },
+    {
+      "id": "pcs-industriales-m2-ai-46b932e4b21c",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "Qotom Q10922X",
+      "verdict": "discard",
+      "reason": "La variante N100 está agotada en la tienda oficial, que además no admite Chile; Amazon rechaza el despacho del ASIN exacto al país.",
+      "sources": ["https://www.qotom.com/products/q10900x-s04", "https://www.qotomipc.com/products/qotom-multi-com-mini-pc-q10900x-n100-i3-computer?variant=51959673979183", "https://www.amazon.com/dp/B0FWK62KYN"]
+    },
+    {
+      "id": "item-cb5debd12f98424ba72a705d1afca348",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "MeLE Quieter 4C N150 (eMMC 128 GB + M.2 x4 libre, Amazon → Chile)",
+      "verdict": "keep",
+      "reason": "La variante oficial N150 8 GB/128 GB eMMC acepta compra y ofrece DHL a Santiago; eMMC/microSD permanecen para almacenamiento al dedicar el M.2 2280 NVMe/SATA al acelerador.",
+      "sources": ["https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1", "https://store.mele.cn/products/mele-quieter-4c-n150-3-6ghz-fanless-mini-computer-ddr4-hdmi-4k-wi-fi-5-bt-5-1-usb-3-2-2-usb-2-0-1-type-c-1?variant=45240992268466", "https://hailo.ai/hailo-files/hailo-8-m-2-key-m-et-datasheet-en/"]
+    },
+    {
+      "id": "item-86d64a6a9197475da33f978bc573623f",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "Mini PC firewall N100 4× i226-V 2,5G fanless (CWWK / Topton)",
+      "verdict": "discard",
+      "reason": "Mezcla fabricantes y no identifica un SKU único; la URL Mercado Libre no permite comprobar producto, precio, foto, ranuras, stock ni despacho.",
+      "sources": ["https://www.mercadolibre.cl/firewall-micro-n1004x-i226-v-25g-mini-pc-sin-ventilador-4/p/MLC201748921"]
+    },
+    {
+      "id": "item-0110337763f34fcf9a832a444ad87777",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "Partaker / Inctel C11 (Intel N100, carcasa sellada)",
+      "verdict": "discard",
+      "reason": "La compatibilidad M.2 más SATA está bien documentada, pero Amazon y Newegg no tienen la oferta exacta disponible con entrega a Chile.",
+      "sources": ["https://www.inctelpc.com/product/fanless-n100-mini-pc-2/", "https://www.inctelpc.com/wp-content/uploads/2024/06/Partaker-C11-Mini-PC-N100.pdf", "https://www.amazon.com/dp/B0D8PLD54S"]
+    },
+    {
+      "id": "item-1641eed78aee4a91a889b9b85b0dd8e8",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "Kingdel NC690 / HT690-5 (Intel N100, sin polvo)",
+      "verdict": "discard",
+      "reason": "El ASIN exacto no llega a Chile y no existe precio entregable vigente; además la ficha oficial limita RAM a 16 GB, no los 32 GB registrados.",
+      "sources": ["https://kingdel.com.cn/PC/pc-nc690.html", "https://www.amazon.com/dp/B0CNW6ZD98"]
+    },
+    {
+      "id": "item-9d56642158a049cda027e3fecc9c145b",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "Topton X2B / X2E N150 (4× 2,5GbE, negro, fanless)",
+      "verdict": "discard",
+      "reason": "La URL guardada vende X4B-D4, no X2B/X2E; aun esa variante distinta no entrega método de transporte ni pago para Chile.",
+      "sources": ["https://www.toptonpc.com/product/topton-intel-n150-n100-4x2-5g-lan-fanless-mini-pc-i226-v-2com-ddr4-nvme-efficient-cooling-solid-firewall-pc-industrial-computer/"]
+    },
+    {
+      "id": "item-07ae9fdfdacd455683c3b8fe019f8ba9",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "KingnovyPC X2E N150 (4× 2,5GbE, fanless, 3 años de garantía)",
+      "verdict": "discard",
+      "reason": "El SKU informa stock, pero checkout no ofrece transporte ni pago para Chile; la identidad también entra en conflicto porque el título dice Topton y la marca kingnovyPC.",
+      "sources": ["https://www.kingnovypc.com/product/topton-n150-fanless-mini-pc-intel-n100-firewall-pc-box-celeron-j6412-4x-i226-v-2-5g-computer-pfsense-proxmox-esxi-opnsense-host/"]
+    },
+    {
+      "id": "item-b7bda072b7f945949f16be78ddb98de2",
+      "quotation_id": "pcs-industriales-m2-ai",
+      "name": "Topton X2F N100 (PCIe x2, 4× 2,5GbE, fanless)",
+      "verdict": "discard",
+      "reason": "Hay conflicto X2F/X2F-XL y PCIe x2/x1; la compra guardada no identifica SKU y Alibaba no fija configuración, precio ni despacho a Chile.",
+      "sources": ["https://doc.coreboot.org/mainboard/topton/adl/x2f-n100.html", "https://germany.alibaba.com/product-detail/Topton-Industrial-Mini-PC-Fanless-Firewall_1601642089602.html"]
+    },
+    {
+      "id": "edge-ai-6de0ef4d579b",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "NVIDIA Jetson Orin Nano Super Developer Kit",
+      "verdict": "keep",
+      "reason": "Ficha primaria y compra local exacta: 67 TOPS INT8, 5 unidades, CLP999.990 con IVA y despacho nacional. Se aclara que acelera por GPU/Tensor Cores, no NPU.",
+      "sources": ["https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/", "https://www.mechatronicstore.cl/nvidia-jetson-orin-nano-super-developer-kit/"]
+    },
+    {
+      "id": "edge-ai-c234dfdebb24",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "MINISFORUM / AMD UM880 Plus",
+      "verdict": "keep",
+      "reason": "AMD confirma 16 TOPS de NPU para Ryzen 7 8845HS; Amazon tiene la configuración 16/512 exacta en stock y muestra el total a Chile. Se registra la limitación Linux de Hawk Point.",
+      "sources": ["https://www.amd.com/en/products/processors/laptop/ryzen/8000-series/amd-ryzen-7-8845hs.html", "https://ryzenai.docs.amd.com/en/latest/linux.html", "https://www.amazon.com/dp/B0GR5F5S4T"]
+    },
+    {
+      "id": "edge-ai-2213db96b3a9",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "AMD Kria KV260 Vision AI Starter Kit",
+      "verdict": "keep",
+      "reason": "La cifra anterior se corrigió: la imagen KV260/B4096 actual entrega 1,23 TOPS INT8 a 300 MHz; 1,4 TOPS es un máximo del K26 bajo otra implementación. DigiKey tiene 247 kits y despacha a Chile.",
+      "sources": ["https://docs.amd.com/r/3.0-English/ug1354-xilinx-ai-sdk/KV260-Vision-AI-Starter-Kit", "https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html", "https://www.digikey.com/en/products/detail/amd/SK-KV260-G/13985269"]
+    },
+    {
+      "id": "edge-ai-34d18a47cbc8",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "Radxa Dragon Q6A",
+      "verdict": "discard",
+      "reason": "La ficha confirma 12 TOPS, pero el AliExpress guardado no permitió corroborar variante, precio, stock ni despacho a Chile.",
+      "sources": ["https://docs.radxa.com/en/dragon/q6a", "https://www.aliexpress.us/item/3256810104349651.html"]
+    },
+    {
+      "id": "edge-ai-0e9df9290aa4",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "Radxa ROCK 5B",
+      "verdict": "discard",
+      "reason": "El nombre cotiza ROCK 5B, pero el enlace vende ROCK 5B+; no se encontró el 5B clásico con configuración y entrega chilena verificables.",
+      "sources": ["https://docs.radxa.com/en/rock5/rock5b/getting-started/introduction", "https://www.aliexpress.com/item/1005009441744277.html"]
+    },
+    {
+      "id": "edge-ai-21a50c81549c",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "Orange Pi AIPro 8T",
+      "verdict": "discard",
+      "reason": "Los 8 TOPS están publicados, pero la compra es una portada genérica de tienda AliExpress sin SKU, configuración, precio ni stock comprobables.",
+      "sources": ["https://www.aliexpress.com/store/1100062898"]
+    },
+    {
+      "id": "edge-ai-dbf93825e398",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "D-Robotics RDK X5",
+      "verdict": "keep",
+      "reason": "La ficha oficial confirma 10 TOPS y DFRobot publica SKU, precio, Schema InStock y despacho DHL que incluye Chile.",
+      "sources": ["https://developer.d-robotics.cc/en/rdkx5", "https://www.dfrobot.com/product-2944.html", "https://www.dfrobot.com/shipping"]
+    },
+    {
+      "id": "item-18a1d53499a84a6c88b444f108f58242",
+      "quotation_id": "edge-ai-plataformas-host",
+      "name": "Seeed reComputer Industrial R2135-12 (sin “AI”)",
+      "verdict": "keep",
+      "reason": "Se corrigió el nombre: sí incluye Hailo-8 de 26 TOPS. La variante 8 GB/32 GB vale US$433, tiene 82 unidades, entrega a Chile y M.2 separado para SSD.",
+      "sources": ["https://wiki.seeedstudio.com/recomputer_ai_industrial_r2135_getting_start/", "https://www.seeedstudio.com/reComputer-AI-Industrial-R2135-12-p-6432.html"]
+    },
+    {
+      "id": "item-3326252c77244d778bfa4d80f6f274bb",
+      "quotation_id": "microcomputadores",
+      "name": "Raspberry Pi 5 (8 GB)",
+      "verdict": "keep",
+      "reason": "Se sustituyó el aviso y precio estimado por el distribuidor chileno: SKU exacto, CLP254.990, stock y despacho nacional. CPU/RAM y 0 TOPS de NPU quedaron explícitos.",
+      "sources": ["https://www.raspberrypi.com/products/raspberry-pi-5/", "https://raspberrypi.cl/products/raspberry-pi-5-8gb-ram"]
+    },
+    {
+      "id": "edge-ai-f50c96264c80",
+      "quotation_id": "microcomputadores",
+      "name": "Radxa / Intel X4",
+      "verdict": "discard",
+      "reason": "La ficha confirma Intel N100, RAM y M.2, pero el enlace AliExpress no permitió fijar variante, precio, stock ni entrega; el rango previo no era cotizable.",
+      "sources": ["https://docs.radxa.com/en/x/x4", "https://www.aliexpress.com/item/1005008329751614.html"]
+    },
+    {
+      "id": "edge-ai-05708b8a6ab8",
+      "quotation_id": "microcomputadores",
+      "name": "FriendlyELEC NanoPC-T6-LTS",
+      "verdict": "keep",
+      "reason": "La configuración se fijó en 4 GB/64 GB a US$193.00; la tienda oficial indica In Stock, incluye Chile en checkout y la wiki confirma CPU, RAM, eMMC, M.2 y 6 TOPS.",
+      "sources": ["https://wiki.friendlyelec.com/wiki/index.php/NanoPC-T6", "https://www.friendlyelec.com/index.php?route=product%2Fproduct&product_id=292"]
+    },
+    {
+      "id": "edge-ai-9ad781da53f3",
+      "quotation_id": "microcomputadores",
+      "name": "Khadas VIM4",
+      "verdict": "keep",
+      "reason": "Se eligió la variante inequívoca VIM4 with NPU, SKU KVIM4-N-01: 8/32, 3,2 TOPS, 395 unidades y checkout Chile por US$334 total.",
+      "sources": ["https://www.khadas.com/vim4", "https://docs.khadas.com/products/sbc/vim4/configurations/identify-version", "https://www.khadas.com/product-page/vim4"]
+    },
+    {
+      "id": "edge-ai-aeff99c095d6",
+      "quotation_id": "microcomputadores",
+      "name": "ArmSoM Sige7",
+      "verdict": "discard",
+      "reason": "La ficha técnica existe, pero la compra era una búsqueda genérica sin producto, stock, precio ni despacho a Chile verificables.",
+      "sources": ["https://docs.armsom.org/armsom-sige7", "https://www.aliexpress.com/w/wholesale-rockchip-board.html"]
+    },
+    {
+      "id": "edge-ai-e2e88e2d95e8",
+      "quotation_id": "microcomputadores",
+      "name": "Firefly ROC-RK3588S-PC",
+      "verdict": "discard",
+      "reason": "La tienda tiene la variante 4/32 a US$319 y 41 unidades, pero el cálculo real de transporte indica que Chile no está soportado.",
+      "sources": ["https://www.firefly.store/products/roc-rk3588s-pc-8-core-8k-ai-mainboard", "https://www.firefly.store/policies/shipping-policy"]
+    },
+    {
+      "id": "edge-ai-16b4ed7f75d1",
+      "quotation_id": "microcomputadores",
+      "name": "Sipeed LicheePi 4A",
+      "verdict": "discard",
+      "reason": "La ficha confirma TH1520 y 4 TOPS, pero AliExpress no entregó precio/stock comprobable y la alternativa eBay estaba agotada.",
+      "sources": ["https://wiki.sipeed.com/hardware/en/lichee/th1520/lpi4a/1_intro.html", "https://www.aliexpress.us/item/3256807808582599.html"]
+    },
+    {
+      "id": "edge-ai-767160c84ede",
+      "quotation_id": "microcomputadores",
+      "name": "BeagleBoard BeagleY-AI",
+      "verdict": "keep",
+      "reason": "Ficha primaria y oferta de distribuidor exacta: CPU/RAM, 4 TOPS, SKU 102991834, US$70, stock y despacho a Chile confirmados.",
+      "sources": ["https://www.beagleboard.org/boards/beagley-ai", "https://docs.beagleboard.org/boards/beagley/ai/01-introduction.html", "https://www.seeedstudio.com/BeagleYr-AI-beagleboard-orgr-4-TOPS-AI-Acceleration-powered-by-TI-AM67A.html"]
+    }
+  ]
+}

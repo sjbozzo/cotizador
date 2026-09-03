@@ -310,20 +310,24 @@
       // --- Columnas: mismo orden y mismos títulos que la aplicación ------------
       function columns() {
         const quotation = active();
+        const extra = (quotation.extra_fields || []).map(field => ({
+          key:`extra:${field.key}`, title:field.label, kind:'extra', field,
+          sorter: field.type === 'boolean' ? booleanSorter
+            : field.type === 'date' ? (a, b) => String(a || '').localeCompare(String(b || ''))
+            : smartSorter,
+        }));
+        const afterPrice = extra.filter(column => column.field.key === 'tops');
+        const remaining = extra.filter(column => column.field.key !== 'tops');
         return [
           {key:'included', title:'Incluir', kind:'include', sorter:booleanSorter},
           {key:'photo', title:'Foto', kind:'photo', fixed:true},
           {key:'name', title:'Nombre', kind:'name', sorter:smartSorter},
           {key:'price', title:'Precio', kind:'plain', sorter:priceSorter},
+          ...afterPrice,
           {key:'description', title:'Descripción', kind:'text', sorter:smartSorter},
           {key:'comment', title:'Comentario', kind:'text', sorter:smartSorter},
           {key:'country', title:'País de origen', kind:'plain', sorter:smartSorter},
-          ...(quotation.extra_fields || []).map(field => ({
-            key:`extra:${field.key}`, title:field.label, kind:'extra', field,
-            sorter: field.type === 'boolean' ? booleanSorter
-              : field.type === 'date' ? (a, b) => String(a || '').localeCompare(String(b || ''))
-              : smartSorter,
-          })),
+          ...remaining,
           {key:'purchase_link', title:'Link', kind:'link', fixed:true},
         ];
       }
@@ -791,14 +795,23 @@
         const used = new Set();
         const sheets = quotations.map(quotation => {
           const extra = quotation.extra_fields || [];
-          const header = ['Incluir', 'Nombre', 'Precio', 'Descripción', 'Comentario', 'País de origen',
-            ...extra.map(field => field.label), 'Link'];
-          const widths = [8, 40, 22, 46, 46, 16, ...extra.map(() => 18), 34];
+          const afterPrice = extra.filter(field => field.key === 'tops');
+          const remaining = extra.filter(field => field.key !== 'tops');
+          const header = ['Incluir', 'Nombre', 'Precio', ...afterPrice.map(field => field.label),
+            'Descripción', 'Comentario', 'País de origen', ...remaining.map(field => field.label), 'Link'];
+          const widths = [8, 40, 22, ...afterPrice.map(() => 18), 46, 46, 16,
+            ...remaining.map(() => 18), 34];
           const rows = [header];
           itemsOf(quotation.id).forEach(item => {
             rows.push([
-              item.included ? 'Sí' : 'No', item.name, item.price, item.description, item.comment, item.country,
-              ...extra.map(field => {
+              item.included ? 'Sí' : 'No', item.name, item.price,
+              ...afterPrice.map(field => {
+                const value = (item.extra_data || {})[field.key];
+                if (field.type === 'boolean') return value === true ? 'Sí' : value === false ? 'No' : '';
+                return value === null || value === undefined ? '' : value;
+              }),
+              item.description, item.comment, item.country,
+              ...remaining.map(field => {
                 const value = (item.extra_data || {})[field.key];
                 if (field.type === 'boolean') return value === true ? 'Sí' : value === false ? 'No' : '';
                 return value === null || value === undefined ? '' : value;
