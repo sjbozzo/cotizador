@@ -95,10 +95,18 @@
     </section>
 
     <section class="blank-state" id="blank-state" hidden>
-      <p class="eyebrow">Sin cotizaciones</p>
-      <h1>Crea tu primera cotización</h1>
-      <p>Define sus campos y agrega productos para comenzar.</p>
+      <div id="blank-empty">
+        <p class="eyebrow">Sin cotizaciones</p>
+        <h1>Crea tu primera cotización</h1>
+        <p>Define sus campos y agrega productos para comenzar.</p>
+      </div>
+      <div id="blank-archived-note" hidden>
+        <p class="eyebrow">Todo archivado</p>
+        <h1>No hay cotizaciones a la vista</h1>
+        <p>Las que archivaste siguen guardadas; restaura una para volver a verla.</p>
+      </div>
       <button class="button button-primary" type="button" data-action="new-quotation">Nueva cotización</button>
+      <button class="button" type="button" id="blank-archived" hidden>Ver archivadas</button>
     </section>
   </main>
 
@@ -149,20 +157,30 @@
         <div><p class="eyebrow">Cotización</p><h2 id="quotation-modal-title">Editar cotización</h2></div>
         <button class="icon-button" type="button" data-close="quotation-modal" aria-label="Cerrar">×</button>
       </header>
-      <div class="modal-body form-grid">
-        <label class="field field-wide"><span>Nombre</span><input id="quote-name" required maxlength="180"></label>
-        <label class="field"><span>Fecha</span><input id="quote-date" type="date" required></label>
-        <label class="field"><span>Link general de compra o referencia</span><input id="quote-link" type="url" placeholder="https://..."></label>
-        <label class="field field-wide"><span>Descripción</span><textarea id="quote-description" rows="3" maxlength="4000"></textarea></label>
-        <label class="field field-wide">
-          <span>Campos extra — uno por línea</span>
-          <textarea id="quote-extra-fields" rows="6" placeholder="incluye_ventilador:boolean | Incluye ventilador&#10;rendimiento:number | Rendimiento"></textarea>
-          <small>Tipos: text, boolean, number, url o date. La clave usa minúsculas y guion bajo.</small>
-        </label>
+      <div class="modal-body">
+        <div class="form-grid" id="quotation-fields">
+          <label class="field field-wide"><span>Nombre</span><input id="quote-name" required maxlength="180"></label>
+          <label class="field"><span>Fecha</span><input id="quote-date" type="date" required></label>
+          <label class="field"><span>Link general de compra o referencia</span><input id="quote-link" type="url" placeholder="https://..."></label>
+          <label class="field field-wide"><span>Descripción</span><textarea id="quote-description" rows="3" maxlength="4000"></textarea></label>
+          <label class="field field-wide">
+            <span>Campos extra — uno por línea</span>
+            <textarea id="quote-extra-fields" rows="6" placeholder="incluye_ventilador:boolean | Incluye ventilador&#10;rendimiento:number | Rendimiento"></textarea>
+            <small>Tipos: text, boolean, number, url o date. La clave usa minúsculas y guion bajo.</small>
+          </label>
+        </div>
+        <section class="archived-box" id="archived-box" hidden>
+          <p class="eyebrow">Archivadas</p>
+          <p class="archived-hint">No ocupan pestaña. Al desarchivarlas vuelven como la última.</p>
+          <div class="archived-list" id="archived-list"></div>
+        </section>
       </div>
       <footer class="modal-foot">
-        <button class="button button-danger" id="delete-quotation" type="button">Eliminar cotización</button>
-        <div><button class="button" type="button" data-close="quotation-modal">Cancelar</button><button class="button button-primary" type="submit">Guardar</button></div>
+        <div>
+          <button class="button button-danger" id="delete-quotation" type="button">Eliminar cotización</button>
+          <button class="button" id="archive-quotation" type="button">Archivar</button>
+        </div>
+        <div><button class="button" type="button" data-close="quotation-modal">Cancelar</button><button class="button button-primary" id="save-quotation" type="submit">Guardar</button></div>
       </footer>
     </form>
   </dialog>

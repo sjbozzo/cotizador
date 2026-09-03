@@ -63,6 +63,7 @@ def init_database() -> None:
             CREATE TABLE IF NOT EXISTS quotations (
                 id TEXT PRIMARY KEY,
                 position INTEGER NOT NULL DEFAULT 0,
+                archived INTEGER NOT NULL DEFAULT 0 CHECK (archived IN (0, 1)),
                 name TEXT NOT NULL,
                 purchase_link TEXT NOT NULL DEFAULT '',
                 quote_date TEXT NOT NULL,
@@ -112,6 +113,7 @@ def init_database() -> None:
             """
         )
         _migrate_quotation_positions(connection)
+        _migrate_quotation_archived(connection)
         existing = connection.execute("SELECT COUNT(*) AS count FROM quotations").fetchone()["count"]
         if existing == 0:
             _insert_seed_data(connection)
@@ -131,6 +133,16 @@ def _migrate_quotation_positions(connection: sqlite3.Connection) -> None:
     rows = connection.execute("SELECT id FROM quotations ORDER BY created_at, rowid").fetchall()
     for position, row in enumerate(rows):
         connection.execute("UPDATE quotations SET position = ? WHERE id = ?", (position, row["id"]))
+
+
+def _migrate_quotation_archived(connection: sqlite3.Connection) -> None:
+    """Agrega quotations.archived a bases creadas antes del archivado de pestañas."""
+    columns = {row["name"] for row in connection.execute("PRAGMA table_info(quotations)")}
+    if "archived" in columns:
+        return
+    connection.execute(
+        "ALTER TABLE quotations ADD COLUMN archived INTEGER NOT NULL DEFAULT 0 CHECK (archived IN (0, 1))"
+    )
 
 
 def _insert_seed_data(connection: sqlite3.Connection) -> None:
@@ -208,6 +220,7 @@ def _quotation_from_row(row: sqlite3.Row, items: list[dict[str, Any]] | None = N
     quotation = {
         "id": row["id"],
         "position": row["position"],
+        "archived": bool(row["archived"]),
         "name": row["name"],
         "purchase_link": row["purchase_link"],
         "quote_date": row["quote_date"],
@@ -334,6 +347,29 @@ def reorder_quotations(order: list[str]) -> list[dict[str, Any]]:
             )
         rows = connection.execute(_QUOTATIONS_ORDERED).fetchall()
         return [_quotation_from_row(row) for row in rows]
+
+
+def set_quotation_archived(quotation_id: str, archived: bool) -> dict[str, Any] | None:
+    """Archiva la cotización (deja de tener pestaña) o la vuelve a mostrar.
+
+    En ambos casos pasa al final del orden: al archivarla deja de ocupar un lugar
+    entre las visibles y al restaurarla vuelve como la última pestaña, porque
+    mientras estuvo guardada ese orden pudo cambiar.
+    No toca revision: archivar no cambia lo cotizado, y subirla invalidaría una
+    vista previa de importación en curso.
+    """
+    with transaction() as connection:
+        if not connection.execute("SELECT 1 FROM quotations WHERE id = ?", (quotation_id,)).fetchone():
+            return None
+        position = connection.execute(
+            "SELECT COALESCE(MAX(position), -1) + 1 AS next_position FROM quotations WHERE id <> ?",
+            (quotation_id,),
+        ).fetchone()["next_position"]
+        connection.execute(
+            "UPDATE quotations SET archived = ?, position = ?, updated_at = ? WHERE id = ?",
+            (int(archived), position, now_iso(), quotation_id),
+        )
+        return get_quotation(quotation_id, connection)
 
 
 def delete_quotation(quotation_id: str) -> bool:

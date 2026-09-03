@@ -145,6 +145,12 @@ class QuotationReorder(BaseModel):
         return cleaned
 
 
+class QuotationArchive(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    archived: bool
+
+
 class ItemBase(BaseModel):
     model_config = ConfigDict(extra="forbid")
 

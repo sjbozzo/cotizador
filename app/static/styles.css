@@ -100,6 +100,13 @@ textarea{resize:vertical}
 .tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover{background:#e8f1f3}
 .tabulator .tabulator-header .tabulator-col .tabulator-col-content{padding:5px 7px}
 .tabulator .tabulator-header .tabulator-col .tabulator-col-title{font-size:11px;font-weight:700;letter-spacing:.01em;color:var(--ink)}
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title.tabulator-col-title-wrap{overflow-wrap:break-word;hyphens:auto;line-height:1.25}
+/* La flecha de orden y el disparador del menú viven arriba a la derecha: el
+   título les cede ese hueco en la primera línea y usa el ancho completo en las
+   siguientes, en vez de reservar 45px en todas y quedarse sin dónde escribir. */
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable .tabulator-col-title{padding-right:0}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable:not(.include-cell) .tabulator-col-title::before{content:"";float:right;width:32px;height:12px}
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-sorter{top:7px;bottom:auto;align-items:flex-start}
 .tabulator .tabulator-header .tabulator-col[aria-sort="ascending"],
 .tabulator .tabulator-header .tabulator-col[aria-sort="descending"]{background:#e4f0d5;box-shadow:inset 0 -2px 0 var(--accent-strong)}
 .tabulator .tabulator-header .tabulator-col .tabulator-col-sorter .tabulator-arrow{border-bottom-color:var(--muted-2)}
@@ -120,7 +127,7 @@ textarea{resize:vertical}
 .tabulator .tabulator-row:hover{background:var(--soft-2)}
 .tabulator .tabulator-row.excluded{opacity:.5}
 .tabulator .tabulator-row.excluded .tabulator-cell.item-name-cell{text-decoration:line-through;text-decoration-color:var(--muted-2)}
-.tabulator .tabulator-row .tabulator-cell{padding:5px 7px;border-right:1px solid var(--line);vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tabulator .tabulator-row .tabulator-cell{padding:5px 7px;border-right:1px solid var(--line);vertical-align:middle;overflow:hidden;white-space:normal;overflow-wrap:break-word;line-height:1.35}
 .tabulator .tabulator-row .tabulator-cell.text-cell{color:#3d6270}
 .tabulator .tabulator-row .tabulator-cell.item-name-cell{font-weight:700}
 .tabulator .tabulator-row .tabulator-cell.move-cell{padding:2px}
@@ -145,6 +152,7 @@ textarea{resize:vertical}
 .blank-state{max-width:600px;margin:80px auto;text-align:center}
 .blank-state p:not(.eyebrow){color:var(--muted);font-size:15px}
 .blank-state .button{margin-top:10px}
+.blank-state .button+.button{margin-left:6px}
 
 /* Modales */
 .modal{width:min(940px,calc(100% - 24px));max-height:calc(100vh - 24px);padding:0;border:0;border-radius:12px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
@@ -174,6 +182,18 @@ textarea{resize:vertical}
 .extra-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .extra-form-title{grid-column:1/-1;margin:0}
 .extra-input label{display:block;margin-bottom:5px;color:var(--ink-soft);font-size:11px;font-weight:700}
+
+/* Archivadas, dentro de la tuerca */
+.archived-box{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+/* Sin los campos de la cotización arriba, la lista no necesita separador. */
+#quotation-fields[hidden]+.archived-box{margin-top:0;padding-top:0;border-top:0}
+.archived-box .eyebrow{margin-bottom:3px}
+.archived-hint{margin:0 0 8px;color:var(--muted);font-size:11.5px}
+.archived-list{display:grid;gap:6px;max-height:230px;overflow:auto;padding:2px}
+.archived-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 9px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft-2)}
+.archived-row strong{display:block;font-size:12px}
+.archived-row small{display:block;color:var(--muted);font-size:10.5px}
+.archived-row .button{flex:0 0 auto;min-height:27px;padding:4px 9px;font-size:11.5px}
 
 /* Exportar HTML */
 .export-lead{margin:0 0 12px;color:var(--muted);font-size:11.5px}
@@ -242,8 +262,8 @@ textarea{resize:vertical}
 /* --- Selección múltiple, menú de columna y menú de fila (v2) --- */
 .table-hint{flex:1 1 auto;min-width:0;text-align:center;color:var(--muted-2);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-.tabulator .tabulator-header .tabulator-col .tabulator-col-content{position:relative;padding:6px 20px 6px 8px}
-.column-menu-trigger{position:absolute;top:50%;right:2px;transform:translateY(-50%);display:grid;place-items:center;width:17px;height:17px;padding:0;border:0;border-radius:4px;background:transparent;color:var(--muted-2);font-size:10px;line-height:1;cursor:pointer;opacity:.55}
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content{position:relative;padding:6px 8px}
+.column-menu-trigger{position:absolute;top:5px;right:2px;display:grid;place-items:center;width:17px;height:17px;padding:0;border:0;border-radius:4px;background:transparent;color:var(--muted-2);font-size:10px;line-height:1;cursor:pointer;opacity:.55}
 .tabulator .tabulator-col:hover .column-menu-trigger{opacity:1;background:rgba(0,51,66,.07)}
 .column-menu-trigger:hover{color:var(--ink);background:rgba(0,51,66,.12)}
 .tabulator .tabulator-header .tabulator-col.has-filter{background:#e4f0d5}
@@ -274,7 +294,7 @@ textarea{resize:vertical}
 .tabulator .tabulator-row .tabulator-cell.kebab-cell{padding:2px;border-right:0}
 .tabulator .tabulator-row .tabulator-cell.include-cell{padding:2px 2px 2px 8px}
 .include-box,.tabulator .tabulator-row .tabulator-cell.include-cell input[type="checkbox"]{width:15px;height:15px;margin:0;accent-color:var(--accent-strong);cursor:pointer}
-.include-head{display:inline-flex;align-items:center;gap:6px}
+.include-head{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .tabulator .tabulator-header .tabulator-col.include-cell .tabulator-col-title{overflow:visible}
 
 /* Selección de filas al estilo planilla */

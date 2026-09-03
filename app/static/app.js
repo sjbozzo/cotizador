@@ -3,6 +3,7 @@
 
   const state = {
     quotations: [],
+    archived: [],
     activeId: localStorage.getItem('cotizador.activeQuotation') || '',
     editingItemId: null,
     creatingQuotation: false,
@@ -61,7 +62,10 @@
 
   async function loadQuotations(preferredId = state.activeId) {
     try {
-      state.quotations = await api('/api/quotations');
+      const all = await api('/api/quotations');
+      // Las archivadas no tienen pestaña, pero llegan igual: la tuerca las restaura.
+      state.quotations = all.filter(quotation => !quotation.archived);
+      state.archived = all.filter(quotation => quotation.archived);
       state.activeId = state.quotations.some(q => q.id === preferredId)
         ? preferredId
         : (state.quotations[0]?.id || '');
@@ -82,9 +86,20 @@
     const quotation = activeQuotation();
     $('quotation-view').hidden = !quotation;
     $('blank-state').hidden = Boolean(quotation);
+    renderBlankState();
     renderActiveName(quotation);
     if (!quotation) return;
     renderQuotation(quotation);
+  }
+
+  /** Sin pestañas a la vista el estado vacío cambia según quede algo archivado. */
+  function renderBlankState() {
+    const count = state.archived.length;
+    $('blank-empty').hidden = count > 0;
+    $('blank-archived-note').hidden = count === 0;
+    const button = $('blank-archived');
+    button.hidden = count === 0;
+    button.textContent = count === 1 ? 'Ver la archivada' : `Ver las ${count} archivadas`;
   }
 
   function renderActiveName(quotation) {
@@ -92,7 +107,7 @@
     label.textContent = quotation ? quotation.name : '';
     label.title = quotation ? `${quotation.name} · ${quotation.quote_date} · revisión ${quotation.revision}` : '';
     $('brand-sep').hidden = !quotation;
-    $('edit-quotation').hidden = !quotation;
+    $('edit-quotation').hidden = !quotation && !state.archived.length;
     $('header-actions').hidden = !quotation;
     if (!quotation) { closeMenus(); closeMoveMenu(); }
   }
@@ -736,12 +751,14 @@
 
   // --- Columnas ---
 
-  function extraColumn(field) {
+  function extraColumn(field, minWidth) {
     const numeric = field.type === 'number';
     return {
       title: field.label,
       field: `extra_data.${field.key}`,
-      minWidth: 110,
+      minWidth,
+      widthGrow: field.type === 'text' ? 2 : 1,
+      variableHeight: true,
       hozAlign: field.type === 'boolean' ? 'center' : numeric ? 'right' : 'left',
       sorter: field.type === 'boolean' ? 'boolean' : field.type === 'date' ? 'date' : smartSorter,
       formatter: field.type === 'boolean'
@@ -750,15 +767,34 @@
     };
   }
 
+  // Mínimos de las columnas de siempre: lo justo para que el encabezado se lea.
+  const BASE_WIDTHS = {
+    included: 100, photo: 72, name: 120, price: 88,
+    description: 116, comment: 116, country: 88, link: 48, actions: 36,
+  };
+  const BASE_TOTAL = Object.values(BASE_WIDTHS).reduce((total, width) => total + width, 0);
+
+  /** Ancho mínimo de cada campo extra: lo que sobre del ancho de la pantalla.
+   *  Con pocos campos son cómodos; con muchos se angostan hasta 40px antes que
+   *  empujar la tabla fuera de la pantalla, que es lo que se quiere evitar. */
+  function extraMinWidth(count) {
+    if (!count) return BASE_WIDTHS.country;
+    const available = $('items-table').clientWidth || document.documentElement.clientWidth;
+    return Math.max(40, Math.min(84, Math.floor((available - BASE_TOTAL) / count)));
+  }
+
+  /** Los anchos se reparten sobre el ancho disponible: ninguna columna se sale
+   *  de la pantalla y el texto largo baja de línea en vez de empujar un scroll. */
   function buildColumns(quotation) {
+    const extraMin = extraMinWidth(quotation.extra_fields.length);
     return [
       {
         title: 'Incluir',
         field: 'included',
         formatter: rowSelectFormatter,
         titleFormatter: selectAllFormatter,
-        width: 96,
-        minWidth: 96,
+        width: BASE_WIDTHS.included,
+        minWidth: BASE_WIDTHS.included,
         hozAlign: 'left',
         headerHozAlign: 'left',
         sorter: 'boolean',
@@ -767,21 +803,22 @@
       {
         title: 'Foto',
         field: 'photo',
-        width: 74,
+        width: BASE_WIDTHS.photo,
+        minWidth: BASE_WIDTHS.photo,
         headerSort: false,
         formatter: photoFormatter,
         cssClass: 'photo-cell',
         // La foto es el atajo para abrir el ítem, igual que el doble clic.
         cellClick: (event, cell) => openItemModal(cell.getRow().getData()),
       },
-      {title: 'Nombre', field: 'name', minWidth: 220, widthGrow: 2, sorter: smartSorter, formatter: nameFormatter, cssClass: 'item-name-cell'},
-      {title: 'Precio', field: 'price', minWidth: 150, sorter: priceSorter},
-      {title: 'Descripción', field: 'description', minWidth: 200, widthGrow: 2, sorter: smartSorter, cssClass: 'text-cell'},
-      {title: 'Comentario', field: 'comment', minWidth: 200, widthGrow: 2, sorter: smartSorter, cssClass: 'text-cell'},
-      {title: 'País de origen', field: 'country', minWidth: 130, sorter: smartSorter},
-      ...quotation.extra_fields.map(extraColumn),
-      {title: 'Link', field: 'purchase_link', width: 64, headerSort: false, hozAlign: 'center', formatter: linkFormatter},
-      {title: '', field: '_actions', width: 42, headerSort: false, hozAlign: 'center', cssClass: 'kebab-cell', formatter: kebabFormatter},
+      {title: 'Nombre', field: 'name', minWidth: BASE_WIDTHS.name, widthGrow: 3, variableHeight: true, sorter: smartSorter, formatter: nameFormatter, cssClass: 'item-name-cell'},
+      {title: 'Precio', field: 'price', minWidth: BASE_WIDTHS.price, widthGrow: 1, variableHeight: true, sorter: priceSorter},
+      {title: 'Descripción', field: 'description', minWidth: BASE_WIDTHS.description, widthGrow: 3, variableHeight: true, sorter: smartSorter, cssClass: 'text-cell'},
+      {title: 'Comentario', field: 'comment', minWidth: BASE_WIDTHS.comment, widthGrow: 3, variableHeight: true, sorter: smartSorter, cssClass: 'text-cell'},
+      {title: 'País de origen', field: 'country', minWidth: BASE_WIDTHS.country, widthGrow: 1, variableHeight: true, sorter: smartSorter},
+      ...quotation.extra_fields.map(field => extraColumn(field, extraMin)),
+      {title: 'Link', field: 'purchase_link', width: BASE_WIDTHS.link, minWidth: BASE_WIDTHS.link, headerSort: false, hozAlign: 'center', formatter: linkFormatter},
+      {title: '', field: '_actions', width: BASE_WIDTHS.actions, minWidth: BASE_WIDTHS.actions, headerSort: false, hozAlign: 'center', cssClass: 'kebab-cell', formatter: kebabFormatter},
     ];
   }
 
@@ -864,14 +901,14 @@
       data: quotation.items,
       columns: buildColumns(quotation),
       index: 'id',
-      layout: 'fitDataStretch',
+      layout: 'fitColumns',
       height: '100%',
       placeholder: 'No hay elementos para estos filtros.',
       headerSortTristate: true,
       // 'highlight' mantiene la API de selección pero sin los listeners de clic
       // de Tabulator: el marcado lo decide handleRowClick / la casilla de la fila.
       selectableRows: 'highlight',
-      columnDefaults: {resizable: 'header', tooltip: true, headerTooltip: true},
+      columnDefaults: {resizable: 'header', tooltip: true, headerTooltip: true, headerWordWrap: true},
       rowFormatter: row => {
         row.getElement().classList.toggle('excluded', !row.getData().included);
       },
@@ -1218,18 +1255,66 @@
   }
 
   function openQuotationModal(create = false) {
-    const quotation = activeQuotation();
+    const quotation = create ? null : activeQuotation();
+    // Con todo archivado no hay cotización que editar: la tuerca abre sólo la lista.
+    const archiveOnly = !create && !quotation;
     state.creatingQuotation = create;
-    $('quotation-modal-title').textContent = create ? 'Nueva cotización' : 'Editar cotización';
-    $('delete-quotation').hidden = create;
+    $('quotation-modal-title').textContent = archiveOnly
+      ? 'Cotizaciones archivadas'
+      : create ? 'Nueva cotización' : 'Editar cotización';
+    $('quotation-fields').hidden = archiveOnly;
+    // Un campo obligatorio oculto bloquearía el envío del formulario.
+    $('quote-name').required = !archiveOnly;
+    $('delete-quotation').hidden = create || archiveOnly;
+    $('archive-quotation').hidden = create || archiveOnly;
+    $('save-quotation').hidden = archiveOnly;
     $('quote-name').value = create ? '' : quotation?.name || '';
     $('quote-date').value = create ? today() : quotation?.quote_date || today();
     $('quote-link').value = create ? '' : quotation?.purchase_link || '';
     $('quote-description').value = create ? '' : quotation?.description || '';
     $('quote-extra-fields').value = create ? '' : (quotation?.extra_fields || [])
       .map(field => `${field.key}:${field.type} | ${field.label}`).join('\n');
+    renderArchivedList(create);
     $('quotation-modal').showModal();
-    setTimeout(() => $('quote-name').focus(), 0);
+    if (!archiveOnly) setTimeout(() => $('quote-name').focus(), 0);
+  }
+
+  /** Lo archivado se lista dentro de la tuerca, que es desde donde se restaura. */
+  function renderArchivedList(create) {
+    const box = $('archived-box');
+    const list = $('archived-list');
+    list.replaceChildren();
+    box.hidden = create || state.archived.length === 0;
+    if (box.hidden) return;
+    state.archived.forEach(quotation => {
+      const row = document.createElement('div');
+      row.className = 'archived-row';
+      const label = document.createElement('div');
+      const name = document.createElement('strong');
+      name.textContent = quotation.name;
+      const meta = document.createElement('small');
+      meta.textContent = `${quotation.item_count} elementos · ${quotation.quote_date}`;
+      label.append(name, meta);
+      const restore = document.createElement('button');
+      restore.type = 'button';
+      restore.className = 'button';
+      restore.textContent = 'Desarchivar';
+      restore.addEventListener('click', () => setQuotationArchived(quotation, false));
+      row.append(label, restore);
+      list.append(row);
+    });
+  }
+
+  async function setQuotationArchived(quotation, archived) {
+    try {
+      await api(`/api/quotations/${encodeURIComponent(quotation.id)}/archive`, {method: 'POST', body: {archived}});
+      $('quotation-modal').close();
+      showToast(archived
+        ? `“${quotation.name}” quedó archivada; se restaura desde la tuerca`
+        : `“${quotation.name}” volvió como la última pestaña`);
+      // Al archivar se activa la primera que quede; al restaurar, la restaurada.
+      await loadQuotations(archived ? '' : quotation.id);
+    } catch (error) { showToast(error.message, 'error'); }
   }
 
   function parseExtraDefinitions() {
@@ -1242,6 +1327,7 @@
 
   async function saveQuotation(event) {
     event.preventDefault();
+    if (!state.creatingQuotation && !activeQuotation()) return;
     const payload = {
       name: $('quote-name').value.trim(),
       quote_date: $('quote-date').value,
@@ -1517,6 +1603,11 @@
     }, true);
     $('item-form').addEventListener('submit', saveItem);
     $('quotation-form').addEventListener('submit', saveQuotation);
+    $('archive-quotation').addEventListener('click', () => {
+      const quotation = activeQuotation();
+      if (quotation) setQuotationArchived(quotation, true);
+    });
+    $('blank-archived').addEventListener('click', () => openQuotationModal(false));
     $('delete-item').addEventListener('click', deleteItem);
     $('delete-quotation').addEventListener('click', deleteQuotation);
     $('item-photo').addEventListener('input', event => {

@@ -569,6 +569,41 @@ def test_reorder_rejects_unknown_or_repeated_quotations(client):
     assert [quotation["id"] for quotation in partial.json()] == [known[-1], *known[:-1]]
 
 
+def test_archived_quotation_leaves_the_tabs_and_comes_back_last(client):
+    before = [quotation["id"] for quotation in client.get("/api/quotations").json()]
+    target = before[0]
+
+    archived = client.post(f"/api/quotations/{target}/archive", json={"archived": True})
+    assert archived.status_code == 200
+    assert archived.json()["archived"] is True
+    # Archivar no cambia lo cotizado: la revisión es el lock del import.
+    assert archived.json()["revision"] == 1
+    # Queda al final del orden, detrás de todas las visibles.
+    assert archived.json()["position"] == len(before)
+
+    listed = client.get("/api/quotations").json()
+    assert [quotation["id"] for quotation in listed if not quotation["archived"]] == before[1:]
+    assert [quotation["id"] for quotation in listed if quotation["archived"]] == [target]
+
+    restored = client.post(f"/api/quotations/{target}/archive", json={"archived": False})
+    assert restored.status_code == 200
+    assert restored.json()["archived"] is False
+    # Vuelve como la última pestaña, no al lugar que ocupaba antes.
+    assert [quotation["id"] for quotation in client.get("/api/quotations").json()] == [*before[1:], target]
+
+
+def test_archive_keeps_the_items_and_rejects_an_unknown_quotation(client):
+    quotation = client.get("/api/quotations").json()[0]
+    client.post(f"/api/quotations/{quotation['id']}/archive", json={"archived": True})
+    stored = client.get("/api/quotations").json()
+    archived = next(entry for entry in stored if entry["id"] == quotation["id"])
+    assert archived["item_count"] == quotation["item_count"]
+    assert client.get(f"/api/quotations/{quotation['id']}/export.json").status_code == 200
+
+    assert client.post("/api/quotations/no-existe/archive", json={"archived": True}).status_code == 404
+    assert client.post(f"/api/quotations/{quotation['id']}/archive", json={}).status_code == 422
+
+
 def test_new_quotation_is_added_at_the_end_of_the_tabs(client):
     before = client.get("/api/quotations").json()
     created = client.post("/api/quotations", json={"name": "Última", "quote_date": "2026-08-30"}).json()

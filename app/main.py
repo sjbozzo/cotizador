@@ -16,6 +16,7 @@ from .schemas import (
     ItemCreate,
     ItemMove,
     ItemUpdate,
+    QuotationArchive,
     QuotationCreate,
     QuotationReorder,
     QuotationUpdate,
@@ -129,6 +130,14 @@ def reorder_quotations(payload: QuotationReorder) -> list[dict]:
 @app.patch("/api/quotations/{quotation_id}")
 def edit_quotation(quotation_id: str, payload: QuotationUpdate) -> dict:
     quotation = db.update_quotation(quotation_id, _model_changes(payload))
+    if not quotation:
+        raise HTTPException(status_code=404, detail="Cotización no encontrada")
+    return quotation
+
+
+@app.post("/api/quotations/{quotation_id}/archive")
+def archive_quotation(quotation_id: str, payload: QuotationArchive) -> dict:
+    quotation = db.set_quotation_archived(quotation_id, payload.archived)
     if not quotation:
         raise HTTPException(status_code=404, detail="Cotización no encontrada")
     return quotation

@@ -34,7 +34,13 @@ uv run pytest
   HTML exportado): una hoja por cotización, con las columnas de la tabla.
 - La tabla usa Tabulator 6.4.0, vendorizado en `app/static/vendor/` para que la app funcione sin internet.
   Ordenar y filtrar se hacen desde el encabezado de cada columna.
+- Las columnas se reparten el ancho de la pantalla en vez de desbordarla: el texto largo baja de línea
+  y la fila crece. Los campos extra se angostan hasta 40px antes que aparezca un scroll horizontal, así
+  que una cotización con muchos campos extra queda apretada. El HTML exportado sigue el mismo criterio.
 - El orden de las pestañas se cambia arrastrándolas y queda guardado en `quotations.position`.
+- Una cotización se archiva desde la tuerca: deja de tener pestaña pero conserva todo. Esa misma ventana
+  lista las archivadas con su botón «Desarchivar», y la restaurada vuelve como la última pestaña. Si no
+  queda ninguna a la vista, la tuerca sigue en la barra y abre sólo esa lista (`quotations.archived`).
 - La descripción de cada cotización se muestra completa sobre la tabla, y viaja al PDF y al HTML exportado.
 
 ## Marcar filas
