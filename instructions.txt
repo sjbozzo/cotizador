@@ -51,6 +51,51 @@ en la cotización archivada «Reserva» (nada se borró). Para el nodo en mina: 
 el Waveshare B0D928WG5L NO envía a Chile). Columnas «Disponibilidad en Chile» verificadas en Mercado Libre,
 Amazon y AliExpress con el flujo disponibilidad-mercados (scripts/apply_availability.py).
 
+Mezcla de las dos versiones (2026-09-03)
+---------------------------------------
+Dos IA resolvieron por separado el mismo encargo y quedaron dos exportaciones HTML distintas: una con
+ocho ítems por cotización, más candidatos y mejores precios, pero sin fotos ni las columnas nuevas; y
+otra con pocos ítems (3/4/1/6/4) pero muy verificados, con fotos embebidas, página del fabricante y nota
+de durabilidad. Se mezclaron tomando el esquema de columnas y el rigor de la segunda y la amplitud de
+candidatos de la primera, y se dejaron CINCO ítems por cotización.
+
+Reglas que impone la mezcla (las verifica scripts/merge_ai_versions.py y falla si alguna se rompe):
+  - Cinco ítems por cotización, todos con foto embebida en la base (no dependen de la URL del vendedor).
+  - Ningún campo vacío, estimado ni incompleto: cada precio dice fuente y fecha.
+  - Nota de durabilidad + confiabilidad de 1 a 10, justificada con hechos (rango térmico, certificaciones,
+    garantía, compromiso de producción, refrigeración).
+  - Columna «Página del fabricante», siempre distinta del link de compra.
+  - Máximo dos ítems de la misma marca y máximo cuatro del mismo país por cotización.
+  - Todo link abre y el producto llega a Chile; el flete se cotizó de verdad (carrito con dirección en
+    Santiago, código postal 8320000) donde la tienda lo permite.
+
+Hallazgos que corrigieron datos anteriores:
+  - AMD Kria KV260: la cifra baja es real y la publica AMD. El product brief del K26 dice «up to 1.4TOPS»
+    y la imagen que viene con el KV260 usa un DPU B3136 de 0,92 TOPS pico / 0,25 efectivos. Se descartó y
+    se pusieron dos equipos con silicio AMD de verdad (Ryzen AI 9 HX 370 de 50 TOPS y Ryzen 7 8845HS de 16).
+  - La NPU de AMD no tiene camino soportado en Linux: el driver amdxdna entró en Linux 6.14, pero el stack
+    oficial (ONNX Runtime + Vitis AI EP) está documentado sólo para Windows 11. En un nodo Linux la
+    inferencia cae en la iGPU o la CPU. Queda dicho en la ficha de ambos equipos AMD.
+  - FriendlyELEC NanoPC-T6-LTS: NO despacha a Chile (su propio módulo de envío responde «No Shipping
+    options are available» y Amazon lo rechaza con dirección chilena). Estaba dado por bueno; se sacó.
+  - Hailo-8L M.2 y el stick USB Hailo-10H de AAEON: sin canal que llegue a Chile (UP Shop lista sus 57
+    destinos y Chile no está). Reemplazados.
+  - MeLE Quieter 4C: puesto en Chile queda sobre US$450, así que el nodo pasa de US$500. Se descartó.
+
+Estado del catálogo tras la mezcla:
+  1 Aceleradores USB          Coral, ASUS UGen300 (Hailo-10H), Kneron KL720, Toybrick RK1808, Luxonis OAK-1.
+  2 Aceleradores M.2          DEEPX DX-M1 y DX-M1M, Hailo-8 26 TOPS, Radxa AICore AX-M1, Axelera 110m.
+  3 PC industriales con M.2   Topton X2E, CWWK F2 y F17, Wintertion RS150, Hardkernel ODROID-H5.
+  4 PC con NPU                Jetson Orin Nano Super, GMKtec EVO-X1 y K8 Plus, Seeed R2135-12 y RK3576-20.
+  5 Microcomputadores         Raspberry Pi 5, BeagleY-AI, Khadas VIM4, Radxa Dragon Q6A, Orange Pi 5 Plus.
+El detalle verificado de cada ítem está en scripts/auditoria/2026-09-03-mezcla-5-por-cotizacion.json.
+
+Para el nodo en mina, lo que cabe en US$500: CWWK F2 barebone (US$253,73 con envío a Santiago, −20 a 60 °C,
+dos M.2 más dos SATA y microSD arrancable) con un acelerador M.2. El Radxa AICore AX-M1 (US$131 puesto en
+Chile, 24 TOPS) es el más interesante porque decodifica 16 canales de 1080p en el propio módulo y le quita
+ese trabajo al anfitrión. Alternativa cerrada y lista para usar: Seeed reComputer AI Industrial R2135-12
+(US$433, 26 TOPS, IP40, −20 a 65 °C, riel DIN, garantía de 2 años).
+
 Estado (2026-09-02, 12:00)
 --------------------------
 HECHO

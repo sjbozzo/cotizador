@@ -1,0 +1,824 @@
+{
+ "quotations": [
+  {
+   "id": "aceleradores-usb-yolo",
+   "name": "1 · Aceleradores USB",
+   "description": "Dispositivo USB2/USB3 con el procesador Luxonis RVC2 (Intel Movidius Myriad X): 4 TOPS totales de los cuales 1,4 TOPS son de IA, corriendo la red completa dentro del aparato. Mide 36 x 54,5 x 27,8 mm, pesa 53,1 g y consume 2,5-3 W más hasta 1 W del subsistema de IA. Luxonis documenta un rango ambiente de -20 C a +50 C con la VPU a plena carga y apagado térmico automático a 105 C, el rango más amplio de los cinco. Incluye una cámara RGB de 12 MP (IMX378) que este nodo no usaría.",
+   "quote_date": "2026-09-03",
+   "extra_fields": [
+    {
+     "key": "tops",
+     "label": "TOPS",
+     "type": "text"
+    },
+    {
+     "key": "marca",
+     "label": "Marca",
+     "type": "text"
+    },
+    {
+     "key": "acelerador",
+     "label": "Acelerador",
+     "type": "text"
+    },
+    {
+     "key": "compatibilidad_yolo",
+     "label": "Compatibilidad YOLO",
+     "type": "text"
+    },
+    {
+     "key": "disponibilidad_chile",
+     "label": "Stock y despacho a Chile",
+     "type": "text"
+    },
+    {
+     "key": "pagina_fabricante",
+     "label": "Página del fabricante",
+     "type": "url"
+    },
+    {
+     "key": "durabilidad_confiabilidad",
+     "label": "Durabilidad + confiabilidad (1-10)",
+     "type": "number"
+    },
+    {
+     "key": "facilidad_programacion",
+     "label": "Facilidad de programación (1-5)",
+     "type": "number"
+    },
+    {
+     "key": "verificado_el",
+     "label": "Verificado el",
+     "type": "date"
+    }
+   ],
+   "items": [
+    {
+     "name": "Coral USB Accelerator (P/N G950-06809-01)",
+     "country": "Estados Unidos",
+     "price": "$89.252 CLP con IVA ($75.002 CLP sin IVA) por unidad (RS Chile, cl.rsdelivers.com, 2026-09-03); respaldo Amazon.com $109.456 CLP con envío gratis a Chile (ASIN B07R53D12W, 2026-09-03)",
+     "purchase_link": "https://cl.rsdelivers.com/product/coral/g950-06809-01/usb-accelerator-coral-g950-06809-01-para-raspberry/2017821",
+     "photo_url": "https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_1.0,f_auto,q_auto,w_700/c_pad,w_700/F2017821-01",
+     "reusar_foto_de": "",
+     "description": "Dongle USB 3.0 (USB 3.1 Gen1) Type-C con el ASIC Edge TPU de Google: 4 TOPS INT8 a unos 2 W, es decir 2 TOPS por vatio. La ficha chilena de RS identifica el P/N exacto G950-06809-01, lo cotiza en pesos con y sin IVA y ofrece escala de precios hasta 15 unidades. Trae cable USB-C a USB-A de 300 mm y funciona sobre Debian/Ubuntu, macOS y Windows, incluida Raspberry Pi.",
+     "comment": "Nota 7/10: es el único de los cinco que se compra dentro de Chile con boleta en CLP, y su hoja de datos documenta ensayos de temperatura y humedad, ESD, caída, vibración y 1.000 ciclos de inserción USB. Le resto por el límite térmico real que publica Coral (hasta 25 C ambiente a frecuencia máxima y 35 C a frecuencia reducida), muy justo para un gabinete sellado en mina, y porque el chip Edge TPU es de 2019 y solo acepta TFLite INT8: lo que no cuantiza cae a la CPU del anfitrión.",
+     "extra_data": {
+      "tops": "4 TOPS INT8 (2 TOPS/W)",
+      "marca": "Coral (Google)",
+      "acelerador": "Google Edge TPU (ASIC)",
+      "compatibilidad_yolo": "Sí. Ultralytics documenta la exportación de YOLOv5/v8/v11 a TFLite INT8 y su compilación a Edge TPU con 'yolo export format=edgetpu'; el binario se ejecuta con libedgetpu/PyCoral y los operadores no soportados vuelven a la CPU del anfitrión. Fuentes: docs.ultralytics.com/integrations/edge-tpu y coral.ai/docs/edgetpu/models-intro.",
+      "disponibilidad_chile": "Venta local. En cl.rsdelivers.com (tienda RS Chile) vi el 2026-09-03 el P/N G950-06809-01 con precio $75.002 sin IVA y $89.252 con IVA, botón 'Añadir al carrito' activo, compra 'Disponible en múltiplos de 1' y escala de precios hasta 15 unidades; el JSON-LD de la ficha declara schema.org/LimitedAvailability. El widget de fecha de entrega no cargó ese día ('Vuelva a verificar más tarde'). Como respaldo comprobado, Amazon.com ASIN B07R53D12W lo deja en $109.456 CLP con 'FREE delivery Tuesday, September 15 to Chile'. En Mouser esta agotado: 0 unidades, '2639 On Order' y 70 días de plazo. Tercer canal comprobado: Seeed Studio lo tiene 'In stock' a US$111 y publica envío a Chile.",
+      "pagina_fabricante": "https://coral.ai/products/accelerator/",
+      "durabilidad_confiabilidad": 7,
+      "facilidad_programacion": 4,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "ASUS UGen300 USB AI Accelerator 8 GB (UGen300-USB-8G / S-UGEN300-8GLD4-TC)",
+     "country": "Taiwán",
+     "price": "$278.530 CLP (aprox. US$293) por unidad con envío gratis a Chile (Amazon.com, ASIN B0HFBHTPH1, 2026-09-03). Newegg y la eShop de ASUS lo dejan en US$299,99 pero no despachan a Chile; eBay.nl pedía US$504,78.",
+     "purchase_link": "https://www.amazon.com/dp/B0HFBHTPH1",
+     "photo_url": "https://dlcdnwebimgs.asus.com/gain/061269db-4d6d-4adc-99a2-90ee195a5cef/w692",
+     "reusar_foto_de": "",
+     "description": "Acelerador USB-C 3.1 Gen2 (10 Gbps) con el chip Hailo-10H y 8 GB de LPDDR4 a 4266 MT/s propios: 40 TOPS INT4 / 20 TOPS INT8 con 2,5 W típicos, 105 x 50 x 18 mm y 150 g según la ficha técnica de ASUS. Al llevar su propia memoria, el modelo no consume RAM ni CPU del anfitrión. Funciona en Windows, Linux y Android sobre equipos x86 o ARM y acepta Keras, TensorFlow, TensorFlow Lite, PyTorch y ONNX.",
+     "comment": "Nota 7/10: es de lejos el más potente del grupo (20 TOPS INT8 contra 4 del Coral) y el único que da margen para 4-8 cámaras 1080p con YOLOv8 en un solo nodo, con 2,5 W y memoria dedicada. Le resto porque la ficha técnica publicada por ASUS no declara rango de temperatura de operación, porque es una plataforma lanzada en 2026 con poco historial de campo, y porque para alcanzar los 10 Gbps el anfitrión debe tener USB 3.1 Gen2: con un puerto de 5 Gbps el rendimiento cae a la mitad.",
+     "extra_data": {
+      "tops": "40 TOPS INT4 / 20 TOPS INT8",
+      "marca": "ASUS",
+      "acelerador": "Hailo-10H con 8 GB LPDDR4 4266 MT/s a bordo",
+      "compatibilidad_yolo": "Sí. El Hailo Model Zoo publica YOLOv5 a YOLOv11 ya compilados para el target hailo10h y se ejecutan con HailoRT en Linux; ASUS declara compatibilidad con Keras, TensorFlow, TensorFlow Lite, PyTorch y ONNX y más de 150 modelos preentrenados en su model zoo en línea. Fuentes: asus.com (techspec UGen300-USB-8G) y hailo.ai/resources/industries/personal-compute/asus-ugen300-powered-by-hailo-10h-on-device-ai-anywhere/.",
+      "disponibilidad_chile": "Amazon.com, consultado el 2026-09-03 desde Chile: la ficha del ASIN B0HFBHTPH1 devuelve availability.status = IN_STOCK ('In Stock'), precio $278.530 CLP, botones 'Add to Cart' y 'Buy now' habilitados y el bloque de entrega dice literalmente 'FREE delivery September 23 - October 22 to Chile' (entrega más rápida 23 de septiembre - 19 de octubre), sin depósito de aranceles anunciado. Newegg queda descartado: Chile no aparece en su lista de destinos directos ni en el programa Newegg Global, y la eShop de ASUS solo vende en EE. UU.",
+      "pagina_fabricante": "https://www.asus.com/motherboards-components/ai-accelerator/ugen/ugen300-usb-8g/",
+      "durabilidad_confiabilidad": 7,
+      "facilidad_programacion": 4,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Kneron KNEO STEM KL720 AI Dongle (P/N KP72B340A-D1003)",
+     "country": "Estados Unidos",
+     "price": "US$124,19 por unidad (Mouser Electronics, P/N KP72B340A-D1003, 63 unidades en stock, 2026-09-03); el flete internacional y los impuestos se calculan en el checkout, Mouser despacha a Chile con Incoterm FCA y cobra derechos y aduana contra entrega.",
+     "purchase_link": "https://www.mouser.com/ProductDetail/Kneron/KP72B340A-D1003?qs=A6eO%252BMLsxmQa9AU190fVDw%3D%3D",
+     "photo_url": "https://kneo.kneron.com/images/thumbs/0000014_kneo-stem-kl720-ai-dongle_550.png",
+     "reusar_foto_de": "",
+     "description": "Dongle USB con la NPU Kneron KL720 (1,4 TOPS INT8) y 128 MB de memoria embebida, distribuido con P/N exacto KP72B340A-D1003 y fabricado en Taiwán. Soporta anfitriones Windows, Linux y Raspberry Pi de 64 bits. Es el único de la lista que se compra por un distribuidor de componentes autorizado, con número de parte y hoja de datos públicos.",
+     "comment": "Nota 6/10: suma por venir de canal autorizado con stock real (63 unidades en Mouser), P/N y datasheet públicos, y por tener un ejemplo YOLOv5 oficial en la documentación de Kneron. Le resto porque a 1,4 TOPS rinde un tercio del Coral por casi el doble de precio, porque el SDK (Kneron PLUS + Kneron Toolchain) es propietario y con una comunidad mucho menor que Coral o Hailo, y porque su rango de operación declarado es 0-40 C, sin certificación industrial.",
+     "extra_data": {
+      "tops": "1,4 TOPS INT8",
+      "marca": "Kneron",
+      "acelerador": "Kneron KL720 (NPU + Arm Cortex-M4)",
+      "compatibilidad_yolo": "Sí, documentado por el fabricante. El Document Center de Kneron trae el ejemplo 'Kneron Model Zoo Inference Example - Detection (YOLOv5)' compilado para KL720, tanto en C (kl720_kn-model-zoo_generic_inference_post_yolov5) como en Python (KL720KnModelZooGenericImageInferenceYolov5.py), con alrededor de 24,4 FPS usando backbone YOLOv5s; el modelo se entrena/exporta a ONNX y se compila a .nef con el Kneron Toolchain. Fuente: doc.kneron.com/docs/plus_c/modelzoo/kn-model-zoo_generic_inference_post_yolov5/.",
+      "disponibilidad_chile": "Stock comprobado el 2026-09-03 en el feed de distribuidores autorizados de SupplyFrame (OEMsTrade): Mouser Electronics, 63 unidades del P/N KP72B340A-D1003, US$124,19 la unidad y sin lead time declarado. Mouser opera tienda chilena (www.mouser.cl, 'Electronic Components Distributor - Mouser Electronics Chile') y despacha a Chile con Incoterm FCA, con derechos, aduana e impuestos cobrados al momento de la entrega. La página oficial KNEO (TWD 3.300) no ofrece envío fuera de Taiwán.",
+      "pagina_fabricante": "https://kneo.kneron.com/kl720-kneo-stem",
+      "durabilidad_confiabilidad": 6,
+      "facilidad_programacion": 3,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Toybrick TB-RK1808S0 AI Compute Stick (Rockchip RK1808, 3 TOPS)",
+     "country": "China",
+     "price": "$90.700 CLP por unidad (AliExpress, es.aliexpress.com ítem 1005009972475090, 2026-09-03; precio anterior $100.778 CLP, -10%, con financiamiento en 12 cuotas de $8.873 CLP)",
+     "purchase_link": "https://es.aliexpress.com/item/1005009972475090.html",
+     "photo_url": "https://ae-pic-a1.aliexpress-media.com/kf/Sd5c3be0bee404f64b07d31aec0c6d53cF.jpg",
+     "reusar_foto_de": "",
+     "description": "Stick USB 3.0 Type-A de 82 x 31 x 13 mm con el Rockchip RK1808: NPU de 3 TOPS INT8, dos núcleos Cortex-A35, 1 GB LPDDR y 8 GB eMMC, alimentado y comunicado por el mismo puerto USB. El wiki oficial de Rockchip declara rango de operación 0 C a 40 C y lo entrega con rknn-toolkit y rknn-api preinstalados. Es el precio por TOPS más bajo de la lista que efectivamente llega a Chile.",
+     "comment": "Nota 3/10: es la opción de 3 TOPS más barata que todavía llega a Chile y corre desde un anfitrión Linux común, pero tras revisar todos los canales queda claro que es un producto en fin de vida: Seeed Studio, su distribuidor occidental de referencia, lo publica a US$99 pero 'Out of stock' y marcado Discontinued, y youyeetoo ya no lo lista, así que sólo quedan tiendas de terceros en AliExpress sin garantía ni reposición. A eso se suma que el único toolchain es RKNN-Toolkit 1.7.x sobre Python 3.6 (RKNN-Toolkit2 no soporta RK1808, el soporte está congelado), el rango de operación es 0-40 C y no publica certificaciones ni MTBF. Entra por falta de alternativas reales, no por mérito: si el nodo hay que programarlo y mantenerlo años, conviene poner esa plata en el Coral.",
+     "extra_data": {
+      "tops": "3 TOPS INT8 (300 GOPS INT16, 100 GOPS FP16)",
+      "marca": "Toybrick (Rockchip)",
+      "acelerador": "Rockchip RK1808 (NPU + 2x Arm Cortex-A35)",
+      "compatibilidad_yolo": "Sí, vía RKNN. El wiki oficial TB-RK1808S0 indica que el stick trae rknn-toolkit y rknn-api preinstalados con la librería Python 3.6 y las cabeceras C/C++, y el Rockchip User Guide RKNN Toolkit describe la conversión de modelos Caffe, TensorFlow, TensorFlow Lite, ONNX y Darknet (el formato nativo de YOLO) a .rknn para ejecutarlos en el stick desde un anfitrión Linux por USB. Limitación verificada: RKNN-Toolkit2 no cubre RK1808, hay que quedarse en la rama 1.7.x. Fuentes: t.rock-chips.com/en/wiki.php?filename=Board_Guide/TB-RK1808S0 y repo.rock-chips.com/rk1808/doc/Rockchip_User_Guide_RKNN_Toolkit_EN.pdf.",
+      "disponibilidad_chile": "AliExpress, consultado el 2026-09-03: el aviso 'Toybrick TB-RK1808S0 Rockchip Micro AI Neural Network 3Tops Computing Stick USB3.0' aparece cotizado en pesos chilenos ($90.700 CLP, antes $100.778) y con financiamiento local en 12 cuotas de $8.873 CLP, es decir el checkout está localizado para destino Chile; la búsqueda del mismo modelo devuelve al menos diez avisos activos entre $60.500 y $212.200 CLP. Descartadas otras vías: los ASIN de Amazon B0BS3RXX6P y B07Z6GYDBT devuelven 'cannot be shipped to' para Chile, y youyeetoo.com ya no lo lista (0 resultados para RK1808). Canales alternativos revisados y descartados el 2026-09-03: Seeed Studio lo lista a US$99 pero 'Out of stock' y marcado Discontinued (SKU 102991294), y youyeetoo.com devuelve 0 resultados para RK1808, de modo que AliExpress es hoy la única vía real hacia Chile.",
+      "pagina_fabricante": "https://t.rock-chips.com/en/wiki.php?filename=Board_Guide%2FTB-RK1808S0",
+      "durabilidad_confiabilidad": 3,
+      "facilidad_programacion": 2,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Luxonis OAK-1 (P/N OAK-1)",
+     "country": "Estados Unidos",
+     "price": "US$206,09 por unidad (Mouser Electronics, P/N OAK-1, 82 unidades en stock, 2026-09-03); US$269 en la tienda oficial shop.luxonis.com con 533 unidades. Flete e impuestos a Chile se calculan en el checkout de Mouser (Incoterm FCA).",
+     "purchase_link": "https://www.mouser.com/ProductDetail/Luxonis/OAK-1",
+     "photo_url": "https://cdn.shopify.com/s/files/1/0106/8325/2802/files/oak-1-01-OAK-1-01.jpg?v=1775806967",
+     "reusar_foto_de": "",
+     "description": "Dispositivo USB2/USB3 con el procesador Luxonis RVC2 (Intel Movidius Myriad X): 4 TOPS totales de los cuales 1,4 TOPS son de IA, corriendo la red completa dentro del aparato. Mide 36 x 54,5 x 27,8 mm, pesa 53,1 g y consume 2,5-3 W más hasta 1 W del subsistema de IA. Luxonis documenta un rango ambiente de -20 C a +50 C con la VPU a plena carga y apagado térmico automático a 105 C, el rango más amplio de los cinco. Incluye una cámara RGB de 12 MP (IMX378) que este nodo no usaría.",
+     "comment": "Nota 6/10: sobrevive a la revisión porque es el último dispositivo USB que corre YOLO a bordo con stock en distribuidor autorizado que despacha a Chile (82 unidades en Mouser) y porque es el único de los cinco con rango de operación documentado, -20 a +50 C con la VPU a plena carga y apagado térmico a 105 C, lo que en mina pesa. Sus dos peros son reales y hay que decirlos: es una cámara con acelerador, no un dongle, así que su sensor de 12 MP no se usaría en un nodo que ya recibe RTSP (hay que inyectar los cuadros desde el anfitrión con un nodo XLinkIn), y está construido sobre el Myriad X de Intel, la misma VPU de los NCS que el proyecto descartó, aunque aquí sí hay canal autorizado y SDK vivo. A US$206 paga el doble que el Coral por los mismos 1,4 TOPS de IA.",
+     "extra_data": {
+      "tops": "4 TOPS totales, de los cuales 1,4 TOPS son de IA (RVC2 / Myriad X)",
+      "marca": "Luxonis",
+      "acelerador": "Luxonis RVC2 (Intel Movidius Myriad X)",
+      "compatibilidad_yolo": "Sí. DepthAI trae el nodo YoloDetectionNetwork y el ejemplo oficial 'RGB & Tiny YOLO'; el model zoo de Luxonis/OpenVINO publica YOLOv6 y YOLOv8 convertidos a .blob. Para este proyecto lo relevante es que el pipeline admite alimentar fotogramas desde el anfitrión con un nodo XLinkIn conectado a la entrada de la red, de modo que se puede usar como acelerador puro sobre flujos RTSP en vez de con su propia cámara. Fuentes: docs.luxonis.com/hardware/products/OAK-1 y oak-api.readthedocs.io (nodos NeuralNetwork y XLinkIn).",
+      "disponibilidad_chile": "Stock comprobado el 2026-09-03 en el feed de distribuidores autorizados de SupplyFrame (OEMsTrade): Mouser Electronics, 82 unidades del P/N OAK-1 a US$206,09 la unidad; la tienda oficial shop.luxonis.com declara 533 unidades a US$269. Mouser opera tienda chilena (www.mouser.cl) y despacha a Chile con Incoterm FCA, con derechos, aduana e impuestos cobrados a la entrega.",
+      "pagina_fabricante": "https://docs.luxonis.com/hardware/products/OAK-1",
+      "durabilidad_confiabilidad": 6,
+      "facilidad_programacion": 4,
+      "verificado_el": "2026-09-03"
+     }
+    }
+   ]
+  },
+  {
+   "id": "edge-ai-aceleradores-m2",
+   "name": "2 · Aceleradores M.2 (PCIe)",
+   "description": "Módulo M.2 2280 Key M con un AIPU Metis de cuatro núcleos y 1 GB de DRAM propia, sobre PCIe Gen3 x4 (4 GB/s bidireccionales). Axelera declara 3,5 a 9 W típicos, operación de -20 a 70 °C y arranque seguro con root of trust. Es la referencia SIN solución térmica: se vende como placa desnuda y el integrador debe acoplarla al chasis, que es justo lo que conviene en un nodo fanless sellado.",
+   "quote_date": "2026-09-03",
+   "extra_fields": [
+    {
+     "key": "tops",
+     "label": "TOPS",
+     "type": "text"
+    },
+    {
+     "key": "marca",
+     "label": "Marca",
+     "type": "text"
+    },
+    {
+     "key": "formato",
+     "label": "Formato",
+     "type": "text"
+    },
+    {
+     "key": "interfaz",
+     "label": "Interfaz",
+     "type": "text"
+    },
+    {
+     "key": "compatibilidad_yolo",
+     "label": "Compatibilidad YOLO",
+     "type": "text"
+    },
+    {
+     "key": "disponibilidad_chile",
+     "label": "Stock y despacho a Chile",
+     "type": "text"
+    },
+    {
+     "key": "pagina_fabricante",
+     "label": "Página del fabricante",
+     "type": "url"
+    },
+    {
+     "key": "durabilidad_confiabilidad",
+     "label": "Durabilidad + confiabilidad (1-10)",
+     "type": "number"
+    },
+    {
+     "key": "facilidad_programacion",
+     "label": "Facilidad de programación (1-5)",
+     "type": "number"
+    },
+    {
+     "key": "verificado_el",
+     "label": "Verificado el",
+     "type": "date"
+    }
+   ],
+   "items": [
+    {
+     "name": "DEEPX DX-M1 M.2 AI Accelerator Module (P/N DX-M1BNM5604)",
+     "country": "Corea del Sur",
+     "price": "US$180,00 por unidad (DigiKey, 2026-09-03; 1.347 unidades en stock, DigiKey P/N 6156-DX-M1BNM5604-ND)",
+     "purchase_link": "https://www.digikey.com/en/products/detail/deepx/DX-M1BNM5604/26858313",
+     "photo_url": "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/6/003/238/674/MFG_DX-M1BNM5604_web%28640x640%29.jpg",
+     "reusar_foto_de": "",
+     "description": "Módulo M.2 2280 Key M con el NPU DEEPX DX-M1: 25 TOPS INT8, 4 GB LPDDR5 a bordo y PCIe Gen3 x4 que también negocia x1 y x2. DEEPX declara de 1 W mínimo a 5 W máximo y rango industrial de -40 a 85 °C, con opción AEC-Q100 Grado 2 (-40 a 105 °C) bajo pedido. Se instala en la ranura M-key del PC anfitrión, que sigue encargándose de decodificar los flujos RTSP H.264/H.265.",
+     "comment": "Nota 9/10: rango térmico industrial de -40 a 85 °C confirmado por el fabricante, consumo de 1 a 5 W que permite disipación pasiva contra una carcasa de aluminio sellada, cero partes móviles, canal autorizado con 1.347 unidades y P/N inequívoco. Resta un punto porque el ecosistema de software (DX-AllSuite, formato .dxnn) es más joven que el de Hailo y hay menos ejemplos públicos de pipelines multicámara. A US$180 deja unos US$320 del presupuesto de US$500 para el anfitrión y la carcasa.",
+     "extra_data": {
+      "tops": "25 TOPS INT8",
+      "marca": "DEEPX",
+      "formato": "M.2 2280 Key M, 22 × 80 mm",
+      "interfaz": "PCIe Gen3 x4; admite Gen1/2/3 y enlaces x1, x2 o x4",
+      "compatibilidad_yolo": "Sí. La ficha oficial de DEEPX lista Ultralytics junto a PyTorch, TensorFlow, ONNX y Keras, e incluye un vídeo de demostración YOLOv8; DigiKey repite «DX-AllSuite, Keras, ONNX, PyTorch, TensorFlow, Ultralytics» como entornos de programación del P/N. Los modelos se compilan a .dxnn con DX-AllSuite (deepx.ai/products/dx-m1/).",
+      "disponibilidad_chile": "Verificado el 2026-09-03: DigiKey muestra 1.347 unidades en stock y Chile figura como país de destino en su página de tarifas de envío internacional; digikey.cl redirige al sitio de DigiKey en español. No hay venta local en Chile: hay que importar y pagar IVA y aranceles en aduana.",
+      "pagina_fabricante": "https://deepx.ai/products/dx-m1/",
+      "durabilidad_confiabilidad": 9,
+      "facilidad_programacion": 4,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "DEEPX DX-M1M M.2 AI Accelerator Module (P/N DX-M1MM4202)",
+     "country": "Corea del Sur",
+     "price": "US$140,00 por unidad (DigiKey, 2026-09-03; 886 unidades en stock, DigiKey P/N 6156-DX-M1MM4202-ND, plazo de fábrica 1 semana)",
+     "purchase_link": "https://www.digikey.com/en/products/detail/deepx/DX-M1MM4202/29274575",
+     "photo_url": "https://mm.digikey.com/Volume0/opasdata/d220001/derivates/6/003/253/040/MFG_DX-M1MM4202_web%28640x640%29.jpg",
+     "reusar_foto_de": "",
+     "description": "Versión compacta del DX-M1: los mismos 25 TOPS INT8 pero en M.2 2242 con llave B+M, 2 GB LPDDR4x integrados, 1 Gbit de NAND QSPI a bordo y PCIe Gen3 x2. DEEPX declara 3 W típicos y rango industrial de -40 a 85 °C. Soporta Windows 11/10, Linux Debian y Ubuntu 24.04/22.04/20.04 LTS, Yocto y Docker sobre anfitriones x86 y ARM.",
+     "comment": "Nota 9/10: es el 25 TOPS más barato y con más stock del catálogo, mantiene el rango industrial de -40 a 85 °C, baja a 3 W típicos y su llave B+M 2242 encaja en los PC industriales de la tabla 3 que solo aceptan 2242, donde el DX-M1 2280 no entra. Su limitación real es el enlace PCIe Gen3 x2 (la mitad del ancho de banda del DX-M1) y los 2 GB de LPDDR4x en vez de 4 GB LPDDR5, lo que puede notarse con varios modelos cargados a la vez. A US$140 es la opción que más margen deja para el anfitrión y la carcasa dentro de los US$500.",
+     "extra_data": {
+      "tops": "25 TOPS INT8",
+      "marca": "DEEPX",
+      "formato": "M.2 2242 Key B+M, 22 × 42 mm",
+      "interfaz": "PCIe Gen3 x2; admite Gen1/2/3 y enlaces x1 o x2",
+      "compatibilidad_yolo": "Sí. La ficha oficial del DX-M1M lista Ultralytics junto a PyTorch, TensorFlow, ONNX y Keras e incluye una demo YOLOv8; DigiKey repite «DX-AllSuite, Keras, ONNX, PyTorch, TensorFlow, Ultralytics» entre los entornos de programación del P/N (deepx.ai/products/dx-m1m/).",
+      "disponibilidad_chile": "Verificado el 2026-09-03: DigiKey muestra 886 unidades en stock, parte activa y plazo de fábrica de 1 semana; Chile figura como destino en la página de tarifas de envío internacional de DigiKey y digikey.cl redirige a su sitio en español. Hay que importar; el IVA y los aranceles se pagan en aduana.",
+      "pagina_fabricante": "https://deepx.ai/products/dx-m1m/",
+      "durabilidad_confiabilidad": 9,
+      "facilidad_programacion": 4,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Hailo-8 M.2 AI Accelerator Module 26 TOPS, Key M 2242 (Waveshare SKU 27812)",
+     "country": "Israel",
+     "price": "US$179,99 por unidad + envío a Chile cotizado por la propia tienda: US$10,50 Registered Post Air Mail, US$48,61 FedEx, US$57,99 UPS o US$59,51 DHL (Waveshare, 2026-09-03)",
+     "purchase_link": "https://www.waveshare.com/hailo-8.htm",
+     "photo_url": "https://www.waveshare.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/h/a/hailo-8-1_1_4.jpg",
+     "reusar_foto_de": "",
+     "description": "Módulo M.2 Key M con el procesador Hailo-8 de 26 TOPS INT8 y PCIe Gen3 de 4 carriles. La ficha de Waveshare declara 2,5 W típicos y 8,65 W máximos, temperatura de operación y almacenamiento de -40 a 85 °C, humedad de 5 % a 90 % sin condensación y certificación CE y FCC Clase A. Atención al formato: esta referencia mide 22 × 42 mm (2242), no 2280, así que el anfitrión necesita el poste de fijación en la posición de 42 mm.",
+     "comment": "Nota 8/10: -40 a 85 °C, CE/FCC Clase A, 2,5 W típicos y cero partes móviles lo hacen ideal para una carcasa fanless de mina, y su software (HailoRT, Dataflow Compiler, Model Zoo, Hailo Apps) es el más maduro de la tabla para YOLO sobre varias cámaras. Baja de 9 a 8 por dos motivos verificados: la garantía del canal es de 12 meses (Waveshare es revendedor, no distribuidor industrial) y el formato 2242 obliga a comprobar que el mini-PC tenga el poste a 42 mm. Además hay que disipar los 8,65 W de pico contra el chasis.",
+     "extra_data": {
+      "tops": "26 TOPS INT8",
+      "marca": "Hailo",
+      "formato": "M.2 2242 Key M, 22 × 42 mm, 6 g",
+      "interfaz": "PCIe Gen3 x4 (la variante Key M usa los 4 carriles; las Key B+M y A+E de Hailo quedan en x2)",
+      "compatibilidad_yolo": "Sí. El Hailo Model Zoo oficial (github.com/hailo-ai/hailo_model_zoo) entrega YOLOv5, YOLOv8 y YOLOv11 precompilados para Hailo-8, y la propia ficha de Waveshare publica una tabla de FPS medidos con yolov4_tiny (610), yolov6n (345), yolov7 (45), yolox_s_wide (75), yolov3 (26) y yolov8n (270).",
+      "disponibilidad_chile": "Verificado el 2026-09-03: la ficha declara schema.org/InStock. Agregué el módulo al carrito de Waveshare y, con destino Chile (Santiago, código 8320000), la tienda cotizó Registered Post Air Mail US$10,50, Yanwen US$10,50, FedEx US$48,61, UPS US$57,99 y DHL US$59,51 sobre un subtotal de US$179,99. Chile aparece explícitamente en el selector de país del carrito.",
+      "pagina_fabricante": "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/",
+      "durabilidad_confiabilidad": 8,
+      "facilidad_programacion": 5,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Radxa AICore AX-M1 4 GB, módulo M.2 de aceleración IA (SKU RM650-A1D4)",
+     "country": "China",
+     "price": "US$109,00 por unidad + US$22,00 de envío «Small Parcel - Standard Speed (7-20 days)» a Chile = US$131,00 (Arace Tech, 2026-09-03; alternativa UPS US$120,00)",
+     "purchase_link": "https://arace.tech/products/radxa-aicore-ax-m1-1",
+     "photo_url": "https://cdn.shopify.com/s/files/1/2212/4759/files/6391ace427ade714b70fb966024ae804_4ecbcc5f-a12e-40f0-b81f-780ba23f4873.jpg?v=1784009088",
+     "reusar_foto_de": "",
+     "description": "Módulo M.2 2280 Key M (22 × 80 mm) con el SoC AXERA AX8850: NPU de hasta 24 TOPS INT8 más una CPU octa-core Cortex-A55 a 1,5 GHz y 4 GB LPDDR4X propios. A diferencia del resto de la tabla, el módulo trae códec de vídeo propio: codifica y decodifica H.264/H.265 hasta 8K a 30 fps y decodifica 16 canales de 1080p a 30 fps, de modo que los flujos RTSP no consumen CPU del anfitrión. Consume menos de 8 W a 3,3 V y funciona en anfitriones x86 (Intel, AMD) y ARM (Rockchip) con Ubuntu, Debian o CentOS mediante el driver AXCL.",
+     "comment": "Nota 7/10: la foto oficial del fabricante muestra las marcas CE, FCC, UKCA y RoHS/WEEE serigrafiadas en la propia placa, consume menos de 8 W y no tiene partes móviles, pero Radxa no publica rango de temperatura de operación ni MTBF y es una marca de ecosistema maker/embebido con ciclos de vida más cortos que DEEPX o Hailo; por eso no llega a 9. Para este nodo es la pieza técnicamente más ajustada al problema: al decodificar 16 canales de 1080p en el propio módulo elimina el cuello de botella real del proyecto, que es la decodificación H.264/H.265 en el anfitrión, y Radxa documenta el caso exacto (8 flujos RTSP con YOLO a 53-57 fps agregados) además de una guía de integración con Frigate. Con envío queda en US$131,00, el mejor rendimiento por dólar de la tabla.",
+     "extra_data": {
+      "tops": "24 TOPS INT8",
+      "marca": "Radxa",
+      "formato": "M.2 2280 Key M, 22 × 80 mm",
+      "interfaz": "Conector M.2 Key M sobre bus PCIe; el runtime AXCL se comunica con el módulo por PCIe mediante driver DKMS. Radxa no publica generación ni número de carriles: su requisito documentado es una ranura M.2 M Key libre en un anfitrión x86 Intel/AMD o ARM Rockchip con Ubuntu, Debian o CentOS.",
+      "compatibilidad_yolo": "Sí, y es el mejor documentado de la tabla para este proyecto: docs.radxa.com/en/aicore/ax-m1/axcl-multistream-yolo describe una solución de detección YOLO multi-stream en tiempo real con fuentes RTSP (rtsp://usuario:clave@ip:554/stream), con 8 flujos concurrentes a 53-57 fps agregados usando yolo26n.axmodel sobre AXCL SDK v3.6.5 y FFmpeg 7.1 con decodificación por hardware (h264_axdec / hevc_axdec); un solo flujo llega a ~40 fps. Los modelos se convierten con la toolchain Pulsar2 y la página de producto de Radxa lista la familia YOLO entre los modelos soportados; la documentación incluye además una guía de integración con Frigate.",
+      "disponibilidad_chile": "Verificado el 2026-09-03: la variante de 4 GB (SKU RM650-A1D4) figura como disponible en Arace Tech a US$109,00. Puse el módulo en el carrito y, con destino Chile (Santiago, Región Metropolitana, código postal 8320000), la tienda cotizó «Small Parcel - Standard Speed (7-20 days)» US$22,00 y UPS US$120,00. La variante de 8 GB (SKU RM650) también aparece disponible, a US$199,00.",
+      "pagina_fabricante": "https://radxa.com/products/aicore/ax-m1/",
+      "durabilidad_confiabilidad": 7,
+      "facilidad_programacion": 3,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Axelera Embedded 110m sin refrigeración (P/N AXE-BME20M1AR01B02)",
+     "country": "Países Bajos",
+     "price": "US$286,95 por unidad + US$63,93 de envío UPS Expedited a Chile = US$350,88 (tienda oficial de Axelera AI, mercado Chile, 2026-09-03; alternativa UPS Worldwide Saver US$74,69)",
+     "purchase_link": "https://store.axelera.ai/products/axelera-embedded-110m",
+     "photo_url": "https://cdn.shopify.com/s/files/1/0879/1664/2645/files/Axelera-AI-Metis-M.2-No-Cooling-Front-Image.png?v=1775642983",
+     "reusar_foto_de": "",
+     "description": "Módulo M.2 2280 Key M con un AIPU Metis de cuatro núcleos y 1 GB de DRAM propia, sobre PCIe Gen3 x4 (4 GB/s bidireccionales). Axelera declara 3,5 a 9 W típicos, operación de -20 a 70 °C y arranque seguro con root of trust. Es la referencia SIN solución térmica: se vende como placa desnuda y el integrador debe acoplarla al chasis, que es justo lo que conviene en un nodo fanless sellado.",
+     "comment": "Nota 8/10: es el módulo con más cómputo del catálogo, trae secure boot y root of trust, no lleva partes móviles y el Voyager SDK cubre justo el caso de uso (varios RTSP con YOLO en un mismo pipeline). Pierde puntos frente a DEEPX y Hailo porque su rango térmico es más estrecho (-20 a 70 °C, no industrial de -40 a 85 °C) y porque disipar hasta 9 W sin disipador propio exige diseño térmico contra la carcasa de aluminio. Con envío queda en US$350,88, así que el nodo completo se acerca al techo de US$500: es la opción para cuando el número de cámaras manda sobre el precio.",
+     "extra_data": {
+      "tops": "214 TOPS INT8 de pico (cifra de pico del AIPU Metis de 4 núcleos, no rendimiento sostenido)",
+      "marca": "Axelera AI",
+      "formato": "M.2 2280 Key M, sin solución de refrigeración incluida",
+      "interfaz": "PCIe Gen3 x4, 4 GB/s bidireccionales",
+      "compatibilidad_yolo": "Sí. La página oficial de aceleradores de Axelera describe el Voyager SDK con su Model Zoo, nombra Ultralytics 17 veces y lista YOLOv5 y YOLOv8s entre los modelos listos para desplegar (axelera.ai/ai-accelerators).",
+      "disponibilidad_chile": "Verificado el 2026-09-03: la tienda oficial marca schema.org/InStock para el SKU AXE-BME20M1AR01B02 y opera mercado Chile con precios en dólares (US$286,95). Con el módulo en el carrito y dirección en la Región Metropolitana, la tienda cotizó UPS Expedited US$63,93 y UPS Worldwide Saver US$74,69; los pedidos salen en 48 h hábiles y Axelera declara 5 a 7 días hábiles para envíos internacionales.",
+      "pagina_fabricante": "https://axelera.ai/ai-accelerators",
+      "durabilidad_confiabilidad": 8,
+      "facilidad_programacion": 4,
+      "verificado_el": "2026-09-03"
+     }
+    }
+   ]
+  },
+  {
+   "id": "pcs-industriales-m2-ai",
+   "name": "3 · PC industriales con ranura M.2",
+   "description": "Placa x86 de 120 x 120 x 44 mm y 320 g con disipador pasivo, Intel Core i3 N300 de 8 núcleos y 8 hilos hasta 3,80 GHz, una SO-DIMM DDR5 hasta 64 GB con soporte IBECC (ECC en banda) y un puerto RJ45 de 10 GbE Realtek RTL8127. Trae cuatro ranuras M.2 2280 (tres PCIe 3.0 x2 y una PCIe 3.0 x1) más un zócalo eMMC arrancable seleccionable desde la BIOS, de modo que el acelerador y el disco del sistema nunca compiten. Consumo medido por el fabricante: 3,3 W en reposo sin pantalla y unos 25 W en estrés de CPU más GPU. Hardkernel indica que en modo Balanced no hace falta ventilador y que el conector de 4 pines PWM es opcional.",
+   "quote_date": "2026-09-03",
+   "extra_fields": [
+    {
+     "key": "marca",
+     "label": "Marca",
+     "type": "text"
+    },
+    {
+     "key": "procesador",
+     "label": "Procesador",
+     "type": "text"
+    },
+    {
+     "key": "ram",
+     "label": "Memoria RAM",
+     "type": "text"
+    },
+    {
+     "key": "m2_acelerador",
+     "label": "M.2 para acelerador",
+     "type": "text"
+    },
+    {
+     "key": "almacenamiento_separado",
+     "label": "Almacenamiento separado",
+     "type": "text"
+    },
+    {
+     "key": "disponibilidad_chile",
+     "label": "Stock y despacho a Chile",
+     "type": "text"
+    },
+    {
+     "key": "pagina_fabricante",
+     "label": "Página del fabricante",
+     "type": "url"
+    },
+    {
+     "key": "durabilidad_confiabilidad",
+     "label": "Durabilidad + confiabilidad (1-10)",
+     "type": "number"
+    },
+    {
+     "key": "verificado_el",
+     "label": "Verificado el",
+     "type": "date"
+    }
+   ],
+   "items": [
+    {
+     "name": "Topton X2E/X2G N150 barebone (4x Intel i226-V 2,5GbE, fanless, sin RAM ni disco)",
+     "country": "China",
+     "price": "US$133,52 por unidad barebone (variante 'X2E N150 DDR5 / No Ram No Storage', envío incluido, KingnovyPC, 2026-09-03). Con 8 GB DDR5 + 128 GB NVMe US$175,06 y con 16 GB + 256 GB US$208,73 (mismo vendedor y fecha)",
+     "purchase_link": "https://www.kingnovypc.com/product/topton-n150-fanless-mini-pc-intel-n100-firewall-pc-box-celeron-j6412-4x-i226-v-2-5g-computer-pfsense-proxmox-esxi-opnsense-host/",
+     "photo_url": "https://www.kingnovypc.com/wp-content/uploads/2025/05/kf-S7d1c61016e3b4eab83e87411d28e43e0u.webp",
+     "reusar_foto_de": "",
+     "description": "Mini PC firewall sin ventilador con carcasa de aluminio macizo y aletas, Intel N150 de 4 núcleos y 4 puertos Intel i226-V de 2,5GbE, pensado para colgar las cámaras IP directo o un switch PoE. Lleva una ranura SO-DIMM DDR5-4800 y dos alojamientos de almacenamiento independientes: M.2 2280 M-key NVMe PCIe 3.0 x1 y bahía SATA 3.0 de 2,5 pulgadas de 7 mm. Incluye consola RJ45, dos zócalos SIM, ranura mini-PCIe y funciones de servidor (watchdog, auto power-on, RTC, PXE, Wake-on-LAN). El fabricante declara certificación CE/FCC/RoHS y operación 7x24 con 0,00 dB. El equipo es de Topton y se compra en KingnovyPC, que lo revende rebautizado: su ficha se titula «Topton N150 Fanless Mini PC» y declara «Model Number: X2E/X2G». Por eso el link de compra y la página del fabricante son de sitios distintos.",
+     "comment": "Nota 6/10: es el equipo más barato de la tabla que cumple la condición dura del proyecto (el M.2 queda libre para el Hailo-8 porque el sistema arranca desde un SSD SATA de 2,5\"), y con 4x2,5GbE sobra red para varias cámaras. La nota no sube más porque el fabricante no publica rango térmico de operación, ni MTBF, ni condiciones de garantía; el chasis es aluminio pasivo sin grado IP y la ranura M.2 sólo entrega PCIe 3.0 x1 (unos 985 MB/s), suficiente para los 26 TOPS del Hailo-8 pero es el enlace más estrecho del catálogo. Suma que es aluminio sellado sin ventilador (menos polvo de mina) y que trae funciones industriales reales: watchdog por hardware y encendido automático tras corte de energía, imprescindibles en un nodo remoto.",
+     "extra_data": {
+      "marca": "Topton",
+      "procesador": "Intel Processor N150 (Twin Lake), 4 núcleos / 4 hilos, 6 MB de caché, frecuencia turbo máxima 3,60 GHz, TDP 6 W (tabla de CPU publicada en la ficha del modelo X2E/X2G de Topton y repetida en la ficha de venta de KingnovyPC)",
+      "ram": "1 ranura SO-DIMM DDR5-4800 non-ECC (no soldada). El barebone cotizado se envía sin memoria; el mismo vendedor ofrece configuraciones de fábrica con 8 GB y 16 GB DDR5",
+      "m2_acelerador": "1x M.2 2280 M-key NVMe / PCIe 3.0 x1 (también admite modo SATA). Queda libre porque el equipo tiene una segunda vía de arranque: la bahía SATA de 2,5\". Fuente: ficha oficial Topton X2E/X2G, apartado 'X2E N150 Model': '-Support two storage: 1xM.2 NVMe/PCIe3.0x1 2280 SSD+1x2.5''SATA3.0 7mm SSD/HDD' (https://www.toptonpc.com/product/intel-n150-firewall-upgraded-version-intel-celeron-n5105-j6412-7305-fanless-mini-pc-4x2-5g-solid-mini-computer-pfsense-opnsense/), texto idéntico en el listado de compra de KingnovyPC. La ranura mini-PCIe adicional es de WiFi/4G por protocolo USB, así que no sirve como segundo alojamiento del acelerador",
+      "almacenamiento_separado": "Sí: bahía SATA 3.0 de 2,5 pulgadas para SSD/HDD de 7 mm, independiente del M.2, con el cable SATA incluido en la caja ('Package List: 1xMini PC 1xPower Adapter 1xPower Cable 1xSATA Cable'). El sistema operativo va ahí y el M.2 2280 queda entero para el acelerador. Fuente: ficha oficial Topton X2E/X2G y ficha de venta de KingnovyPC, ambas consultadas el 2026-09-03",
+      "disponibilidad_chile": "Verificado el 2026-09-03 en la API de tienda de kingnovypc.com: la variación 'x2e-n150-ddr5 / no-ram-no-storage' (id 40181) figura is_in_stock=true a US$133,52. Cargué esa variación al carrito y fijé la dirección de envío en Santiago, Región Metropolitana (CL, código 8320000): el carrito la aceptó (el selector de país del checkout quedó en <option value=\"CL\" selected>Chile</option>), needs_shipping=false y el total se mantuvo en US$133,52, es decir el flete va incluido en el precio. No hay venta local en Chile: es importación directa desde China",
+      "pagina_fabricante": "https://www.toptonpc.com/product/intel-n150-firewall-upgraded-version-intel-celeron-n5105-j6412-7305-fanless-mini-pc-4x2-5g-solid-mini-computer-pfsense-opnsense/",
+      "durabilidad_confiabilidad": 6,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "CWWK F2 barebone — mini PC firewall fanless Alder Lake-N (Intel N100), 4x i226-V 2,5GbE, DDR5",
+     "country": "China",
+     "price": "US$253,73 por unidad barebone 'Intel N100 / No RAM No SSD' + US$0,00 de envío a Santiago = US$253,73 (tienda oficial CWWK, cwwk.net, 2026-09-03; precio de lista US$317,16)",
+     "purchase_link": "https://cwwk.net/products/12th-gen-intel-firewall-mini-pc-alder-lake-i3-n305-8-core-n200-n100-fanless-soft-router-proxmox-ddr5-4800mhz-4xi226-v-2-5g",
+     "photo_url": "https://cdn.shopify.com/s/files/1/0901/0770/7677/files/4_D4.jpg?v=1736394632",
+     "reusar_foto_de": "",
+     "description": "Caja fanless de aluminio integral de 15,8 x 12,7 x 6 cm y 1,3 kg con Intel N100 (la misma placa acepta N150, i3-N305 y Core 3-N355 de 8 núcleos), 4 puertos Intel i226-V de 2,5GbE y alimentación DC 12 V, incluida entrada Phoenix de 2 pines. La ficha del fabricante declara rango de operación de -20 °C a 60 °C y de almacenamiento de -20 °C a 70 °C. Almacenamiento: 2 ranuras M.2 2280 NVMe PCIe 3.0 x1, 2 puertos SATA 3.0 y un lector TF que puede arrancar el sistema. Trae adaptador VESA, cable SATA y soporte para un ventilador 8010 de 12 V opcional si se quiere forzar la refrigeración.",
+     "comment": "Nota 8/10: es el único de la tabla con rango térmico industrial publicado (-20 °C a 60 °C de operación, -20 °C a 70 °C de almacenamiento), lo que importa en faena minera donde el gabinete puede quedar al sol o helarse de noche. Además sobra almacenamiento: aunque el acelerador ocupe un M.2, quedan otro M.2 2280, dos puertos SATA 3.0 y una microSD arrancable, así que el sistema y los buffers de video nunca compiten con el Hailo. CWWK publica manuales, drivers y actualizaciones de BIOS en su sitio, algo que casi ningún OEM de este segmento hace. Resta que la ranura M.2 es PCIe 3.0 x1 y que la garantía se ejecuta contra China; el chasis no tiene grado IP, sólo es aluminio cerrado sin ventilador.",
+     "extra_data": {
+      "marca": "CWWK",
+      "procesador": "Intel N100 (Alder Lake-N) en la variante cotizada: 4 núcleos / 4 hilos, 6 MB de caché, hasta 3,40 GHz, TDP 6 W. La misma placa se ofrece con Intel N150 (4C/4T, hasta 3,60 GHz), Core i3-N305 y Core 3-N355 (8 núcleos / 8 hilos, hasta 3,8-3,9 GHz, TDP 15 W)",
+      "ram": "1 ranura SO-DIMM DDR5 hasta 32 GB, 4800 MHz máximo y compatible con módulos de 5200/5600 MHz; memoria no soldada. La unidad cotizada es barebone y va sin RAM",
+      "m2_acelerador": "2x M.2 2280 M-key NVMe PCIe 3.0 x1. Basta ocupar una con el Hailo-8 (o DEEPX/Axelera de formato 2280) y queda la otra libre; si además el sistema se instala en SATA o en la microSD, las dos ranuras M.2 quedan disponibles. Fuente: ficha oficial del CWWK F2, sección Storage: '2 x M.2 2280 NVMe SSD slots (PCIe3.0 x1), 2 x SATA3.0 ports, and 1 x TF card slot' (https://cwwk.com/products/cwwk-firewall-mini-pc-core-i3-n305-n100-4-x-2-5-gbe-i226v-lan-fanless-router-computer-ddr5-8-gb-ram-256-gb-nvme-ssd-micro-firewall-appliance-support-windows-opnsense-tf-card-slot)",
+      "almacenamiento_separado": "Sí, triple: 2 puertos SATA 3.0 (con cable SATA incluido en la caja y diseño de tapa desmontable para sacar el cable a un disco externo de 3,5\"), 1 ranura TF/microSD que el fabricante declara arrancable y la segunda ranura M.2 2280. Fuente: misma ficha oficial del CWWK F2, apartados 'Storage' y 'Package Contents' / 'External Cable Connections', consultada el 2026-09-03",
+      "disponibilidad_chile": "Verificado el 2026-09-03 en cwwk.net: la variante 'Intel N100 / No RAM No SSD' (id 44613920162024) figura available=true a US$253,73. Agregué esa variante al carrito y consulté las tarifas con destino Santiago, Región Metropolitana de Santiago (CL, 8320000): la tienda devolvió una única tarifa, '免运费' (envío gratis), US$0,00, con plazo declarado de 7 a 14 días. Ojo: la otra tienda oficial de la marca, cwwk.com (la del envío DDP mundial), responde 'Country/region not supported' para Chile; la compra hay que hacerla en cwwk.net",
+      "pagina_fabricante": "https://cwwk.com/products/cwwk-firewall-mini-pc-core-i3-n305-n100-4-x-2-5-gbe-i226v-lan-fanless-router-computer-ddr5-8-gb-ram-256-gb-nvme-ssd-micro-firewall-appliance-support-windows-opnsense-tf-card-slot",
+      "durabilidad_confiabilidad": 8,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "CWWK F17 barebone — mini PC firewall fanless Intel Core U300 (13a gen), 6x i226-V 2,5GbE",
+     "country": "China",
+     "price": "US$322,49 por unidad barebone 'Intel U300 / No RAM No SSD' + US$0,00 de envío a Santiago = US$322,49 (tienda oficial CWWK, cwwk.net, 2026-09-03)",
+     "purchase_link": "https://cwwk.net/products/13th-gen-2-5g-soft-router-intel-u300-i3-1315u-6x-intel-i226-v-fanless-mini-pc-firewall-appliance-proxmox-pfsense",
+     "photo_url": "https://cdn.shopify.com/s/files/1/0901/0770/7677/files/b4c772d6a83579d6dec0b0fa7b578707.jpg?v=1755769344",
+     "reusar_foto_de": "",
+     "description": "Es el único equipo de esta cotización cuya ranura M.2 principal es PCIe Gen3 x4: el fabricante documenta 'NVME1 (PCIe Gen3 x4)' con hasta 4 GB/s teóricos y una segunda M.2 NVMe x1 obtenida desde la ranura Wi-Fi con un adaptador E-key a M-key. Chasis de aluminio con disipación pasiva en tapa y costados, refrigeración fanless declarada para operación 24/7, 6 puertos Intel i226-V de 2,5GbE, dos SO-DIMM DDR4-3200 en doble canal hasta 64 GB, dos conectores SATA 3.0 y una ranura MicroSD arrancable. La CPU es un Intel Core U300 de 13a generación en la variante disponible; el fabricante documenta la misma placa con Pentium Gold 8505 (5 núcleos / 6 hilos, P-core hasta 4,40 GHz, E-cores hasta 3,30 GHz, 8 MB, 20 líneas PCIe).",
+     "comment": "Nota 7/10: si el plan es escalar a muchos flujos RTSP, éste es el mejor anfitrión del catálogo, porque el acelerador entra en una M.2 con cuatro líneas PCIe 3.0 en vez de una, y quedan dos SATA más una microSD para el sistema. Los 6 puertos de 2,5GbE permiten segmentar cámaras, gestión y salida a la nube sin switch adicional, y la RAM en doble canal hasta 64 GB da aire para decodificar H.265 por software. Baja de nota frente al F2 por tres motivos verificables: cuesta US$322,49 barebone (deja el nodo cerca del techo de US$500), el fabricante no publica rango térmico para este modelo y los dos conectores SATA son de 12 pines no estándar, así que hay que usar sí o sí el cable de CWWK. La CPU U300 de 15 W también disipa más que un N100 de 6 W dentro de una caja sin ventilador.",
+     "extra_data": {
+      "marca": "CWWK",
+      "procesador": "Intel Core U300 (13a generación, familia U de Raptor Lake) en la variante en stock, 5 núcleos / 6 hilos (1 P-core + 4 E-cores), TDP base 15 W. El fabricante documenta la misma placa con Intel Pentium Gold 8505: 5 núcleos / 6 hilos, 1 P-core hasta 4,40 GHz, 4 E-cores hasta 3,30 GHz, 8 MB de caché, TDP 15-55 W y 20 líneas PCIe",
+      "ram": "2 ranuras SO-DIMM DDR4-3200 en doble canal, hasta 64 GB, no soldadas. La unidad cotizada es barebone y va sin memoria",
+      "m2_acelerador": "2x M.2 2280 NVMe. La principal, NVME1, es M-key con PCIe Gen3 x4 (el fabricante la describe con hasta 4 GB/s teóricos) y es la que debe llevar el Hailo-8 / DEEPX / Axelera de formato 2280; la segunda, NVME2, es PCIe Gen3 x1 y se obtiene convirtiendo la ranura M.2 de Wi-Fi con un adaptador M.2 E-key a M-key. Queda libre porque el sistema puede arrancar desde SATA o desde la MicroSD. Fuente: ficha oficial CWWK F17, apartado 'DDR4 and Dual NVMe Slot' (https://cwwk.com/products/cwwk-mini-pc-firewall-appliance-pentium-8505-6-x-i226-v-2-5gbe-lan-opnsense-mini-computer-f17-fanless-micro-pc-ddr4-8gb-ram-256gb-nvme-ssd-pcie3-0-x4-usb-c-3-display-microsd)",
+      "almacenamiento_separado": "Sí: 2 conectores SATA 3.0 de 12 pines no estándar para SSD/HDD SATA (requieren el cable propietario de CWWK) más 1 ranura MicroSD que el fabricante declara utilizable para almacenamiento o arranque del sistema, y además la segunda ranura M.2 NVMe x1. Fuente: misma ficha oficial del CWWK F17, apartados 'DDR4 and Dual NVMe Slot' y 'Multiple I/O Ports', consultada el 2026-09-03",
+      "disponibilidad_chile": "Verificado el 2026-09-03 en cwwk.net: la variante 'Intel U300 / No RAM No SSD' (id 44928524746984) figura available=true a US$322,49 (las variantes ya armadas con RAM y SSD aparecen agotadas). Cargué esa variante al carrito y pedí tarifas con destino Santiago, Región Metropolitana de Santiago (CL, 8320000): la tienda devolvió '免运费' (envío gratis), US$0,00, plazo declarado de 7 a 14 días. Sin venta local en Chile",
+      "pagina_fabricante": "https://cwwk.com/products/cwwk-mini-pc-firewall-appliance-pentium-8505-6-x-i226-v-2-5gbe-lan-opnsense-mini-computer-f17-fanless-micro-pc-ddr4-8gb-ram-256gb-nvme-ssd-pcie3-0-x4-usb-c-3-display-microsd",
+      "durabilidad_confiabilidad": 7,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Wintertion RS150 barebone (CNCTION 'N150 MAX') — Intel N150, 4x i226-V 2,5GbE, fanless, ASIN B0GX5JLNR3",
+     "country": "China",
+     "price": "CLP $203.253 el equipo + CLP $13.973 de envío a Chile = CLP $217.226 puestos en destino, ≈US$229 (Amazon.com con dirección de entrega en Chile, ASIN B0GX5JLNR3, 2026-09-03)",
+     "purchase_link": "https://www.amazon.com/dp/B0GX5JLNR3",
+     "photo_url": "https://m.media-amazon.com/images/I/619Lk7tW7jL._AC_SL1500_.jpg",
+     "reusar_foto_de": "",
+     "description": "Barebone industrial de aluminio sin ventilador de 126 x 133 x 45 mm y 1,0 kg, con Intel N150, 4 puertos Intel i226-V de 2,5GbE, consola RJ45, ranura SIM y alimentación 12 V / 5 A. La ficha del vendedor declara temperatura de trabajo de 0 °C a 70 °C, almacenamiento de -20 °C a 80 °C y humedad relativa de 10 % a 90 % sin condensación. Almacenamiento: 1 ranura M.2 2280 NVMe PCIe 3.0 x1 más una bahía SATA de 2,5 pulgadas independiente, y adicionalmente una mini-PCIe y una M.2 2230 para Wi-Fi. Es el único ítem de la tabla que se compra por Amazon con entrega y devolución gestionadas hacia Chile. Wintertion es la marca del aviso; el fabricante declarado es CNCTION (Shenzhen Hongshunxin Wang Technology), cuya ficha de producto se usa como página del fabricante.",
+     "comment": "Nota 7/10: sube respecto de los barebones equivalentes porque el vendedor publica el rango térmico completo (0 a 70 °C de operación, -20 a 80 °C de almacenamiento, 10-90 % HR sin condensación) y porque el canal es Amazon con dirección chilena, es decir con precio final, plazo de entrega y política de devolución conocidos antes de pagar, algo que no dan las tiendas chinas directas. El fabricante detrás de la marca es CNCTION (Shenzhen Hongshunxin Wang Technology, fundada en 2014, con fábrica propia y catálogo de soft-routers), lo que da algo más de continuidad de repuestos que un vendedor anónimo. Pierde puntos por la ranura M.2 de una sola línea PCIe 3.0, por no declarar garantía en años ni MTBF, y porque el stock es corto: quedaban 8 unidades el día de la verificación.",
+     "extra_data": {
+      "marca": "Wintertion",
+      "procesador": "Intel Processor N150 (Twin Lake), 4 núcleos / 4 hilos, TDP declarado 6 W y soporte AES-NI según la ficha del producto; las tablas de CPU de Topton y KingnovyPC para el mismo N150 dan 6 MB de caché y 3,60 GHz de frecuencia turbo máxima",
+      "ram": "1 ranura SO-DIMM DDR4-3200 non-ECC, hasta 32 GB, no soldada. Se vende como quasi-system: sin memoria, sin disco y sin sistema operativo",
+      "m2_acelerador": "1x M.2 2280 M-key NVMe PCIe 3.0 x1. Queda libre porque el equipo trae una bahía SATA de 2,5\" separada donde va el sistema. Fuente: descripción del producto en la ficha de compra, apartado Storage: '1 x M.2 2280 NVME PCIE3.0x1 SSD, 1 x 2.5-inch SATA SSD / HDD' (https://www.amazon.com/dp/B0GX5JLNR3), y ficha del fabricante CNCTION del modelo 'N150 MAX' de 4 puertos, campo 硬盘 (disco): 'M.2 NVME+SATA' (https://www.cnction.com/product/showproduct.php?id=209). La otra M.2 2230 del equipo es de Wi-Fi por CNVI y no sirve para un acelerador PCIe",
+      "almacenamiento_separado": "Sí: 1 bahía SATA 3.0 de 2,5 pulgadas para SSD/HDD, independiente del M.2, más 1 ranura mini-PCIe de expansión. El sistema operativo va en el SSD SATA y el M.2 2280 queda entero para el acelerador. Fuente: misma descripción del producto ('Storage: 1 x M.2 2280 NVME PCIE3.0x1 SSD, 1 x 2.5-inch SATA SSD / HDD' y 'Extensions: 1 M2 2230 WIFI slot for CNVI WiFi, 1 x mini PCIE slot') y ficha CNCTION id=209, consultadas el 2026-09-03",
+      "disponibilidad_chile": "Verificado el 2026-09-03 cargando la ficha de Amazon.com con la dirección de entrega puesta en Chile: precio CLP $203.253, envío CLP $13.973, aviso 'Deliver to Chile', 'Only 8 left in stock - order soon' y entrega estimada entre el 21 de septiembre y el 5 de octubre de 2026. Es el único de los cinco cuyo canal aplica devolución de 30 días. No hay venta local en Chile",
+      "pagina_fabricante": "https://www.cnction.com/product/showproduct.php?id=209",
+      "durabilidad_confiabilidad": 7,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Hardkernel ODROID-H5 (SKU G260414172512) — Intel Core i3 N300 octa-core, 4x M.2, eMMC y 10GbE",
+     "country": "Corea del Sur",
+     "price": "US$299,95 por unidad, en stock (ameriDroid, distribuidor oficial en EE.UU., 2026-09-03). Directo de fábrica US$230,00 en la tienda Hardkernel (hardkernel.com, 2026-09-03), precio que el propio fabricante advierte que no incluye impuestos, aranceles ni corretaje",
+     "purchase_link": "https://ameridroid.com/products/odroid-h5",
+     "photo_url": "https://cdn.shopify.com/s/files/1/1884/2123/files/H5cc.jpg",
+     "reusar_foto_de": "",
+     "description": "Placa x86 de 120 x 120 x 44 mm y 320 g con disipador pasivo, Intel Core i3 N300 de 8 núcleos y 8 hilos hasta 3,80 GHz, una SO-DIMM DDR5 hasta 64 GB con soporte IBECC (ECC en banda) y un puerto RJ45 de 10 GbE Realtek RTL8127. Trae cuatro ranuras M.2 2280 (tres PCIe 3.0 x2 y una PCIe 3.0 x1) más un zócalo eMMC arrancable seleccionable desde la BIOS, de modo que el acelerador y el disco del sistema nunca compiten. Consumo medido por el fabricante: 3,3 W en reposo sin pantalla y unos 25 W en estrés de CPU más GPU. Hardkernel indica que en modo Balanced no hace falta ventilador y que el conector de 4 pines PWM es opcional.",
+     "comment": "Nota 7/10: es el único ítem no chino de la tabla y el mejor dotado técnicamente: ocho núcleos para decodificar los RTSP, memoria con IBECC (corrección de errores, poco común en este rango de precio), tres ranuras M.2 a PCIe 3.0 x2 y un zócalo eMMC arrancable, así que el Hailo-8 entra con el doble de ancho de banda que en los barebones x1 y todavía sobran dos M.2 y el eMMC para el sistema. Los 10 GbE permiten concentrar muchas cámaras por un solo cable. Lo que le impide subir de 7: Hardkernel declara sólo 16 semanas de garantía y RMA con flete de ida a cargo del comprador desde Chile; el producto es una placa, no un equipo cerrado, así que hay que comprarle carcasa aparte para el polvo de mina; y el propio fabricante recomienda ventilador activo si se usa el modo de rendimiento sin límite, lo que obliga a validar térmicamente el nodo antes de instalarlo. Los ODROID-H4, H4+ y H4 Ultra que se habían propuesto están agotados: el H5 es el que efectivamente hay.",
+     "extra_data": {
+      "marca": "Hardkernel (ODROID)",
+      "procesador": "Intel Core i3 N300 (Alder Lake-N), 8 núcleos / 8 hilos, frecuencia turbo máxima 3,80 GHz, según la tabla de especificaciones de la ficha oficial del ODROID-H5",
+      "ram": "1 ranura SO-DIMM DDR5 de canal simple, hasta 4800 MT/s (compatible con módulos de 5600 MT/s o más), capacidad máxima 64 GB y soporte de In Band Error Correction Code (IBECC). Memoria no soldada; DDR3 y DDR4 no son compatibles. La placa se vende sin RAM",
+      "m2_acelerador": "4 ranuras M.2 NGFF-2280: tres con PCIe 3.0 x2 (etiquetadas M2_SSD1, M2_SSD2 y M2_SSD3) y una con PCIe 3.0 x1 (M2_SSD4). El acelerador va en cualquiera de las tres x2, que es el doble de ancho de banda que las M.2 x1 de los barebones chinos de esta tabla, y aun así quedan tres ranuras libres. Fuente: ficha oficial del ODROID-H5, apartado Storage: '3 x M.2 slot (PCIe 3.0 x 2, supports NGFF-2280 cards) / 1 x M.2 slot (PCIe 3.0 x 1...)' y el detalle de placa 'C. 1 x M.2 Slot PCIe 3.0 x 2 (Label M2_SSD1)... F. 1 x M.2 Slot PCIe 3.0 x 2 (Label M2_SSD2)' (https://www.hardkernel.com/shop/odroid-h5/)",
+      "almacenamiento_separado": "Sí, doble vía: 1 zócalo eMMC integrado, arrancable y seleccionable desde la BIOS (los módulos eMMC se compran por separado en la tienda Hardkernel), más las tres ranuras M.2 2280 que sobran tras instalar el acelerador, donde entra un SSD NVMe normal. El ODROID-H5 no tiene puertos SATA: reemplazó los 4 SATA del H4+ por las cuatro M.2. Fuente: ficha oficial del ODROID-H5, apartado Storage: '1 x eMMC connector (bootable and selectable on BIOS)' y detalle de placa 'G. 1 x eMMC (Embedded Multimedia-Card) Socket', consultada el 2026-09-03",
+      "disponibilidad_chile": "Verificado el 2026-09-03. En ameriDroid (distribuidor oficial listado por Hardkernel) el producto responde available=true a US$299,95 y su calculadora de envío incluye Chile en el listado de países de destino. En la tienda propia de Hardkernel el ODROID-H5 aparece a US$230,00 con botón de compra activo, y la sección de pagos y devoluciones indica que los pedidos internacionales se despachan por FedEx, DHL o EMS con 2 a 7 días tras el despacho, quedando el comprador como importador responsable de aranceles. Para contraste, el mismo día verifiqué que el ODROID-H4, el H4 PLUS y el H4 ULTRA figuran 'Out of stock' en hardkernel.com y available=false en ameriDroid. No hay distribuidor en Chile; el más cercano del listado oficial es Colombia",
+      "pagina_fabricante": "https://www.hardkernel.com/shop/odroid-h5/",
+      "durabilidad_confiabilidad": 7,
+      "verificado_el": "2026-09-03"
+     }
+    }
+   ]
+  },
+  {
+   "id": "edge-ai-plataformas-host",
+   "name": "4 · PC con NPU",
+   "description": "Caja Edge AI cerrada de 123 x 93 x 51 mm construida por Seeed Studio sobre el SoC Rockchip RK3576: 8 núcleos big.LITTLE (4x Cortex-A72 a 2,2 GHz y 4x Cortex-A53 a 2,0 GHz), GPU Mali-G52 MC3 y NPU integrada de 6 TOPS INT8 con soporte de cuantización INT4/INT8/INT16 y FP16. Llega con Armbian preinstalado y con el stack reComputer AI Lab, y la NPU se programa con RKNN-Toolkit2, que tiene ejemplos oficiales de YOLO. Para el nodo importa que trae dos puertos Gigabit Ethernet (uno con PoE), decodificación de video hasta 8K a 30 fps, ranura miniPCIe para 4G LTE, LoRaWAN o Wi-Fi HaLow, y una ranura M.2 M-key PCIe 2.1 x1 que acepta tanto un SSD NVMe como un acelerador Hailo-8/8L, con lo que el equipo escala hasta 26 TOPS totales. La caja incluye fuente de 12 V con adaptadores, manual y tarjeta microSD.",
+   "quote_date": "2026-09-03",
+   "extra_fields": [
+    {
+     "key": "tops",
+     "label": "TOPS",
+     "type": "text"
+    },
+    {
+     "key": "marca",
+     "label": "Marca",
+     "type": "text"
+    },
+    {
+     "key": "tipo_acelerador",
+     "label": "Tipo de acelerador",
+     "type": "text"
+    },
+    {
+     "key": "procesador",
+     "label": "Procesador",
+     "type": "text"
+    },
+    {
+     "key": "ram",
+     "label": "Memoria RAM",
+     "type": "text"
+    },
+    {
+     "key": "almacenamiento",
+     "label": "Almacenamiento",
+     "type": "text"
+    },
+    {
+     "key": "disponibilidad_chile",
+     "label": "Stock y despacho a Chile",
+     "type": "text"
+    },
+    {
+     "key": "pagina_fabricante",
+     "label": "Página del fabricante",
+     "type": "url"
+    },
+    {
+     "key": "durabilidad_confiabilidad",
+     "label": "Durabilidad + confiabilidad (1-10)",
+     "type": "number"
+    },
+    {
+     "key": "verificado_el",
+     "label": "Verificado el",
+     "type": "date"
+    }
+   ],
+   "items": [
+    {
+     "name": "NVIDIA Jetson Orin Nano Super Developer Kit (SKU Mechatronicstore V-100)",
+     "country": "Estados Unidos",
+     "price": "$999.990 CLP con IVA incluido y envío gratis a todo Chile (Mechatronicstore.cl, 2026-09-03)",
+     "purchase_link": "https://www.mechatronicstore.cl/nvidia-jetson-orin-nano-super-developer-kit/",
+     "photo_url": "https://www.mechatronicstore.cl/wp-content/uploads/nvidia-jetson-orin-nano-super.jpg",
+     "reusar_foto_de": "",
+     "description": "Kit de desarrollo con el módulo Jetson Orin Nano: GPU NVIDIA Ampere de 1.024 núcleos CUDA y 32 Tensor Cores a 1.020 MHz, CPU Arm Cortex-A78AE de 6 núcleos a 1,7 GHz y 8 GB LPDDR5 de 102,4 GB/s. La aceleración es GPU + Tensor Cores, no una NPU dedicada, y por eso corre YOLO con el stack CUDA/TensorRT estándar en vez de un compilador propietario. La placa portadora mide 100 x 79 x 21 mm, trae ranura microSD y ranura M.2 Key M para SSD NVMe, cabezal de 40 pines y modos de potencia de 7 W, 15 W y 25 W. El codificador de video del SoC admite 5 flujos 1080p60 H.265 simultáneos, que es exactamente la carga de varias cámaras IP.",
+     "comment": "Nota 7/10: es la plataforma más fácil de programar de la tabla (JetPack, CUDA, TensorRT, DeepStream y ejemplos YOLO oficiales) y la única con stock local verificado en Chile, con boleta o factura y garantía nacional. La nota no sube porque el kit es una placa portadora abierta con ventilador activo, sin carcasa, sin grado IP y sin rango térmico industrial publicado: en una mina hay que meterlo sí o sí en un gabinete sellado y filtrar el polvo. Además a $999.990 CLP (~US$1.053) duplica el presupuesto objetivo de US$500 por nodo.",
+     "extra_data": {
+      "tops": "67 TOPS INT8 en modo MAXN_SUPER (dato de NVIDIA y de la ficha del vendedor)",
+      "marca": "NVIDIA",
+      "tipo_acelerador": "GPU NVIDIA Ampere de 1.024 núcleos CUDA con 32 Tensor Cores a 1.020 MHz; no lleva NPU dedicada",
+      "procesador": "Arm Cortex-A78AE v8.2 de 64 bits, 6 núcleos / 6 hilos, hasta 1,7 GHz, 1,5 MB L2 + 4 MB L3",
+      "ram": "8 GB LPDDR5 de 128 bits con 102,4 GB/s, soldados al módulo; no ampliable",
+      "almacenamiento": "No incluye medio de almacenamiento; la placa portadora deja libres una ranura microSD y una ranura M.2 Key M para SSD NVMe",
+      "disponibilidad_chile": "Venta local en Chile: Mechatronicstore.cl declara schema.org/InStock y muestra 'Solo quedan 5 disponibles'; precio $999.990 CLP con IVA, boleta o factura automática y envío gratis a todo Chile en pedidos sobre $19.990 (verificado 2026-09-03)",
+      "pagina_fabricante": "https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/",
+      "durabilidad_confiabilidad": 7,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "GMKtec EVO-X1 AI Mini PC AMD Ryzen AI 9 HX 370, 32 GB + 1 TB (SKU EVO-X1-2-44S)",
+     "country": "China",
+     "price": "US$1.149,99 + US$0,00 de envío Economy a Santiago = US$1.149,99 (gmktec.com, 2026-09-03)",
+     "purchase_link": "https://www.gmktec.com/products/amd-ryzen%e2%84%a2-ai-9-hx-370-evo-x1-ai-mini-pc",
+     "photo_url": "https://www.gmktec.com/cdn/shop/files/GMKtec-EVO-X1.jpg?v=1784801298",
+     "reusar_foto_de": "",
+     "description": "Mini PC completo con AMD Ryzen AI 9 HX 370: 12 núcleos y 24 hilos Zen 5 / Zen 5c hasta 5,1 GHz, NPU XDNA 2 de 50 TOPS y GPU Radeon 890M de 16 núcleos RDNA 3.5. La ficha de GMKtec declara 50 TOPS de NPU y hasta 80 TOPS de IA total del procesador, es decir unas 40 veces lo que entrega el Kria KV260. Trae 32 GB LPDDR5X-7500 soldados en cuádruple canal, SSD NVMe PCIe 4.0 de 1 TB y una segunda ranura M.2 2280 libre. La conectividad sirve para el caso de uso: doble LAN 2.5G Intel I226V (una para las cámaras y otra para la salida a la nube), USB4 y un puerto OCuLink PCIe Gen4 x4 por si más adelante se le cuelga una GPU o un acelerador externo.",
+     "comment": "Nota 6/10: es el equipo AMD más potente que sí se puede comprar y despachar a Chile hoy, pero hay dos advertencias serias. Primera, el soporte de la NPU en Linux: el driver de kernel amdxdna entró recién en Linux 6.14 y la documentación oficial de AMD Ryzen AI Software dice explícitamente que la instalación es sobre Windows 11 build >= 22621.3527, así que el camino soportado de ONNX Runtime con Vitis AI EP hoy es Windows; como el nodo corre Linux, en la práctica YOLO va a correr sobre la iGPU Radeon 890M o la CPU, no sobre los 50 TOPS de la NPU. Segunda, la robustez: GMKtec publica temperatura de trabajo 0-40 °C, dos ventiladores (superior e inferior), certificación CE/FCC/CCC/RoHS y sólo 1 año de garantía limitada, y la RAM va soldada, o sea que ni la memoria ni el polvo son reparables en terreno. A US$1.149,99 además se pasa más del doble del presupuesto de US$500. Se mantiene tras una segunda ronda de búsqueda: ACEMAGIC, AOOSTAR, Beelink y MINISFORUM tienen equipos Ryzen AI 300 más baratos, pero ninguno despacha a Chile (sus tiendas devuelven cero tarifas de envío para Santiago), así que a esta fecha el EVO-X1 es el mini PC AMD de 50 TOPS más barato que efectivamente llega a Chile.",
+     "extra_data": {
+      "tops": "50 TOPS de NPU XDNA 2 / hasta 80 TOPS de IA total del procesador (ficha oficial GMKtec del EVO-X1)",
+      "marca": "GMKtec",
+      "tipo_acelerador": "NPU AMD XDNA 2 integrada en el SoC Ryzen AI 9 HX 370, acompañada de la iGPU Radeon 890M (16 núcleos RDNA 3.5 hasta 2.900 MHz)",
+      "procesador": "AMD Ryzen AI 9 HX 370, 12 núcleos / 24 hilos Zen 5, turbo hasta 5,1 GHz, 12 MB L2 + 24 MB L3, TDP 15-54 W (pico 65 W), TSMC 4 nm FinFET",
+      "ram": "32 GB LPDDR5X-7500 soldados en placa en cuádruple canal; diseño no ampliable (la variante de 64 GB usa LPDDR5X-8500)",
+      "almacenamiento": "SSD NVMe PCIe 4.0 M.2 2280 de 1 TB incluido; 2 ranuras M.2 2280 en total, hasta 4 TB por ranura y 8 TB en conjunto; no admite SATA",
+      "disponibilidad_chile": "gmktec.com marca In Stock la única variante (32 GB + 1 TB, enchufe US). Agregué la unidad al carrito y la API de fletes de la tienda devolvió una sola tarifa, 'Economy US$0,00', para Santiago, Región Metropolitana, código postal 8320000; Chile aparece además en el selector de país/región de GMKtec (verificado 2026-09-03)",
+      "pagina_fabricante": "https://www.gmktec.uk/products/gmktec-evo-x1-amd-ryzen%E2%84%A2-ai-9-hx-370-mini-pc",
+      "durabilidad_confiabilidad": 6,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "GMKtec NucBox K8 Plus barebone AMD Ryzen 7 8845HS, sin RAM ni SSD ni SO (SKU 'K8 Plus 0+0 US/JP')",
+     "country": "China",
+     "price": "US$399,99 + US$0,00 de envío Economy a Santiago = US$399,99 (gmktec.com, 2026-09-03); no incluye RAM, SSD ni sistema operativo",
+     "purchase_link": "https://www.gmktec.com/products/gmktec-nucbox-k8-plus-mini-pc-amd-ryzen%E2%84%A2-7-8845hs",
+     "photo_url": "https://cdn.shopify.com/s/files/1/0761/2330/8203/files/gmktec_amd8845hs_product_only_square.png?v=1776152776",
+     "reusar_foto_de": "",
+     "description": "Mini PC barebone de 132 x 125 x 58 mm con AMD Ryzen 7 8845HS: 8 núcleos y 16 hilos Zen 4 de 3,8 a 5,1 GHz, NPU XDNA de primera generación (16 TOPS según AMD) e iGPU Radeon 780M de 12 núcleos RDNA 3 hasta 2.700 MHz. La variante cotizada viene vacía: hay que sumarle memoria y disco, pero a cambio quedan las dos ranuras SO-DIMM DDR5-5600 y las dos M.2 2280 PCIe 4.0 completamente libres. Trae doble LAN 2.5G Intel I226V, dos USB4, OCuLink PCIe Gen4 x4 y Wi-Fi 6 Intel AX200, y GMKtec declara soporte de Linux además de Windows 11 Pro.",
+     "comment": "Nota 6/10: es la forma más barata verificada de tener silicio AMD con NPU puesto en Chile, US$399,99 con envío incluido, y todo lo que se desgasta o se queda corto (RAM, SSD) es reemplazable con destornillador. Vale la misma advertencia de Linux que el EVO-X1 y peor: el 8845HS es Hawk Point / XDNA de primera generación, el driver amdxdna la soporta desde Linux 6.14 pero el stack de inferencia oficial de AMD (ONNX Runtime con Vitis AI EP) está documentado sólo para Windows 11, así que en el nodo Linux esos 16 TOPS de NPU hoy no son utilizables y la inferencia recae en la iGPU Radeon 780M o la CPU. En robustez baja por temperatura de trabajo declarada 0-40 °C, refrigeración activa con rejillas abiertas (mala idea en polvo de mina sin gabinete) y sólo 1 año de garantía limitada, con certificación CE/FCC/CCC/RoHS.",
+     "extra_data": {
+      "tops": "16 TOPS de NPU XDNA / hasta 38 TOPS de IA total del procesador (cifra oficial de AMD para el Ryzen 7 8845HS)",
+      "marca": "GMKtec",
+      "tipo_acelerador": "NPU AMD XDNA de primera generación (Hawk Point) integrada en el SoC, más iGPU Radeon 780M de 12 núcleos RDNA 3",
+      "procesador": "AMD Ryzen 7 8845HS, 8 núcleos / 16 hilos Zen 4, base 3,8 GHz y turbo hasta 5,1 GHz, 8 MB L2 + 16 MB L3, TDP 35-54 W (pico 70 W)",
+      "ram": "No incluida en la variante barebone; 2 ranuras SO-DIMM DDR5-5600 ampliables hasta 96 GB",
+      "almacenamiento": "No incluido; quedan libres 2 ranuras M.2 2280 PCIe 4.0 NVMe (hasta 4 TB cada una, 8 TB en total); no admite SATA",
+      "disponibilidad_chile": "La variante 'Barebone (No DDR & SSD & OS) / US' aparece disponible en la API de producto de gmktec.com y el listado de colección la marca In Stock a US$399,99. La agregué al carrito y la API de fletes devolvió 'Economy US$0,00' para Santiago, Región Metropolitana, código postal 8320000; Chile figura en el selector de país/región de GMKtec (verificado 2026-09-03)",
+      "pagina_fabricante": "https://www.gmktec.uk/products/gmktec-nucbox-k8-plus-amd-ryzen%E2%84%A2-7-8845hs-mini-pc",
+      "durabilidad_confiabilidad": 6,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Seeed Studio reComputer AI Industrial R2135-12 (SKU 114993595, CM5 8 GB + 32 GB eMMC + Hailo-8)",
+     "country": "China",
+     "price": "US$433,00 por unidad (Seeed Studio, 2026-09-03; US$429,00 desde 10 unidades), término FOB: el flete a Chile se cotiza en el checkout",
+     "purchase_link": "https://www.seeedstudio.com/reComputer-AI-Industrial-R2135-12-p-6432.html",
+     "photo_url": "https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/2/-/2-114993595-recomputer-ai-industrial-r2135-12.jpg",
+     "reusar_foto_de": "",
+     "description": "Computador industrial cerrado de 130 x 93 x 55,5 mm y 688 g, con carcasa de aleación de aluminio y tapas laterales de policarbonato, montaje en riel DIN o muro. Lleva un Raspberry Pi Compute Module 5 (Cortex-A76 de 4 núcleos a 2,4 GHz, 8 GB de RAM, 32 GB eMMC) y un acelerador Hailo-8 de 26 TOPS ya instalado en la M.2 M-key 2242 por PCIe 3.0, dejando libre la M.2 M-key 2280 para un SSD. Es el único equipo de la tabla con condiciones ambientales publicadas para faena: IP40, -20 a 65 °C, 10-95 % HR, entrada de 9-36 V DC por bornera de 2 pines, watchdog por hardware y RTC de alta precisión. El stack de Hailo trae model zoo y ejemplos YOLO listos sobre Raspberry Pi OS / Linux.",
+     "comment": "Nota 9/10: es el único candidato pensado como producto industrial y no como PC de escritorio. Los hechos que sostienen la nota son de la wiki oficial de Seeed: -20 a 65 °C, IP40, humedad 10-95 %, carcasa de aluminio con montaje DIN, entrada de 9-36 V, watchdog independiente que reinicia ante cuelgues, RTC de alta precisión, chip de seguridad TPM2.0/ATECC608A opcional, garantía de 2 años y compromiso de producción hasta diciembre de 2036. Es además el único que cumple el presupuesto de US$500 con 26 TOPS reales. Descuento un punto porque la disipación es 'heatsink with fan' (la reseña de CNX-Software lo describe como pasivo, pero la ficha oficial declara ventilador), así que ese ventilador es la pieza a mantener en ambiente polvoriento, y porque los 8 GB del CM5 y el eMMC van soldados.",
+     "extra_data": {
+      "tops": "26 TOPS INT8 aportados por el módulo Hailo-8",
+      "marca": "Seeed Studio",
+      "tipo_acelerador": "Acelerador dedicado Hailo-8 en módulo M.2 M-key 2242 conectado por PCIe 3.0, preinstalado de fábrica",
+      "procesador": "Raspberry Pi Compute Module 5: Broadcom BCM2712, Arm Cortex-A76 de 4 núcleos / 4 hilos a 2,4 GHz",
+      "ram": "8 GB soldados en el Compute Module 5; no ampliable (existe variante de 16 GB como otro SKU)",
+      "almacenamiento": "32 GB eMMC incluidos en el CM5; queda libre la ranura M.2 M-key 2280 (por USB 3.0) para un SSD, porque el Hailo-8 ocupa la M.2 2242",
+      "disponibilidad_chile": "Seeed Studio marca In Stock con 82 unidades en bodega China, 8 en la de Estados Unidos y 2 en la de Alemania (2026-09-03). Despacha internacionalmente por DHL, FedEx, UPS y EMS desde esas bodegas con término FOB, y el flete a Chile más los derechos de aduana se calculan en el checkout con el RUT del destinatario. En Chile el mismo modelo lo lista el distribuidor MCI Electronics bajo pedido con despacho a todo el país",
+      "pagina_fabricante": "https://wiki.seeedstudio.com/recomputer_ai_industrial_r2135_getting_start/",
+      "durabilidad_confiabilidad": 9,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Seeed Studio reComputer RK3576-20 Open Rockchip AI Box (SKU Seeed 100062096 / SKU Mechatronicstore N-601)",
+     "country": "China",
+     "price": "$219.990 CLP con IVA incluido y envío gratis a todo Chile (Mechatronicstore.cl, 2026-09-03; precio de lista anterior $469.200 CLP). Referencia del fabricante: US$159,00 en Seeed Studio",
+     "purchase_link": "https://www.mechatronicstore.cl/recomputer-rk3576-20-caja-ai-rockchip/",
+     "photo_url": "https://www.mechatronicstore.cl/wp-content/uploads/recomputer-rk3576-20-caja-ai-rockchip-principal.webp",
+     "reusar_foto_de": "",
+     "description": "Caja Edge AI cerrada de 123 x 93 x 51 mm construida por Seeed Studio sobre el SoC Rockchip RK3576: 8 núcleos big.LITTLE (4x Cortex-A72 a 2,2 GHz y 4x Cortex-A53 a 2,0 GHz), GPU Mali-G52 MC3 y NPU integrada de 6 TOPS INT8 con soporte de cuantización INT4/INT8/INT16 y FP16. Llega con Armbian preinstalado y con el stack reComputer AI Lab, y la NPU se programa con RKNN-Toolkit2, que tiene ejemplos oficiales de YOLO. Para el nodo importa que trae dos puertos Gigabit Ethernet (uno con PoE), decodificación de video hasta 8K a 30 fps, ranura miniPCIe para 4G LTE, LoRaWAN o Wi-Fi HaLow, y una ranura M.2 M-key PCIe 2.1 x1 que acepta tanto un SSD NVMe como un acelerador Hailo-8/8L, con lo que el equipo escala hasta 26 TOPS totales. La caja incluye fuente de 12 V con adaptadores, manual y tarjeta microSD.",
+     "comment": "Nota 7/10: es el único equipo de la tabla, además del Jetson, que se compra dentro de Chile con boleta o factura, garantía nacional y envío gratis, y a $219.990 CLP (unos US$232) es el que mejor cabe en el presupuesto de US$500. La nota se justifica así: chasis cerrado tipo caja con refrigeración activa por ventilador, rango de operación 0 a 60 °C, entrada de 9-19 V DC (tolerante a la alimentación sucia de una faena), certificaciones FCC, CE, TELEC y RoHS y garantía Seeed de 12 meses más la garantía legal chilena por ser compra local. No sube más porque no tiene grado IP, el ventilador es una pieza de desgaste en ambiente polvoriento y la variante -20 trae sólo 4 GB de RAM. Y hay que ser honesto con los 6 TOPS: alcanzan para una o dos cámaras 1080p con YOLO, no para varias; el camino de crecimiento es meterle un módulo Hailo-8 en la M.2 para llegar a 26 TOPS.",
+     "extra_data": {
+      "tops": "6 TOPS INT8 de la NPU integrada del RK3576, ampliables hasta 26 TOPS instalando un acelerador Hailo-8/8L en la ranura M.2 (dato de la ficha oficial de Seeed)",
+      "marca": "Seeed Studio",
+      "tipo_acelerador": "NPU Rockchip integrada en el SoC RK3576 (INT4/INT8/INT16 y FP16), programable con RKNN-Toolkit2; la ranura M.2 M-key admite además un acelerador Hailo",
+      "procesador": "Rockchip RK3576, 8 núcleos / 8 hilos en configuración big.LITTLE: 4x Cortex-A72 a 2,2 GHz + 4x Cortex-A53 a 2,0 GHz, con GPU Mali-G52 MC3",
+      "ram": "4 GB LPDDR5 soldados en la variante -20; no ampliable (los modelos -30 y superiores llevan 8 y 16 GB)",
+      "almacenamiento": "No incluye SSD; el equipo llega con Armbian preinstalado y tarjeta microSD en la caja, y deja libres la ranura M.2 M-key PCIe 2.1 x1 (para SSD NVMe o acelerador AI) y la ranura microSD",
+      "disponibilidad_chile": "Venta local en Chile: Mechatronicstore.cl declara schema.org/InStock y muestra 'Solo quedan 2 disponibles' a $219.990 CLP con IVA, con boleta o factura automática y envío gratis a todo Chile sobre $19.990. Seeed Studio lo mantiene In Stock a US$159,00 como respaldo de reposición (verificado 2026-09-03)",
+      "pagina_fabricante": "https://www.seeedstudio.com/reComputer-RK3576-20-p-6816.html",
+      "durabilidad_confiabilidad": 7,
+      "verificado_el": "2026-09-03"
+     }
+    }
+   ]
+  },
+  {
+   "id": "microcomputadores",
+   "name": "5 · Microcomputadores",
+   "description": "SBC de Shenzhen Xunlong con Rockchip RK3588 de 8 nm: cuatro Cortex-A76 más cuatro Cortex-A55 hasta 2,4 GHz, GPU Mali-G610 y NPU de 6 TOPS con soporte INT4/INT8/INT16/FP16. La unidad cotizada es la de 8 GB LPDDR4/4X e incluye fuente de poder. Su rasgo distintivo son los dos puertos Ethernet de 2,5 Gb colgados de PCIe, que permiten separar en el mismo equipo la red de cámaras del enlace a la nube. Tiene además ranura M.2 M-Key 2280 para NVMe, M.2 E-Key 2230 para módulo Wi-Fi 6/BT, zócalo de módulo eMMC, ranura microSD, dos USB 3.0, dos USB 2.0, dos salidas HDMI y una entrada HDMI.",
+   "quote_date": "2026-09-03",
+   "extra_fields": [
+    {
+     "key": "tops",
+     "label": "TOPS",
+     "type": "text"
+    },
+    {
+     "key": "marca",
+     "label": "Marca",
+     "type": "text"
+    },
+    {
+     "key": "procesador",
+     "label": "Procesador",
+     "type": "text"
+    },
+    {
+     "key": "ram",
+     "label": "Memoria RAM",
+     "type": "text"
+    },
+    {
+     "key": "almacenamiento",
+     "label": "Almacenamiento",
+     "type": "text"
+    },
+    {
+     "key": "disponibilidad_chile",
+     "label": "Stock y despacho a Chile",
+     "type": "text"
+    },
+    {
+     "key": "pagina_fabricante",
+     "label": "Página del fabricante",
+     "type": "url"
+    },
+    {
+     "key": "durabilidad_confiabilidad",
+     "label": "Durabilidad + confiabilidad (1-10)",
+     "type": "number"
+    },
+    {
+     "key": "verificado_el",
+     "label": "Verificado el",
+     "type": "date"
+    }
+   ],
+   "items": [
+    {
+     "name": "Raspberry Pi 5 / 8 GB RAM (SKU MCI08610)",
+     "country": "Reino Unido",
+     "price": "$254.990 CLP con IVA (raspberrypi.cl, distribuidor oficial MCI Electronics, 2026-09-03)",
+     "purchase_link": "https://raspberrypi.cl/products/raspberry-pi-5-8gb-ram",
+     "photo_url": "https://cdn.shopify.com/s/files/1/0760/4250/2322/files/8610_94d965db-92b2-4138-825f-181936e23379.jpg?v=1772922411",
+     "reusar_foto_de": "",
+     "description": "Placa Raspberry Pi 5 de 8 GB con SKU local MCI08610 en el distribuidor oficial chileno. Broadcom BCM2712 con cuatro Cortex-A76 a 2,4 GHz, 8 GB LPDDR4X-4267, Gigabit Ethernet con soporte PoE+ mediante HAT, dos USB 3.0 y dos USB 2.0, y salida HDMI dual 4Kp60. No lleva NPU: el conector PCIe 2.0 x1 es el único camino para añadir un AI HAT+ o un adaptador M.2 NVMe, y como es uno solo hay que elegir entre acelerador o SSD.",
+     "comment": "Nota 8/10: Raspberry Pi declara en su ficha oficial que la Pi 5 seguirá en producción al menos hasta enero de 2036, el distribuidor chileno tiene stock verificado hoy (available:true y schema.org/InStock en el propio JSON del producto), despacha en 2 a 5 días hábiles o entrega en tienda en Santiago en menos de dos horas y declara garantía de 6 meses del fabricante. El ecosistema de software es el mejor documentado de la tabla. Baja de 10 porque no tiene NPU ni almacenamiento a bordo: arranca desde microSD, el punto débil en una faena con polvo y vibración, y el único PCIe x1 obliga a elegir entre AI HAT+ y SSD. Como anfitrión del nodo es la opción de menor riesgo de compra y soporte, pero exige comprar aparte el acelerador para correr YOLO sobre varias cámaras.",
+     "extra_data": {
+      "tops": "0 TOPS de NPU dedicada",
+      "marca": "Raspberry Pi",
+      "procesador": "Broadcom BCM2712: 4 núcleos Arm Cortex-A76 de 64 bits a 2,4 GHz con extensiones criptográficas; GPU VideoCore VII",
+      "ram": "8 GB LPDDR4X-4267 soldados en la placa, no ampliables ni reemplazables",
+      "almacenamiento": "Sin almacenamiento a bordo: ranura microSD en modo SDR104. Queda libre un conector PCIe 2.0 x1 (FFC) que admite un HAT M.2/NVMe o el AI HAT+, pero sólo uno de los dos a la vez",
+      "disponibilidad_chile": "raspberrypi.cl (MCI Electronics, distribuidor oficial) muestra el SKU MCI08610 con stock el 2026-09-03: el JSON del producto devuelve available:true y la ficha declara availability http://schema.org/InStock, con envío nacional en 2-5 días hábiles o retiro en Santiago en menos de 2 horas y 6 meses de garantía del fabricante. Se revisaron otros canales chilenos: RS Chile (código 219-255) publica $134.721 CLP con IVA pero su bloque de stock devuelve STATUS_UNAVAILABLE con el mensaje 'Volver a intentar más tarde', y la ficha de Mercado Libre MLC32625223 responde con muro anti-bot, así que ninguno de los dos precios más bajos se pudo confirmar con stock",
+      "pagina_fabricante": "https://www.raspberrypi.com/products/raspberry-pi-5/",
+      "durabilidad_confiabilidad": 8,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "BeagleBoard.org BeagleY-AI (SKU Seeed 102991834)",
+     "country": "Estados Unidos",
+     "price": "US$70,00 por unidad (Seeed Studio, SKU 102991834, 2026-09-03)",
+     "purchase_link": "https://www.seeedstudio.com/BeagleYr-AI-beagleboard-orgr-4-TOPS-AI-Acceleration-powered-by-TI-AM67A.html",
+     "photo_url": "https://media-cdn.seeedstudio.com/media/catalog/product/cache/48035b5512857d0ab907b31a092da78f/1/-/1-102991834-beagleyr-ai-first_.jpg",
+     "reusar_foto_de": "",
+     "description": "SBC de hardware abierto de BeagleBoard.org con formato de 40 pines compatible con accesorios tipo Raspberry Pi. Lleva un Texas Instruments AM67A: cuatro Cortex-A53 de 64 bits a 1,4 GHz más dos DSP C7x con acelerador de multiplicación matricial (MMA) que suman 4 TOPS, y 4 GB LPDDR4 soldados. Arranca desde microSD; el controlador PCI-Express Gen3 x1 sale por un conector FPC de 16 pines y necesita un adaptador externo para montar un M.2. Se alimenta con 5 V/3 A o por PoE mediante HAT y trae conector de alimentación y control de ventilador.",
+     "comment": "Nota 7/10: la plataforma de visión de Texas Instruments (AM67A, familia AM6x/TDA4) es silicio de grado industrial y TI publica el Edge AI SDK con edgeai-tidl-tools, que trae modelos YOLO ya compilados para el C7x/MMA, así que el camino de software está trazado y no depende de un fabricante de placas. El diseño es abierto y BeagleBoard.org mantiene la documentación. Baja de 10 porque la placa va desnuda, el almacenamiento primario es microSD, el M.2 exige adaptador FPC y los Cortex-A53 a 1,4 GHz son la CPU más lenta de esta tabla para desempaquetar varios RTSP antes de la inferencia. A US$70 es el ítem con mejor relación TOPS/precio de la cotización y el candidato natural si el nodo se arma con varias unidades pequeñas.",
+     "extra_data": {
+      "tops": "4 TOPS de los dos DSP C7x con acelerador MMA del AM67A",
+      "marca": "BeagleBoard.org",
+      "procesador": "Texas Instruments AM67A: 4 núcleos Arm Cortex-A53 de 64 bits a 1,4 GHz, más dos DSP C7x de propósito general con MMA y núcleos Cortex-R5F",
+      "ram": "4 GB LPDDR4 soldados en la placa, no ampliables",
+      "almacenamiento": "Sin almacenamiento a bordo: zócalo microSD y EEPROM de identificación. El PCI-Express Gen3 x1 se expone en un conector FPC de 16 pines, de modo que para usar un SSD M.2 hace falta un adaptador externo",
+      "disponibilidad_chile": "Seeed Studio, distribuidor oficial de BeagleBoard.org, muestra el SKU 102991834 In Stock a US$70,00 el 2026-09-03. La política de envíos publicada por Seeed incluye Chile (CL) entre los destinos con envío gratis por Airtransport Direct Line en 7-15 días para pedidos de menos de US$300 y menos de 2 kg, que es exactamente este caso, y los derechos de aduana los paga el comprador. Como segundo canal, DigiKey publica 255 unidades a US$72,54 bajo el código 2820-102991834-ND con envío internacional",
+      "pagina_fabricante": "https://www.beagleboard.org/boards/beagley-ai",
+      "durabilidad_confiabilidad": 7,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Khadas VIM4 with NPU, 8 GB / 32 GB (SKU KVIM4-N-01)",
+     "country": "China",
+     "price": "US$329,00 + US$5,00 de envío estándar a Sudamérica = US$334,00 puestos en Chile (khadas.com, SKU KVIM4-N-01, 2026-09-03)",
+     "purchase_link": "https://www.khadas.com/product-page/vim4",
+     "photo_url": "https://static.wixstatic.com/media/8cab1f_238b3a770fad405a96fcd4349a131ccc~mv2.jpg",
+     "reusar_foto_de": "",
+     "description": "VIM4 en su variante con NPU: Amlogic A311D2 con cuatro Cortex-A73 a 2,2 GHz y cuatro Cortex-A53 a 2,0 GHz, GPU Mali-G52 MP8 a 800 MHz y NPU de 3,2 TOPS. Es la única placa de esta cotización que ya viene con almacenamiento fijo: 8 GB LPDDR4X de 64 bits a 2016 MHz y 32 GB de eMMC 5.1, más 32 MB de flash SPI. El VPU decodifica hasta 8K a 24 fps y codifica H.264/H.265 en 4K a 50 fps con baja latencia, útil para reenviar recortes de video a la nube. Trae Gigabit Ethernet, Wi-Fi 6 (Ampak AP6275S 2T2R), entrada HDMI 4Kp60 y dos MIPI-CSI de hasta 16 MP, y sale de fábrica con disipador y ventilador.",
+     "comment": "Nota 7/10: arranca desde eMMC 5.1 en lugar de microSD, incorpora el sistema de recuperación por red OOWOW que permite reinstalar el sistema sin desmontar el equipo, y la tienda del fabricante muestra 395 unidades disponibles con una tabla de envíos publicada que fija US$5 estándar (20-35 días) o US$40 expedito (5-6 días) para Sudamérica, así que el riesgo de compra es bajo y el costo de flete es conocido. Baja de 10 porque depende de refrigeración activa (ventilador con partes móviles, mal aliado en una mina con polvo), porque su NPU de 3,2 TOPS es la más lenta de la tabla y su cadena de herramientas para YOLO es la menos utilizada de las cinco, y porque Khadas no publica rango térmico de operación ni plazo de longevidad de producción.",
+     "extra_data": {
+      "tops": "3,2 TOPS INT8 en la NPU del A311D2",
+      "marca": "Khadas",
+      "procesador": "Amlogic A311D2: 4 núcleos Cortex-A73 a 2,2 GHz + 4 núcleos Cortex-A53 a 2,0 GHz; GPU Mali-G52 MP8 (8EE) a 800 MHz",
+      "ram": "8 GB LPDDR4X de 64 bits a 2016 MHz, soldados en la placa y no ampliables",
+      "almacenamiento": "32 GB de eMMC 5.1 incluidos y 32 MB de flash SPI a bordo. Quedan libres una ranura microSD (SDSC/SDHC/SDXC) y un zócalo M.2 2280 con PCIe 2.0 x1 para SSD NVMe, que además expone USB 2.0, I2S, I2C y GPIO",
+      "disponibilidad_chile": "El 2026-09-03 la tienda oficial khadas.com devuelve para la variante KVIM4-N-01 estado in_stock con 395 unidades a US$329,00 (la KVIM4-N-02, a US$349,00, tiene 85 unidades). La tabla de envíos publicada por Khadas asigna a South America envío estándar de US$5 en 20-35 días y expedito de US$40 en 5-6 días; Khadas advierte que los cargos de aduana corren por cuenta del comprador. El precio de US$219,90 de la tienda oficial de Khadas en AliExpress no se pudo comprobar porque AliExpress responde con página anti-bot",
+      "pagina_fabricante": "https://www.khadas.com/vim4",
+      "durabilidad_confiabilidad": 7,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Radxa Dragon Q6A 12 GB (SKU RS701-D12J0R44S32Y13W28)",
+     "country": "China",
+     "price": "US$169,00 + US$22,00 de flete Small Parcel Standard (7-20 días) = US$191,00 puestos en Chile (Arace Tech, distribuidor oficial de Radxa, SKU RS701-D12J0R44S32Y13W28, 2026-09-03)",
+     "purchase_link": "https://arace.tech/products/radxa-dragon-q6a",
+     "photo_url": "https://cdn.shopify.com/s/files/1/0021/1497/7894/files/Angle1_ca51e030-0d1d-4b77-b369-179093b21eea.jpg?v=1776328523",
+     "reusar_foto_de": "",
+     "description": "Placa de 85 x 56 mm con Qualcomm QCS6490 (línea Dragonwing) fabricado en 6 nm: ocho núcleos Kryo en tres clústeres (uno a 2,7 GHz, tres a 2,4 GHz y cuatro a 1,9 GHz), GPU Adreno 643 y motor de IA de sexta generación con hasta 12 TOPS, la cifra más alta de esta cotización. La unidad cotizada trae 12 GB LPDDR5. Tiene Gigabit Ethernet con soporte PoE, Wi-Fi 6 y Bluetooth 5.4, un USB 3.1 y tres USB 2.0, salida HDMI 2.0 y tres conectores MIPI-CSI de hasta cuatro carriles para cámaras directas. Corre Ubuntu Linux, Qualcomm Linux basado en Yocto o Android.",
+     "comment": "Nota 8/10: el QCS6490 está inscrito en el Product Longevity Program de Qualcomm con disponibilidad comprometida hasta julio de 2036 y opera en un rango de temperatura de unión de -30 a 105 °C, es decir silicio pensado para equipos industriales y no de consumo, que es justo lo que pide una instalación minera. A eso se suma stock verificado de 33 unidades en el distribuidor oficial y una cotización real de flete a Santiago: US$22 por Small Parcel con seguimiento, o sea US$191 puestos en Chile, la mejor relación TOPS por peso de toda la tabla. Baja de 10 porque la inferencia pasa por la cadena QNN/SNPE de Qualcomm en vez de la ruta ONNX o rknn en la que están escritos casi todos los ejemplos YOLO, lo que agrega trabajo de conversión y validación, y porque la placa va desnuda: hay que sumar disipador, carcasa y almacenamiento. Con 12 TOPS y 12 GB de LPDDR5 es la que más flujos simultáneos aguanta de la tabla.",
+     "extra_data": {
+      "tops": "12 TOPS del motor de IA de sexta generación de Qualcomm integrado en el QCS6490",
+      "marca": "Radxa",
+      "procesador": "Qualcomm QCS6490 de 6 nm: 8 núcleos Kryo en tres clústeres, 1 núcleo a 2,7 GHz + 3 núcleos a 2,4 GHz + 4 núcleos a 1,9 GHz; GPU Adreno 643",
+      "ram": "12 GB LPDDR5 soldados en la placa; la familia se fabrica de 4 a 16 GB y ninguna variante es ampliable",
+      "almacenamiento": "32 MB de flash a bordo y nada más incluido. Quedan libres una ranura microSD, un zócalo para módulo eMMC/UFS y una ranura M.2 M-key 2230 para SSD NVMe",
+      "disponibilidad_chile": "Canal elegido: Arace Tech (arace.tech), listado por Radxa entre sus distribuidores oficiales en radxa.com/distributors. El 2026-09-03 la variante de 12 GB (SKU RS701-D12J0R44S32Y13W28) figura con available:true e inventory_quantity 33 a US$169,00; puse la unidad en el carrito (total confirmado US$169,00 USD) y pedí la cotización de flete para Chile, Región Metropolitana, Santiago, código postal 8320000: la API devolvió dos tarifas, 'Small Parcel - Standard Speed (7-20 days)' a US$22,00 y 'UPS' a US$87,00, ambas con número de seguimiento; con la estándar el total puesto en Chile es US$191,00 y los derechos de aduana se pagan al ingresar. Canales alternativos verificados el mismo día: Amazon.com (ASIN B0FY6NCRW8) a CLP $204.929 con 'Only 8 left in stock - order soon', 'FREE delivery Tuesday, September 15 to Chile' y 'CLP 56.908 Import Charges & FREE Shipping to Chile', o sea CLP $261.837 con la importación ya pagada; y la tienda de Radxa operada por ALLNET China, que tiene la misma variante de 12 GB a US$169,00 y Chile habilitado en su selector de mercados, pero sin cotización de flete accesible. En Arace las variantes de 4, 8 y 16 GB figuran agotadas y la de 6 GB tiene 19 unidades a US$115,00",
+      "pagina_fabricante": "https://radxa.com/products/dragon/q6a/",
+      "durabilidad_confiabilidad": 8,
+      "verificado_el": "2026-09-03"
+     }
+    },
+    {
+     "name": "Orange Pi 5 Plus 8 GB con fuente de poder (ASIN B0C5MCHS8V)",
+     "country": "China",
+     "price": "CLP $220.766 + CLP $61.370 de cargos de importación, con envío gratis a Chile = CLP $282.136 puestos en Chile (Amazon.com, ASIN B0C5MCHS8V, kit 8 GB + fuente, 2026-09-03)",
+     "purchase_link": "https://www.amazon.com/dp/B0C5MCHS8V",
+     "photo_url": "https://m.media-amazon.com/images/I/714tztQSWTL._AC_SL1500_.jpg",
+     "reusar_foto_de": "",
+     "description": "SBC de Shenzhen Xunlong con Rockchip RK3588 de 8 nm: cuatro Cortex-A76 más cuatro Cortex-A55 hasta 2,4 GHz, GPU Mali-G610 y NPU de 6 TOPS con soporte INT4/INT8/INT16/FP16. La unidad cotizada es la de 8 GB LPDDR4/4X e incluye fuente de poder. Su rasgo distintivo son los dos puertos Ethernet de 2,5 Gb colgados de PCIe, que permiten separar en el mismo equipo la red de cámaras del enlace a la nube. Tiene además ranura M.2 M-Key 2280 para NVMe, M.2 E-Key 2230 para módulo Wi-Fi 6/BT, zócalo de módulo eMMC, ranura microSD, dos USB 3.0, dos USB 2.0, dos salidas HDMI y una entrada HDMI.",
+     "comment": "Nota 6/10: el RK3588 es el SoC con la cadena YOLO más rodada de esta cotización, porque Rockchip publica rknn-toolkit2 y el rknn_model_zoo con YOLOv5, YOLOv8 y YOLOv11 ya convertidos y con ejemplos en Python y C++, y los dos puertos 2,5 GbE reproducen exactamente la topología del nodo (una red para las cámaras IP, otra para la salida a la nube) sin agregar switch. Baja a 6 porque Xunlong no publica rango térmico de operación, garantía ni compromiso de longevidad de producción; porque el RK3588 disipa lo suficiente como para exigir disipador y ventilación forzada en gabinete cerrado; porque la placa se compra a un tercero en Amazon con sobreprecio respecto del precio de lista del fabricante; porque no incluye eMMC (el módulo Orange Pi de 16 a 256 GB se compra aparte) y porque la fuente del kit trae enchufe estadounidense y en Chile obliga a un adaptador.",
+     "extra_data": {
+      "tops": "6 TOPS de la NPU del RK3588, con soporte de cómputo mixto INT4/INT8/INT16/FP16",
+      "marca": "Orange Pi (Xunlong)",
+      "procesador": "Rockchip RK3588 de 8 núcleos y 64 bits en proceso de 8 nm: 4 núcleos Cortex-A76 + 4 núcleos Cortex-A55, frecuencia máxima 2,4 GHz; GPU Mali-G610",
+      "ram": "8 GB LPDDR4/LPDDR4X soldados en la placa; el modelo se fabrica en 4, 8 y 16 GB y ninguna versión es ampliable",
+      "almacenamiento": "Sin almacenamiento incluido. Trae zócalo para módulo eMMC propio de Orange Pi de 16, 32, 64, 128 o 256 GB que se compra por separado, ranura microSD, ranura M.2 M-Key 2280 para SSD NVMe y ranura M.2 E-Key 2230 ocupable por un módulo Wi-Fi 6/BT",
+      "disponibilidad_chile": "En Amazon.com el 2026-09-03 la ficha marca 'Only 19 left in stock - order soon', 'FREE delivery Monday, September 14 to Chile' y 'CLP 61.370 Import Charges & FREE Shipping to Chile', con precio de CLP $220.766 para el paquete de 8 GB con fuente. El paquete incluye una fuente conmutada con enchufe estadounidense, por lo que en Chile hace falta un adaptador de enchufe. Se compararon otras fichas de la misma marca con entrega a Chile y todas resultaron más caras: Orange Pi 5 Pro 16 GB CLP $316.714 y Orange Pi 6 Plus 16 GB CLP $341.866, ambas más cargos de importación",
+      "pagina_fabricante": "http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5-plus.html",
+      "durabilidad_confiabilidad": 6,
+      "verificado_el": "2026-09-03"
+     }
+    }
+   ]
+  }
+ ]
+}
