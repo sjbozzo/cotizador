@@ -49,6 +49,9 @@
           <button class="menu-item" id="export-html" type="button" role="menuitem">
             <strong>HTML</strong><span>Elige cotizaciones y alcance; se ve como esta pantalla</span>
           </button>
+          <button class="menu-item" id="export-bom" type="button" role="menuitem">
+            <strong>Exportar BOM</strong><span>Todos los productos juntos, en una tabla compacta</span>
+          </button>
           <button class="menu-item" id="export-excel" type="button" role="menuitem">
             <strong>Excel</strong><span>Una hoja por cotización, con los mismos campos</span>
           </button>
@@ -86,6 +89,7 @@
         <footer class="table-footer">
           <span id="visible-count"></span>
           <div class="table-footer-actions">
+            <label class="footer-toggle"><input id="hide-excluded" type="checkbox"><span>Ocultar descartados</span></label>
             <div class="selection-actions" role="group" aria-label="Acciones sobre lo marcado">
               <button class="button" id="selection-move" type="button" disabled>Mover a otra cotización…</button>
               <button class="button" id="selection-include" type="button" disabled>Incluir</button>

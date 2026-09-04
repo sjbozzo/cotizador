@@ -1,0 +1,37 @@
+{
+  "nota": "KINGDEL solicitado por el usuario para la cotización de PC: menos de US$300, M.2 PCIe para Hailo y almacenamiento físico independiente. Precio, stock y despacho consultados en vivo para Chile el 2026-09-04.",
+  "quotations": [
+    {
+      "quotation_id": "pcs-industriales-m2-ai",
+      "picks": [
+        {
+          "name": "KINGDEL HT690-4 barebone — Intel N100, M.2 Key-M para Hailo + SATA 2,5″ (AliExpress)",
+          "country": "China",
+          "price": "US$171,55 equipo + US$26,36 envío AliExpress Standard a Chile = US$197,91 antes de IVA (variante N100 / No RAM No Storage / enchufe EU, SKU 12000045869539264; verificado 2026-09-04)",
+          "purchase_link": "https://es.aliexpress.com/item/1005008592561780.html?sku_id=12000045869539264",
+          "photo_url": "https://ae-pic-a1.aliexpress-media.com/kf/S5069b3cf2f4d4ed0a964b97bf1af925bT.jpg",
+          "description": "Mini PC industrial fanless KINGDEL HT690-4 de 135 × 125 × 40 mm, carcasa de aluminio e Intel N100 (4 núcleos / 4 hilos, hasta 3,40 GHz, 6 MB de caché y 6 W). La publicación vigente ofrece 2 LAN Gigabit, 2 COM RS232, 2 HDMI, DisplayPort, USB-C, una M.2 2280 NVMe/NGFF y una conexión SATA para SSD/HDD de 2,5 pulgadas y 7 mm. Se cotiza barebone: no incluye RAM ni disco.",
+          "comment": "Reemplaza como compra viable al NC690 del enlace de Amazon B0CJM9HKM9: ese ASIN se verificó a US$388 y Amazon indicó que no se podía enviar a la ubicación chilena. En esta oferta de la tienda «KINGDEL TECHNOLOGY CO., LTD.» el equipo más envío queda en US$197,91 antes de IVA. Montaje propuesto: Hailo-8 Key M en la M.2 y SSD SATA de 2,5 pulgadas para el sistema. La compatibilidad es documental, no una prueba publicada del conjunto exacto: el manual de placa identifica la M.2 como Key-M PCIe/SATA 2242/2280 y su diagrama la cablea PCIe x1; Hailo confirma que el Hailo-8 negocia y funciona con un solo carril, con menor ancho de banda. Si el módulo Hailo es sólo 2242, usar su extensión 2280 o un soporte 2242→2280. Atención a la revisión: el anuncio actual declara DDR5-4800 hasta 32 GB, mientras la ficha general HT690-4 de KINGDEL aún declara DDR4-2400; confirmar con el vendedor antes de comprar la RAM. La publicación declara certificación «NONE» y no existe grado IP publicado.",
+          "availability_chile": "AliExpress respondió en vivo para destino Chile el 2026-09-04: variante barebone N100 con enchufe EU seleccionada, 10 unidades disponibles, US$171,55; AliExpress Standard Shipping US$26,36, entrega mostrada del 11 al 20 de septiembre de 2026. Total visible US$197,91 antes de IVA; la ficha indica que el IVA se calcula al finalizar. La publicación y sus botones Comprar/Agregar al carrito estaban activos. Vende KINGDEL TECHNOLOGY CO., LTD. (tienda abierta desde 2011).",
+          "extra_data": {
+            "marca": "KINGDEL",
+            "procesador": "Intel Processor N100 (Alder Lake-N): 4 núcleos / 4 hilos, hasta 3,40 GHz, 6 MB de caché y TDP 6 W; modelo N100 seleccionado en la oferta",
+            "ram": "Barebone, sin RAM. El anuncio vigente especifica 1× SO-DIMM DDR5-4800 hasta 32 GB; la ficha general HT690-4 del fabricante aún dice 1× SO-DIMM DDR4-2400. Hay una diferencia de revisión que debe confirmarse con el vendedor antes de comprar el módulo",
+            "m2_acelerador": "Sí, con salvedad de validación final: la oferta declara 1× M.2 2280 NVMe/NGFF y el manual oficial HT690-4 identifica 1× M.2 Key-M 2242/2280 PCIe/SATA, cableada como PCIe x1. Ahí va el Hailo-8 Key M; Hailo confirma que funciona negociando x1, aunque con menor ancho de banda. Para un Hailo 2242 sin extensión se requiere fijación 2242 o soporte 2242→2280. No hay ensayo público del combo HT690-4 + Hailo; comprobar detección con lspci dentro de la ventana de devolución",
+            "almacenamiento_separado": "Sí: 1× bahía/conexión SATA para SSD o HDD de 2,5 pulgadas y 7 mm, independiente de la M.2. La descripción de la oferta dice literalmente que soporta dos almacenamientos (M.2 2280 NVMe/NGFF + SATA 2,5″); instalar el sistema en SATA deja la M.2 completa para Hailo",
+            "pagina_fabricante": "https://www.kingdel.com.cn/PC/pc-ht690-4.html",
+            "durabilidad_confiabilidad": 6,
+            "verificado_el": "2026-09-04"
+          },
+          "sources": [
+            "https://es.aliexpress.com/item/1005008592561780.html?sku_id=12000045869539264",
+            "https://www.kingdel.com.cn/PC/pc-ht690-4.html",
+            "https://www.kingdel.com.cn/image/product/HT690-4/VER1.0%20Motherboard%20Manual.pdf",
+            "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/",
+            "https://community.hailo.ai/t/hailo-8-farm/6753"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -315,6 +315,25 @@ def test_export_html_bundle_carries_every_chosen_quotation(client):
     assert {item["quotation_id"] for item in payload["items"]} == {first["id"], second["id"]}
 
 
+def test_export_bom_is_one_compact_html_table(client):
+    quotations = client.get("/api/quotations").json()
+    response = client.get("/api/export-bom.html")
+
+    assert response.status_code == 200
+    assert 'filename="BOM.html"' in response.headers["content-disposition"]
+    html = response.text
+    assert "Bill of Materials" in html
+    assert "Foto" in html
+    assert "País de origen" in html
+    assert "Link de compra" in html
+    assert "Link del fabricante" in html
+    assert "Precio" in html
+    assert ">Descripción<" not in html
+    assert ">Cotizaciones<" not in html
+    assert 'id="bom-hide-excluded"' in html
+    assert html.count('class="bom-name"') == sum(quotation["item_count"] for quotation in quotations)
+
+
 def test_export_html_scope_included_leaves_the_discarded_out(client):
     quotation = client.get("/api/quotations").json()[0]
     discarded = quotation["items"][0]

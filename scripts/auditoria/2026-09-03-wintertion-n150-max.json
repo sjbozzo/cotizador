@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "origen": "Corrección y verificación del Wintertion/CNCTION N150 MAX para usar un Hailo M.2 y almacenamiento separado (2026-09-03).",
+    "criterio": "Se conserva el hardware, pero se reemplaza el ASIN incorrecto B0GX5JLNR3 (Intel 4417U) por la variante N150 disponible con despacho a Chile B0GX5KRLC8."
+  },
+  "batches": [
+    {
+      "q": "pcs-industriales-m2-ai",
+      "index": 0,
+      "items": [
+        {
+          "id": "item-62357c06dffb4133bbaa087e81942512",
+          "name": "Wintertion RS150 / CNCTION N150 MAX — Intel N150, 4 GB DDR4 + 128 GB SSD, 4× i226-V 2,5GbE, fanless (ASIN B0GX5KRLC8)",
+          "verdict": "keep",
+          "verdict_reason": "El equipo admite un Hailo M.2 en la ranura M-key y un SSD/HDD SATA separado. Se corrige la variante de compra porque el ASIN anterior correspondía a un procesador 4417U y el barebone N150 correcto no se despacha a Chile.",
+          "votes": "revisado",
+          "price": "CLP $354.162 por el equipo + CLP $13.973 de envío a Chile = CLP $368.135 mostrados por Amazon.com (variante N150/Big Case, 4 GB RAM + 128 GB SSD, ASIN B0GX5KRLC8; sin importación estimada agregada; verificado en vivo y sin caché el 2026-09-03).",
+          "price_source": "https://www.amazon.com/dp/B0GX5KRLC8",
+          "country": "China",
+          "purchase_link": "https://www.amazon.com/dp/B0GX5KRLC8",
+          "description": "Mini PC de aluminio sin ventilador con Intel N150 (4 núcleos/4 hilos, hasta 3,60 GHz, 6 MB de caché y TDP de 6 W), 4 puertos Intel i226-V de 2,5GbE y 1 SO-DIMM DDR4-3200. El manual oficial del CNCTION N150 MAX documenta 1 ranura M.2 2280 M-key sólo NVMe, PCIe 3.0 x1, además de 2 conectores SATA 3.0 y alimentación SATA; el gabinete anunciado admite 1 unidad SATA de 2,5 pulgadas. Esto permite dedicar el M.2 al Hailo y arrancar desde un SSD/HDD SATA separado. La variante de Amazon incluye 4 GB de RAM y un SSD de 128 GB; la ficha no identifica el formato de ese SSD, por lo que debe instalarse o trasladarse el sistema a una unidad SATA de 2,5 pulgadas antes de ocupar el M.2 con el Hailo. El rango oficial de operación es de -20 a 55 °C y la humedad admitida es de 5 a 90 % sin condensación; no se publica grado IP.",
+          "comment": "Se mantiene, con nota editorial 7/10. Es compatible con Hailo y almacenamiento simultáneo, pero no a ancho de banda completo: el host ofrece PCIe 3.0 x1. Hailo confirma que sus módulos Hailo-8/Hailo-8L pueden negociar un solo carril, aunque el rendimiento de transferencia puede bajar frente a x2/x4 en cargas de alto FPS o muchas cámaras. La ranura del PC tiene anclaje 2280; el Hailo-8 Key M 2242 de Waveshare necesita su extensión física 2242→2280, o se debe usar una variante Hailo de largo 2280. Conviene ampliar la RAM a 16 GB, que es el máximo publicado en el manual oficial. El equipo es fanless, pero no está certificado como sellado: para polvo de faena requiere gabinete o ubicación protegida. Antes de comprar, volver a confirmar que Amazon mantenga seleccionadas las opciones N150/Big Case y 4 GB RAM + 128 GB SSD.",
+          "availability_chile": "Disponible para Chile al verificar en vivo y sin caché el 2026-09-03: Amazon.com mostraba CLP $354.162, envío CLP $13.973, total visible CLP $368.135, aviso de sólo 8 unidades y entrega estimada entre el 21 de septiembre y el 5 de octubre de 2026; vendido y despachado por CNCTION, con devolución/reemplazo dentro de 30 días. La variante barebone N150 correcta, ASIN B0GX5RQV2P, mostraba que no podía enviarse a la dirección chilena seleccionada; por eso se usa B0GX5KRLC8. El ASIN anterior B0GX5JLNR3 no era N150, sino 4417U/Big Case DDR3L.",
+          "spec_corrections": "RAM máxima oficial 16 GB, no 32 GB; operación -20 a 55 °C, no 0 a 70 °C; la placa tiene 2 SATA 3.0 y 1 alimentación SATA; el ASIN B0GX5JLNR3 corresponde a 4417U y no al N150.",
+          "extra_data": {
+            "marca": "Wintertion (marca de CNCTION / Shenzhen Hongshunxin Network Technology)",
+            "procesador": "Intel Processor N150: 4 núcleos / 4 hilos, hasta 3,60 GHz, 6 MB de caché y TDP de 6 W (manual oficial CNCTION N150 MAX)",
+            "ram": "4 GB DDR4 incluidos en esta variante; 1× SO-DIMM DDR4-3200 de 260 pines, máximo oficial 16 GB (manual CNCTION)",
+            "m2_acelerador": "Sí: 1× M.2 2280 M-key sólo NVMe, PCIe 3.0 x1. Hailo-8/Hailo-8L negocia x1, con posible menor rendimiento que x2/x4. Para el Hailo-8 Key M 2242 de Waveshare se necesita una extensión o soporte 2242→2280; una versión Hailo 2280 calza directamente.",
+            "almacenamiento_separado": "Sí: la placa documenta 2× SATA 3.0 de 7 pines y 1× alimentación SATA; el gabinete anunciado admite 1× SSD/HDD SATA de 2,5 pulgadas. Usar ese disco para el sistema deja el único M.2 2280 disponible para Hailo. La ficha no declara si el SSD de 128 GB incluido es M.2 o SATA, por lo que puede ser necesario trasladarlo o reemplazarlo por un SATA de 2,5 pulgadas.",
+            "disponibilidad_chile": "Disponible para Chile al verificar en vivo y sin caché el 2026-09-03: Amazon.com mostraba CLP $354.162, envío CLP $13.973, total visible CLP $368.135, aviso de sólo 8 unidades y entrega estimada entre el 21 de septiembre y el 5 de octubre de 2026; vendido y despachado por CNCTION, con devolución/reemplazo dentro de 30 días. La variante barebone N150 correcta, ASIN B0GX5RQV2P, mostraba que no podía enviarse a la dirección chilena seleccionada; por eso se usa B0GX5KRLC8. El ASIN anterior B0GX5JLNR3 no era N150, sino 4417U/Big Case DDR3L.",
+            "pagina_fabricante": "https://www.cnction.com/product/showproduct.php?id=209",
+            "durabilidad_confiabilidad": 7,
+            "verificado_el": "2026-09-03"
+          },
+          "m2": {
+            "applies": false
+          },
+          "sources": [
+            "https://www.amazon.com/dp/B0GX5KRLC8",
+            "https://www.amazon.com/dp/B0GX5RQV2P",
+            "https://www.amazon.com/dp/B0GX5JLNR3",
+            "https://www.cnction.com/product/showproduct.php?id=209",
+            "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/",
+            "https://community.hailo.ai/t/hailo8-m-2-key-m-x2-lane-support/2316"
+          ],
+          "removal_holds": false
+        }
+      ]
+    }
+  ]
+}

@@ -22,10 +22,12 @@ from .schemas import (
     QuotationUpdate,
 )
 from .services.exports import (
+    build_bom_payload,
     build_multi_share_payload,
     build_share_payload,
     filename_slug,
     payload_json,
+    render_bom_html,
     render_standalone_html,
     share_filename,
 )
@@ -256,6 +258,19 @@ def export_html_bundle(
         content=content,
         media_type="text/html; charset=utf-8",
         headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
+@app.get("/api/export-bom.html")
+def export_bom() -> Response:
+    quotations = [quotation for quotation in db.list_quotations(include_items=True) if not quotation["archived"]]
+    if not quotations:
+        raise HTTPException(status_code=404, detail="No hay cotizaciones activas para exportar")
+    payload = build_bom_payload(quotations)
+    return Response(
+        content=render_bom_html(payload),
+        media_type="text/html; charset=utf-8",
+        headers={"Content-Disposition": 'attachment; filename="BOM.html"'},
     )
 
 

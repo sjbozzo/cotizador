@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{ title }}</title>
+  <style>{{ app_css|safe }}</style>
+  <style>
+    body.bom-page{background:#fff}
+    .bom-shell{max-width:1500px;margin:0 auto;padding:18px}
+    .bom-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:12px}
+    .bom-head h1{margin:0;font-size:24px;line-height:1.1;letter-spacing:-.03em}
+    .bom-meta{color:var(--muted);font-size:11px}
+    .bom-card{overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .bom-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;font-size:12px}
+    .bom-table th{position:sticky;top:0;z-index:2;padding:7px 9px;border-right:1px solid var(--line);border-bottom:1px solid var(--line-strong);background:var(--soft);color:var(--ink);font-size:10.5px;font-weight:700;text-align:left;white-space:nowrap}
+    .bom-table td{padding:7px 9px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:middle;line-height:1.35}
+    .bom-table th:last-child,.bom-table td:last-child{border-right:0}
+    .bom-table tbody tr:last-child td{border-bottom:0}
+    .bom-table tbody tr:hover{background:var(--soft-2)}
+    .bom-table tbody tr.excluded-row{background-color:#fafafa;background-image:repeating-linear-gradient(-45deg,rgba(115,115,115,.11) 0 1px,transparent 1px 8px);opacity:.62}
+    .bom-table tbody tr.excluded-row:hover{background-color:#f3f3f3;background-image:repeating-linear-gradient(-45deg,rgba(115,115,115,.15) 0 1px,transparent 1px 8px);opacity:.74}
+    .bom-table tbody tr.excluded-row td{color:#8a8a8a}
+    .bom-table tbody tr.excluded-row .bom-name{text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:rgba(115,115,115,.45)}
+    .bom-photo{width:78px;text-align:center}
+    .bom-photo img{display:block;width:64px;height:44px;margin:auto;object-fit:contain;border:1px solid var(--line);border-radius:5px;background:#fff}
+    .bom-photo .photo-fallback{display:grid;width:64px;height:44px;margin:auto;place-items:center;border:1px dashed var(--line-strong);border-radius:5px;color:var(--muted-2);font-size:9px}
+    .bom-name{min-width:220px;font-weight:700}
+    .bom-price{min-width:130px;white-space:nowrap}
+    .bom-link{min-width:115px;white-space:nowrap}
+    .bom-link a{color:var(--ink);text-underline-offset:3px}
+    .bom-table tbody tr.excluded-row .bom-link a{color:#8a8a8a}
+    .bom-toggle{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;white-space:nowrap;cursor:pointer}
+    .bom-toggle input{width:15px;height:15px;margin:0;accent-color:var(--accent-strong);cursor:pointer}
+    .bom-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 10px;border-top:1px solid var(--line);background:var(--soft-2);color:var(--muted);font-size:11px}
+    .bom-empty{padding:30px;text-align:center;color:var(--muted)}
+    @media(max-width:720px){.bom-shell{padding:10px}.bom-head{display:block}.bom-meta{margin-top:5px}.bom-table th,.bom-table td{padding:6px 7px}}
+  </style>
+</head>
+<body class="bom-page">
+  <main class="bom-shell">
+    <header class="bom-head">
+      <h1>Bill of Materials</h1>
+      <span class="bom-meta">Exportado {{ exported_at[:10] }} · todos los productos juntos</span>
+    </header>
+    <section class="bom-card" aria-label="Bill of Materials">
+      <table class="bom-table">
+        <thead>
+          <tr>
+            <th class="bom-photo">Foto</th>
+            <th>Nombre</th>
+            <th>País de origen</th>
+            <th>Link de compra</th>
+            <th>Link del fabricante</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr class="{% if not item.included %}excluded-row{% endif %}" data-included="{{ 1 if item.included else 0 }}">
+            <td class="bom-photo">
+              {% if item.photo %}<img src="{{ item.photo }}" alt="" loading="lazy">{% else %}<span class="photo-fallback">Sin foto</span>{% endif %}
+            </td>
+            <td class="bom-name">{{ item.name }}</td>
+            <td>{{ item.country or '—' }}</td>
+            <td class="bom-link">{% if item.purchase_link %}<a href="{{ item.purchase_link }}" target="_blank" rel="noopener noreferrer">Abrir</a>{% else %}—{% endif %}</td>
+            <td class="bom-link">{% if item.manufacturer_link %}<a href="{{ item.manufacturer_link }}" target="_blank" rel="noopener noreferrer">Abrir</a>{% else %}—{% endif %}</td>
+            <td class="bom-price">{{ item.price or '—' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p class="bom-empty" id="bom-empty" hidden>No hay productos visibles.</p>
+      <footer class="bom-foot">
+        <span id="bom-count">{{ items|length }} productos</span>
+        <label class="bom-toggle"><input id="bom-hide-excluded" type="checkbox"><span>Ocultar descartados</span></label>
+      </footer>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const toggle = document.getElementById('bom-hide-excluded');
+      const rows = [...document.querySelectorAll('.bom-table tbody tr[data-included]')];
+      const empty = document.getElementById('bom-empty');
+      const count = document.getElementById('bom-count');
+      function update() {
+        let visible = 0;
+        rows.forEach(row => {
+          const hidden = toggle.checked && row.dataset.included !== '1';
+          row.hidden = hidden;
+          if (!hidden) visible += 1;
+        });
+        empty.hidden = visible !== 0;
+        count.textContent = `${visible} de ${rows.length} productos`;
+      }
+      toggle.addEventListener('change', update);
+      update();
+    })();
+  </script>
+</body>
+</html>

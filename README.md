@@ -53,10 +53,17 @@ uv run pytest
 
 ## Estructura del catálogo (septiembre 2026)
 
-Cinco categorías visibles, con un máximo de 8 ítems cada una: **1 · Aceleradores USB**, **2 · Aceleradores M.2
+Cinco categorías visibles, con un máximo de 10 ítems cada una: **1 · Aceleradores USB**, **2 · Aceleradores M.2
 (PCIe 3.0)**, **3 · PC industriales con ranura M.2**, **4 · PC con NPU** y **5 · Microcomputadores**. Todo lo que
 salió de esas categorías quedó en la cotización archivada «Reserva · fuera de las cinco categorías» (se ve con
 «Ver archivadas» y se puede volver a mover). `scripts/reorganizar_2026_09.py` es el script que hizo el reparto.
+
+El tope subió de 8 a 9 el 2026-09-03 para auditar cuatro mini PC de oficina reacondicionados y de 9 a 10 el
+2026-09-04 para incorporar el KINGDEL HT690-4 pedido por el usuario sin borrar candidatos descartados. Se conservaron
+con foto y ficha técnica, pero quedaron fuera de inclusión porque la revisión en vivo de sus enlaces de
+Mercado Libre terminó en verificación de cuenta y no permitió confirmar aviso, configuración, stock, precio ni
+despacho. No son equipos industriales —tienen ventilador y trabajan entre 5 y 35 °C—; sirven como candidatos
+para banco de pruebas si se confirma una publicación concreta.
 
 ## Auditar el catálogo con agentes
 
@@ -80,6 +87,17 @@ desde Chile: Mercado Libre, Amazon con envío a Chile o AliExpress).
 (la importación de la aplicación, en cambio, mete ítems en una cotización que ya existe).
 `scripts/prepare_audit_batches.py` arma los lotes pequeños que consume el flujo ligero
 `workflows/auditar-lean.js`, que es el que cabe en el límite de sesión de la cuenta.
+
+`scripts/agregar_candidatos.py` agrega a una cotización que ya existe los ítems elegidos a mano, con la foto
+embebida en la base (`photo_file` apunta a un archivo de `scripts/auditoria/fotos/`, `photo_url` se descarga).
+A diferencia de `apply_audit.py`, exige que no quede ningún campo ni columna vacía, que la nota de durabilidad
+esté entre 1 y 10 y que la página del fabricante sea distinta del link de compra. Es idempotente: omite el
+ítem cuyo nombre ya está en la cotización.
+
+```powershell
+uv run python -m scripts.agregar_candidatos scripts/auditoria/2026-09-03-minipc-oficina-m2.json --dry-run
+uv run python -m scripts.agregar_candidatos scripts/auditoria/2026-09-03-minipc-oficina-m2.json
+```
 
 ## Completar el catálogo
 

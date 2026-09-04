@@ -14,6 +14,7 @@
     tableQuotationId: '',
     search: '',
     columnFilters: {},
+    hideExcluded: false,
     columnTypes: {},
     numericColumns: new Set(),
     columnMenuField: null,
@@ -392,6 +393,7 @@
   // --- Filtros por columna (se aplican todos juntos con el buscador global) ---
 
   function passesFilters(item) {
+    if (state.hideExcluded && !item.included) return false;
     if (state.search) {
       const haystack = normalize([
         item.name, item.country, item.price, item.description, item.comment,
@@ -409,7 +411,7 @@
 
   function refreshFilters() {
     if (!state.table) return;
-    const active = Object.values(state.columnFilters).some(set => set && set.size);
+    const active = Object.values(state.columnFilters).some(set => set && set.size) || state.hideExcluded;
     if (active || state.search) state.table.setFilter(passesFilters);
     else state.table.clearFilter();
     document.querySelectorAll('.tabulator-col').forEach(element => {
@@ -978,7 +980,7 @@
     if (!quotation || !state.table) return;
     let visible = quotation.items.length;
     try { visible = state.table.getDataCount('active'); } catch (_) {}
-    const filtered = Object.values(state.columnFilters).some(set => set && set.size) || Boolean(state.search);
+    const filtered = Object.values(state.columnFilters).some(set => set && set.size) || Boolean(state.search) || state.hideExcluded;
     $('visible-count').textContent = `${visible} de ${quotation.items.length} elementos visibles`;
     $('clear-filters').hidden = !filtered;
   }
@@ -994,6 +996,8 @@
       const search = $('filter-search');
       if (search) search.value = '';
     }
+    const hideExcluded = $('hide-excluded');
+    if (hideExcluded) hideExcluded.checked = state.hideExcluded;
     state.columnTypes = {included: 'boolean'};
     state.numericColumns = new Set(['price']);
     quotation.extra_fields.forEach(field => {
@@ -1017,6 +1021,9 @@
       renderVertical: 'basic',
       placeholder: 'No hay elementos para estos filtros.',
       headerSortTristate: true,
+      rowFormatter: row => {
+        row.getElement().classList.toggle('excluded-row', !row.getData().included);
+      },
       // 'highlight' mantiene la API de selección pero sin los listeners de clic
       // de Tabulator: el marcado lo decide handleRowClick / la casilla de la fila.
       selectableRows: 'highlight',
@@ -1046,8 +1053,11 @@
   function resetFilters() {
     state.search = '';
     state.columnFilters = {};
+    state.hideExcluded = false;
     const search = $('filter-search');
     if (search) search.value = '';
+    const hideExcluded = $('hide-excluded');
+    if (hideExcluded) hideExcluded.checked = false;
     if (state.table) {
       try { state.table.clearSort(); } catch (_) {}
     }
@@ -1763,6 +1773,7 @@
       }
     });
     $('export-html').addEventListener('click', () => openExportModal('html'));
+    $('export-bom').addEventListener('click', () => downloadUrl('/api/export-bom.html'));
     $('export-excel').addEventListener('click', () => openExportModal('xlsx'));
     $('export-select-all').addEventListener('change', event => {
       exportBoxes().forEach(box => { box.checked = event.target.checked; });
@@ -1773,6 +1784,10 @@
     $('export-pdf').addEventListener('click', () => { const q = activeQuotation(); if (q) downloadUrl(`/api/quotations/${encodeURIComponent(q.id)}/export.pdf`); });
     $('export-json').addEventListener('click', () => { const q = activeQuotation(); if (q) downloadUrl(`/api/quotations/${encodeURIComponent(q.id)}/export.json`); });
     $('filter-search').addEventListener('input', event => applySearch(event.target.value));
+    $('hide-excluded').addEventListener('change', event => {
+      state.hideExcluded = event.target.checked;
+      refreshFilters();
+    });
     $('clear-filters').addEventListener('click', resetFilters);
     $('selection-move').addEventListener('click', event => {
       event.stopPropagation();

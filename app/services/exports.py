@@ -7,6 +7,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -54,6 +55,54 @@ def _exported_item(item: dict[str, Any], quotation_id: str) -> dict[str, Any]:
         "price": item["price"],
         "included": bool(item["included"]),
         "extra_data": item["extra_data"],
+    }
+
+
+def _http_url(value: Any) -> str:
+    candidate = str(value or "").strip()
+    parsed = urlsplit(candidate)
+    return candidate if parsed.scheme in {"http", "https"} and parsed.netloc else ""
+
+
+def _manufacturer_link(item: dict[str, Any], quotation: dict[str, Any]) -> str:
+    """Obtiene la página de fabricante sin asumir que todos usan la misma etiqueta."""
+    extra = item.get("extra_data") or {}
+    exact_keys = ("pagina_fabricante", "pagina_del_fabricante", "link_fabricante", "manufacturer_link", "manufacturer_url")
+    for key in exact_keys:
+        link = _http_url(extra.get(key))
+        if link:
+            return link
+    for field in quotation.get("extra_fields") or []:
+        key = str(field.get("key", "")).lower()
+        label = str(field.get("label", "")).lower()
+        if "fabricante" not in key and "fabricante" not in label and "manufacturer" not in key and "manufacturer" not in label:
+            continue
+        link = _http_url(extra.get(field.get("key")))
+        if link:
+            return link
+    return ""
+
+
+def build_bom_payload(quotations: list[dict[str, Any]]) -> dict[str, Any]:
+    """Aplana las cotizaciones activas en una sola lista para el BOM."""
+    items: list[dict[str, Any]] = []
+    for quotation in quotations:
+        for item in quotation["items"]:
+            photo = db.image_data_uri(item["image_id"]) if item.get("image_id") else item.get("photo_url", "")
+            items.append(
+                {
+                    "name": item["name"],
+                    "country": item["country"],
+                    "photo": photo,
+                    "purchase_link": _http_url(item["purchase_link"]),
+                    "manufacturer_link": _manufacturer_link(item, quotation),
+                    "price": item["price"],
+                    "included": bool(item["included"]),
+                }
+            )
+    return {
+        "exported_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "items": items,
     }
 
 
@@ -137,6 +186,15 @@ def render_standalone_html(payload: dict[str, Any]) -> str:
     )
 
 
+def render_bom_html(payload: dict[str, Any]) -> str:
+    template = ENVIRONMENT.get_template("bom.html")
+    return template.render(
+        title="BOM",
+        app_css=_app_css(),
+        exported_at=payload["exported_at"],
+        items=payload["items"],
+    )
+
+
 def payload_json(payload: dict[str, Any]) -> str:
     return json.dumps(payload, ensure_ascii=False, indent=2)
-

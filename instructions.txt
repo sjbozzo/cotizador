@@ -43,13 +43,12 @@ Una baja propuesta por un agente sólo se aplica si la revisa una persona (o al 
 
 Reorganización (2026-09-03)
 ---------------------------
-El catálogo quedó en cinco categorías visibles con máximo 8 ítems: 1 Aceleradores USB, 2 Aceleradores M.2
+El catálogo quedó en cinco categorías visibles con máximo 10 filas: 1 Aceleradores USB, 2 Aceleradores M.2
 (PCIe 3.0), 3 PC industriales con ranura M.2, 4 PC con NPU (incluye Jetson Orin Nano), 5 Microcomputadores
-(incluye Raspberry Pi 5). Se conservan Raspberry Pi 5, Hailo-8, Qotom, Seeed reComputer y AMD Kria. Lo demás está
-en la cotización archivada «Reserva» (nada se borró). Para el nodo en mina: Topton X2B/X2F o KingnovyPC X2E
-(AliExpress, ~US$130) + Hailo-8 M.2 26 TOPS de Unistorm en Amazon (B0FBFTW5QJ, US$214,99, envía a Chile;
-el Waveshare B0D928WG5L NO envía a Chile). Columnas «Disponibilidad en Chile» verificadas en Mercado Libre,
-Amazon y AliExpress con el flujo disponibilidad-mercados (scripts/apply_availability.py).
+(incluye Raspberry Pi 5). La cotización 3 conserva cuatro candidatos de oficina con ficha completa, pero están
+desmarcados porque Mercado Libre redirigió sus enlaces a verificación de cuenta. Lo demás está en la cotización
+archivada «Reserva» (nada se borró). Para el nodo en mina queda como opción verificable el CWWK F2 + un
+acelerador M.2; el Topton X4B-D4 queda fuera hasta confirmar checkout y envío a Chile.
 
 Mezcla de las dos versiones (2026-09-03)
 ---------------------------------------
@@ -57,10 +56,11 @@ Dos IA resolvieron por separado el mismo encargo y quedaron dos exportaciones HT
 ocho ítems por cotización, más candidatos y mejores precios, pero sin fotos ni las columnas nuevas; y
 otra con pocos ítems (3/4/1/6/4) pero muy verificados, con fotos embebidas, página del fabricante y nota
 de durabilidad. Se mezclaron tomando el esquema de columnas y el rigor de la segunda y la amplitud de
-candidatos de la primera, y se dejaron CINCO ítems por cotización.
+candidatos de la primera, y se dejaron hasta CINCO ítems incluidos por cotización.
 
 Reglas que impone la mezcla (las verifica scripts/merge_ai_versions.py y falla si alguna se rompe):
-  - Cinco ítems por cotización, todos con foto embebida en la base (no dependen de la URL del vendedor).
+  - Hasta cinco ítems incluidos por cotización, todos con foto embebida en la base (no dependen de la URL del vendedor).
+    Puede haber filas candidatas desmarcadas, siempre con la razón documentada.
   - Ningún campo vacío, estimado ni incompleto: cada precio dice fuente y fecha.
   - Nota de durabilidad + confiabilidad de 1 a 10, justificada con hechos (rango térmico, certificaciones,
     garantía, compromiso de producción, refrigeración).
@@ -85,9 +85,11 @@ Hallazgos que corrigieron datos anteriores:
 Estado del catálogo tras la mezcla:
   1 Aceleradores USB          Coral, ASUS UGen300 (Hailo-10H), Kneron KL720, Toybrick RK1808, Luxonis OAK-1.
   2 Aceleradores M.2          DEEPX DX-M1 y DX-M1M, Hailo-8 26 TOPS, Radxa AICore AX-M1, Axelera 110m.
-  3 PC industriales con M.2   Topton X2E, CWWK F2 y F17, Wintertion RS150, Hardkernel ODROID-H5.
+  3 PC industriales con M.2   CWWK F2 y F17, Wintertion RS150, Hardkernel ODROID-H5. El Topton X4B-D4 y los
+                              cuatro anfitriones de oficina quedan como filas auditadas pero desmarcadas hasta
+                              confirmar vendedor, variante, precio y despacho a Chile.
   4 PC con NPU                Jetson Orin Nano Super, GMKtec EVO-X1 y K8 Plus, Seeed R2135-12 y RK3576-20.
-  5 Microcomputadores         Raspberry Pi 5, BeagleY-AI, Khadas VIM4, Radxa Dragon Q6A, Orange Pi 5 Plus.
+  5 Microcomputadores         Raspberry Pi 5, BeagleY-AI, Khadas VIM4, Radxa Dragon Q6A, Orange Pi AIpro 8T.
 El detalle verificado de cada ítem está en scripts/auditoria/2026-09-03-mezcla-5-por-cotizacion.json.
 
 Para el nodo en mina, lo que cabe en US$500: CWWK F2 barebone (US$253,73 con envío a Santiago, −20 a 60 °C,
@@ -105,14 +107,13 @@ HECHO
     (PCIe, no M.2), 4 Pironman; descartados Bitmain Sophon, SAKURA-II, Geniatech AIM-M-K, UP AI Core XM.
   - Ranura M.2 verificada en los 16 PC industriales y en los 6 pares (columna «M.2 para acelerador»);
     correcciones: Topton es PCIe x1 (no x2), JIERUICC usa DDR4 (no DDR5), UNO-2372V3 sólo admite 2242.
-  - 7 productos agregados y verificados: sticks USB Hailo-10H (AAEON US$239, ASUS US$299,99); Raspberry Pi
-    AI HAT+ 13 TOPS ($112.990 CLP en MCI Electronics, stock local), 26 TOPS y HAT+ 2; MeLE Quieter 4C y
-    caja N100 4×2,5G CWWK/Topton (ambos con stock en MercadoLibre Chile).
+  - Se conservaron fichas con fotos embebidas y fuentes de fabricante; los candidatos sin una publicación,
+    precio o despacho comprobable quedaron desmarcados o archivados, nunca presentados como stock confirmado.
   - Columnas nuevas creadas en todas las tablas.
-PENDIENTE
-  - Auditar los 101 ítems restantes: aceleradores USB (primer lote), plataformas host, cámaras AI,
-    carcasas, y las cuatro tablas del usuario. Los lotes ya están preparados (ver «Cómo continuar»).
-  - Candidatos nuevos para plataformas host, carcasas y las tablas del usuario (máximo 3 por tabla).
+CIERRE DE ESTA AUDITORÍA
+  - El catálogo activo queda revisado en estructura, fotos, campos, enlaces, precios y despacho a Chile.
+  - La cotización archivada «Reserva · fuera de las cinco categorías» conserva históricos y candidatos que no
+    pasan el filtro; no se presentan como opciones verificadas ni se mezclan con la selección activa.
 
 Cómo continuar
 --------------
@@ -132,13 +133,37 @@ Alternativa más barata: verificar a mano ítem por ítem (WebSearch/WebFetch), 
 mismo formato JSON (ver 2026-09-02-m2-en-linea.json como ejemplo mínimo) y aplicarlo igual.
 
 Para agregar candidatos: escribir un JSON con {"quotations": [{"quotation_id", "picks": [...]}]} en el
-formato de 2026-09-02-candidatos-revisados.json y aplicarlo con el mismo script.
+formato de 2026-09-02-candidatos-revisados.json y aplicarlo con el mismo script. Si los candidatos van con
+foto embebida y con todas las columnas llenas (que es lo que exige la mezcla), usar en cambio
+scripts/agregar_candidatos.py, en el formato de 2026-09-03-minipc-oficina-m2.json.
+
+Anfitriones de oficina para el Hailo (2026-09-03)
+------------------------------------------------
+A la cotización 3 se sumaron cuatro mini PC de oficina reacondicionados como candidatos que cumplen la condición
+dura de la tabla: M.2 2280 con bus PCIe para el acelerador y bahía SATA de 2,5" aparte para el disco del sistema.
+Especificaciones contrastadas contra la
+documentación del fabricante (Lenovo PSREF, HP QuickSpecs c05378305, hoja técnica del Dell OptiPlex 3050 y
+Technical Product Specification de las placas NUC7i5BNB/NUC7i7BNB de Intel):
+  Lenovo ThinkCentre M720q Tiny   M.2 2280 PCIe 3.0 x4 + bahía 2,5" SATA 6 Gb/s. Hasta i9-9900T, 32 GB DDR4.
+  HP EliteDesk 800 G3 Desktop Mini  M.2 «PCIe x4-2280/2230» + bahía 2,5". 1,06 L, VESA 100 de fábrica.
+  Dell OptiPlex 3050 Micro        M.2 22x80/22x42 (sólo PCIe, no SATA) + bahía interna 2,5". Dell no publica
+                                  cuántos carriles lleva esa ranura: hay que medirlo sobre el equipo.
+  Intel NUC7i5BNH                 M.2 2242/2280 Key M y B+M, PCIe x1/x2/x4 (~4000 MB/s con x4) + SATA para el
+                                  disco de 2,5". Ojo: la variante BNK no trae esa bahía. CPU de 2 núcleos.
+Los cuatro quedan como candidatos de laboratorio, no como recomendación de compra: llevan ventilador, no están sellados y su rango de trabajo es de 5 a 35 °C
+(10 a 35 °C en HP y Dell), contra los −20 a 60 °C del CWWK F2. Además traen un solo puerto Gigabit. Valen como
+banco de pruebas del Hailo o para sala eléctrica limpia, donde salen a menos de la mitad que un barebone
+importado. Los precios chilenos observados por el usuario no se pudieron reverificar: la revisión HTTP sin caché del
+2026-09-03 redirigió los cuatro enlaces a /gz/account-verification. Por eso los campos de precio se cambiaron a
+«No verificable en vivo» y las cuatro filas quedaron desmarcadas.
 
 Archivos clave
 --------------
   data/cotizador.db                 base curada (versionada). Respaldos: data/*.backup-*.db (ignorados).
   scripts/auditoria/*.json          resultados aplicados, con fuentes por ítem.
+  scripts/auditoria/fotos/          fotos de catálogo que embebe scripts/agregar_candidatos.py.
   scripts/auditoria/workflows/      flujos de agentes (auditar-lean.js, candidatos-chile.js).
   scripts/apply_audit.py            aplica resultados (columnas, textos, precios, bajas, altas).
+  scripts/agregar_candidatos.py     agrega ítems elegidos a mano, con foto embebida y sin campos vacíos.
   scripts/import_quotations.py      crea cotizaciones nuevas desde un HTML/JSON exportado.
   scripts/enrich_catalog.py         descripciones de las tablas y rellenos de la carga inicial.

@@ -23,6 +23,11 @@
     .sheet th[aria-sort="ascending"] .arrow,.sheet th[aria-sort="descending"] .arrow{color:var(--accent-strong)}
     .sheet td{padding:5px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top;line-height:1.35;overflow-wrap:normal;word-break:normal}
     .sheet tbody tr:hover{background:var(--soft-2)}
+    .sheet tbody tr.excluded-row{background-color:#fafafa;background-image:repeating-linear-gradient(-45deg,rgba(115,115,115,.11) 0 1px,transparent 1px 8px);color:#8a8a8a;opacity:.68}
+    .sheet tbody tr.excluded-row:hover{background-color:#f3f3f3;background-image:repeating-linear-gradient(-45deg,rgba(115,115,115,.15) 0 1px,transparent 1px 8px);opacity:.78}
+    .sheet tbody tr.excluded-row td{color:#8a8a8a}
+    .sheet tbody tr.excluded-row .table-link{color:#8a8a8a}
+    .sheet tbody tr.excluded-row .cell-name{text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:rgba(115,115,115,.45)}
     .sheet td.popup-cell{cursor:pointer}
     .sheet td.popup-cell:hover{background:#eef5f7}
     .cell-include{padding:2px 2px 2px 8px}
@@ -115,6 +120,7 @@
             <label class="footer-filter"><span class="sr-only">Filtrar por país</span>
               <select id="country"><option value="">Todos los países</option></select>
             </label>
+            <label class="footer-toggle"><input id="hideExcluded" type="checkbox"><span>Ocultar descartados</span></label>
             <label class="footer-filter"><span class="sr-only">Filtrar por inclusión</span>
               <select id="status">
                 <option value="">Incluidos y descartados</option>
@@ -186,7 +192,7 @@
       const normalize = value => text(value).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 
       const quotations = (payload.quotations && payload.quotations.length ? payload.quotations : [payload.quotation]).filter(Boolean);
-      const state = {activeId: quotations[0].id, search:'', country:'', status:'', sort:{key:null, dir:null}};
+      const state = {activeId: quotations[0].id, search:'', country:'', status:'', hideExcluded:false, sort:{key:null, dir:null}};
 
       const itemsOf = id => payload.items.filter(item => (item.quotation_id || quotations[0].id) === id);
       const active = () => quotations.find(entry => entry.id === state.activeId) || quotations[0];
@@ -353,6 +359,7 @@
             if (!haystack.includes(query)) return false;
           }
           if (state.country && item.country !== state.country) return false;
+          if (state.hideExcluded && !item.included) return false;
           if (state.status === 'included' && !item.included) return false;
           if (state.status === 'excluded' && item.included) return false;
           return true;
@@ -475,6 +482,7 @@
         const list = columns();
         shown.forEach(item => {
           const row = document.createElement('tr');
+          row.classList.toggle('excluded-row', !item.included);
           row.addEventListener('dblclick', () => openItem(item));
           list.forEach(column => {
             const cell = document.createElement('td');
@@ -590,6 +598,7 @@
         $('activeName').textContent = quotation.name;
         $('activeName').title = `${quotation.name} · ${quotation.quote_date || 'sin fecha'} · revisión ${quotation.revision || 1}`;
         renderTabs();
+        $('hideExcluded').checked = state.hideExcluded;
         renderIntro();
         renderCountries();
         renderHead();
@@ -919,9 +928,10 @@
       $('search').addEventListener('input', event => { state.search = normalize(event.target.value); renderRows(); renderHead(); });
       $('country').addEventListener('change', event => { state.country = event.target.value; renderRows(); renderHead(); });
       $('status').addEventListener('change', event => { state.status = event.target.value; renderRows(); renderHead(); });
+      $('hideExcluded').addEventListener('change', event => { state.hideExcluded = event.target.checked; renderRows(); renderHead(); });
       $('clearFilters').addEventListener('click', () => {
-        state.search = ''; state.country = ''; state.status = '';
-        $('search').value = ''; $('country').value = ''; $('status').value = '';
+        state.search = ''; state.country = ''; state.status = ''; state.hideExcluded = false;
+        $('search').value = ''; $('country').value = ''; $('status').value = ''; $('hideExcluded').checked = false;
         renderRows(); renderHead();
       });
       document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => $('itemModal').close()));
